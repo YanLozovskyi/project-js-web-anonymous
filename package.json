@@ -1,21 +1,21 @@
 {
-  "name": "parcel-project-template",
+  "name": "project-js-web-anonymous",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://YanLozovskyi.github.io/project-js-web-anonymous",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /project-js-web-anonymous/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/YanLozovskyi/project-js-web-anonymous.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/YanLozovskyi/project-js-web-anonymous/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
