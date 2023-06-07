@@ -1,4 +1,4 @@
-import ApiMovie from './fetch-movie';
+import ApiMovie from '../themoviedbAPI/fetch-movie';
 const apiMovie = new ApiMovie();
 
 // --------------------------ТЕСТ - Трендові фільми дня та тижня
