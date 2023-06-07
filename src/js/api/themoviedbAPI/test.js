@@ -1,5 +1,5 @@
-import ApiMovie from './fetch-movie';
-const apiMovie = new ApiMovie();
+// import ApiMovie from './fetch-movie';
+// const apiMovie = new ApiMovie();
 
 // --------------------------ТЕСТ - Трендові фільми дня та тижня
 // async function getTrendMovieOfDay() {
@@ -36,14 +36,14 @@ const apiMovie = new ApiMovie();
 
 // --------------------------ТЕСТ - Фільми за ключовим словом + за роком
 
-apiMovie
-  .searchByQueryYear('John Wick', 2023)
-  .then(movies => {
-    console.log(`Пошук результата:`, movies);
-  })
-  .catch(error => {
-    console.log('Error:', error);
-  });
+// apiMovie
+//   .searchByQueryYear('John Wick', 2023)
+//   .then(movies => {
+//     console.log(`Пошук результата:`, movies);
+//   })
+//   .catch(error => {
+//     console.log('Error:', error);
+//   });
 
 // try to refactor
 
