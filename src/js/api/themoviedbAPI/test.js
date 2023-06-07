@@ -1,51 +1,65 @@
 import ApiMovie from './fetch-movie';
 const apiMovie = new ApiMovie();
 
-// --------------------------ТЕСТ - Трендові фільми дня та тижня 
-
-// apiMovie.getTrend('day')
-// .then((trendingMovies) => {
-//     console.log('Трендові фільми дня:', trendingMovies);
-// })
-// .catch((error) => {
+// --------------------------ТЕСТ - Трендові фільми дня та тижня
+// async function getTrendMovieOfDay() {
+//   try {
+//     const response = await apiMovie.getTrend('day');
+//     console.log('Трендові фільми дня:', response.data.results);
+//   } catch (error) {
 //     console.log('Error:', error);
-// });
+//   }
+// }
+// getMovie();
 
-// apiMovie.getTrend('week')
-// .then((trendingMovies) => {
-//     console.log('Трендові фільми тижня :', trendingMovies);
-// })
-// .catch((error) => {
+// async function getTrendMovieOfWeek() {
+//   try {
+//     const response = await apiMovie.getTrend('week');
+//     console.log('Трендові фільми тижня :', response.data.results);
+//   } catch (error) {
 //     console.log('Error:', error);
-// });
-
-
+//   }
+// }
+// getNewFilms();
 
 // --------------------------ТЕСТ - Нові фільми
 
-// apiMovie.getNewFilms()
-// .then((upcomingMovies) => {
-//     console.log('Нові фільми', upcomingMovies);
-// })
-// .catch((error) => {
+// async function getNewFilms() {
+//   try {
+//     const response = await apiMovie.getNewFilms();
+//     console.log('Нові фільми', response.data.results);
+//   } catch (error) {
 //     console.log('Error:', error);
-// });
-
-
+//   }
+// }
+// getNewFilms();
 
 // --------------------------ТЕСТ - Фільми за ключовим словом + за роком
 
+apiMovie
+  .searchByQueryYear('John Wick', 2023)
+  .then(movies => {
+    console.log(`Пошук результата:`, movies);
+  })
+  .catch(error => {
+    console.log('Error:', error);
+  });
 
-// apiMovie.earchByQueryYear('John Wick', 2023)
-// .then((movies) => {
-//     console.log(`Пошук результата:`, movies);
-// })
-// .catch((error) => {
+// try to refactor
+
+// async function searchByQueryYear(year) {
+//   try {
+//     const response = await apiMovie.searchByQueryYear('John Wick');
+//     console.log(`Пошук результата:`, response);
+//     const filteredResults = response.data.results.filter(
+//       movie => movie.release_date && movie.release_date.includes(year)
+//     );
+//     return filteredResults;
+//   } catch (error) {
 //     console.log('Error:', error);
-// });
-
-
-
+//   }
+// }
+// console.log(searchByQueryYear(2023));
 
 //--------------------------ТЕСТ- Детальна інформація про фільм
 
@@ -58,10 +72,6 @@ const apiMovie = new ApiMovie();
 //     console.log('Error:', error);
 // });
 
-
-
-
-
 //--------------------------ТЕСТ - Повна інформація про можливий трейлер фільма на ютубі
 
 // const movieId = 245891;
@@ -72,9 +82,6 @@ const apiMovie = new ApiMovie();
 // .catch((error) => {
 //     console.log('Error:', error);
 // });
-
-
-
 
 //--------------------------ТЕСТ - Перелік жанрів
 

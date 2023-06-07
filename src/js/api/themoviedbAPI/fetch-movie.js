@@ -1,110 +1,107 @@
 import axios from 'axios';
 
 export default class ApiMovie {
-    constructor() {
-        this.key = '28909b5df6d6afd9591e6fc0c7cef11e';
-        this.baseURL = 'https://api.themoviedb.org/3/';
-        this.page = 0;
-    }
-    resetPage() {
-        this.page = 0;
-    }
+  #API_KEY = '28909b5df6d6afd9591e6fc0c7cef11e';
+  #BASE_URL = 'https://api.themoviedb.org/3/';
+  constructor() {
+    this.page = 0;
+  }
+  resetPage() {
+    this.page = 0;
+  }
 
-// Трендові фільми дня та тижня
-async getTrend(param, page) {
+  // Трендові фільми дня та тижня
+  getTrend(param, page) {
     if (arguments.length < 2) {
-        try {
-            this.page += 1;
-            const response = await axios.get(
-                `${this.baseURL}trending/movie/${param}?api_key=${this.key}&page=${this.page}`
-                );
-                return response.data.results;
-            } catch (error) {
-                console.log(error);
-            }
-        } else {
-            try {
-                const response = await axios.get(
-                    `${this.baseURL}trending/movie/${param}?api_key=${this.key}&page=${page}`
-                    );
-                    return response.data;
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-        }
-
-// Нові фільми
-async getNewFilms() {
-    try {
-        const response = await axios.get(
-            `${this.baseURL}movie/upcoming?api_key=${this.key}`
-            );
-            return response.data.results;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-// Фільми за ключовим словом + за роком
-async searchByQueryYear(query, year, page) {
-    if (arguments.length < 3) {
-        try {
-            this.page += 1;
-            const response = await axios.get(
-                `${this.baseURL}search/movie?api_key=${this.key}&query=${query}&page=${this.page}`
-            );
-            const filteredResults = response.data.results.filter(movie => movie.release_date && movie.release_date.includes(year));
-            return filteredResults;
-        } catch (error) {
-            console.log(error);
-        }
+      this.page += 1;
+      return axios.get(
+        `${this.#BASE_URL}trending/movie/${param}?api_key=${
+          this.#API_KEY
+        }&page=${this.page}`
+      );
     } else {
-        try {
-            const response = await axios.get(
-                `${this.baseURL}search/movie?api_key=${this.key}&query=${query}&page=${page}`
-            );
-            const filteredResults = response.data.results.filter(movie => movie.release_date && movie.release_date.includes(year));
-            return filteredResults;
-        } catch (error) {
-            console.log(error);
-        }
+      return axios.get(
+        `${this.#BASE_URL}trending/movie/${param}?api_key=${
+          this.#API_KEY
+        }&page=${page}`
+      );
     }
-}
+  }
 
-// Детальна інформація про фільм
-async getMovieInfo(id) {
-    try {
-        const response = await axios.get(
-            `${this.baseURL}movie/${id}?api_key=${this.key}`
-            );
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
-    }
+  // Нові фільми
+  getNewFilms() {
+    return axios.get(
+      `${this.#BASE_URL}movie/upcoming?api_key=${this.#API_KEY}`
+    );
+  }
 
-// Повна інформація про можливий трейлер фільма на ютубі
-async getTrailer(id) {
-    try {
+  // Фільми за ключовим словом + за роком
+  async searchByQueryYear(query, year, page) {
+    if (arguments.length < 3) {
+      try {
+        this.page += 1;
         const response = await axios.get(
-            `${this.baseURL}movie/${id}/videos?api_key=${this.key}`
-            );
-            return response.data.results[0];
-        } catch (error) {
-            console.log(error);
-        }
+          `${this.#BASE_URL}search/movie?api_key=${
+            this.#API_KEY
+          }&query=${query}&page=${this.page}`
+        );
+        const filteredResults = response.data.results.filter(
+          movie => movie.release_date && movie.release_date.includes(year)
+        );
+        return filteredResults;
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const response = await axios.get(
+          `${this.#BASE_URL}search/movie?api_key=${
+            this.#API_KEY
+          }&query=${query}&page=${page}`
+        );
+        const filteredResults = response.data.results.filter(
+          movie => movie.release_date && movie.release_date.includes(year)
+        );
+        return filteredResults;
+      } catch (error) {
+        console.log(error);
+      }
     }
+  }
 
-// Перелік жанрів
-async getGenresList() {
+  // Детальна інформація про фільм
+  getMovieInfo(id) {
     try {
-        const response = await axios.get(
-            `${this.baseURL}genre/movie/list?api_key=${this.key}`
-            );
-            return response.data.genres;
-        } catch (error) {
-            console.log(error);
-        }
+      const response = axios.get(
+        `${this.#BASE_URL}movie/${id}?api_key=${this.#API_KEY}`
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
     }
+  }
+
+  // Повна інформація про можливий трейлер фільма на ютубі
+  getTrailer(id) {
+    try {
+      const response = axios.get(
+        `${this.#BASE_URL}movie/${id}/videos?api_key=${this.#API_KEY}`
+      );
+      return response.data.results[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Перелік жанрів
+  getGenresList() {
+    try {
+      const response = axios.get(
+        `${this.#BASE_URL}genre/movie/list?api_key=${this.#API_KEY}`
+      );
+      return response.data.genres;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
