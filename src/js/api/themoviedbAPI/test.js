@@ -1,7 +1,7 @@
 // import ApiMovie from './fetch-movie';
 // const apiMovie = new ApiMovie();
 
-// --------------------------ТЕСТ - Трендові фільми дня та тижня
+// // --------------------------ТЕСТ - Трендові фільми дня та тижня
 // async function getTrendMovieOfDay() {
 //   try {
 //     const response = await apiMovie.getTrend('day');
