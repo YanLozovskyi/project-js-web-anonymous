@@ -24,15 +24,15 @@ const apiMovie = new ApiMovie();
 
 // --------------------------ТЕСТ - Нові фільми
 
-// async function getNewFilms() {
-//   try {
-//     const response = await apiMovie.getNewFilms();
-//     console.log('Нові фільми', response.data.results);
-//   } catch (error) {
-//     console.log('Error:', error);
-//   }
-// }
-// getNewFilms();
+ async function getNewFilms() {
+   try {
+     const response = await apiMovie.getNewFilms();
+     console.log('Нові фільми', response.data.results);
+   } catch (error) {
+     console.log('Error:', error);
+   }
+ }
+ getNewFilms();
 
 // --------------------------ТЕСТ - Фільми за ключовим словом + за роком
 
