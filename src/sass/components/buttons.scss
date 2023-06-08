@@ -1,0 +1,82 @@
+.button {
+  display: block;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 24px;
+  padding-left: 24px;
+  border-radius: 74px;
+  border: solid 1px transparent;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+
+  transition: transform 250ms $cubic, color 250ms $cubic,
+    background-color 250ms $cubic;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.14;
+  }
+
+  @media screen and (min-width: 1440px) {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+}
+
+.button-accent {
+  @extend .button;
+  color: $dark-color;
+  background: $button-background-color;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background: $light-color;
+    border: solid 1px $accent-color;
+  }
+}
+
+.button-dark {
+  @extend .button;
+  color: $light-color;
+  background: transparent;
+  border: solid 1px $light-color;
+
+  &:hover,
+  &:focus {
+    color: $dark-color;
+    background: $light-color;
+    border: solid 1px $accent-color;
+  }
+}
+
+.button-modal-dark-theme {
+  @extend .button;
+  color: $light-color;
+  background: transparent;
+  border: solid 1px $light-color;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background: $light-color;
+    border: solid 1px transparent;
+  }
+}
+
+.button-modal-light-theme {
+  @extend .button;
+
+  color: $dark-color;
+  background: transparent;
+  border: solid 1px $accent-color;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background: $dark-color;
+    border: solid 1px transparent;
+  }
+}
