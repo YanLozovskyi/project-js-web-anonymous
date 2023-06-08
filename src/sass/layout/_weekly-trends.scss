@@ -6,6 +6,9 @@
   @media (min-width: 768px) {
     padding: 52px 32px 44px 32px;
   }
+  @media (min-width: 1200px) {
+    padding: 80px 32px 60px 32px;
+  }
 }
 
 .card-list {
@@ -21,6 +24,9 @@
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 24px;
+  @media (min-width: 1200px) {
+    margin-bottom: 28px;
+  }
 }
 
 .weekly-title {
@@ -37,6 +43,15 @@
     line-height: 28px;
     text-transform: uppercase;
   }
+
+  @media (min-width: 1200px) {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33px;
+
+    text-transform: uppercase;
+  }
 }
 
 .weekly-link {
@@ -51,6 +66,11 @@
     font-size: 24px;
     line-height: 28px;
   }
+  @media (min-width: 1200px) {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33px;
+  }
 }
 
 .card-list-item {
@@ -62,6 +82,10 @@
     max-width: 224px;
     min-height: 325px;
   }
+  @media (min-width: 1200px) {
+    max-width: 395px;
+    min-height: 574px;
+  }
 }
 
 .card-list-img {
@@ -72,6 +96,10 @@
   @media (min-width: 768px) {
     max-width: 224px;
     max-height: 325px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 395px;
+    max-height: 574px;
   }
 }
 
@@ -92,7 +120,13 @@
       font-weight: 500;
       font-size: 12px;
       line-height: 18px;
-
+      text-transform: uppercase;
+    }
+    @media (min-width: 1200px) {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 23px;
       text-transform: uppercase;
     }
   }
@@ -109,6 +143,12 @@
       font-weight: 500;
       font-size: 12px;
       line-height: 18px;
+    }
+    @media (min-width: 768px) {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 23px;
     }
   }
 }
