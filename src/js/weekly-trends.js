@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ApiMovie from './api/themoviedbAPI/fetch-movie';
 
-const list = document.querySelector('.weekly-trends-list');
+const list = document.querySelector('.card-list');
 
 const apiMovie = new ApiMovie();
 
@@ -17,31 +17,36 @@ async function getTrendMovieOfWeek() {
     const createCardMarkup = moviCard
       .map(item => {
         const {
-          backdrop_path,
+          poster_path,
           genres,
           original_title,
           release_date,
           vote_average,
         } = item.value.data;
-
-        const markup = `<li class="weekly-trends-item">
-        <a href="#" class="weekly-trends-imgLink"
-          ><img src="https://image.tmdb.org/t/p/original/${backdrop_path}" alt="${original_title}" class="weekly-trends-img"
-        /></a>
-        <div class="weekly-trends-textWrapper">
-          <h2 class="weekly-trends-filmName">${original_title}</h2>
-          <p class="weekly-trends-text">${
-            genres[1].name
-          } | ${release_date.slice(0, 4)}</p>
-          <span class="weekly-trends-rating">${Math.ceil(vote_average)}</span>
-        </div>
-      </li>`;
+        console.log(item.value.data);
+        const markup = `<li class="card-list-item">
+  <img
+    src="https://image.tmdb.org/t/p/original${poster_path}"
+    alt="${original_title}"
+    class="card-list-img"
+    width="395"
+    height="574"
+  />
+  <div class="card-overlay"></div>
+  <div class="text-wrapper">
+    <h2 class="text-wrapper-filmName">${original_title}</h2>
+    <p class="text-wrapper-nameAndGenres">
+      ${genres[1].name} | ${release_date.slice(0, 4)}
+    </p>
+  </div>
+  <span class="card-list-rating">${Math.ceil(vote_average)}</span>
+</li>`;
 
         return markup;
       })
       .join('');
 
-    console.log(createCardMarkup);
+    // console.log(createCardMarkup);
 
     list.innerHTML = createCardMarkup;
   } catch (error) {

@@ -1,3 +1,94 @@
-// .weekly-trends-list {
-//   list-style: none;
+// .sectionWeeklyrends {
+//   background-color: tomato;
 // }
+.weekly-trends {
+  padding: 40px 20px 32px 20px;
+}
+
+.flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.weekly-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: $dark-color;
+}
+
+.weekly-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: $accent-color;
+}
+
+.card-list-item {
+  max-width: 280px;
+  min-height: 406px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.card-list-img {
+  max-width: 280px;
+  max-height: 406px;
+  border-radius: 5px;
+}
+
+.text-wrapper {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+
+  &-filmName {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: $light-color;
+  }
+
+  &-nameAndGenres {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: $color-subtitles;
+  }
+}
+
+.card-list li:not(:first-child) {
+  @media (max-width: 767px) {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+  }
+}
+
+.card-list-rating {
+  display: none;
+}
+
+.card-overlay {
+  height: 50%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
