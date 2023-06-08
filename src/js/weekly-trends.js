@@ -30,10 +30,9 @@ async function getTrendMovieOfWeek() {
         /></a>
         <div class="weekly-trends-textWrapper">
           <h2 class="weekly-trends-filmName">${original_title}</h2>
-          <p class="weekly-trends-text">${genres[1].name}|${release_date.slice(
-          0,
-          4
-        )}</p>
+          <p class="weekly-trends-text">${
+            genres[1].name
+          } | ${release_date.slice(0, 4)}</p>
           <span class="weekly-trends-rating">${Math.ceil(vote_average)}</span>
         </div>
       </li>`;
