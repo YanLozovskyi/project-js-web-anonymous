@@ -1,0 +1,26 @@
+.my-library {
+  padding-top: 80px;
+}
+.my-library .container {
+  outline: 1 solid tomato;
+}
+.my-library-movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.my-library-item {
+  width: calc((100% - 100px) / 3);
+  height: 200px;
+  background-color: bisque;
+}
+
+.my-library-load-more-button {
+  display: none;
+}
+
+.my-library-content-text-message {
+  display: flex;
+  flex-direction: column;
+}

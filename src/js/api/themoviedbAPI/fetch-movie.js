@@ -95,13 +95,8 @@ export default class ApiMovie {
 
   // Перелік жанрів
   getGenresList() {
-    try {
-      const response = axios.get(
-        `${this.#BASE_URL}genre/movie/list?api_key=${this.#API_KEY}`
-      );
-      return response.data.genres;
-    } catch (error) {
-      console.log(error);
-    }
+    return axios.get(
+      `${this.#BASE_URL}genre/movie/list?api_key=${this.#API_KEY}`
+    );
   }
 }
