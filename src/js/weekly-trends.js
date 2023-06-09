@@ -16,7 +16,7 @@ async function getTrendMovieOfWeek() {
       const DetailedInformation = await apiMovie.getMovieInfo(item.id);
       return DetailedInformation;
     });
-    console.log(infoFromCorr);
+
     // const getMarkup = await createMarkup(infoFromCorr);
     // console.log(getMarkup);
 
@@ -41,12 +41,12 @@ async function getTrendMovieOfWeek() {
       />
       <div class="card-overlay"></div>
       <div class="text-wrapper">
-        <h2 class="text-wrapper-filmName">${original_title}</h2>
+        <div><h2 class="text-wrapper-filmName">${original_title}</h2>
         <p class="text-wrapper-nameAndGenres">
           ${genres[1].name} | ${release_date.slice(0, 4)}
-        </p>
+        </p></div>
+        <div class="card-list-rating">${getStar(vote_average)}</div>
       </div>
-      <span class="card-list-rating">${Math.ceil(vote_average)}</span>
     </li>`;
 
         return markup;
@@ -62,3 +62,36 @@ async function getTrendMovieOfWeek() {
 }
 
 getTrendMovieOfWeek();
+
+function getStar(params) {
+  let rating = '';
+
+  const averageCount = Math.ceil(params);
+  if (averageCount === 0) {
+    return (rating = `${emptyStarSVG.repeat(5)}`);
+  } else if (averageCount === 1) {
+    return (rating = `${halfStarSVG}${emptyStarSVG.repeat(4)}`);
+  } else if (averageCount === 2) {
+    return (rating = `${fullStarSVG}${emptyStarSVG.repeat(4)}`);
+  } else if (averageCount === 3) {
+    return (rating = `${fullStarSVG}${halfStarSVG}${emptyStarSVG.repeat(3)}`);
+  } else if (averageCount === 4) {
+    return (rating = `${fullStarSVG.repeat(2)}${emptyStarSVG.repeat(3)}`);
+  } else if (averageCount === 5) {
+    return (rating = `${fullStarSVG.repeat(
+      2
+    )}${halfStarSVG}${emptyStarSVG.repeat(2)}`);
+  } else if (averageCount === 6) {
+    return (rating = `${fullStarSVG.repeat(3)}${emptyStarSVG.repeat(2)}`);
+  } else if (averageCount === 7) {
+    return (rating = `${fullStarSVG.repeat(3)}${halfStarSVG}${emptyStarSVG}`);
+  } else if (averageCount === 8) {
+    return (rating = `${fullStarSVG.repeat(4)}${emptyStarSVG}`);
+  } else if (averageCount === 9) {
+    return (rating = `${fullStarSVG.repeat(4)}${halfStarSVG}`);
+  } else if (averageCount === 10) {
+    return (rating = `${fullStarSVG.repeat(5)}`);
+  }
+
+  return rating;
+}

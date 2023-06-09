@@ -113,6 +113,9 @@
   position: absolute;
   left: 12px;
   bottom: 12px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 
   &-filmName {
     font-style: normal;
@@ -175,7 +178,7 @@
 }
 
 .card-list-rating {
-  display: none;
+  z-index: 1;
 }
 
 .card-overlay {
