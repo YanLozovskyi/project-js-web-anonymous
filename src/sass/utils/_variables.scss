@@ -19,3 +19,7 @@ $color-subtitles-white-theme: #595959;
 
 //cubic//
 $cubic: cubic-bezier(0.4, 0, 0.2, 1);
+
+// cursors
+$cursor-default: url('../images/cursor/cursor-orange&black.svg'), pointer;
+$cursor-hover: url('../images/cursor/cursor-orange&white.svg'), pointer;
