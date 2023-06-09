@@ -5,11 +5,13 @@
 @import './utils/reset';
 @import './utils/variables';
 @import './utils/visually-hidden';
+@import './utils/mixins';
 
 // base
 
 @import './base/common';
 @import './base/container';
+@import './base/cursor';
 
 // components
 @import './components/buttons.scss';
@@ -32,4 +34,4 @@
 // my-library
 
 @import './layout/pages/my-library/hero';
-@import './layout/pages/my-library/genre';
+@import './layout/pages/my-library/my-library';

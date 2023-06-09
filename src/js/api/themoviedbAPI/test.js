@@ -64,28 +64,40 @@
 //--------------------------ТЕСТ- Детальна інформація про фільм
 
 // const movieId = 245891;
-// apiMovie.getMovieInfo(movieId)
-// .then((movieInfo) => {
-//     console.log('Детальна інформація про фільм:', movieInfo);
-// })
-// .catch((error) => {
+
+// async function getMovieInfo() {
+//   try {
+//     const response = await apiMovie.getMovieInfo(movieId);
+//     console.log('Детальна інформація про фільм:', response.data);
+//   } catch (error) {
 //     console.log('Error:', error);
-// });
+//   }
+// }
+
+// getMovieInfo();
 
 //--------------------------ТЕСТ - Повна інформація про можливий трейлер фільма на ютубі
 
 // const movieId = 245891;
-// apiMovie.getTrailer(movieId)
-// .then((trailer) => {
-//     console.log('Movie Trailer:', trailer);
-// })
-// .catch((error) => {
+// async function getTrailer() {
+//   try {
+//     const response = await apiMovie.getTrailer(movieId);
+//     console.log('Movie Trailer:', response.data.results[0]);
+//   } catch (error) {
 //     console.log('Error:', error);
-// });
+//   }
+// }
+// getTrailer();
 
 //--------------------------ТЕСТ - Перелік жанрів
 
-// apiMovie.getGenresList()
-// .then((genres) => {
-//     console.log('Перелік жанрів:', genres);
-// })
+// async function getGenres() {
+//   try {
+//     const response = await apiMovie.getGenresList();
+//     console.log('Перелік жанрів:', response.data.genres);
+//   } catch (error) {
+//     console.log('Error:', error);
+//   }
+// }
+
+// getGenres();

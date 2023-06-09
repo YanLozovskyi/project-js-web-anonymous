@@ -76,25 +76,15 @@ export default class ApiMovie {
 
   // Повна інформація про можливий трейлер фільма на ютубі
   getTrailer(id) {
-    try {
-      const response = axios.get(
-        `${this.#BASE_URL}movie/${id}/videos?api_key=${this.#API_KEY}`
-      );
-      return response.data.results[0];
-    } catch (error) {
-      console.log(error);
-    }
+    return axios.get(
+      `${this.#BASE_URL}movie/${id}/videos?api_key=${this.#API_KEY}`
+    );
   }
 
   // Перелік жанрів
   getGenresList() {
-    try {
-      const response = axios.get(
-        `${this.#BASE_URL}genre/movie/list?api_key=${this.#API_KEY}`
-      );
-      return response.data.genres;
-    } catch (error) {
-      console.log(error);
-    }
+    return axios.get(
+      `${this.#BASE_URL}genre/movie/list?api_key=${this.#API_KEY}`
+    );
   }
 }

@@ -1,0 +1,94 @@
+.hero-description-lib {
+  color: $text-color;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+
+  margin-bottom: 20px;
+  max-width: 249px;
+
+  position: inherit;
+  z-index: 3;
+
+  @media screen and (min-width: 768px) {
+    max-width: 357px;
+    margin-bottom: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
+    line-height: 1.19;
+    min-width: 464px;
+    margin-bottom: 32px;
+  }
+}
+
+.hero-title-lib {
+  color: $light-color;
+
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.19;
+
+  margin-bottom: 8px;
+  max-width: 230px;
+  position: inherit;
+  z-index: 3;
+
+  @media screen and (min-width: 768px) {
+    max-width: 332px;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.18;
+    margin-bottom: 12px;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 64px;
+    line-height: 1.17;
+    margin-bottom: 16px;
+    max-width: 464px;
+  }
+}
+
+.hero-content-lib {
+  position: relative;
+  min-width: 320px;
+  min-height: 380px;
+  padding-top: 40px;
+  @media screen and (min-width: 768px) {
+    padding-top: 62px;
+    min-height: 432px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-top: 169px;
+    min-height: 720;
+  }
+}
+.hero-picture-library {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background: linear-gradient(
+    79.49deg,
+    #111111 34.1%,
+    rgba(17, 17, 17, 0) 64.67%
+  );
+
+  @media screen and (min-width: 768px) {
+    background: linear-gradient(
+      82.55deg,
+      #111111 39.6%,
+      rgba(17, 17, 17, 0) 72.95%
+    );
+  }
+  @media screen and (min-width: 1280px) {
+    max-height: 660px;
+    background: linear-gradient(
+      82.55deg,
+      #111111 39.6%,
+      rgba(17, 17, 17, 0) 72.95%
+    );
+  }
+}
