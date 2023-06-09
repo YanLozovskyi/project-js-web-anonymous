@@ -24,26 +24,26 @@ const apiMovie = new ApiMovie();
 
 // --------------------------ТЕСТ - Нові фільми
 
- async function getNewFilms() {
-   try {
-     const response = await apiMovie.getNewFilms();
-     console.log('Нові фільми', response.data.results);
-   } catch (error) {
-     console.log('Error:', error);
-   }
- }
- getNewFilms();
+//  async function getNewFilms() {
+//    try {
+//      const response = await apiMovie.getNewFilms();
+//      console.log('Нові фільми', response.data.results);
+//    } catch (error) {
+//      console.log('Error:', error);
+//    }
+//  }
+//  getNewFilms();
 
 // --------------------------ТЕСТ - Фільми за ключовим словом + за роком
 
-apiMovie
-  .searchByQueryYear('John Wick', 2023)
-  .then(movies => {
-    console.log(`Пошук результата:`, movies);
-  })
-  .catch(error => {
-    console.log('Error:', error);
-  });
+// apiMovie
+//   .searchByQueryYear('John Wick', 2023)
+//   .then(movies => {
+//     console.log(`Пошук результата:`, movies);
+//   })
+//   .catch(error => {
+//     console.log('Error:', error);
+//   });
 
 // try to refactor
 
