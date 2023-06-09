@@ -4,9 +4,11 @@
   background-color: $dark-color;
   position: relative;
   overflow: hidden;
-  @media screen and (min-width: 768px) {
+
+  @include tablet {
     min-height: 420px;
   }
+
   @include desktop {
     min-height: 660px;
   }
