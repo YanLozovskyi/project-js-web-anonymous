@@ -3,29 +3,13 @@ import axios from 'axios';
 export default class ApiMovie {
   #API_KEY = '28909b5df6d6afd9591e6fc0c7cef11e';
   #BASE_URL = 'https://api.themoviedb.org/3/';
-  constructor() {
-    this.page = 0;
-  }
-  resetPage() {
-    this.page = 0;
-  }
+  #query = '';
 
   // Трендові фільми дня та тижня
-  getTrend(param, page) {
-    if (arguments.length < 2) {
-      this.page += 1;
-      return axios.get(
-        `${this.#BASE_URL}trending/movie/${param}?api_key=${
-          this.#API_KEY
-        }&page=${this.page}`
-      );
-    } else {
-      return axios.get(
-        `${this.#BASE_URL}trending/movie/${param}?api_key=${
-          this.#API_KEY
-        }&page=${page}`
-      );
-    }
+  getTrend(param) {
+    return axios.get(
+      `${this.#BASE_URL}trending/movie/${param}?api_key=${this.#API_KEY}`
+    );
   }
 
   // Нові фільми
@@ -94,5 +78,13 @@ export default class ApiMovie {
     return axios.get(
       `${this.#BASE_URL}genre/movie/list?api_key=${this.#API_KEY}`
     );
+  }
+
+  get query() {
+    return this.#query;
+  }
+
+  set query(newQuery) {
+    this.#query = newQuery;
   }
 }

@@ -1,6 +1,9 @@
 import ApiMovie from './fetch-movie';
 const apiMovie = new ApiMovie();
 
+apiMovie.query = 'dddqwsd';
+
+console.log('apiMovie:', apiMovie);
 // --------------------------ТЕСТ - Трендові фільми дня та тижня
 // async function getTrendMovieOfDay() {
 //   try {
@@ -10,7 +13,7 @@ const apiMovie = new ApiMovie();
 //     console.log('Error:', error);
 //   }
 // }
-// getMovie();
+// getTrendMovieOfDay();
 
 // async function getTrendMovieOfWeek() {
 //   try {
@@ -20,7 +23,7 @@ const apiMovie = new ApiMovie();
 //     console.log('Error:', error);
 //   }
 // }
-// getNewFilms();
+// getTrendMovieOfWeek();
 
 // --------------------------ТЕСТ - Нові фільми
 
