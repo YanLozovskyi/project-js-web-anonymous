@@ -1,11 +1,11 @@
-import ApiMovie from '../api/themoviedbAPI/fetch-movie';
-import Storage from '../api/localStorageAPI/localStorageAPI';
-import { STORAGE_KEY } from '../localStorageKey/localStorageKey';
+import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
+import Storage from '../../api/localStorageAPI/localStorageAPI';
+import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 import { refs } from './refs';
 import { markupContentTextMessage } from './markupContentTextMessage';
 
-// import { movies } from './ds'; //!
-// Storage.save(STORAGE_KEY.myLibraryMoviesList, movies);
+import { movies } from './ds'; //!
+Storage.save(STORAGE_KEY.myLibraryMoviesList, movies);
 
 // import { moviesNull } from './ds'; //!
 // Storage.save(STORAGE_KEY.myLibraryMoviesList, moviesNull);
