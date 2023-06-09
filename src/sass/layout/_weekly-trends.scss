@@ -88,6 +88,12 @@
   }
 }
 
+.card-list-item:hover {
+  transform: scale(1.01);
+
+  box-shadow: 1px 1px 15px 4px rgba(114, 109, 106, 0.42);
+}
+
 .card-list-img {
   max-width: 280px;
   max-height: 406px;
