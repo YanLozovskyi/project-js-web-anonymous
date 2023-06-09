@@ -1,8 +1,7 @@
 .hero-content {
   padding-top: 40px;
   min-height: 500px;
-  background-color: #111111;
-  outline: 2px solid green;
+  background-color: $dark-color;
   position: relative;
   overflow: hidden;
   @media screen and (min-width: 768px) {
@@ -39,26 +38,14 @@
 
   @media screen and (min-width: 768px) {
     padding-top: 62px;
-    // background: linear-gradient(
-    //     82.55deg,
-    //     #111111 39.6%,
-    //     rgba(17, 17, 17, 0) 72.95%
-    //   ),
-    //   url(../images/hero-tab-1-1x-min.jpg);
   }
   @media screen and (min-width: 1280px) {
     padding-top: 169px;
     height: 660px;
-    // background: linear-gradient(
-    //     82.55deg,
-    //     #111111 39.6%,
-    //     rgba(17, 17, 17, 0) 72.95%
-    //   ),
-    //   url(../images/hero-des-1-1x-min.jpg);
   }
 }
 .hero-title {
-  color: #ffffff;
+  color: $light-color;
 
   font-family: 'Roboto';
   font-weight: 700;
@@ -93,7 +80,7 @@
 }
 
 .hero-description-js {
-  color: #f8f8f8;
+  color: $text-color;
 
   font-weight: 400;
   font-size: 14px;
@@ -116,9 +103,10 @@
 }
 
 .hero-link {
+  z-index: 5;
   display: flex;
   max-width: 112px;
-  border: 1px solid #f87719;
+  border: 1px solid $accent-color;
   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   border-radius: 74px;
   padding-top: 12px;
@@ -126,7 +114,7 @@
   padding-right: 24px;
   padding-left: 24px;
 
-  color: #111111;
+  color: $dark-color;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.16;
@@ -151,47 +139,28 @@
 .hero-link:hover,
 .hero-link:focus {
   background: transparent;
-  color: #f87719;
-  border: 1px solid #f87719;
+  color: $light-color;
+  border: 1px solid $light-color;
 }
 
 .hero-content-js {
   padding-top: 40px;
 
-  background-color: #111111;
+  background-color: $dark-color;
 
   height: 380px;
 
   position: inherit;
   z-index: 3;
 
-  // background: linear-gradient(
-  //     86.77deg,
-  //     #111111 30.38%,
-  //     rgba(17, 17, 17, 0) 65.61%
-  //   ),
-  //   url(../images/hero-mob-1-1x-min.jpg);
-
   background-repeat: no-repeat;
 
   @media screen and (min-width: 768px) {
     padding-top: 62px;
-    // background: linear-gradient(
-    //     82.55deg,
-    //     #111111 39.6%,
-    //     rgba(17, 17, 17, 0) 72.95%
-    //   ),
-    //   url(../images/hero-tab-1-1x-min.jpg);
   }
   @media screen and (min-width: 1280px) {
     padding-top: 118px;
     height: 660px;
-    // background: linear-gradient(
-    //     82.55deg,
-    //     #111111 39.6%,
-    //     rgba(17, 17, 17, 0) 72.95%
-    //   ),
-    //   url(../images/hero-des-1-1x-min.jpg);
   }
 }
 
@@ -203,7 +172,7 @@
 .hero-button-trailer {
   display: flex;
   min-width: 110px;
-  border: 1px solid #f87719;
+  border: 1px solid $accent-color;
   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   border-radius: 74px;
   padding-top: 12px;
@@ -211,7 +180,7 @@
   padding-right: 24px;
   padding-left: 24px;
 
-  color: #111111;
+  color: $dark-color;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.16;
@@ -235,15 +204,15 @@
 .hero-button-trailer:hover,
 .hero-button-trailer:focus {
   background: transparent;
-  color: #f87719;
-  border: 1px solid #f87719;
+  color: $light-color;
+  border: 1px solid $light-color;
 }
 
 .hero-button-moredetails {
-  border: 1px solid #ffffff;
+  border: 1px solid $light-color;
   border-radius: 74px;
   background-color: transparent;
-  color: #ffffff;
+  color: $light-color;
 
   padding-top: 12px;
   padding-bottom: 12px;
@@ -274,8 +243,8 @@
 .hero-button-moredetails:hover,
 .hero-button-moredetails:focus {
   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
-  color: #111111;
-  border: 1px solid #f87719;
+  color: $dark-color;
+  border: 1px solid $accent-color;
 }
 
 .hero-wrap {
@@ -294,16 +263,44 @@
     margin-bottom: auto;
     width: 430px;
     background-color: hsl(0, 0%, 0%, 70%);
-    border: 2px solid #000000;
+    border: 2px solid $dark-color;
   }
   @media screen and (min-width: 1280px) {
     margin: 0;
     width: 430px;
-    border: 2px solid #000000;
+    border: 2px solid $dark-color;
   }
 }
 
 .hero-picture {
-  /* Existing styles */
   z-index: 2;
+}
+
+.hero-picture-default {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.hero-description {
+  color: $text-color;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+
+  margin-bottom: 20px;
+  min-width: 166px;
+
+  position: inherit;
+  z-index: 3;
+  @media screen and (min-width: 768px) {
+    max-width: 357px;
+    margin-bottom: 28px;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
+    line-height: 1.19;
+    margin-bottom: 36px;
+  }
 }

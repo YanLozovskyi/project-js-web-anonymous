@@ -1,5 +1,5 @@
 .hero-description-lib {
-  color: #f8f8f8;
+  color: $text-color;
 
   font-weight: 400;
   font-size: 14px;
@@ -24,7 +24,7 @@
 }
 
 .hero-title-lib {
-  color: #ffffff;
+  color: $light-color;
 
   font-family: 'Roboto';
   font-weight: 700;
@@ -53,7 +53,6 @@
 
 .hero-content-lib {
   position: relative;
-  outline: 2px solid greenyellow;
   min-width: 320px;
   min-height: 380px;
   padding-top: 40px;

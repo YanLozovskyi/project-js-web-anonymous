@@ -1,28 +1,16 @@
 .hero-catalog {
   padding-top: 40px;
   min-height: 500px;
-  background-color: #111111;
-  outline: 2px solid green;
+  background-color: $dark-color;
+
   position: relative;
 
   @media screen and (min-width: 768px) {
     padding-top: 62px;
-    // background: linear-gradient(
-    //     82.55deg,
-    //     #111111 39.6%,
-    //     rgba(17, 17, 17, 0) 72.95%
-    //   ),
-    //   url(../images/hero-tab-1-1x-min.jpg);
   }
   @media screen and (min-width: 1280px) {
     padding-top: 118px;
     height: 660px;
-    // background: linear-gradient(
-    //     82.55deg,
-    //     #111111 39.6%,
-    //     rgba(17, 17, 17, 0) 72.95%
-    //   ),
-    //   url(../images/hero-des-1-1x-min.jpg);
   }
 }
 
@@ -36,22 +24,10 @@
 
   @media screen and (min-width: 768px) {
     padding-top: 62px;
-    // background: linear-gradient(
-    //     82.55deg,
-    //     #111111 39.6%,
-    //     rgba(17, 17, 17, 0) 72.95%
-    //   ),
-    //   url(../images/hero-tab-1-1x-min.jpg);
   }
   @media screen and (min-width: 1280px) {
     padding-top: 169px;
     height: 660px;
-    // background: linear-gradient(
-    //     82.55deg,
-    //     #111111 39.6%,
-    //     rgba(17, 17, 17, 0) 72.95%
-    //   ),
-    //   url(../images/hero-des-1-1x-min.jpg);
   }
 }
 

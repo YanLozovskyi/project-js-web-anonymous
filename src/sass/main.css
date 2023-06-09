@@ -201,7 +201,6 @@ body {
   padding-top: 40px;
   min-height: 500px;
   background-color: #111111;
-  outline: 2px solid green;
   position: relative;
   overflow: hidden;
 }
@@ -315,6 +314,7 @@ body {
 }
 
 .hero-link {
+  z-index: 5;
   display: flex;
   max-width: 112px;
   border: 1px solid #f87719;
@@ -350,8 +350,8 @@ body {
 .hero-link:hover,
 .hero-link:focus {
   background: transparent;
-  color: #f87719;
-  border: 1px solid #f87719;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .hero-content-js {
@@ -416,8 +416,8 @@ body {
 .hero-button-trailer:hover,
 .hero-button-trailer:focus {
   background: transparent;
-  color: #f87719;
-  border: 1px solid #f87719;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .hero-button-moredetails {
@@ -475,27 +475,55 @@ body {
     margin-bottom: auto;
     width: 430px;
     background-color: hsla(0, 0%, 0%, 0.7);
-    border: 2px solid #000000;
+    border: 2px solid #111111;
   }
 }
 @media screen and (min-width: 1280px) {
   .hero-wrap {
     margin: 0;
     width: 430px;
-    border: 2px solid #000000;
+    border: 2px solid #111111;
   }
 }
 
 .hero-picture {
-  /* Existing styles */
   z-index: 2;
+}
+
+.hero-picture-default {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.hero-description {
+  color: #f8f8f8;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  margin-bottom: 20px;
+  min-width: 166px;
+  position: inherit;
+  z-index: 3;
+}
+@media screen and (min-width: 768px) {
+  .hero-description {
+    max-width: 357px;
+    margin-bottom: 28px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.19;
+    margin-bottom: 36px;
+  }
 }
 
 .hero-catalog {
   padding-top: 40px;
   min-height: 500px;
   background-color: #111111;
-  outline: 2px solid green;
   position: relative;
 }
 @media screen and (min-width: 768px) {
@@ -594,7 +622,6 @@ body {
 
 .hero-content-lib {
   position: relative;
-  outline: 2px solid greenyellow;
   min-width: 320px;
   min-height: 380px;
   padding-top: 40px;
@@ -647,7 +674,7 @@ body {
 .my-library-item {
   width: calc((100% - 100px) / 3);
   height: 200px;
-  background-color: bisque;
+  background-color: rgb(181, 58, 58);
 }
 
 .my-library-load-more-button {
