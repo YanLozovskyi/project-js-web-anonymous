@@ -12,6 +12,7 @@
 @import './base/container';
 
 // components
+@import './components/buttons.scss';
 
 // layout
 
@@ -31,4 +32,4 @@
 // my-library
 
 @import './layout/pages/my-library/hero';
-@import './layout/pages/my-library/genre';
+@import './layout/pages/my-library/my-library';

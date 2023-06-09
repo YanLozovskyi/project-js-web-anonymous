@@ -85,7 +85,13 @@ const apiMovie = new ApiMovie();
 
 //--------------------------ТЕСТ - Перелік жанрів
 
-// apiMovie.getGenresList()
-// .then((genres) => {
-//     console.log('Перелік жанрів:', genres);
-// })
+// async function getGenres() {
+//   try {
+//     const response = await apiMovie.getGenresList();
+//     console.log('Перелік жанрів:', response.data.genres);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// getGenres();
