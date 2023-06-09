@@ -51,7 +51,7 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
               <div class="gallery-item" id="${id}">
                 
                              <div class="info"
-                     <p class="info-item"><b>The lost city</b>${original_title}</p>
+                     <p class="info-item title-movie"><b>The lost city</b>${original_title}</p>
                 <p class="info-item"><b>Release date</b>${release_date}</p>
                  <p class="info-item"><b>Vote</b>${vote_average}</p>
                    <p class="info-item"><b>Popularity</b>${popularity}</p>
