@@ -35,7 +35,7 @@
   font-size: 16px;
   line-height: 19px;
   text-transform: uppercase;
-  color: $dark-color;
+  color: $light-color;
 
   @media (min-width: 768px) {
     font-weight: 500;
@@ -111,7 +111,7 @@
   &-filmName {
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 20px;
     text-transform: uppercase;
     color: $light-color;

@@ -15,7 +15,7 @@ async function getTrendMovieOfWeek() {
       const DetailedInformation = await apiMovie.getMovieInfo(item.id);
       return DetailedInformation;
     });
-
+    console.log(infoFromCorr);
     // const getMarkup = await createMarkup(infoFromCorr);
     // console.log(getMarkup);
 
