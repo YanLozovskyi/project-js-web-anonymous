@@ -1,16 +1,17 @@
 <section class="catalog-gallery-section">
   <div class="container">
-    <form id="catalog-gallery-form">
-      <input type="text" id="catalog-gallery-input" placeholder="Search" />
-      <select id="catalog-gallery-select">
+    <form id="catalog-gallery-form" class="catalog-gallery-form">
+      <input type="text" id="catalog-gallery-input" class="catalog-gallery-input" placeholder="Film" />
+      <select id="catalog-gallery-select" class="catalog-gallery-select">
         <option value="">Year</option>
       </select>
+      <input type="text" id="catalog-gallery-input" class="catalog-gallery-input-search" placeholder="Search" />
       <button
         class="catalog-gallery-btn"
         type="submit"
         aria-label="search button"
       >
-        <svg class="catalog-gallery-svg" width="14" height="14">
+        <svg class="catalog-gallery-svg" width="18" height="18">
           <use
             class="catalog-gallery-icon"
             href="./images/sprite/sprite.svg#icon-search"
@@ -19,6 +20,9 @@
       </button>
     </form>
 
+    <p class="catalog-error-message" hidden>OOPS... <br>
+      We are very sorry! <br>
+      We don’t have any results matching your search.</p>
     <div class="catalog-gallery">
       <!-- Відображення фільмів -->
     </div>
