@@ -1,6 +1,7 @@
 import axios from 'axios';
 import ApiMovie from './api/themoviedbAPI/fetch-movie';
 // import { createMarkup } from './components/create-cards';
+import { empty, full, half } from './components/stars';
 
 const list = document.querySelector('.card-list');
 
