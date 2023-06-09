@@ -39,13 +39,14 @@ async function getTrendMovieOfWeek() {
         width="395"
         height="574"
       />
+      <div class="card-list-rating">${getStar(vote_average)}</div>
       <div class="card-overlay"></div>
       <div class="text-wrapper">
         <div><h2 class="text-wrapper-filmName">${original_title}</h2>
         <p class="text-wrapper-nameAndGenres">
           ${genres[1].name} | ${release_date.slice(0, 4)}
         </p></div>
-        <div class="card-list-rating">${getStar(vote_average)}</div>
+      
       </div>
     </li>`;
 

@@ -113,9 +113,9 @@
   position: absolute;
   left: 12px;
   bottom: 12px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  // display: flex;
+  // align-items: flex-end;
+  // justify-content: space-between;
 
   &-filmName {
     font-style: normal;
@@ -162,7 +162,7 @@
   }
 }
 
-.card-list li:not(:first-child) {
+.card-list .card-list-item:not(:first-child) {
   @media (max-width: 767px) {
     position: absolute;
     overflow: hidden;
@@ -178,7 +178,13 @@
 }
 
 .card-list-rating {
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
 }
 
 .card-overlay {
