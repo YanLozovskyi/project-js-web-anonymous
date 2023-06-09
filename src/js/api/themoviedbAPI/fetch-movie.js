@@ -71,26 +71,14 @@ export default class ApiMovie {
 
   // Детальна інформація про фільм
   getMovieInfo(id) {
-    try {
-      const response = axios.get(
-        `${this.#BASE_URL}movie/${id}?api_key=${this.#API_KEY}`
-      );
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
+    return axios.get(`${this.#BASE_URL}movie/${id}?api_key=${this.#API_KEY}`);
   }
 
   // Повна інформація про можливий трейлер фільма на ютубі
   getTrailer(id) {
-    try {
-      const response = axios.get(
-        `${this.#BASE_URL}movie/${id}/videos?api_key=${this.#API_KEY}`
-      );
-      return response.data.results[0];
-    } catch (error) {
-      console.log(error);
-    }
+    return axios.get(
+      `${this.#BASE_URL}movie/${id}/videos?api_key=${this.#API_KEY}`
+    );
   }
 
   // Перелік жанрів
