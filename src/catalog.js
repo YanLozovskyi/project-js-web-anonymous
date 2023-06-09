@@ -19,3 +19,7 @@ async function getTrendMovieOfDay() {
 }
 
 getTrendMovieOfDay();
+
+
+import './js/api/themoviedbAPI/catalog-search';
+
