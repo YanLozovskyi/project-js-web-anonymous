@@ -1,9 +1,6 @@
 import ApiMovie from './fetch-movie';
 const apiMovie = new ApiMovie();
 
-apiMovie.query = 'dddqwsd';
-
-console.log('apiMovie:', apiMovie);
 // --------------------------ТЕСТ - Трендові фільми дня та тижня
 // async function getTrendMovieOfDay() {
 //   try {
@@ -29,7 +26,7 @@ console.log('apiMovie:', apiMovie);
 
 // async function getNewFilms() {
 //   try {
-//     const response = await apiMovie.getNewFilms();
+//     const response = await apiMovie.getNewFilms(2);
 //     console.log('Нові фільми', response.data.results);
 //   } catch (error) {
 //     console.log('Error:', error);
@@ -39,14 +36,26 @@ console.log('apiMovie:', apiMovie);
 
 // --------------------------ТЕСТ - Фільми за ключовим словом + за роком
 
-// apiMovie
-//   .searchByQueryYear('John Wick', 2023)
-//   .then(movies => {
-//     console.log(`Пошук результата:`, movies);
-//   })
-//   .catch(error => {
+// async function searchByQueryYear() {
+//   try {
+//     if (true) {
+//       apiMovie.query = 'John Wick';
+//       const response = await apiMovie.searchByQueryYear(1);
+//       console.log('Пошук фільмів по назві:', response.data.results);
+//     } else {
+//       apiMovie.query = 'John Wick';
+//       const response = await apiMovie.searchByQueryYear(1);
+//       const filteredResults = response.data.results.filter(movie =>
+//         movie.release_date.includes(2023)
+//       );
+//       console.log('Пошук фільмів по назві + фільтр по року:', filteredResults);
+//     }
+//   } catch (error) {
 //     console.log('Error:', error);
-//   });
+//   }
+// }
+
+// searchByQueryYear();
 
 // try to refactor
 
