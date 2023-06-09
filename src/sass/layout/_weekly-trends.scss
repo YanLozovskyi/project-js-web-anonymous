@@ -3,16 +3,16 @@
 // }
 .weekly-trends {
   padding: 40px 20px 32px 20px;
-  @media (min-width: 768px) {
+  @include tablet {
     padding: 52px 32px 44px 32px;
   }
-  @media (min-width: 1280px) {
+  @include desktop {
     padding: 80px 32px 60px 32px;
   }
 }
 
 .card-list {
-  @media (min-width: 768px) {
+  @include tablet {
     display: flex;
     gap: 16px;
     align-items: baseline;
@@ -24,7 +24,7 @@
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 24px;
-  @media (min-width: 1280px) {
+  @include desktop {
     margin-bottom: 28px;
   }
 }
@@ -37,14 +37,14 @@
   text-transform: uppercase;
   color: $light-color;
 
-  @media (min-width: 768px) {
+  @include tablet {
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
     text-transform: uppercase;
   }
 
-  @media (min-width: 1280px) {
+  @include desktop {
     font-style: normal;
     font-weight: 500;
     font-size: 28px;
@@ -61,12 +61,12 @@
   line-height: 19px;
   color: $accent-color;
 
-  @media (min-width: 768px) {
+  @include tablet {
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
   }
-  @media (min-width: 1280px) {
+  @include desktop {
     font-weight: 500;
     font-size: 28px;
     line-height: 33px;
@@ -78,11 +78,11 @@
   min-height: 406px;
   border-radius: 5px;
   position: relative;
-  @media (min-width: 768px) {
+  @include tablet {
     max-width: 224px;
     min-height: 325px;
   }
-  @media (min-width: 1280px) {
+  @include desktop {
     max-width: 395px;
     min-height: 574px;
   }
@@ -99,11 +99,11 @@
   max-height: 406px;
   border-radius: 5px;
 
-  @media (min-width: 768px) {
+  @include tablet {
     max-width: 224px;
     max-height: 325px;
   }
-  @media (min-width: 1280px) {
+  @include desktop {
     max-width: 395px;
     max-height: 574px;
   }
@@ -121,14 +121,14 @@
     line-height: 20px;
     text-transform: uppercase;
     color: $light-color;
-    @media (min-width: 768px) {
+    @include tablet {
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
       line-height: 18px;
       text-transform: uppercase;
     }
-    @media (min-width: 1280px) {
+    @include desktop {
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
@@ -144,13 +144,13 @@
     line-height: 20px;
     color: $color-subtitles;
 
-    @media (min-width: 768px) {
+    @include tablet {
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
       line-height: 18px;
     }
-    @media (min-width: 1280px) {
+    @include desktop {
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
