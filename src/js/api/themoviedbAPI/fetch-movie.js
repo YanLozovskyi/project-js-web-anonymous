@@ -36,38 +36,46 @@ export default class ApiMovie {
   }
 
   // Фільми за ключовим словом + за роком
-  async searchByQueryYear(query, year, page) {
-    if (arguments.length < 3) {
-      try {
-        this.page += 1;
-        const response = await axios.get(
-          `${this.#BASE_URL}search/movie?api_key=${
-            this.#API_KEY
-          }&query=${query}&page=${this.page}`
-        );
-        const filteredResults = response.data.results.filter(
-          movie => movie.release_date && movie.release_date.includes(year)
-        );
-        return filteredResults;
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      try {
-        const response = await axios.get(
-          `${this.#BASE_URL}search/movie?api_key=${
-            this.#API_KEY
-          }&query=${query}&page=${page}`
-        );
-        const filteredResults = response.data.results.filter(
-          movie => movie.release_date && movie.release_date.includes(year)
-        );
-        return filteredResults;
-      } catch (error) {
-        console.log(error);
-      }
-    }
+  searchByQueryYear(page) {
+    return axios.get(
+      `${this.#BASE_URL}search/movie?api_key=${this.#API_KEY}&query=${
+        this.query
+      }&page=${page}`
+    );
   }
+
+  // async searchByQueryYear(query, year, page) {
+  //   if (arguments.length < 3) {
+  //     try {
+  //       this.page += 1;
+  //       const response = await axios.get(
+  //         `${this.#BASE_URL}search/movie?api_key=${
+  //           this.#API_KEY
+  //         }&query=${query}&page=${this.page}`
+  //       );
+  //       const filteredResults = response.data.results.filter(
+  //         movie => movie.release_date && movie.release_date.includes(year)
+  //       );
+  //       return filteredResults;
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   } else {
+  //     try {
+  //       const response = await axios.get(
+  //         `${this.#BASE_URL}search/movie?api_key=${
+  //           this.#API_KEY
+  //         }&query=${query}&page=${page}`
+  //       );
+  //       const filteredResults = response.data.results.filter(
+  //         movie => movie.release_date && movie.release_date.includes(year)
+  //       );
+  //       return filteredResults;
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // }
 
   // Детальна інформація про фільм
   getMovieInfo(id) {
