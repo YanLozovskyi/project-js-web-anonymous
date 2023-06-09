@@ -36,14 +36,14 @@ const apiMovie = new ApiMovie();
 
 // --------------------------ТЕСТ - Фільми за ключовим словом + за роком
 
-apiMovie
-  .searchByQueryYear('John Wick', 2023)
-  .then(movies => {
-    console.log(`Пошук результата:`, movies);
-  })
-  .catch(error => {
-    console.log('Error:', error);
-  });
+// apiMovie
+//   .searchByQueryYear('John Wick', 2023)
+//   .then(movies => {
+//     console.log(`Пошук результата:`, movies);
+//   })
+//   .catch(error => {
+//     console.log('Error:', error);
+//   });
 
 // try to refactor
 
