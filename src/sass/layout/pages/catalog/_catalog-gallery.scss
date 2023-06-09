@@ -1,0 +1,120 @@
+.catalog-gallery-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 12px;
+
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 768px) {
+        width: 355px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 502px;
+    }
+}
+
+.catalog-gallery-input, .catalog-gallery-select, .catalog-gallery-input-search{
+    background-color: transparent;
+    color: $color-subtitles;
+
+    height: 40px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+
+    @media screen and (min-width: 768px) {
+        height: 44px;
+
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        height: 48px;
+    }
+}
+
+.catalog-gallery-input, .catalog-gallery-input-search {
+    padding-left: 20px;
+}
+
+.catalog-gallery-input {
+    max-width: 173px;
+
+    @media screen and (min-width: 768px) {
+        max-width: 100%;
+        width: 188px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 315px;
+    }
+}
+
+.catalog-gallery-input::placeholder {
+    color: $color-subtitles;
+}
+
+.catalog-gallery-select {
+    padding-left: 16px;
+
+    width: 95px;
+}
+
+.catalog-gallery-input-search{
+    width: 224px;
+
+    @media screen and (min-width: 768px) {
+        display: none;    }
+}
+
+.catalog-gallery-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: $button-background-color;
+
+    width: 40px;
+    height: 40px;
+
+    border: 0;
+    border-radius: 50%;
+
+    @media screen and (min-width: 768px) {
+        height: 44px;
+        width: 44px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        height: 48px;
+        width: 48px;
+    }
+}
+
+.catalog-gallery-svg {
+    @media screen and (min-width: 1280px) {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+.catalog-error-message {
+    font-size: 20px;
+line-height: 1.4;
+
+margin-top: 48px;
+
+text-align: center;
+}
