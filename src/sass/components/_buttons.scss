@@ -5,23 +5,19 @@
   padding-right: 24px;
   padding-left: 24px;
   border-radius: 74px;
-  border: solid 1px;
-  border-color: transparent;
   font-size: 12px;
   font-weight: 500;
   line-height: 1.16;
   letter-spacing: -0.02em;
-  background-color: transparent;
 
-  transition: transform 250ms $cubic, color 250ms $cubic,
-    background-color 250ms $cubic;
+  transition: color 250ms $cubic, background-color 250ms $cubic;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     font-size: 14px;
     line-height: 1.14;
   }
 
-  @media screen and (min-width: 1440px) {
+  @include desktop {
     font-size: 18px;
     line-height: 1.55;
   }
@@ -32,67 +28,103 @@
   color: $dark-color;
   background: $button-background-color;
 
+  background-image: $button-background-color;
+  background-origin: border-box;
+  border: 1px solid transparent;
+
   &:hover,
   &:focus {
     color: $accent-color;
-    background: $light-color;
-    border: solid 1px $accent-color;
+    border-radius: 74px;
+    background-image: $button-background-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid transparent;
   }
 }
 
 .button-dark {
   @extend .button;
   color: $light-color;
-  background: transparent;
-  border: solid 1px $light-color;
+  border-radius: 74px;
+  background-image: $button-background-color;
+  /* Fill the inside with white */
+  background-origin: border-box;
+  box-shadow: inset 0 1000px $dark-color;
+  /* A transaprent border, so the very edge of the button shows through */
+  border: 1px solid transparent;
+
+  transition: color 250ms $cubic, background-color 250ms $cubic;
 
   &:hover,
   &:focus {
-    color: $dark-color;
-    background: $light-color;
-    border: solid 1px $accent-color;
+    color: $accent-color;
+    background-color: $light-color;
+    border: solid 1px transparent;
+
+    background-image: $light-color;
+    /* Fill the inside with white */
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid $light-color;
+    /* A transaprent border, so the very edge of the button shows through */
   }
 }
 
 .button-modal-dark-theme {
   @extend .button;
   color: $light-color;
-  background: transparent;
-  border: solid 1px $light-color;
+  background-image: $button-background-color;
+  background-origin: border-box;
+  box-shadow: inset 0 1000px $dark-color;
+  border: 1px solid transparent;
 
   &:hover,
   &:focus {
     color: $accent-color;
-    background: $light-color;
-    border: solid 1px transparent;
+    background-color: $light-color;
+    background-image: $light-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid $light-color;
   }
 }
 
 .button-modal-light-theme {
   @extend .button;
-
   color: $dark-color;
-  background: transparent;
-  border: solid 1px $accent-color;
+  background-image: $button-background-color;
+  background-origin: border-box;
+  box-shadow: inset 0 1000px $light-color;
+  border: 1px solid transparent;
 
   &:hover,
   &:focus {
     color: $accent-color;
-    background: $dark-color;
-    border: solid 1px transparent;
+    background-color: $dark-color;
+    background-image: $dark-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $dark-color;
+    border: 1px solid $dark-color;
   }
 }
 
 .button-search {
   @extend .button;
-
+  color: $dark-color;
   background: $button-background-color;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 50%;
+
+  background-image: $button-background-color;
+  background-origin: border-box;
+  border: 1px solid transparent;
 
   &:hover,
   &:focus {
-    background: $light-color;
-    border: solid 1px $accent-color;
+    color: $accent-color;
+    border-radius: 74px;
+    background-image: $button-background-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid transparent;
   }
 }
