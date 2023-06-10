@@ -64,7 +64,7 @@ async function getTrendMovieOfWeek() {
 
 getTrendMovieOfWeek();
 
-function getStar(params) {
+export function getStar(params) {
   let rating = '';
 
   const averageCount = Math.ceil(params);

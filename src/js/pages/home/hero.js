@@ -1,4 +1,5 @@
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
+import { getStar } from '../../weekly-trends';
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
@@ -11,7 +12,6 @@ async function getTrendMovieOfDay() {
     const response = await apiMovie.getTrend('day');
 
     const randomFilm = randomElement(response.data.results);
-    console.log(response);
 
     if (response.data.results === 0) {
       createDefaultMarkup(contentPath);
@@ -20,8 +20,6 @@ async function getTrendMovieOfDay() {
     } else {
       createMarkupFilm(randomFilm, contentPath);
     }
-
-    createDefaultMarkup(response.data.results, contentPath);
   } catch (error) {
     console.log('Error:', error);
   }
@@ -30,13 +28,16 @@ async function getTrendMovieOfDay() {
 getTrendMovieOfDay();
 
 export function createMarkupFilm(response, path) {
+  console.log(response);
   const markup = response
-    .map(({ original_title, overview, backdrop_path }) => {
+    .map(({ original_title, overview, backdrop_path, vote_average }) => {
       return `<div class="hero-film_background" style="background-image: url(${IMG_URL}${backdrop_path})""></div>
-        
         <div class=" hero-wrap">
 
   <h1 class="hero-title">${original_title}</h1>
+
+  <div class="hero-stars">${getStar(vote_average)}</div>
+
   <p class="hero-description-js">${overview}</p>
   <div class="hero-buttons">
 
@@ -56,11 +57,8 @@ export function createMarkupFilm(response, path) {
 
 function createDefaultMarkup(path) {
   const markup = `
-  
   <h1 class="hero-title-default">Let’s Make Your Own Cinema</h1>
-    <p class="hero-description-default">Is a guide to creating a personalized movie theater experience. You'll need a projector,
-      screen, and speakers.</p>
-
+    <p class="hero-description-default">Is a guide to creating a personalized movie theater experience. You'll need a projector, screen, and speakers.</p>
     <a class="hero-link" href="./catalog.html">Get Started</a>
     
     <div class="hero-picture-default">
