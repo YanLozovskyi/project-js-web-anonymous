@@ -1,12 +1,13 @@
 .hero-catalog {
   padding-top: 40px;
-  min-height: 500px;
+  min-height: 380px;
   background-color: $dark-color;
 
   position: relative;
 
   @media screen and (min-width: 768px) {
-    padding-top: 62px;
+    padding-top: 36px;
+    min-height: 440px;
   }
   @media screen and (min-width: 1280px) {
     padding-top: 118px;

@@ -5,6 +5,6 @@ export function markupContentTextMessage() {
         <span>We are very sorry!</span>
         <span>You don’t have any movies at your library.</span>
     </p>
-    <a href="./catalog.html">Search movie</a>
+    <a class="button-accent my-library-content-text-message-button" href="./catalog.html">Search movie</a>
     `;
 }

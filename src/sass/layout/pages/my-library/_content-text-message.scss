@@ -1,0 +1,46 @@
+.my-library-content-text-message {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+  text-align: center;
+
+  font-size: 20px;
+  line-height: 1.4;
+  color: $light-color;
+
+  @include tablet {
+    font-size: 28px;
+    line-height: 1.33;
+    margin-bottom: 24px;
+  }
+  @include desktop {
+    font-size: 32px;
+    line-height: 1.22;
+    margin-bottom: 28px;
+  }
+}
+
+.my-library-content-text-message-button {
+  margin: 0 auto;
+}
+
+.my-library-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-library-content-text-message-section {
+  padding-top: 44px;
+  padding-bottom: 14px;
+
+  @include tablet {
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+
+  @include desktop {
+    padding-top: 160px;
+    padding-bottom: 28px;
+  }
+}

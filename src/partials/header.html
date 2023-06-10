@@ -1,10 +1,63 @@
-<header>
-  <nav>
-    <ul>
-      <li><a href="./index.html">Home</a></li>
-      <li><a href="./catalog.html">Catalog</a></li>
-      <li><a href="./my-library.html">Library</a></li>
-    </ul>
-  </nav>
-  <h1>Home</h1>
+<header class="header">
+  <div class="container header-wrapper">
+    <a href="./index.html" class="logo-link">
+      <svg class="logo-icon" width="45" height="36">
+        <use href="./images/sprite/sprite.svg#icon-logo"></use>
+      </svg>
+      <span class="logo-title">Cinemania</span>
+    </a>
+    <nav class="header-nav">
+      <ul class="header-nav-list">
+        <li class="header-nav-item">
+          <a href="./index.html" class="header-nav-link">Home</a>
+        </li>
+        <li class="header-nav-item">
+          <a href="./catalog.html" class="header-nav-link">Catalog</a>
+        </li>
+        <li class="header-nav-item">
+          <a href="./my-library.html" class="header-nav-link">Library</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button type="button" class="button btn-mobile-menu-js">Menu</button>
+
+    <button type="button" class="button-switch">
+      <svg class="icon-halfofmoon" width="13" height="13">
+        <use href="./images/sprite/sprite.svg#icon-halfofmoon"></use>
+      </svg>
+      <svg class="icon-moon-left visually-hidden" width="18" height="18">
+        <use href="./images/sprite/sprite.svg#icon-moon-left"></use>
+      </svg>
+      <svg class="icon-moon-right" width="18" height="18">
+        <use href="./images/sprite/sprite.svg#icon-moon-right"></use>
+      </svg>
+      <svg class="icon-sun visually-hidden" width="14" height="14">
+        <use href="./images/sprite/sprite.svg#icon-sun"></use>
+      </svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu is-hidden">
+    <div class="mobile-menu-content">
+      <a class="mobile-menu-logo-link" href="./index.html">
+        <svg class="mobile-menu-icon-logo" width="32" height="32">
+          <use href="./images/sprite/sprite.svg#icon-logo"></use>
+        </svg>
+      </a>
+      <nav class="mobile-menu-nav">
+        <ul class="mobile-menu-nav-list">
+          <li class="mobile-menu-nav-item">
+            <a class="mobile-menu-nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="mobile-menu-nav-item">
+            <a class="mobile-menu-nav-link" href="./catalog.html">Catalog</a>
+          </li>
+          <li class="mobile-menu-nav-item">
+            <a class="mobile-menu-nav-link" href="./my-library.html">Library</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </header>
