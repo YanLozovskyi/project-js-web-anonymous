@@ -18,7 +18,7 @@
     }
 }
 
-.catalog-gallery-input, .catalog-gallery-select, .catalog-gallery-input-search{
+.catalog-gallery-input-desktop, .catalog-gallery-select, .catalog-gallery-input-search{
     background-color: transparent;
     color: $color-subtitles;
 
@@ -112,9 +112,45 @@
 
 .catalog-error-message {
     font-size: 20px;
-line-height: 1.4;
+    line-height: 1.4;
 
-margin-top: 48px;
+    margin-top: 48px;
 
-text-align: center;
+    text-align: center;
+}
+
+/* Стилі для мобільної версії */
+.catalog-gallery-input-mobile-wrapper {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+        height: 44px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+}
+
+/* Стилі для кнопки очищення (початково прихована) */
+.catalog-gallery-clear-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.catalog-gallery-clear-icon {
+    fill: black;
+    width: 12px;
+    height: 12px;
+}
+
+/* Показ кнопки очищення після введення даних в поле пошуку */
+.catalog-gallery-input-mobile:not(:placeholder-shown)+.catalog-gallery-clear-btn {
+    display: block;
+}
+
+.catalog-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
 }
