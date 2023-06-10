@@ -1,6 +1,9 @@
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import { refs } from './catalog-refs';
-import { createMarkupFilmCard } from '../../components/createMarkupFilmCard';
+import {
+  createMarkupFilmCard,
+  createMarkupFilmsCards,
+} from '../../components/createMarkupFilmCard';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
@@ -82,20 +85,20 @@ function handleClearButtonClick(event) {
 
 // searchSelect.addEventListener('change', handleYearSelectChange);
 
-function updateGallery(movies) {
+async function updateGallery(movies) {
   searchGallery.innerHTML = '';
 
   if (movies.length === 0) {
     searchGallery.innerHTML =
       '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p >';
   } else {
-    searchGallery.innerHTML = createMarkupFilmsCards(movies);
+    searchGallery.innerHTML = await createMarkupFilmsCards(movies);
   }
 }
 
-function createMarkupFilmsCards(movieList) {
-  return movieList.map(film => createMarkupFilmCard(film)).join('');
-}
+// function createMarkupFilmsCards(movieList) {
+//   return movieList.map(film => createMarkupFilmCard(film)).join('');
+// }
 
 // Отримання списку років для селекта
 
