@@ -48,6 +48,7 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
            
         `
               <a class="gallery__link" href="${backdrop_path}">
+            
               <div class="gallery-item" id="${id}">
                 
                              <div class="info"
@@ -71,7 +72,7 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
 //     getNewFilms() 
     
 
-                   
+         //   <img class="gallery-item__img" src="${backdrop_path}" alt="${tags}" loading="lazy" />          
        
           
    
