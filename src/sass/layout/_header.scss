@@ -76,17 +76,22 @@
   line-height: 1.16;
   text-transform: uppercase;
   color: $color-subtitles;
+  background-color: transparent;
+  border: none;
 
   @include tablet {
     display: none;
   }
 }
-.header .button-accent {
+.button-switch {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 4px 3px;
   gap: 22px;
+  background: $button-background-color;
+  border-radius: 74px;
+  border: none;
 
   @include max-mobile {
     gap: 16px;
@@ -107,7 +112,7 @@
 }
 
 .mobile-menu {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -115,15 +120,14 @@
   z-index: 1000;
   background: rgba(255, 255, 255, 0.2);
 
-  transition: transform 250ms ease-in-out;
-
   @include tablet {
     display: none;
   }
+
+  transition: opacity 250ms ease-in-out, visibillity 250ms ease-in-out;
 }
 
 .mobile-menu.is-hidden {
-  transform: translateX(-100%);
 }
 
 .mobile-menu-content {
@@ -134,7 +138,9 @@
   width: 204px;
   height: 100vh;
 
-  transition: transform 150ms ease-in-out 500ms;
+  transform: translateX(0);
+
+  transition: transform 250ms ease-in-out 250ms;
 }
 .mobile-menu.is-hidden .mobile-menu-content {
   transform: translateX(-100%);
@@ -161,4 +167,34 @@
   &:focus {
     color: $accent-color;
   }
+}
+
+.header-nav-link.active {
+  position: relative;
+  color: $accent-color;
+}
+.header-nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  height: 4px;
+  background-color: $accent-color;
+  border-radius: 2px;
+}
+
+.mobile-menu-nav-link.active {
+  position: relative;
+  color: $accent-color;
+}
+.mobile-menu-nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 4px;
+  background-color: $accent-color;
+  border-radius: 2px;
 }

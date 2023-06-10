@@ -11,3 +11,4 @@ import './js/mobile-menu';
 
 import './js/weekly-trends';
 
+import './js/active-page';
