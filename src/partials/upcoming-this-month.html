@@ -1,7 +1,27 @@
-<section class="home-upcoming container">
-  <h2>Upcoming this months</h2>
-  <div class="movieDescription">
-    <div class="image"></div>
+<section class="home-upcoming-this-month">
+  <div class="home-upcoming container">
+    <h2 class="one-title">Upcoming this months</h2>
+    <div class="movieDescription">
+      <div class="image-upcoming">
+        <img class="gallery-item__img"/>  
+    </div>
+              <div class="gallery-item" id="${id}">
+               <h3 class="info-item-title">${original_title}<b></b></h3> 
+    <div class="info">
+    
+        <div class="info">
+        <p class="info-item"><b>Release date</b>${release_date}</p>
+        <p class="info-item"><b>Vote / Votes</b>${vote_average} / ${vote_count}</p>
+        <p class="info-item"><b>Popularity</b>${popularity}</p>
+        <p class="info-item"><b>Genre</b>${allGenres}</p>
+        <div class="info-item-about">
+          <p class="info-item-about-movie"><b>About</b>${overview}</p>
+          </div>
+          
+      </div> 
+      </div>
+    </div>
+<button type="button" class="button">Add to my library</button>
+    
   </div>
-  <button type="button" class="button">Add to my library</button>
 </section>

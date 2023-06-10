@@ -28,7 +28,7 @@ async function getNewFilms() {
     } catch (error) {
         console.log(error)
     }
-    
+   //569094 
  }
   
 getNewFilms()
@@ -47,21 +47,25 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
     const markup = 
             
         `
-    <div class="image">
+    <div class="image-upcoming">
             
             <img class="gallery-item__img" src="${IMAGE_URL}${backdrop_path}" 
-            alt="movie" loading="lazy"/>  
+            alt="movie" width = "280" height = "auto" loading="lazy"/>  
     </div>
               <div class="gallery-item" id="${id}">
-                
-    <div class="info"
-          <p class="info-item title-movie"><b></b>${original_title}</p>
-          <p class="info-item"><b>Release date</b>${release_date}</p>
-          <p class="info-item"><b>Vote</b>${vote_average}</p>
+               <h3 class="info-item-title">${original_title}<b></b></h3> 
+    <div class="info">
+          
+          <p class="info-item selection"><b>Release date</b>${release_date}</p>
+          <p class="info-item"><b>Vote / Votes</b>${vote_average} / ${vote_count}</p>
+    
           <p class="info-item"><b>Popularity</b>${popularity}</p>
-          <p class="info-item"><b>Genre</b>${allGenres}</p>
-          <p class="info-item"><b>About</b>${overview}</p>
-                 </div>
+          <p class="info-item"><b>Genre </b>${allGenres}</p>
+          </div>
+          <div class="info-item-about">
+          <p class="info-item-about-movie"><b>About</b>${overview}</p>
+          </div>
+                 
                </div>
              `
             
@@ -69,17 +73,4 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
                  
     }
 
-   // <img class="gallery-item__img" src="${backdrop_path.jpg
-// }" alt="movie" loading="lazy" /> //  
-    
-//     getNewFilms() 
-    
-
-         //   <img class="gallery-item__img" src="https://image.tmdb.org/t/p/original//nGxUxi3PfXDRm7Vg95VBNgNM8yc.jpg" alt="movie" loading="lazy" />          
-       
-          
    
-// <img class="gallery-item__img" src="${}" alt="${tags}" loading="lazy"
-// alt="movie" loading="lazy"
-
-// <a class="gallery__link" href= "${IMAGE_URL}${backdrop_path}">
