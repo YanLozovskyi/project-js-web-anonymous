@@ -1,5 +1,3 @@
-export const moviesNull = '';
-
 export const movies = [
   {
     adult: false,
