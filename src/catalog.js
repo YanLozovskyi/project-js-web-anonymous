@@ -7,3 +7,4 @@ import './js/pages/catalog/catalog-search';
 
 import './js/mobile-menu';
 import './js/pages/catalog/hero';
+import './js/active-page';
