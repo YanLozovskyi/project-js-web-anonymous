@@ -5,11 +5,13 @@
   padding-right: 24px;
   padding-left: 24px;
   border-radius: 74px;
-  border: solid 1px transparent;
+  border: solid 1px;
+  border-color: transparent;
   font-size: 12px;
   font-weight: 500;
   line-height: 1.16;
   letter-spacing: -0.02em;
+  background-color: transparent;
 
   transition: transform 250ms $cubic, color 250ms $cubic,
     background-color 250ms $cubic;

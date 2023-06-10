@@ -1,6 +1,7 @@
 // styles scss
 
 import './sass/main.scss';
+import './js/mobile-menu';
 import ApiMovie from './js/api/themoviedbAPI/fetch-movie';
 import { randomElement, createMarkup } from './js/api/themoviedbAPI/hero';
 
