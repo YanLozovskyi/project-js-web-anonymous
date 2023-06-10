@@ -13,10 +13,10 @@ async function getTrendMovieOfDay() {
     const randomFilm = randomElement(response.data.results);
     console.log(response);
 
-    if ([].length === 0) {
+    if (response.data.results === 0) {
       createDefaultMarkup(contentPath);
 
-      DefaultMarkupTextContent();
+      DefaultMarkupSettings();
     } else {
       createMarkupFilm(randomFilm, contentPath);
     }
@@ -75,7 +75,7 @@ export function randomElement(arr) {
   return [arr[rand]];
 }
 
-function DefaultMarkupTextContent() {
+function DefaultMarkupSettings() {
   const heroDescription = document.querySelector('.hero-description-default');
   const heroContent = document.querySelector('.hero-content');
 

@@ -1,5 +1,5 @@
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
-import { randomElement, createMarkup } from '../home/hero';
+import { randomElement, createMarkupFilm } from '../home/hero';
 
 const apiMovie = new ApiMovie();
 
@@ -9,7 +9,7 @@ async function getTrendMovieOfDay() {
   try {
     const response = await apiMovie.getTrend('day');
     const randomFilm = randomElement(response.data.results);
-    createMarkup(randomFilm, catalogPath);
+    createMarkupFilm(randomFilm, catalogPath);
   } catch (error) {
     console.log('Error:', error);
   }
