@@ -13,15 +13,13 @@ async function getTrendMovieOfDay() {
     const randomFilm = randomElement(response.data.results);
     console.log(response);
 
-    if (response.data.results === 0) {
+    if (response.data.results.length === 0) {
       createDefaultMarkup(contentPath);
 
       DefaultMarkupSettings();
     } else {
       createMarkupFilm(randomFilm, contentPath);
     }
-
-    createDefaultMarkup(response.data.results, contentPath);
   } catch (error) {
     console.log('Error:', error);
   }

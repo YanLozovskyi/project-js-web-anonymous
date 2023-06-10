@@ -292,11 +292,13 @@
 
   position: inherit;
   z-index: 3;
-  @media screen and (min-width: 768px) {
+
+  @include tablet {
     max-width: 357px;
     margin-bottom: 28px;
   }
-  @media screen and (min-width: 1280px) {
+
+  @include desktop {
     font-size: 16px;
     line-height: 1.19;
     margin-bottom: 36px;
@@ -335,7 +337,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@include max-mobile {
   .hero-picture-default {
     background-position-x: 95px;
     background-image: linear-gradient(
@@ -375,11 +377,12 @@
 
   position: inherit;
   z-index: 3;
-  @media screen and (min-width: 768px) {
+  @include tablet {
     max-width: 357px;
     margin-bottom: 32px;
   }
-  @media screen and (min-width: 1280px) {
+
+  @include desktop {
     font-size: 16px;
     line-height: 1.19;
 
@@ -399,14 +402,15 @@
   position: inherit;
   z-index: 3;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     max-width: 332px;
     font-weight: 700;
     font-size: 44px;
     line-height: 1.18;
     margin-bottom: 12px;
   }
-  @media screen and (min-width: 1280px) {
+
+  @include desktop {
     font-size: 64px;
     line-height: 1.17;
     margin-bottom: 16px;
