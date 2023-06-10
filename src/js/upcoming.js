@@ -1,6 +1,7 @@
 import ApiMovie from './api/themoviedbAPI/fetch-movie';
 
 const apiMovie = new ApiMovie()
+const IMAGE_URL = "https://image.tmdb.org/t/p/original/"
      
 // const apiMovie = new ApiMovie({
 // id:569094,
@@ -44,25 +45,25 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
         return genre.name
     })
     const markup = 
-        
-           
+            
         `
-              <a class="gallery__link" href= "https://image.tmdb.org/t/p/original//nGxUxi3PfXDRm7Vg95VBNgNM8yc.jpg">
-            <img class="gallery-item__img" src="${backdrop_path}" 
-            alt="movie" loading="lazy" />  
-    
+    <div class="image">
+            
+            <img class="gallery-item__img" src="${IMAGE_URL}${backdrop_path}" 
+            alt="movie" loading="lazy"/>  
+    </div>
               <div class="gallery-item" id="${id}">
                 
-                             <div class="info"
-    <p class="info-item title-movie"><b></b>${original_title}</p>
-                <p class="info-item"><b>Release date</b>${release_date}</p>
-                 <p class="info-item"><b>Vote</b>${vote_average}</p>
-                   <p class="info-item"><b>Popularity</b>${popularity}</p>
-     <p class="info-item"><b>Genre</b>${allGenres}</p >
-      <p class="info-item"><b>About</b>${overview}</p>
+    <div class="info"
+          <p class="info-item title-movie"><b></b>${original_title}</p>
+          <p class="info-item"><b>Release date</b>${release_date}</p>
+          <p class="info-item"><b>Vote</b>${vote_average}</p>
+          <p class="info-item"><b>Popularity</b>${popularity}</p>
+          <p class="info-item"><b>Genre</b>${allGenres}</p>
+          <p class="info-item"><b>About</b>${overview}</p>
                  </div>
                </div>
-            </a> `
+             `
             
         movieDescription.innerHTML = markup
                  
@@ -79,3 +80,6 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
           
    
 // <img class="gallery-item__img" src="${}" alt="${tags}" loading="lazy"
+// alt="movie" loading="lazy"
+
+// <a class="gallery__link" href= "${IMAGE_URL}${backdrop_path}">
