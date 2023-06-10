@@ -21,5 +21,4 @@ async function getTrendMovieOfDay() {
 getTrendMovieOfDay();
 
 
-import './js/api/themoviedbAPI/catalog-search';
-
+import './js/pages-catalog/catalog-search';

@@ -1,7 +1,7 @@
 <section class="catalog-gallery-section">
   <div class="container">
     <form id="catalog-gallery-form">
-      <input type="text" id="catalog-gallery-input" placeholder="Search" />
+      <input type="text" id="catalog-gallery-input" class="catalog-gallery-input-desktop" placeholder="Search" />
       
       <button id="clear-search-btn" aria-label="clear search button">
         <svg class="catalog-gallery-clear-icon" width="12" height="12">
@@ -10,11 +10,13 @@
       </button>
       
       <select id="catalog-gallery-select">
-      <option value="">Year</option>
+        <option value="">Year</option>
       </select>
 
-      <input type="text" id="catalog-gallery-input" class="catalog-gallery-input-search" placeholder="Search" />
-      
+      <div class="catalog-gallery-input-mobile-wrapper">
+        <input type="text" id="catalog-gallery-input-mobile" class="catalog-gallery-input-desktop" placeholder="Search" />
+      </div>
+
       <button
         class="catalog-gallery-btn"
         type="submit"
