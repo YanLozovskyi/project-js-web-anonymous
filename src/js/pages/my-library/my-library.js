@@ -3,12 +3,15 @@ import Storage from '../../api/localStorageAPI/localStorageAPI';
 import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 import { refs } from './refs';
 // import { movies } from './ls';
-import { createMarkupFilmCard } from '../../components/createMarkupFilmCard';
+import {
+  createMarkupFilmCard,
+  createMarkupFilmsCards,
+} from '../../components/createMarkupFilmCard';
 import { markupContentTextMessage } from './markupContentTextMessage';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
-const PER_PAGE = 3;
+const PER_PAGE = 6;
 
 let correctGenre = 'All';
 let totalPage;
@@ -17,7 +20,7 @@ let startIndex = 0;
 let endIndex = 0;
 let correctGenreMovieList = [];
 
-createlocalStorage();
+// createlocalStorage();
 
 //? якщо у localStorage масив об'єктів фільмів
 const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
@@ -75,7 +78,7 @@ function onSelectGenreListChange(e) {
   renderLibraryCards(correctGenreMovieList);
 }
 
-function renderLibraryCards(movieList) {
+async function renderLibraryCards(movieList) {
   startIndex = 0;
   endIndex = PER_PAGE;
   refs.moviesList.innerHTML = '';
@@ -85,7 +88,7 @@ function renderLibraryCards(movieList) {
     refs.loadMoreButton.addEventListener('click', onloadMoreButtonClick);
     localStoragePagination(startIndex, endIndex, movieList);
   } else {
-    refs.moviesList.innerHTML = createMarkupFilmsCards(movieList);
+    refs.moviesList.innerHTML = await createMarkupFilmsCards(movieList);
   }
 }
 
@@ -100,7 +103,7 @@ function onloadMoreButtonClick() {
   }
 }
 
-function localStoragePagination(start, end, data) {
+async function localStoragePagination(start, end, data) {
   page += 1;
 
   totalPage = data.length / PER_PAGE;
@@ -110,22 +113,22 @@ function localStoragePagination(start, end, data) {
 
     refs.moviesList.insertAdjacentHTML(
       'beforeend',
-      createMarkupFilmsCards(pagination)
+      await createMarkupFilmsCards(pagination)
     );
   } else {
     const pagination = data.slice(start, end);
     refs.moviesList.insertAdjacentHTML(
       'beforeend',
-      createMarkupFilmsCards(pagination)
+      await createMarkupFilmsCards(pagination)
     );
 
     refs.loadMoreButton.style.display = 'none';
   }
 }
 
-function createMarkupFilmsCards(movieList) {
-  return movieList.map(film => createMarkupFilmCard(film)).join('');
-}
+// function createMarkupFilmsCards(movieList) {
+//   return movieList.map(film => createMarkupFilmCard(film)).join('');
+// }
 
 // console.log('createMarkupFilmsCards(movies):', createMarkupFilmsCards(movies));
 
