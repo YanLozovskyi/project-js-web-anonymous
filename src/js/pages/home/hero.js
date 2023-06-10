@@ -1,4 +1,4 @@
-import ApiMovie from './fetch-movie';
+import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
