@@ -1,4 +1,3 @@
-import axios from 'axios';
 import ApiMovie from './api/themoviedbAPI/fetch-movie';
 // import { createMarkup } from './components/create-cards';
 import { halfStarSVG, fullStarSVG, emptyStarSVG } from './components/stars';
@@ -11,6 +10,7 @@ async function getTrendMovieOfWeek() {
   try {
     const response = await apiMovie.getTrend('week');
     const correctList = response.data.results.slice(0, 3);
+    console.log(correctList);
 
     const infoFromCorr = correctList.map(async item => {
       const DetailedInformation = await apiMovie.getMovieInfo(item.id);
@@ -30,7 +30,6 @@ async function getTrendMovieOfWeek() {
           release_date,
           vote_average,
         } = item.value.data;
-
         const markup = `<li class="card-list-item">
       <img
         src="https://image.tmdb.org/t/p/original${poster_path}"
@@ -67,31 +66,45 @@ getTrendMovieOfWeek();
 function getStar(params) {
   let rating = '';
 
-  const averageCount = Math.ceil(params);
-  if (averageCount === 0) {
-    return (rating = `${emptyStarSVG.repeat(5)}`);
-  } else if (averageCount === 1) {
-    return (rating = `${halfStarSVG}${emptyStarSVG.repeat(4)}`);
-  } else if (averageCount === 2) {
-    return (rating = `${fullStarSVG}${emptyStarSVG.repeat(4)}`);
-  } else if (averageCount === 3) {
-    return (rating = `${fullStarSVG}${halfStarSVG}${emptyStarSVG.repeat(3)}`);
-  } else if (averageCount === 4) {
-    return (rating = `${fullStarSVG.repeat(2)}${emptyStarSVG.repeat(3)}`);
-  } else if (averageCount === 5) {
-    return (rating = `${fullStarSVG.repeat(
-      2
-    )}${halfStarSVG}${emptyStarSVG.repeat(2)}`);
-  } else if (averageCount === 6) {
-    return (rating = `${fullStarSVG.repeat(3)}${emptyStarSVG.repeat(2)}`);
-  } else if (averageCount === 7) {
-    return (rating = `${fullStarSVG.repeat(3)}${halfStarSVG}${emptyStarSVG}`);
-  } else if (averageCount === 8) {
-    return (rating = `${fullStarSVG.repeat(4)}${emptyStarSVG}`);
-  } else if (averageCount === 9) {
-    return (rating = `${fullStarSVG.repeat(4)}${halfStarSVG}`);
-  } else if (averageCount === 10) {
-    return (rating = `${fullStarSVG.repeat(5)}`);
+  const averageCount = Math.round(params);
+  switch (averageCount) {
+    case 0:
+      rating = `${emptyStarSVG.repeat(5)}`;
+      break;
+    case 1:
+      rating = `${halfStarSVG}${emptyStarSVG.repeat(4)}`;
+      break;
+    case 2:
+      rating = `${fullStarSVG}${emptyStarSVG.repeat(4)}`;
+      break;
+    case 3:
+      rating = `${fullStarSVG}${halfStarSVG}${emptyStarSVG.repeat(3)}`;
+      break;
+    case 4:
+      rating = `${fullStarSVG.repeat(2)}${emptyStarSVG.repeat(3)}`;
+      break;
+    case 5:
+      rating = `${fullStarSVG.repeat(2)}${halfStarSVG}${emptyStarSVG.repeat(
+        2
+      )}`;
+      break;
+    case 6:
+      rating = `${fullStarSVG.repeat(3)}${emptyStarSVG.repeat(2)}`;
+      break;
+    case 7:
+      rating = `${fullStarSVG.repeat(3)}${halfStarSVG}${emptyStarSVG}`;
+      break;
+    case 8:
+      rating = `${fullStarSVG.repeat(4)}${emptyStarSVG}`;
+      break;
+    case 9:
+      rating = `${fullStarSVG.repeat(4)}${halfStarSVG}`;
+      break;
+    case 10:
+      rating = `${fullStarSVG.repeat(5)}`;
+      break;
+    default:
+      throw new Error('Invalid rating');
   }
 
   return rating;
