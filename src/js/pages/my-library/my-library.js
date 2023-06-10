@@ -17,7 +17,7 @@ let startIndex = 0;
 let endIndex = 0;
 let correctGenreMovieList = [];
 
-// createlocalStorage();
+createlocalStorage();
 
 //? якщо у localStorage масив об'єктів фільмів
 const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
@@ -131,20 +131,20 @@ function createMarkupFilmsCards(movieList) {
 
 //! заглушки
 
-// function createlocalStorage() {
-//   const apiMovie = new ApiMovie();
-//   const arrIds = [
-//     569094, 840326, 667538, 842675, 298618, 980078, 943788, 869626, 455476,
-//     985617, 842544, 976573, 1016084, 614479, 335977, 884605, 994128, 942199,
-//     747188, 717930, 31343,
-//   ];
-//   const arrLS = [];
-//   arrIds.forEach(async id => {
-//     const DetailedInformation = await apiMovie.getMovieInfo(id);
-//     arrLS.push(DetailedInformation.data);
-//     Storage.save(STORAGE_KEY.myLibraryMoviesList, arrLS);
-//   });
-// }
+function createlocalStorage() {
+  const apiMovie = new ApiMovie();
+  const arrIds = [
+    569094, 840326, 667538, 842675, 298618, 980078, 943788, 869626, 455476,
+    985617, 842544, 976573, 1016084, 614479, 335977, 884605, 994128, 942199,
+    747188, 717930, 31343,
+  ];
+  const arrLS = [];
+  arrIds.forEach(async id => {
+    const DetailedInformation = await apiMovie.getMovieInfo(id);
+    arrLS.push(DetailedInformation.data);
+    Storage.save(STORAGE_KEY.myLibraryMoviesList, arrLS);
+  });
+}
 
 // //? якщо у localStorage масив IDs фільмів
 // const dataStorage = name();

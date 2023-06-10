@@ -1,20 +1,35 @@
 <section class="catalog-gallery-section">
   <div class="container">
     <form id="catalog-gallery-form">
-      <input type="text" id="catalog-gallery-input" class="catalog-gallery-input-desktop" placeholder="Search" />
-      
-      <button id="clear-search-btn" aria-label="clear search button">
-        <svg class="catalog-gallery-clear-icon" width="12" height="12">
-          <use class="catalog-gallery-icon" href="./images/sprite/sprite.svg#icon-close"></use>
-        </svg>
-      </button>
-      
-      <select id="catalog-gallery-select">
+      <div>
+        <input
+          type="text"
+          id="catalog-gallery-input"
+          class="catalog-gallery-input-desktop"
+          placeholder="Search"
+        />
+
+        <!-- <button id="clear-search-btn" aria-label="clear search button">
+          <svg class="catalog-gallery-clear-icon" width="12" height="12">
+            <use
+              class="catalog-gallery-icon"
+              href="./images/sprite/sprite.svg#icon-close"
+            ></use>
+          </svg>
+        </button> -->
+      </div>
+
+      <!-- <select id="catalog-gallery-select">
         <option value="">Year</option>
-      </select>
+      </select> -->
 
       <div class="catalog-gallery-input-mobile-wrapper">
-        <input type="text" id="catalog-gallery-input-mobile" class="catalog-gallery-input-desktop" placeholder="Search" />
+        <input
+          type="text"
+          id="catalog-gallery-input-mobile"
+          class="catalog-gallery-input-desktop"
+          placeholder="Search"
+        />
       </div>
 
       <button
@@ -31,9 +46,9 @@
       </button>
     </form>
 
-    <div class="catalog-gallery">
+    <ul class="catalog-gallery">
       <!-- Відображення фільмів -->
-    </div>
+    </ul>
 
     <div class="catalog-gallery-pagination">
       <!-- Посилання на сторінки будуть додані динамічно через JavaScript -->

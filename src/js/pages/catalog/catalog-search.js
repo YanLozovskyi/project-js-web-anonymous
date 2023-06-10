@@ -1,5 +1,6 @@
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import { refs } from './catalog-refs';
+import { createMarkupFilmCard } from '../../components/createMarkupFilmCard';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
@@ -16,69 +17,34 @@ const {
 } = refs;
 
 let currentYear = '';
+let page;
+
+searchForm.addEventListener('submit', handleFormSubmit);
+// clearButton.addEventListener('click', handleClearButtonClick);
+getTrend();
 
 // Оновлення вмісту галереї фільмів
-function updateGallery(movies) {
-  searchGallery.innerHTML = '';
+async function getTrend() {
+  try {
+    const response = await apiMovie.getTrend('week');
+    const movies = response.data.results;
 
-  if (movies.length === 0) {
-    searchGallery.innerHTML =
-      '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p >';
-  } else {
-    movies.forEach(movie => {
-      // код для відображення фільмів у галереї
-      const movieElement = document.createElement('div');
-      const movieTitle = document.createElement('h2');
-      const movieOverview = document.createElement('p');
-      const movieReleaseDate = document.createElement('p');
-      const moviePoster = document.createElement('img');
-
-      movieTitle.textContent = movie.title;
-      movieOverview.textContent = `Overview: ${movie.overview}`;
-      movieReleaseDate.textContent = `Release Date: ${movie.release_date}`;
-      moviePoster.src = `${IMG_URL}${movie.poster_path}`;
-
-      movieElement.appendChild(moviePoster);
-      movieElement.appendChild(movieTitle);
-      movieElement.appendChild(movieOverview);
-      movieElement.appendChild(movieReleaseDate);
-
-      searchGallery.appendChild(movieElement);
-    });
+    updateGallery(movies);
+  } catch (error) {
+    console.log(error);
   }
 }
 
-// Очищення пошукового поля
-function clearInput() {
-  searchInput.value = '';
-}
-
-// Обробник події submit форми
-function handleFormSubmit(event) {
-  event.preventDefault();
-  searchMovies();
-}
-
-// Обробник події click кнопки очищення поля
-function handleClearButtonClick() {
-  clearInput();
-  searchMovies();
-}
-
-// Обробник події change селекта року
-function handleYearSelectChange() {
-  currentYear = searchSelect.value;
-  searchMovies();
-}
-
 // Пошук фільмів за ключовим словом та роком
-async function searchMovies() {
+async function handleFormSubmit(event) {
+  event.preventDefault();
   const query = searchInput.value.trim();
+  page = 1;
 
   if (query || currentYear) {
     apiMovie.query = query;
     try {
-      const response = await apiMovie.searchByQueryYear(1);
+      const response = await apiMovie.searchByQueryYear(page);
       const movies = response.data.results;
       updateGallery(movies);
     } catch (error) {
@@ -90,44 +56,86 @@ async function searchMovies() {
   }
 }
 
-// Додавання обробників подій
-searchForm.addEventListener('submit', handleFormSubmit);
-// clearButton.addEventListener('click', handleClearButtonClick);
-searchSelect.addEventListener('change', handleYearSelectChange);
+// Обробник події submit форми
+// function handleFormSubmit(event) {
+//   event.preventDefault();
+//   searchMovies();
+// }
+
+// Обробник події click кнопки очищення поля
+// function handleClearButtonClick() {
+//   clearInput();
+//   searchMovies();
+// }
+
+// Обробник події change селекта року
+function handleYearSelectChange() {
+  currentYear = searchSelect.value;
+  searchMovies();
+}
+
+// Очищення пошукового поля
+function handleClearButtonClick(event) {
+  event.preventDefault();
+  searchInput.value = '';
+}
+
+// searchSelect.addEventListener('change', handleYearSelectChange);
+
+function updateGallery(movies) {
+  searchGallery.innerHTML = '';
+
+  if (movies.length === 0) {
+    searchGallery.innerHTML =
+      '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p >';
+  } else {
+    searchGallery.innerHTML = createMarkupFilmsCards(movies);
+  }
+}
+
+function createMarkupFilmsCards(movieList) {
+  return movieList.map(film => createMarkupFilmCard(film)).join('');
+}
 
 // Отримання списку років для селекта
-apiMovie
-  .getNewFilms(1)
-  .then(async response => {
-    const movies = response.data.results;
-    const years = new Set();
-    movies.forEach(movie => {
-      const releaseYear = new Date(movie.release_date).getFullYear();
-      years.add(releaseYear);
-    });
-    for (const year of years) {
-      const option = document.createElement('option');
-      option.value = year;
-      option.textContent = year;
-      searchSelect.appendChild(option);
-    }
-  })
-  .catch(error => {
-    console.log(error);
-  });
 
-// Отримання трендових фільмів тижня
-apiMovie
-  .getTrend('week')
-  .then(async response => {
-    const movies = response.data.results;
-    if (movies.length === 0) {
-      searchGallery.innerHTML =
-        '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
-    } else {
-      updateGallery(movies);
-    }
-  })
-  .catch(error => {
-    console.log(error);
-  });
+// async function getNewFilms(page) {
+
+// }
+// apiMovie
+//   .getNewFilms(1)
+//   .then(async response => {
+//     const movies = response.data.results;
+//     const years = new Set();
+
+//     movies.forEach(movie => {
+//       const releaseYear = new Date(movie.release_date).getFullYear();
+//       years.add(releaseYear);
+//     });
+//     for (const year of years) {
+//       const option = document.createElement('option');
+//       option.value = year;
+//       option.textContent = year;
+//       searchSelect.appendChild(option);
+//     }
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+
+// // Отримання трендових фільмів тижня
+
+// apiMovie
+//   .getTrend('week')
+//   .then(async response => {
+//     const movies = response.data.results;
+//     if (movies.length === 0) {
+//       searchGallery.innerHTML =
+//         '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
+//     } else {
+//       updateGallery(movies);
+//     }
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });

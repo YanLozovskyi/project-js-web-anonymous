@@ -1,156 +1,174 @@
 .catalog-gallery-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 12px;
 
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 
-    @media screen and (min-width: 768px) {
-        width: 355px;
+  @media screen and (min-width: 768px) {
+    width: 355px;
 
-        margin-left: auto;
-        margin-right: auto;
-    }
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    @media screen and (min-width: 1280px) {
-        width: 502px;
-    }
+  @media screen and (min-width: 1280px) {
+    width: 502px;
+  }
 }
 
-.catalog-gallery-input-desktop, .catalog-gallery-select, .catalog-gallery-input-search{
-    background-color: transparent;
-    color: $color-subtitles;
+.catalog-gallery-input-desktop,
+.catalog-gallery-select,
+.catalog-gallery-input-search {
+  background-color: transparent;
+  color: $color-subtitles;
 
-    height: 40px;
+  height: 40px;
 
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
 
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 1px solid #FFFFFF;
-    border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
 
-    @media screen and (min-width: 768px) {
-        height: 44px;
+  @media screen and (min-width: 768px) {
+    height: 44px;
 
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        height: 48px;
-    }
+  @media screen and (min-width: 1280px) {
+    height: 48px;
+  }
 }
 
-.catalog-gallery-input, .catalog-gallery-input-search {
-    padding-left: 20px;
+.catalog-gallery-input,
+.catalog-gallery-input-search {
+  padding-left: 20px;
 }
 
 .catalog-gallery-input {
-    max-width: 173px;
+  max-width: 173px;
 
-    @media screen and (min-width: 768px) {
-        max-width: 100%;
-        width: 188px;
-    }
+  @media screen and (min-width: 768px) {
+    max-width: 100%;
+    width: 188px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        width: 315px;
-    }
+  @media screen and (min-width: 1280px) {
+    width: 315px;
+  }
 }
 
 .catalog-gallery-input::placeholder {
-    color: $color-subtitles;
+  color: $color-subtitles;
 }
 
 .catalog-gallery-select {
-    padding-left: 16px;
+  padding-left: 16px;
 
-    width: 95px;
+  width: 95px;
 }
 
-.catalog-gallery-input-search{
-    width: 224px;
+.catalog-gallery-input-search {
+  width: 224px;
 
-    @media screen and (min-width: 768px) {
-        display: none;    }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 }
 
 .catalog-gallery-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    background: $button-background-color;
+  background: $button-background-color;
 
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 
-    border: 0;
-    border-radius: 50%;
+  border: 0;
+  border-radius: 50%;
 
-    @media screen and (min-width: 768px) {
-        height: 44px;
-        width: 44px;
-    }
+  @media screen and (min-width: 768px) {
+    height: 44px;
+    width: 44px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        height: 48px;
-        width: 48px;
-    }
+  @media screen and (min-width: 1280px) {
+    height: 48px;
+    width: 48px;
+  }
 }
 
 .catalog-gallery-svg {
-    @media screen and (min-width: 1280px) {
-        height: 20px;
-        width: 20px;
-    }
+  @media screen and (min-width: 1280px) {
+    height: 20px;
+    width: 20px;
+  }
 }
 
 .catalog-error-message {
-    font-size: 20px;
-    line-height: 1.4;
+  font-size: 20px;
+  line-height: 1.4;
 
-    margin-top: 48px;
+  margin-top: 48px;
 
-    text-align: center;
+  text-align: center;
 }
 
 /* Стилі для мобільної версії */
 .catalog-gallery-input-mobile-wrapper {
-    display: none;
+  display: none;
 
-    @media screen and (max-width: 768px) {
-        height: 44px;
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
+  @media screen and (max-width: 768px) {
+    height: 44px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
 }
 
 /* Стилі для кнопки очищення (початково прихована) */
 .catalog-gallery-clear-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .catalog-gallery-clear-icon {
-    fill: black;
-    width: 12px;
-    height: 12px;
+  fill: black;
+  width: 12px;
+  height: 12px;
 }
 
 /* Показ кнопки очищення після введення даних в поле пошуку */
-.catalog-gallery-input-mobile:not(:placeholder-shown)+.catalog-gallery-clear-btn {
-    display: block;
+.catalog-gallery-input-mobile:not(:placeholder-shown)
+  + .catalog-gallery-clear-btn {
+  display: block;
 }
 
 .catalog-gallery {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+  @include tablet {
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 16px;
+    column-gap: 16px;
+    row-gap: 28px;
+  }
+
+  @include desktop {
+    column-gap: 15px;
+    row-gap: 32px;
+    margin-bottom: 24px;
+  }
 }
