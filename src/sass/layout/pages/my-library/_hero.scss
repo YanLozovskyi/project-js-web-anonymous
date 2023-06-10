@@ -1,6 +1,7 @@
 .hero-description-lib {
   color: $text-color;
 
+  overflow: hidden;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
@@ -56,39 +57,36 @@
   min-width: 320px;
   min-height: 380px;
   padding-top: 40px;
+  overflow: hidden;
+  background-position-x: 55px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+      86.77deg,
+      #111111 10.38%,
+      rgba(17, 17, 17, 0) 45.61%
+    ),
+    url('/src/images/hero-mob-2-1x-min.jpg');
+
   @media screen and (min-width: 768px) {
     padding-top: 62px;
     min-height: 432px;
+    background-position-x: 200px;
+    background-image: linear-gradient(
+        82.55deg,
+        #111111 10%,
+        rgba(17, 17, 17, 0) 45.95%
+      ),
+      url('/src/images/hero-tab-2-1x-min.jpg');
   }
   @media screen and (min-width: 1280px) {
     padding-top: 169px;
     min-height: 720;
-  }
-}
-.hero-picture-library {
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  background: linear-gradient(
-    79.49deg,
-    #111111 34.1%,
-    rgba(17, 17, 17, 0) 64.67%
-  );
-
-  @media screen and (min-width: 768px) {
-    background: linear-gradient(
-      82.55deg,
-      #111111 39.6%,
-      rgba(17, 17, 17, 0) 72.95%
-    );
-  }
-  @media screen and (min-width: 1280px) {
-    max-height: 660px;
-    background: linear-gradient(
-      82.55deg,
-      #111111 39.6%,
-      rgba(17, 17, 17, 0) 72.95%
-    );
+    background-position-x: 280px;
+    background-image: linear-gradient(
+        83.16deg,
+        #111111 15%,
+        rgba(17, 17, 17, 0) 45%
+      ),
+      url('/src/images/hero-des-2-1x-min.jpg');
   }
 }
