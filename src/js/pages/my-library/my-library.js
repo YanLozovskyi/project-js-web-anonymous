@@ -2,15 +2,11 @@ import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import Storage from '../../api/localStorageAPI/localStorageAPI';
 import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 import { refs } from './refs';
+// import { movies } from './ls';
+import { createMarkupFilmCard } from '../../components/createMarkupFilmCard';
 import { markupContentTextMessage } from './markupContentTextMessage';
-
-import { movies } from './ds'; //!
-Storage.save(STORAGE_KEY.myLibraryMoviesList, movies);
-
-// import { moviesNull } from './ds'; //!
-// Storage.save(STORAGE_KEY.myLibraryMoviesList, moviesNull);
-
-const apiMovie = new ApiMovie();
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
 
 const PER_PAGE = 3;
 
@@ -21,45 +17,41 @@ let startIndex = 0;
 let endIndex = 0;
 let correctGenreMovieList = [];
 
+// createlocalStorage();
+
+//? якщо у localStorage масив об'єктів фільмів
 const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
 
 renderContentBasedOnConditions();
-//! замінити на компонентний клас який створює картку
-function createLi() {
-  return `<li class="my-library-item"></li>`;
-}
 
-function markupCards(arr) {
-  return arr.map(() => createLi()).join('');
-}
-
-async function renderContentBasedOnConditions() {
+function renderContentBasedOnConditions() {
   if (dataStorage) {
-    try {
-      //? Отримую унікальні ID жанрів фільмів, які є у localStorage
-      const uniqueIdGenres = dataStorage
-        .reduce((acc, el) => [...acc, ...el.genre_ids], [])
-        .filter((id, i, array) => array.indexOf(id) === i);
+    //? Отримую унікальні ID жанрів фільмів, які є у localStorage і за допомогою функції createSelectOptionMarkup отримую розмітку з жанром, і вставляю у select
+    const allGenres = dataStorage
+      .reduce((acc, el) => [...acc, ...el.genres], [])
+      .filter(
+        (genre, index, self) =>
+          index ===
+          self.findIndex(g => g.id === genre.id && g.name === genre.name)
+      )
+      .forEach(el =>
+        refs.genreList.insertAdjacentHTML(
+          'beforeend',
+          createSelectOptionMarkup(el)
+        )
+      );
 
-      const response = await apiMovie.getGenresList();
+    new SlimSelect({
+      select: '#my-library-genre-list',
+    });
 
-      //? За допомогою функції createSelectOptionMarkup отримую розмітку з жанром, і вставляю у розмітку
-      response.data.genres
-        .filter(el => uniqueIdGenres.includes(el.id))
-        .forEach(el =>
-          refs.genreList.insertAdjacentHTML(
-            'beforeend',
-            createSelectOptionMarkup(el)
-          )
-        );
-
-      refs.genreList.addEventListener('change', onSelectGenreListChange);
-      renderLibraryCards(dataStorage);
-    } catch (error) {
-      console.log(error);
-    }
+    refs.genreList.addEventListener('change', onSelectGenreListChange);
+    renderLibraryCards(dataStorage);
   } else {
     refs.genreList.removeEventListener('change', onSelectGenreListChange);
+    refs.myLibrarySection.classList.add(
+      'my-library-content-text-message-section'
+    );
     refs.libraryContent.innerHTML = markupContentTextMessage();
   }
 }
@@ -78,7 +70,7 @@ function onSelectGenreListChange(e) {
     return;
   }
   correctGenreMovieList = dataStorage.filter(el => {
-    return el.genre_ids.includes(correctGenre);
+    return el.genres.some(genre => genre.id === correctGenre);
   });
   renderLibraryCards(correctGenreMovieList);
 }
@@ -93,7 +85,7 @@ function renderLibraryCards(movieList) {
     refs.loadMoreButton.addEventListener('click', onloadMoreButtonClick);
     localStoragePagination(startIndex, endIndex, movieList);
   } else {
-    refs.moviesList.innerHTML = markupCards(movieList);
+    refs.moviesList.innerHTML = createMarkupFilmsCards(movieList);
   }
 }
 
@@ -116,15 +108,81 @@ function localStoragePagination(start, end, data) {
   if (totalPage > page) {
     const pagination = data.slice(start, end);
 
-    refs.moviesList.insertAdjacentHTML('beforeend', markupCards(pagination));
+    refs.moviesList.insertAdjacentHTML(
+      'beforeend',
+      createMarkupFilmsCards(pagination)
+    );
   } else {
     const pagination = data.slice(start, end);
-    refs.moviesList.insertAdjacentHTML('beforeend', markupCards(pagination));
+    refs.moviesList.insertAdjacentHTML(
+      'beforeend',
+      createMarkupFilmsCards(pagination)
+    );
 
     refs.loadMoreButton.style.display = 'none';
   }
 }
 
-// class LocalStoragePagination {
+function createMarkupFilmsCards(movieList) {
+  return movieList.map(film => createMarkupFilmCard(film)).join('');
+}
 
+// console.log('createMarkupFilmsCards(movies):', createMarkupFilmsCards(movies));
+
+//! заглушки
+
+// function createlocalStorage() {
+//   const apiMovie = new ApiMovie();
+//   const arrIds = [
+//     569094, 840326, 667538, 842675, 298618, 980078, 943788, 869626, 455476,
+//     985617, 842544, 976573, 1016084, 614479, 335977, 884605, 994128, 942199,
+//     747188, 717930, 31343,
+//   ];
+//   const arrLS = [];
+//   arrIds.forEach(async id => {
+//     const DetailedInformation = await apiMovie.getMovieInfo(id);
+//     arrLS.push(DetailedInformation.data);
+//     Storage.save(STORAGE_KEY.myLibraryMoviesList, arrLS);
+//   });
+// }
+
+// //? якщо у localStorage масив IDs фільмів
+// const dataStorage = name();
+// console.log('dataStorage:', dataStorage);
+
+// async function name() {
+//   return await Promise.allSettled(
+//     Storage.load(STORAGE_KEY.myLibraryMoviesList).map(async id => {
+//       return await apiMovie.getMovieInfo(id).data;
+//     })
+//   );
+// }
+
+//     if (dataStorage) {
+//   try {
+//     //? Отримую унікальні ID жанрів фільмів, які є у localStorage
+//     const uniqueIdGenres = dataStorage
+//       .reduce((acc, el) => [...acc, ...el.genre_ids], [])
+//       .filter((id, i, array) => array.indexOf(id) === i);
+
+//     const response = await apiMovie.getGenresList();
+
+//     //? За допомогою функції createSelectOptionMarkup отримую розмітку з жанром, і вставляю у розмітку
+//     response.data.genres
+//       .filter(el => uniqueIdGenres.includes(el.id))
+//       .forEach(el =>
+//         refs.genreList.insertAdjacentHTML(
+//           'beforeend',
+//           createSelectOptionMarkup(el)
+//         )
+//       );
+
+//     refs.genreList.addEventListener('change', onSelectGenreListChange);
+//     renderLibraryCards(dataStorage);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// } else {
+//   refs.genreList.removeEventListener('change', onSelectGenreListChange);
+//   refs.libraryContent.innerHTML = markupContentTextMessage();
 // }

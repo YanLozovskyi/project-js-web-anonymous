@@ -1,26 +1,79 @@
 .my-library {
-  padding-top: 80px;
+  padding-top: 40px;
+  padding-bottom: 12px;
+
+  @include tablet {
+    padding-top: 60px;
+    padding-bottom: 20px;
+  }
+
+  @include desktop {
+    padding-top: 80px;
+    padding-bottom: 16px;
+  }
 }
+
 .my-library .container {
   outline: 1 solid tomato;
 }
+
+.my-library-genre-list {
+  max-width: 260px;
+  max-height: 48px;
+  margin-bottom: 48px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14; /* 16px/14 */
+
+  color: #b7b7b7;
+
+  @include tablet {
+    max-width: 144px;
+    max-height: 44px;
+    margin-bottom: 36px;
+  }
+
+  @include desktop {
+    max-width: 173px;
+    max-height: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+.ss-main .ss-values .ss-single {
+  // padding: 16px 12px;
+}
+
 .my-library-movies-list {
+  margin-bottom: 40px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
+  flex-direction: column;
+  row-gap: 16px;
+
+  @include tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 28px;
+  }
+
+  @include desktop {
+    column-gap: 15px;
+    row-gap: 32px;
+    margin-bottom: 24px;
+  }
 }
 
 .my-library-item {
-  width: calc((100% - 100px) / 3);
-  height: 200px;
-  background-color: rgb(181, 58, 58);
 }
 
 .my-library-load-more-button {
   display: none;
+  margin: 0 auto;
 }
 
-.my-library-content-text-message {
-  display: flex;
-  flex-direction: column;
-}
+// .my-library-content {
+//   display: flex;
+//   flex-direction: column;
+// }
