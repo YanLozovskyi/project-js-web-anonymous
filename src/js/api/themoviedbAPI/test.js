@@ -10,7 +10,7 @@ const apiMovie = new ApiMovie();
 //     console.log('Error:', error);
 //   }
 // }
-// getMovie();
+// getTrendMovieOfDay();
 
 // async function getTrendMovieOfWeek() {
 //   try {
@@ -20,7 +20,7 @@ const apiMovie = new ApiMovie();
 //     console.log('Error:', error);
 //   }
 // }
-// getNewFilms();
+// getTrendMovieOfWeek();
 
 // --------------------------ТЕСТ - Нові фільми
 
@@ -44,6 +44,38 @@ const apiMovie = new ApiMovie();
 //   .catch(error => {
 //     console.log('Error:', error);
 //   });
+// async function getNewFilms() {
+//   try {
+//     const response = await apiMovie.getNewFilms(2);
+//     console.log('Нові фільми', response.data.results);
+//   } catch (error) {
+//     console.log('Error:', error);
+//   }
+// }
+// getNewFilms();
+
+// --------------------------ТЕСТ - Фільми за ключовим словом + за роком
+
+// async function searchByQueryYear() {
+//   try {
+//     if (true) {
+//       apiMovie.query = 'John Wick';
+//       const response = await apiMovie.searchByQueryYear(1);
+//       console.log('Пошук фільмів по назві:', response.data.results);
+//     } else {
+//       apiMovie.query = 'John Wick';
+//       const response = await apiMovie.searchByQueryYear(1);
+//       const filteredResults = response.data.results.filter(movie =>
+//         movie.release_date.includes(2023)
+//       );
+//       console.log('Пошук фільмів по назві + фільтр по року:', filteredResults);
+//     }
+//   } catch (error) {
+//     console.log('Error:', error);
+//   }
+// }
+
+// searchByQueryYear();
 
 // try to refactor
 
@@ -64,28 +96,40 @@ const apiMovie = new ApiMovie();
 //--------------------------ТЕСТ- Детальна інформація про фільм
 
 // const movieId = 245891;
-// apiMovie.getMovieInfo(movieId)
-// .then((movieInfo) => {
-//     console.log('Детальна інформація про фільм:', movieInfo);
-// })
-// .catch((error) => {
+
+// async function getMovieInfo() {
+//   try {
+//     const response = await apiMovie.getMovieInfo(movieId);
+//     console.log('Детальна інформація про фільм:', response.data);
+//   } catch (error) {
 //     console.log('Error:', error);
-// });
+//   }
+// }
+
+// getMovieInfo();
 
 //--------------------------ТЕСТ - Повна інформація про можливий трейлер фільма на ютубі
 
 // const movieId = 245891;
-// apiMovie.getTrailer(movieId)
-// .then((trailer) => {
-//     console.log('Movie Trailer:', trailer);
-// })
-// .catch((error) => {
+// async function getTrailer() {
+//   try {
+//     const response = await apiMovie.getTrailer(movieId);
+//     console.log('Movie Trailer:', response.data.results[0]);
+//   } catch (error) {
 //     console.log('Error:', error);
-// });
+//   }
+// }
+// getTrailer();
 
 //--------------------------ТЕСТ - Перелік жанрів
 
-// apiMovie.getGenresList()
-// .then((genres) => {
-//     console.log('Перелік жанрів:', genres);
-// })
+// async function getGenres() {
+//   try {
+//     const response = await apiMovie.getGenresList();
+//     console.log('Перелік жанрів:', response.data.genres);
+//   } catch (error) {
+//     console.log('Error:', error);
+//   }
+// }
+
+// getGenres();

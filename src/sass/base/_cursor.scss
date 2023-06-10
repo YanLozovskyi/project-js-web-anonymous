@@ -1,0 +1,27 @@
+html {
+  cursor: $cursor-default;
+}
+
+a {
+  cursor: $cursor-hover;
+
+  &:hover {
+    cursor: $cursor-hover;
+  }
+}
+
+button {
+  cursor: $cursor-hover;
+
+  &:hover {
+    cursor: $cursor-hover;
+  }
+}
+
+select {
+  cursor: $cursor-hover;
+}
+
+svg:hover {
+  cursor: $cursor-hover;
+}

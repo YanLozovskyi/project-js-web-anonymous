@@ -2,4 +2,7 @@
 import './sass/main.scss';
 
 import './js/api/themoviedbAPI/test';
-import './js/upcoming'
+import './js/upcoming';
+import './js/weekly-trends';
+import './js/api/themoviedbAPI/hero';
+
