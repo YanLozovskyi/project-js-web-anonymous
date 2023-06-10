@@ -47,8 +47,10 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
         
            
         `
-              <a class="gallery__link" href="${backdrop_path}">
-            
+              <a class="gallery__link" href= "https://image.tmdb.org/t/p/original//nGxUxi3PfXDRm7Vg95VBNgNM8yc.jpg">
+            <img class="gallery-item__img" src="${backdrop_path}" 
+            alt="movie" loading="lazy" />  
+    
               <div class="gallery-item" id="${id}">
                 
                              <div class="info"
@@ -67,12 +69,12 @@ function getNewFilm({ id, backdrop_path, original_title, release_date, vote_aver
     }
 
    // <img class="gallery-item__img" src="${backdrop_path.jpg
-// }" alt="${tags}" loading="lazy" /> //  
+// }" alt="movie" loading="lazy" /> //  
     
 //     getNewFilms() 
     
 
-         //   <img class="gallery-item__img" src="${backdrop_path}" alt="${tags}" loading="lazy" />          
+         //   <img class="gallery-item__img" src="https://image.tmdb.org/t/p/original//nGxUxi3PfXDRm7Vg95VBNgNM8yc.jpg" alt="movie" loading="lazy" />          
        
           
    
