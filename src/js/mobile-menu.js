@@ -1,7 +1,6 @@
 const refs = {
   btnMobileMenu: document.querySelector('.btn-mobile-menu-js'),
   mobileMenu: document.querySelector('.mobile-menu'),
-  mobileMenuContent: document.querySelector('.mobile-menu-comtent'),
 };
 
 refs.btnMobileMenu.addEventListener('click', openMobileMenu);
