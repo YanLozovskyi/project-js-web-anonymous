@@ -1,127 +1,106 @@
-.home-upcoming{
-    padding: 0px 20px 32px;
-@include tablet {
-            min-height: 420px;
-            padding: 0px 32px 77px;
-        }
-@include desktop {
-            min-height: 660px;
-            padding: 0px 32px 100px;
-        }
+.home-upcoming {
+  padding: 0px 20px 32px;
+  @include tablet {
+    min-height: 420px;
+    padding: 0px 32px 77px;
+  }
+  @include desktop {
+    min-height: 660px;
+    padding: 0px 32px 100px;
+  }
 }
 
 .one-title {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    text-transform: uppercase;
-    color: $light-color;
-    margin-bottom: 24px;
-    @include tablet {
-                font-size: 24px;
-                line-height: 28px;
-        }
-    
-        @include desktop {
-                font-size: 28px;
-                line-height: 33px;      
-        }
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: $light-color;
+  margin-bottom: 24px;
+  @include tablet {
+    font-size: 24px;
+    line-height: 28px;
+  }
 
+  @include desktop {
+    font-size: 28px;
+    line-height: 33px;
+  }
 }
 
 .info-item-title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    color: $light-color;
-    margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: $light-color;
+  margin-bottom: 20px;
 
-    @include tablet {
-        font-size: 28px;
-        line-height: 33px;
-    }
-        @include desktop{
-            font-size: 32px;
-            line-height: 38px;
-
-        }
+  @include tablet {
+    font-size: 28px;
+    line-height: 33px;
+  }
+  @include desktop {
+    font-size: 32px;
+    line-height: 38px;
+  }
 }
 
-
 b {
-    color: #B7B7B7;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    margin-right: 20px;
-    text-decoration: none;
+  color: #b7b7b7;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  margin-right: 20px;
+  text-decoration: none;
 }
 // b.info-item:not(:first-child){
 //     text-transform: uppercase;
 // }
- .title-movie{
-font-weight: 900
- }
-
-.image-upcoming{
-    border-radius: 5px;
-    margin-bottom: 24px;
-    @include tablet{
-        margin-bottom: 32px;
-    }
-        @include desktop {
-            margin-bottom: 0px;
-        }
+.title-movie {
+  font-weight: 900;
 }
 
-
-.info{
-    
-    margin-bottom: 20px;   
+.image-upcoming {
+  border-radius: 5px;
+  margin-bottom: 24px;
+  @include tablet {
+    margin-bottom: 32px;
+  }
+  @include desktop {
+    margin-bottom: 0px;
+  }
 }
-.info-item{
-    font-size: 16px;
-    line-height: 19px;
-    color: #FFFFFF;
-    display: flex;
-    // align-items: center;
-     justify-content: space-between;
-    
+
+.info {
+  margin-bottom: 20px;
+}
+.info-item {
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
 }
 .selection {
-    color: #F87719;
-    text-transform: uppercase;
+  color: #f87719;
+  text-transform: uppercase;
 }
-.info-item:not(:last-child){
-margin-bottom: 12px
+.info-item:not(:last-child) {
+  margin-bottom: 12px;
 }
-.gallery-item{
-    margin-bottom: 20px;
+.gallery-item {
+  margin-bottom: 20px;
 }
-.info-item-about-movie{
-display: flex;
- flex-direction: column;
- gap: 16px;
-font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #F8F8F8;
-    text-align: left;
-    // text-transform: uppercase;
-}
-.button {
-    background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
-    border-radius: 74px;
-    color: #111111;
-    display: flex;
-    flex-direction: row;
-    padding: 12px 24px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    display: flex;
-    text-align: center;
-
+.info-item-about-movie {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #f8f8f8;
+  text-align: left;
+  // text-transform: uppercase;
 }

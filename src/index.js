@@ -7,9 +7,6 @@ import './js/api/themoviedbAPI/test';
 
 import './js/upcoming';
 
-import './js/weekly-trends';
-
-
 import './js/pages/home/hero';
 
 import './js/mobile-menu';
