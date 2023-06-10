@@ -1,0 +1,18 @@
+body {
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-image: url('../images/scrollbar.svg');
+  background-position: center center;
+
+  cursor: pointer;
+}
