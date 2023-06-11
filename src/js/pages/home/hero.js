@@ -13,7 +13,6 @@ async function getTrendMovieOfDay() {
     const response = await apiMovie.getTrend('day');
 
     const randomFilm = randomElement(response.data.results);
-    // console.log(response);
 
     if (response.data.results.length === 0) {
       createDefaultMarkup(contentPath);
@@ -110,7 +109,7 @@ async function showTrailer(response) {
       }
 
       const instance = basicLightbox.create(`
-     <iframe class="iframe" src="https://www.youtube.com/embed/${traier.key}" width="560" height="315" frameborder="0"></iframe>`);
+     <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>`);
 
       instance.show();
     } catch (error) {
@@ -121,14 +120,23 @@ async function showTrailer(response) {
 }
 
 function markupForMistake() {
-  return basicLightbox.create(`
-          <div class="trailer-fail">
-            <p class="trailer-fail-text">OOPS...<br/> We are very sorry!<br /> But we couldn’t find the trailer.</p>
-            <button type="button" class="btn-close"><svg class="btn-close--svg">
-            <use href='/sprite.a5e5e87b.svg#icon-close'></use>
-        </svg>
-      </button>
-            <div class="bg-box"></div>
-          </div>
-        `);
+  const instance = basicLightbox.create(`
+  <div class="trailer-fail">
+  <p class="trailer-fail-text">OOPS...<br/> We are very sorry!<br /> But we couldn’t find the trailer.</p>
+  <button type="button" class="btn-close"><svg class="btn-close--svg">
+  <use href='/sprite.a5e5e87b.svg#icon-close'></use>
+  </svg>
+  </button>
+  <div class="bg-box"></div>
+  </div>
+  `);
+
+  const buttonClose = instance.element().querySelector('.btn-close');
+  buttonClose.addEventListener('click', onButtonCloseClick);
+  function onButtonCloseClick() {
+    instance.close();
+    buttonClose.removeEventListener('click', onButtonCloseClick);
+  }
+
+  return instance;
 }
