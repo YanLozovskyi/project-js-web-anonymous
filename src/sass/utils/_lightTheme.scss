@@ -1,7 +1,45 @@
 .light {
   background-color: $light-color;
 }
-
+////// --------- Біла тема хедеру--------///////
 .light .header {
   background-color: $light-color;
+}
+
+.light .header-nav-link {
+  color: $color-subtitles-white-theme;
+}
+.light .hero-content {
+  background-color: $light-color;
+}
+////// --------- Біла мобільної навігації--------///////
+.light .mobile-menu-content {
+  background-color: $light-color;
+}
+
+.light .mobile-menu-nav-link {
+  color: $dark-color;
+}
+////// --------- Біла мобільної каталогу карток та тижневих трендів--------///////
+.light .weekly-title {
+  color: $dark-color;
+}
+
+.light .catalog-gallery-input,
+.light .catalog-gallery-select,
+.light .catalog-gallery-input-search {
+  color: $color-subtitles-white-theme;
+  border: 1px solid $dark-color;
+}
+
+.light .catalog-gallery-input::placeholder {
+  color: $color-subtitles-white-theme;
+}
+
+////// --------- Біла мобільної футеру--------///////
+.light .footer-content {
+  color: $color-subtitles-white-theme;
+}
+.light .footer-command-info {
+  color: $color-subtitles-white-theme;
 }

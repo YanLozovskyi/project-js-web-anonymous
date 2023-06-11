@@ -14,3 +14,5 @@ import './js/weekly-trends';
 import './js/active-page';
 
 import './js/footer-modal';
+
+import './js/components/lightTheme';
