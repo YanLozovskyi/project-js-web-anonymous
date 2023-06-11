@@ -30,7 +30,11 @@ export default class ApiMovie {
 
   // Детальна інформація про фільм
   getMovieInfo(id) {
-    return axios.get(`${this.#BASE_URL}movie/${id}?api_key=${this.#API_KEY}`);
+    
+      return axios.get(
+        `${this.#BASE_URL}movie/${id}?api_key=${this.#API_KEY}`
+      );
+      
   }
 
   // Повна інформація про можливий трейлер фільма на ютубі
