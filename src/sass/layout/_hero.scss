@@ -510,12 +510,20 @@
 .trailer-fail {
   display: flex;
   flex-direction: column;
+  gap: 24px;
+
   width: 280px;
   height: 289px;
+
   background-color: #111111;
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
   border-radius: 20px;
+
   position: relative;
+
+  padding-top: 39px;
+  padding-left: 33px;
+  padding-right: 33px;
 
   @media screen and (min-width: 768px) {
     display: block;
@@ -532,8 +540,8 @@
   }
 }
 .bg-box {
-  width: 150px;
-  height: 150px;
+  width: 159px;
+  height: 153px;
   background-image: url('/src/images/modal-mobile-min.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -542,24 +550,23 @@
 
   @media screen and (min-width: 768px) {
     background-image: url('/src/images/modal-tablet-min.png');
-    position: fixed;
-    right: 10px;
-    bottom: 16px;
-    margin-left: auto;
-    margin-right: 0;
+
     width: 296px;
     height: 260px;
+    position: absolute;
+    top: 35%;
+    right: 0;
   }
 
   @media screen and (min-width: 1280px) {
     background-image: url('/src/images/modal-desktop-min.png');
-    position: fixed;
-    right: 10px;
-    bottom: 16px;
-    margin-left: auto;
-    margin-right: 0;
-    width: 296px;
-    height: 260px;
+    position: absolute;
+
+    top: 70px;
+    right: 2px;
+
+    width: 363px;
+    height: 318px;
   }
 }
 
@@ -568,34 +575,67 @@
   top: 20px;
   right: 20px;
   // background-image: url('../img/sprite.svg#icon-x-button');
-  background-color: blue;
+  background-color: transparent;
   display: block;
-  width: 24px;
-  height: 24px;
-  color: $text-color;
+  width: 15px;
+  height: 15px;
+
   border: none;
   padding: 0;
-  font: inherit;
+
   outline: inherit;
   @include tablet {
-    top: 24px;
-    right: 24px;
+    top: 31px;
+    right: 31px;
+
+    width: 18px;
+    height: 18px;
   }
   @include desktop {
     top: 28px;
     right: 28px;
+
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.btn-close--svg {
+  stroke: #f8f8f8;
+  width: 10px;
+  height: 10px;
+
+  @media screen and (min-width: 768px) {
+    width: 13px;
+    height: 13px;
   }
 }
 
 .trailer-fail-text {
   font-style: normal;
   color: $text-color;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+
+  color: $light-color;
+
   width: 214px;
   height: 65px;
 
   @include tablet {
     width: 321px;
     height: 92px;
-    color: $text-color;
+    color: $light-color;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.16;
+  }
+  @media screen and (min-width: 1280px) {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.6;
   }
 }

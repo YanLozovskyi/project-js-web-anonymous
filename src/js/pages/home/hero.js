@@ -109,7 +109,7 @@ async function showTrailer(response) {
       }
 
       const instance = basicLightbox.create(`
-     <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>`);
+     <iframe class="iframe" src="https://www.youtube.com/embed/${traier.key}" width="560" height="315" frameborder="0"></iframe>`);
 
       instance.show();
     } catch (error) {
@@ -123,8 +123,8 @@ function markupForMistake() {
   return basicLightbox.create(`
           <div class="trailer-fail">
             <p class="trailer-fail-text">OOPS...<br/> We are very sorry!<br /> But we couldn’t find the trailer.</p>
-            <button type="button" class="btn-close"><svg class="btn-close--svg" width=24 height=24>
-            <use href='../../img/sprite.svg#icon-x-button'></use>
+            <button type="button" class="btn-close"><svg class="btn-close--svg">
+            <use href='/sprite.a5e5e87b.svg#icon-close'></use>
         </svg>
       </button>
             <div class="bg-box"></div>
