@@ -2,18 +2,7 @@ import ApiMovie from '../api/themoviedbAPI/fetch-movie';
 import { getStar } from './getStar';
 const apiMovie = new ApiMovie();
 
-let genresList = {};
-
-function getGenreName(ids) {
-  try {
-    return ids.map(id => {
-      const genre = genresList.find(genre => genre.id === id);
-      return genre ? genre.name : null;
-    });
-  } catch (error) {
-    return ['Unknown Genre'];
-  }
-}
+let genresList = [];
 
 export async function createMarkupFilmsCards(movieList) {
   try {
@@ -26,6 +15,7 @@ export async function createMarkupFilmsCards(movieList) {
   return movieList
     .map(
       ({
+        id,
         poster_path,
         genres,
         genre_ids,
@@ -44,7 +34,7 @@ export async function createMarkupFilmsCards(movieList) {
         } else if (genres) {
           genre = [genres[0]?.name].join(' ');
         }
-        return `<li class="card-list-item">
+        return `<li data-movie_id="${id}" class="card-list-item">
       <img
         src="https://image.tmdb.org/t/p/original${poster_path}"
         alt="${original_title}"
@@ -60,85 +50,20 @@ export async function createMarkupFilmsCards(movieList) {
         </p>
       </div>
       <span class="card-list-rating">${getStar(vote_average)}</span>
-    </li>`;
+    </li>
+    `;
       }
     )
     .join('');
 }
 
-// function createMarkupFilmCard({
-//   poster_path,
-//   genres,
-//   genre_ids,
-//   original_title,
-//   release_date,
-//   vote_average,
-// }) {
-//   let genre = '';
-//   if (genre_ids) {
-//     genre = getGenreName(genre_ids).slice(0, 2).join(' ');
-//   }
-//   if (genres) {
-//     genre = [genres[0]?.name, genres[1]?.name].join(' ');
-//   }
-//   return `<li class="card-list-item">
-//       <img
-//         src="https://image.tmdb.org/t/p/original${poster_path}"
-//         alt="${original_title}"
-//         class="card-list-img"
-//         width="395"
-//         height="574"
-//       />
-//       <div class="card-overlay"></div>
-//       <div class="text-wrapper">
-//         <h2 class="text-wrapper-filmName">${original_title}</h2>
-//         <p class="text-wrapper-nameAndGenres">
-//           ${genre} | ${release_date.slice(0, 4)}
-//         </p>
-//       </div>
-//       <span class="card-list-rating">${getStar(vote_average)}</span>
-//     </li>`;
-// }
-
-// import { getStar } from './getStar';
-
-// function getGenreName(ids) {
-//   return ids.map(id => {
-//     const genre = allGenres.find(genre => genre.id === id);
-//     return genre ? genre.name : null;
-//   });
-// }
-
-// export function createMarkupFilmCard({
-//   poster_path,
-//   genres,
-//   genre_ids,
-//   original_title,
-//   release_date,
-//   vote_average,
-// }) {
-//   let genre = '';
-//   if (genre_ids) {
-//     genre = getGenreName(genre_ids).slice(0, 2).join(' ');
-//   }
-//   if (genres) {
-//     genre = [genres[0]?.name, genres[1]?.name].join(' ');
-//   }
-//   return `<li class="card-list-item">
-//       <img
-//         src="https://image.tmdb.org/t/p/original${poster_path}"
-//         alt="${original_title}"
-//         class="card-list-img"
-//         width="395"
-//         height="574"
-//       />
-//       <div class="card-overlay"></div>
-//       <div class="text-wrapper">
-//         <h2 class="text-wrapper-filmName">${original_title}</h2>
-//         <p class="text-wrapper-nameAndGenres">
-//           ${genre} | ${release_date.slice(0, 4)}
-//         </p>
-//       </div>
-//       <span class="card-list-rating">${getStar(vote_average)}</span>
-//     </li>`;
-// }
+function getGenreName(ids) {
+  try {
+    return ids.map(id => {
+      const genre = genresList.find(genre => genre.id === id);
+      return genre ? genre.name : null;
+    });
+  } catch (error) {
+    return ['Unknown Genre'];
+  }
+}
