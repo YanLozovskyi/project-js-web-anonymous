@@ -46,6 +46,10 @@ function renderContentBasedOnConditions() {
 
     new SlimSelect({
       select: '#my-library-genre-list',
+      settings: {
+        // showSearch: false, //? Приберає поле пошуку
+        searchText: 'No genre',
+      },
     });
 
     refs.genreList.addEventListener('change', onSelectGenreListChange);

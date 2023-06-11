@@ -1,96 +1,28 @@
-// const genresList = [
-//   {
-//     id: 28,
-//     name: 'Action',
-//   },
-//   {
-//     id: 12,
-//     name: 'Abenteuer',
-//   },
-//   {
-//     id: 16,
-//     name: 'Animation',
-//   },
-//   {
-//     id: 35,
-//     name: 'Komödie',
-//   },
-//   {
-//     id: 80,
-//     name: 'Krimi',
-//   },
-//   {
-//     id: 99,
-//     name: 'Dokumentarfilm',
-//   },
-//   {
-//     id: 18,
-//     name: 'Drama',
-//   },
-//   {
-//     id: 10751,
-//     name: 'Familie',
-//   },
-//   {
-//     id: 14,
-//     name: 'Fantasy',
-//   },
-//   {
-//     id: 36,
-//     name: 'Historie',
-//   },
-//   {
-//     id: 27,
-//     name: 'Horror',
-//   },
-//   {
-//     id: 10402,
-//     name: 'Musik',
-//   },
-//   {
-//     id: 9648,
-//     name: 'Mystery',
-//   },
-//   {
-//     id: 10749,
-//     name: 'Liebesfilm',
-//   },
-//   {
-//     id: 878,
-//     name: 'Science Fiction',
-//   },
-//   {
-//     id: 10770,
-//     name: 'TV-Film',
-//   },
-//   {
-//     id: 53,
-//     name: 'Thriller',
-//   },
-//   {
-//     id: 10752,
-//     name: 'Kriegsfilm',
-//   },
-//   {
-//     id: 37,
-//     name: 'Western',
-//   },
-// ];
 import ApiMovie from '../api/themoviedbAPI/fetch-movie';
 import { getStar } from './getStar';
 const apiMovie = new ApiMovie();
 
 let genresList = {};
+
 function getGenreName(ids) {
-  return ids.map(id => {
-    const genre = genresList.find(genre => genre.id === id);
-    return genre ? genre.name : null;
-  });
+  try {
+    return ids.map(id => {
+      const genre = genresList.find(genre => genre.id === id);
+      return genre ? genre.name : null;
+    });
+  } catch (error) {
+    return ['Unknown Genre'];
+  }
 }
 
 export async function createMarkupFilmsCards(movieList) {
-  const response = await apiMovie.getGenresList();
-  genresList = response.data.genres;
+  try {
+    const response = await apiMovie.getGenresList();
+    genresList = response.data.genres;
+  } catch (error) {
+    console.log(error);
+  }
+
   return movieList
     .map(
       ({
@@ -102,11 +34,15 @@ export async function createMarkupFilmsCards(movieList) {
         vote_average,
       }) => {
         let genre = '';
-        if (genre_ids) {
-          genre = getGenreName(genre_ids).slice(0, 2).join(' ');
+        if (genre_ids?.length === 0) {
+          genre = 'Unknown Genre';
+        } else if (genre_ids) {
+          genre = getGenreName(genre_ids).slice(0, 1).join(' ');
         }
-        if (genres) {
-          genre = [genres[0]?.name, genres[1]?.name].join(' ');
+        if (genres?.length === 0) {
+          genre = 'Unknown Genre';
+        } else if (genres) {
+          genre = [genres[0]?.name].join(' ');
         }
         return `<li class="card-list-item">
       <img

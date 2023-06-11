@@ -1,0 +1,109 @@
+.ss-content.my-library-genre-list,
+.ss-content.ss-open-below.my-library-genre-list,
+.ss-content.my-library-genre-list .ss-list {
+  border: none;
+}
+
+//? іконка вверх/вниз
+.ss-main.my-library-genre-list .ss-arrow path {
+  stroke: $text-color;
+}
+
+//?  вибраний жанр в інпуті
+.ss-main.my-library-genre-list .ss-values .ss-single {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.18;
+  color: $color-subtitles;
+}
+
+//? контейнер з селектом
+.ss-main.my-library-genre-list {
+  background: #1c1c1c;
+  padding: 12px 20px;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgba(248, 248, 248, 0.2);
+}
+
+.ss-main.my-library-genre-list:focus {
+  box-shadow: 0 0 5px $accent-color;
+}
+
+//?  контейнер з пошуком
+
+.ss-content.my-library-genre-list .ss-search {
+  background: #1c1c1c;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgba(248, 248, 248, 0.2);
+  box-shadow: 0 0 5px $accent-color;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+//?
+.ss-content.my-library-genre-list .ss-search input:focus {
+  box-shadow: 0 0 5px $accent-color;
+}
+
+//? input контейнера з пошуком
+.ss-content.my-library-genre-list .ss-search input {
+  stroke: #f8f8f8;
+  background: #1c1c1c;
+  padding: 10px 15px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.43;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgba(248, 248, 248, 0.2);
+
+  color: #b7b7b7;
+
+  @include desktop {
+    font-size: 16px;
+    line-height: 1.18;
+  }
+}
+
+//? контейнер з опціями
+
+.ss-content.my-library-genre-list .ss-list .ss-option {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.43;
+
+  color: #f8f8f8;
+
+  padding: 12px 20px;
+
+  background: #1c1c1c;
+  /* White */
+
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgba(248, 248, 248, 0.2);
+
+  transition: color 300ms $cubic;
+
+  @include desktop {
+    font-size: 16px;
+    line-height: 1.18;
+  }
+}
+
+.ss-content.my-library-genre-list .ss-list .ss-option:focus {
+  box-shadow: 0 0 5px $accent-color;
+}
+
+.ss-content.my-library-genre-list .ss-list .ss-option:hover,
+.ss-content.my-library-genre-list .ss-list .ss-option:focus,
+.ss-content.my-library-genre-list .ss-list .ss-option.ss-highlighted,
+.ss-content.my-library-genre-list
+  .ss-list
+  .ss-option:not(.ss-disabled).ss-selected,
+.ss-content.my-library-genre-list .ss-list .ss-option:hover {
+  background: #1c1c1c;
+  color: $accent-color;
+}
