@@ -12,6 +12,10 @@
 .light .hero-content {
   background-color: $light-color;
 }
+
+.light .logo-title {
+  color: $text-color-for-white-theme;
+}
 ////// --------- Біла мобільної навігації--------///////
 .light .mobile-menu-content {
   background-color: $light-color;
@@ -34,6 +38,10 @@
 
 .light .catalog-gallery-input::placeholder {
   color: $color-subtitles-white-theme;
+}
+////// --------- Біла мобільної тексту помилки в бібліотеці--------///////
+.light .my-library-content-text-message {
+  color: $dark-color;
 }
 
 ////// --------- Біла мобільної футеру--------///////
