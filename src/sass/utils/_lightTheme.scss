@@ -24,7 +24,7 @@
 .light .mobile-menu-nav-link {
   color: $dark-color;
 }
-////// --------- Біла мобільної каталогу карток та тижневих трендів--------///////
+////// --------- Біла  каталогу карток та тижневих трендів--------///////
 .light .weekly-title {
   color: $dark-color;
 }
@@ -39,7 +39,15 @@
 .light .catalog-gallery-input::placeholder {
   color: $color-subtitles-white-theme;
 }
-////// --------- Біла мобільної тексту помилки в бібліотеці--------///////
+////// --------- Біла Upcoming Soon--------///////
+.light .one-title,
+.light .info-item-title,
+.light .info-item b,
+.light .info-item-about-thirty {
+  color: $dark-color;
+}
+
+////// --------- Біла  тексту помилки в бібліотеці--------///////
 .light .my-library-content-text-message {
   color: $dark-color;
 }
