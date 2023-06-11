@@ -51,8 +51,11 @@ b {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  margin-right: 20px;
+  margin-right: auto;
   text-decoration: none;
+  @include desktop {
+    
+  }
 }
 // b.info-item:not(:first-child){
 //     text-transform: uppercase;
@@ -80,12 +83,20 @@ b {
   line-height: 19px;
   color: $light-color;
   display: flex;
+  
   // align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
 }
-.selection {
+.info-item-second {
   color: #f87719;
   text-transform: uppercase;
+}
+.info-item-thirty{
+  font-size: 16px;
+    line-height: 19px;
+    
+    text-transform: uppercase;
+    color: #B7B7B7;
 }
 .info-item:not(:last-child) {
   margin-bottom: 12px;

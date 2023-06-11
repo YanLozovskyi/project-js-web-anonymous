@@ -60,13 +60,13 @@ function getNewFilm(data) {
               <div class="gallery-item" id="${id}">
                <h3 class="info-item-title">${original_title}</h3> 
     <div class="info">
-          <p class="info-item selection"><b>Release date</b>${release_date}</p>
+          <p class="info-item"><b>Release date</b><span class="info-item-second">${release_date}</span></p>
           <p class="info-item"><b>Vote / Votes</b>${vote_average} / ${vote_count}</p>
           <p class="info-item"><b>Popularity</b>${popularity}</p>
           <p class="info-item"><b>Genre </b>${allGenres}</p>
           </div>
           <div class="info-item-about">
-          <p class="info-item-about-movie"><b>About</b>${overview}</p>
+          <p class="info-item-about-movie"><b><span class="info-item-thirty">About</span></b>${overview}</p>
           </div>
                  </div>`;
   
