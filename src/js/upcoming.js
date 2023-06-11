@@ -57,7 +57,7 @@ function createUpcomingMovieMarkup(data) {
     .join(', ');
   const markup = `
     <div class="image-upcoming">
-    <h2 class="one-title">Upcoming this months</h2>
+    
             <img class="gallery-item__img" src="${IMAGE_URL}${backdrop_path}"
             alt="movie" loading="lazy"/>
     </div>
@@ -74,7 +74,7 @@ function createUpcomingMovieMarkup(data) {
           </div>
           </div>
           <div class="info-item-about">
-          <p class="info-item-about-movie"><b><span class="info-item-thirty">About</span></b>${overview}</p>
+          <p class="info-item-about-movie"><b><span class="info-item-about-thirty">About</span></b>${overview}</p>
           </div>
           <button type="button" class="button-accent">Add to my library</button>
                  </div>`;

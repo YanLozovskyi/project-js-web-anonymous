@@ -72,24 +72,11 @@
 }
 
 b {
-  color: #b7b7b7;
+  color: $color-subtitles;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
   margin-right: auto;
-  text-decoration: none;
-  @include tablet{
-
-  }
-  @include desktop {
-
-  }
-}
-// b.info-item:not(:first-child){
-//     text-transform: uppercase;
-// }
-.title-movie {
-  font-weight: 900;
 }
 
 .image-upcoming {
@@ -108,8 +95,8 @@ b {
   margin-bottom: 20px;
   @include tablet{
     display: flex;
-   
-    justify-content: space-between;
+  justify-content: space-between;
+  
   }
     @include desktop{
       display: flex;
@@ -122,78 +109,63 @@ b {
   line-height: 19px;
   color: $light-color;
   display: flex;
-  @include tablet{
-    display: flex;
-  }
-  
-  // align-items: center;
-  // justify-content: space-between;
+  align-items: center;
+
 }
 .info-item-fourth{
   background:$light-color;
-    border-radius: 5px;
-    width: 36px;
-      height: 18px;
-      padding: 1px 8px;
+  border-radius: 5px;
+  padding: 1px 8px;
        
 }
 .vote-text{
   font-size: 14px;
-    line-height: 16px;
-    display: flex;
-    // align-items: center;
-    // text-align: center;
-    justify-content: center;
-    text-transform: uppercase;
-    color: #111111;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: $dark-color;
 }
 .info-item-second {
-  color: #f87719;
+  color: $accent-color;
   text-transform: uppercase;
 }
-.info-item-thirty{
+.info-item-about-thirty{
   font-size: 16px;
-    line-height: 19px;
-    
-    text-transform: uppercase;
-    color: #B7B7B7;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: $color-subtitles;
 }
 .info-item:not(:last-child) {
   margin-bottom: 12px;
 }
  
 .info-item-about-movie{
-display: flex;
+ display: flex;
  flex-direction: column;
  gap: 16px;
-font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #F8F8F8;
-    text-align: left;
+ font-weight: 400;
+ font-size: 14px;
+ line-height: 20px;
+ color: $text-color;
+ text-align: left;
 }
-    // text-transform: uppercase;
-.movieDescription{
-  @include desktop{
-    display: flex;
-    justify-content: center;
-  //  width: 1211px;
     
+.movieDescription{
+   @include desktop{
+     display: flex;  
   }
-}
-// .image-upcoming{
-//   @include desktop{
-// width: 458px;
-//   }
-  
-// }
+ }
+
 .info-item-one-part{
   margin-bottom: 12px;
   @include tablet{
-
+margin-bottom: 0px;
   }
     @include desktop {
-
+margin-bottom: 12px;
     }
 }
 .info-item-about {
