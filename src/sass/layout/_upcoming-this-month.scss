@@ -28,6 +28,31 @@
     line-height: 33px;
   }
 }
+.gallery-item{
+  @include tablet {
+      
+    }
+  
+    @include desktop {
+      max-width: 390px;
+      max-height: auto;
+    }
+}
+.gallery-item_img { 
+      max-width: 280px;
+      max-height: 406px;
+      border-radius: 5px;
+  
+      @include tablet {
+        max-width: 400px;
+        max-height: 704px;
+      }
+  
+      @include desktop {
+        max-width: 805px;
+        max-height: 428px;
+      }
+    }
 
 .info-item-title {
   font-weight: 500;
@@ -53,8 +78,11 @@ b {
   line-height: 19px;
   margin-right: auto;
   text-decoration: none;
+  @include tablet{
+
+  }
   @include desktop {
-    
+
   }
 }
 // b.info-item:not(:first-child){
@@ -72,20 +100,52 @@ b {
   }
   @include desktop {
     margin-bottom: 0px;
+    margin-right: 16px;
   }
 }
 
 .info {
   margin-bottom: 20px;
+  @include tablet{
+    display: flex;
+   
+    justify-content: space-between;
+  }
+    @include desktop{
+      display: flex;
+      flex-direction: column;
+
+    }
 }
 .info-item {
   font-size: 16px;
   line-height: 19px;
   color: $light-color;
   display: flex;
+  @include tablet{
+    display: flex;
+  }
   
   // align-items: center;
   // justify-content: space-between;
+}
+.info-item-fourth{
+  background:$light-color;
+    border-radius: 5px;
+    width: 36px;
+      height: 18px;
+      padding: 1px 8px;
+       
+}
+.vote-text{
+  font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    // align-items: center;
+    // text-align: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #111111;
 }
 .info-item-second {
   color: #f87719;
@@ -101,9 +161,7 @@ b {
 .info-item:not(:last-child) {
   margin-bottom: 12px;
 }
- .gallery-item{
-     margin-bottom: 20px;
- }
+ 
 .info-item-about-movie{
 display: flex;
  flex-direction: column;
@@ -115,17 +173,29 @@ font-weight: 400;
     text-align: left;
 }
     // text-transform: uppercase;
-.gallery-item {
-  margin-bottom: 20px;
+.movieDescription{
+  @include desktop{
+    display: flex;
+    justify-content: center;
+  //  width: 1211px;
+    
+  }
 }
-.info-item-about-movie {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #f8f8f8;
-  text-align: left;
-  // text-transform: uppercase;
+// .image-upcoming{
+//   @include desktop{
+// width: 458px;
+//   }
+  
+// }
+.info-item-one-part{
+  margin-bottom: 12px;
+  @include tablet{
+
+  }
+    @include desktop {
+
+    }
+}
+.info-item-about {
+  margin-bottom: 20px;
 }

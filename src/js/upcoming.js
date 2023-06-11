@@ -57,20 +57,26 @@ function createUpcomingMovieMarkup(data) {
     .join(', ');
   const markup = `
     <div class="image-upcoming">
+    <h2 class="one-title">Upcoming this months</h2>
             <img class="gallery-item__img" src="${IMAGE_URL}${backdrop_path}"
-            alt="movie" width="280" height="auto" loading="lazy"/>
+            alt="movie" loading="lazy"/>
     </div>
               <div class="gallery-item" id="${id}">
                <h3 class="info-item-title">${original_title}</h3>
     <div class="info">
+    <div class="info-item-one-part">
           <p class="info-item"><b>Release date</b><span class="info-item-second">${release_date}</span></p>
-          <p class="info-item"><b>Vote / Votes</b>${vote_average} / ${vote_count}</p>
+          <p class="info-item"><b>Vote / Votes</b><span class="info-item-fourth vote-text">${vote_average}</span> / <span class="info-item-fourth vote-text">${vote_count}</span></p>
+          </div>
+     <div class="info-item-two-part">     
           <p class="info-item"><b>Popularity</b>${popularity}</p>
           <p class="info-item"><b>Genre </b>${allGenres}</p>
+          </div>
           </div>
           <div class="info-item-about">
           <p class="info-item-about-movie"><b><span class="info-item-thirty">About</span></b>${overview}</p>
           </div>
+          <button type="button" class="button-accent">Add to my library</button>
                  </div>`;
 
   movieDescription.innerHTML = markup;
