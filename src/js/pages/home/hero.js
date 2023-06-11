@@ -13,6 +13,7 @@ async function getTrendMovieOfDay() {
     const response = await apiMovie.getTrend('day');
 
     const randomFilm = randomElement(response.data.results);
+    // console.log(response);
 
     if (response.data.results.length === 0) {
       createDefaultMarkup(contentPath);
@@ -28,7 +29,7 @@ async function getTrendMovieOfDay() {
 
 getTrendMovieOfDay();
 
-export function createMarkupFilm(response, path) {
+function createMarkupFilm(response, path) {
   const markup = response
     .map(({ original_title, overview, backdrop_path, vote_average }) => {
       return `<div class="hero-film_background" style="background-image: url(${IMG_URL}${backdrop_path})""></div>
@@ -68,7 +69,7 @@ function createDefaultMarkup(path) {
   path.innerHTML = markup;
 }
 
-export function randomElement(arr) {
+function randomElement(arr) {
   const rand = Math.floor(Math.random() * arr.length);
   return [arr[rand]];
 }
