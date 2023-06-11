@@ -6,4 +6,5 @@ export const refs = {
     searchGallery: document.querySelector('.catalog-gallery'),
     clearButton: document.getElementById('clear-search-btn'),
     pagination: document.querySelector('.catalog-gallery-pagination'),
+    mobileInput: document.getElementById('catalog-gallery-input-mobile'),
 };
