@@ -72,6 +72,6 @@ function createUpcomingMovieMarkup(data) {
           <p class="info-item-about-movie"><b>About</b>${overview}</p>
           </div>
                  </div>`;
-  
+
   movieDescription.innerHTML = markup;
 }
