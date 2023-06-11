@@ -1,5 +1,6 @@
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
-import { getStar } from '../../weekly-trends';
+import { getStar } from '../../components/getStar';
+import * as basicLightbox from 'basiclightbox';
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
@@ -13,7 +14,7 @@ async function getTrendMovieOfDay() {
 
     const randomFilm = randomElement(response.data.results);
 
-    if (response.data.results.length === 0) {
+    if ([].length === 0) {
       createDefaultMarkup(contentPath);
 
       DefaultMarkupSettings();
@@ -28,15 +29,13 @@ async function getTrendMovieOfDay() {
 getTrendMovieOfDay();
 
 export function createMarkupFilm(response, path) {
-  console.log(response);
   const markup = response
     .map(({ original_title, overview, backdrop_path, vote_average }) => {
       return `<div class="hero-film_background" style="background-image: url(${IMG_URL}${backdrop_path})""></div>
-        <div class=" hero-wrap">
+        <div class="hero-wrap">
 
   <h1 class="hero-title">${original_title}</h1>
-
-  <div class="hero-stars">${getStar(vote_average)}</div>
+    <div class="hero-stars">${getStar(vote_average)}</div>
 
   <p class="hero-description-js">${overview}</p>
   <div class="hero-buttons">
@@ -53,6 +52,7 @@ export function createMarkupFilm(response, path) {
     })
     .join('');
   path.innerHTML = markup;
+  showTrailer(response);
 }
 
 function createDefaultMarkup(path) {
@@ -88,4 +88,42 @@ function DefaultMarkupSettings() {
     heroDescription.textContent =
       "Is a guide to creating a personalized movie theater experience. You'll need a projector, screen, and speakers. ";
   }
+}
+
+async function showTrailer(response) {
+  try {
+    const button = document.querySelector('.hero-button-trailer');
+    button.addEventListener('click', onButtonClick);
+
+    const id = response.map(data => data.id).join('');
+
+    const youtubeTrailers = await apiMovie.getTrailer(id);
+
+    const trailer = youtubeTrailers.data.results.find(
+      el => el.type === 'Trailer' || el.name === 'Official Trailer'
+    );
+
+    function onButtonClick() {
+      instance.show();
+    }
+
+    const instance = basicLightbox.create(`
+     <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>
+          `);
+  } catch (error) {
+    console.log('Error:', error);
+    markupForMistake().show();
+  }
+}
+function markupForMistake() {
+  return basicLightbox.create(`
+          <div class="trailer-fail">
+            <p class="trailer-fail-text">OOPS...<br/> We are very sorry!<br /> But we couldn’t find the trailer.</p>
+            <button type="button" class="btn-close"><svg class="btn-close--svg" width=24 height=24>
+            <use href='../../img/sprite.svg#icon-x-button'></use>
+        </svg>
+      </button>
+            <div class="bg-box"></div>
+          </div>
+        `);
 }
