@@ -11,7 +11,7 @@ async function getTrendMovieOfDay() {
     const response = await apiMovie.getTrend('day');
 
     const randomFilm = randomElement(response.data.results);
-    console.log(response);
+    // console.log(response);
 
     if (response.data.results.length === 0) {
       createDefaultMarkup(contentPath);

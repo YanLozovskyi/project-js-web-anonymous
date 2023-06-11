@@ -2,6 +2,7 @@ import ApiMovie from './api/themoviedbAPI/fetch-movie';
 
 const apiMovie = new ApiMovie();
 const IMAGE_URL = 'https://image.tmdb.org/t/p/original/';
+import { randomElement } from './pages/home/hero';
 
 // const apiMovie = new ApiMovie({
 // id:569094,
@@ -21,23 +22,23 @@ const buttonAddLibrary = document.querySelector('.button-accent');
 async function getNewFilms() {
   try {
     const response = await apiMovie.getNewFilms();
-    console.log(response);
-    const example = await apiMovie.getMovieInfo(569094);
-    console.log(example);
-    getNewFilm(example.data);
+
+    const randomFilm = randomElement(response.data.results);
+
+    const randomFilmId = randomFilm.map(film => film.id).join('');
+
+    const movieInfo = await apiMovie.getMovieInfo(randomFilmId);
+
+    console.log(movieInfo);
+    createUpcomingMovieMarkup(movieInfo.data);
   } catch (error) {
     console.log(error);
   }
-  //569094
 }
 
 getNewFilms();
 
-// console.log(apiMovie.getNewFilms())
-
-//   addEventListener.buttonAddLibrary("click", getMovieInfo)
-
-function getNewFilm(data) {
+function createUpcomingMovieMarkup(data) {
   const {
     id,
     backdrop_path,
@@ -49,16 +50,18 @@ function getNewFilm(data) {
     genres,
     overview,
   } = data;
-  const allGenres = genres.map(genre => {
-    return genre.name;
-  });
+  const allGenres = genres
+    .map(genre => {
+      return genre.name;
+    })
+    .join(', ');
   const markup = `
     <div class="image-upcoming">
-            <img class="gallery-item__img" src="${IMAGE_URL}${backdrop_path}" 
-            alt="movie" width="280" height="auto" loading="lazy"/>  
+            <img class="gallery-item__img" src="${IMAGE_URL}${backdrop_path}"
+            alt="movie" width="280" height="auto" loading="lazy"/>
     </div>
               <div class="gallery-item" id="${id}">
-               <h3 class="info-item-title">${original_title}</h3> 
+               <h3 class="info-item-title">${original_title}</h3>
     <div class="info">
           <p class="info-item"><b>Release date</b><span class="info-item-second">${release_date}</span></p>
           <p class="info-item"><b>Vote / Votes</b>${vote_average} / ${vote_count}</p>
@@ -69,6 +72,6 @@ function getNewFilm(data) {
           <p class="info-item-about-movie"><b><span class="info-item-thirty">About</span></b>${overview}</p>
           </div>
                  </div>`;
-  
+
   movieDescription.innerHTML = markup;
 }
