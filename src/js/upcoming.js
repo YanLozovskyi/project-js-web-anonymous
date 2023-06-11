@@ -2,7 +2,7 @@ import ApiMovie from './api/themoviedbAPI/fetch-movie';
 
 const apiMovie = new ApiMovie();
 const IMAGE_URL = 'https://image.tmdb.org/t/p/original/';
-import { randomElement } from './pages/home/hero';
+import { randomElement } from './components/randomElement';
 
 // const apiMovie = new ApiMovie({
 // id:569094,
