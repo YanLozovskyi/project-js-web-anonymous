@@ -15,6 +15,7 @@ const IMAGE_URL = 'https://image.tmdb.org/t/p/original/';
 // const response = await axios.get(`${BASE_URL}/?${params}`);
 //     return response
 
+const movieDescription = document.querySelector('.movieDescription');
 const buttonAddLibrary = document.querySelector('.button-accent');
 
 async function getNewFilms() {
@@ -36,19 +37,18 @@ getNewFilms();
 
 //   addEventListener.buttonAddLibrary("click", getMovieInfo)
 
-const movieDescription = document.querySelector('.movieDescription');
-
-function getNewFilm({
-  id,
-  backdrop_path,
-  original_title,
-  release_date,
-  vote_average,
-  vote_count,
-  popularity,
-  genres,
-  overview,
-}) {
+function getNewFilm(data) {
+  const {
+    id,
+    backdrop_path,
+    original_title,
+    release_date,
+    vote_average,
+    vote_count,
+    popularity,
+    genres,
+    overview,
+  } = data;
   const allGenres = genres.map(genre => {
     return genre.name;
   });
