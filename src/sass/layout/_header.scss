@@ -16,6 +16,13 @@
 }
 
 .logo-link {
+  transition: all 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1) rotate(360deg);
+  }
+
   @include tablet {
     display: flex;
     align-items: center;
@@ -41,10 +48,16 @@
 
   color: $light-color;
 
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
+
   @include max-mobile {
     display: none;
   }
 }
+
 .header-nav {
   @include max-mobile {
     display: none;
@@ -68,25 +81,55 @@
   &:hover,
   &:focus {
     color: $accent-color;
+    position: relative;
   }
 }
+.header-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  width: 0%;
+  height: 4px;
+  background-color: $accent-color;
+  border-radius: 2px;
+
+  transition: all 250ms $cubic;
+}
+
+.header-nav-link:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  height: 4px;
+  background-color: $accent-color;
+  border-radius: 2px;
+}
+
 .btn-mobile-menu-js {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.16;
   text-transform: uppercase;
   color: $color-subtitles;
+  background-color: transparent;
+  border: none;
 
   @include tablet {
     display: none;
   }
 }
-.header .button-accent {
+.button-switch {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 4px 3px;
   gap: 22px;
+  background: $button-background-color;
+  border-radius: 74px;
+  border: none;
 
   @include max-mobile {
     gap: 16px;
@@ -124,7 +167,7 @@
 /////// ------------ ДОДАВ СТИЛІ ДЛЯ КНОПКИ --------------- /////////////
 
 .mobile-menu {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -132,15 +175,11 @@
   z-index: 1000;
   background: rgba(255, 255, 255, 0.2);
 
-  transition: transform 250ms ease-in-out;
-
   @include tablet {
     display: none;
   }
-}
 
-.mobile-menu.is-hidden {
-  transform: translateX(-100%);
+  transition: opacity 250ms ease-in-out, visibillity 250ms ease-in-out;
 }
 
 .mobile-menu-content {
@@ -151,7 +190,7 @@
   width: 204px;
   height: 100vh;
 
-  transition: transform 150ms ease-in-out 500ms;
+  transition: transform 250ms ease-in-out 250ms;
 }
 .mobile-menu.is-hidden .mobile-menu-content {
   transform: translateX(-100%);
@@ -177,5 +216,60 @@
   &:hover,
   &:focus {
     color: $accent-color;
+    position: relative;
   }
+}
+
+.mobile-menu-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 0;
+  height: 4px;
+  background-color: $accent-color;
+  border-radius: 2px;
+
+  transition: width 250ms linear;
+}
+
+.mobile-menu-link:hover::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  bottom: -15px;
+  width: 100%;
+  height: 4px;
+  background-color: $accent-color;
+  border-radius: 2px;
+}
+
+.header-nav-link.active {
+  position: relative;
+  color: $accent-color;
+}
+.header-nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  width: 100%;
+  height: 4px;
+  background-color: $accent-color;
+  border-radius: 2px;
+}
+
+.mobile-menu-nav-link.active {
+  position: relative;
+  color: $accent-color;
+}
+.mobile-menu-nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 4px;
+  background-color: $accent-color;
+  border-radius: 2px;
 }

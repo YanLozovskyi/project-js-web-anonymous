@@ -66,8 +66,23 @@
       rgba(17, 17, 17, 0) 45.61%
     ),
     url('/src/images/hero-mob-2-1x-min.jpg');
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (max-width: 767px) and (min-device-pixel-ratio: 2),
+  screen and (max-width: 767px) and (min-resolution: 192dpi),
+  screen and (max-width: 767px) and (min-resolution: 2dppx) {
+  .hero-content-lib {
+    background-image: linear-gradient(
+        86.77deg,
+        #111111 10.38%,
+        rgba(17, 17, 17, 0) 45.61%
+      ),
+      url('/src/images/hero-mob-2-2x-min.jpg');
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero-content-lib {
     padding-top: 62px;
     min-height: 432px;
     background-position-x: 200px;
@@ -78,7 +93,24 @@
       ),
       url('/src/images/hero-tab-2-1x-min.jpg');
   }
-  @media screen and (min-width: 1280px) {
+}
+
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .hero-content-lib {
+    background-position-x: 200px;
+    background-image: linear-gradient(
+        82.55deg,
+        #111111 10%,
+        rgba(17, 17, 17, 0) 45.95%
+      ),
+      url('/src/images/hero-tab-2-2x-min.jpg');
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .hero-content-lib {
     padding-top: 169px;
     min-height: 720;
     background-position-x: 280px;
@@ -88,5 +120,19 @@
         rgba(17, 17, 17, 0) 45%
       ),
       url('/src/images/hero-des-2-1x-min.jpg');
+  }
+}
+
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+  .hero-content-lib {
+    background-position-x: 280px;
+    background-image: linear-gradient(
+        83.16deg,
+        #111111 15%,
+        rgba(17, 17, 17, 0) 45%
+      ),
+      url('/src/images/hero-des-2-2x-min.jpg');
   }
 }
