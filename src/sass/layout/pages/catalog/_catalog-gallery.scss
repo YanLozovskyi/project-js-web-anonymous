@@ -1,24 +1,41 @@
+.catalog-gallery-section {
+  padding-top: 40px;
+  margin-bottom: 40px;
+
+  @include tablet {
+    padding-top: 60px;
+    margin-bottom: 60px;
+  }
+  
+  @include desktop {
+    padding-top: 80px;
+    margin-bottom: 100px;
+  }
+}
+
 .catalog-gallery-form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  row-gap: 12px;
-
+  justify-content: center;
+  gap: 12px;
   margin-bottom: 16px;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
+    flex-wrap: nowrap;
     width: 355px;
-
+    margin-bottom: 36px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include desktop {
     width: 502px;
+    margin-bottom: 48px;
+    gap: 16px;
   }
 }
 
-.catalog-gallery-input-desktop,
+.catalog-gallery-input,
 .catalog-gallery-select,
 .catalog-gallery-input-search {
   background-color: transparent;
@@ -32,17 +49,16 @@
 
   padding-top: 10px;
   padding-bottom: 10px;
-  border: 1px solid #ffffff;
+  border: 1px solid $light-color;
   border-radius: 8px;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     height: 44px;
-
     padding-top: 12px;
     padding-bottom: 12px;
   }
-
-  @media screen and (min-width: 1280px) {
+  
+  @include desktop {
     height: 48px;
   }
 }
@@ -55,12 +71,12 @@
 .catalog-gallery-input {
   max-width: 173px;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     max-width: 100%;
     width: 188px;
   }
-
-  @media screen and (min-width: 1280px) {
+  
+  @include desktop {
     width: 315px;
   }
 }
@@ -71,14 +87,17 @@
 
 .catalog-gallery-select {
   padding-left: 16px;
-
   width: 95px;
 }
 
 .catalog-gallery-input-search {
   width: 224px;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
+    display: none;
+  }
+  
+  @include desktop {
     display: none;
   }
 }
@@ -87,88 +106,109 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: $button-background-color;
-
   width: 40px;
   height: 40px;
-
   border: 0;
   border-radius: 50%;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     height: 44px;
     width: 44px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include desktop {
     height: 48px;
     width: 48px;
   }
 }
 
 .catalog-gallery-svg {
-  @media screen and (min-width: 1280px) {
+  @include desktop {
     height: 20px;
     width: 20px;
   }
 }
 
-.catalog-error-message {
+.catalog-message {
+  display: flex;
+  flex-direction: column;
   font-size: 20px;
   line-height: 1.4;
-
-  margin-top: 48px;
-
+  color: $light-color;
+  margin-bottom: 20px;
   text-align: center;
-}
-
-/* Стилі для мобільної версії */
-.catalog-gallery-input-mobile-wrapper {
-  display: none;
-
-  @media screen and (max-width: 768px) {
-    height: 44px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+  margin: auto;
+  padding-top: 48px;
+  
+  @include tablet {
+    font-size: 24px;
+    line-height: 1.33;
+    margin-bottom: 24px;
+    padding-top: 80px;
+  }
+  
+  @include desktop {
+    font-size: 32px;
+    line-height: 1.12;
+    margin-bottom: 28px;
+    padding-top: 120px;
   }
 }
 
 /* Стилі для кнопки очищення (початково прихована) */
-.catalog-gallery-clear-btn {
-  display: none;
+.catalog-input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.catalog-clear-search-btn {
+  // display: none;
+  position: absolute;
+  top: 0;
+  right: 18px;
+  padding: 11px 11px;
+  background-color: transparent;
+  width: 18px;
+  height: 18px;
   background: none;
   border: none;
-  cursor: pointer;
+
+  @include tablet {
+    padding: 13px 13px;
+  }
+  
+  @include desktop {
+    padding: 15px 15px;
+    right: 20px;
+  }
 }
 
-.catalog-gallery-clear-icon {
-  fill: black;
+.catalog-gallery-icon {
+  stroke: $dark-color;
+  // stroke: $light-color;
   width: 12px;
   height: 12px;
-}
-
-/* Показ кнопки очищення після введення даних в поле пошуку */
-.catalog-gallery-input-mobile:not(:placeholder-shown)
-  + .catalog-gallery-clear-btn {
-  display: block;
 }
 
 .catalog-gallery {
   display: flex;
   flex-direction: column;
   row-gap: 16px;
+  margin-bottom: 20px;
 
   @include tablet {
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 16px;
     row-gap: 28px;
+    margin-bottom: 44px;
   }
 
   @include desktop {
     column-gap: 15px;
     row-gap: 32px;
     margin-bottom: 24px;
+    margin-bottom: 60px;
   }
 }

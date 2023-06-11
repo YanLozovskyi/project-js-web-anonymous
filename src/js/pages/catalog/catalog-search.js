@@ -17,14 +17,19 @@ const {
   searchGallery,
   clearButton,
   pagination,
+  mobileInput,
 } = refs;
 
 let currentYear = '';
 let page;
 
 searchForm.addEventListener('submit', handleFormSubmit);
-// clearButton.addEventListener('click', handleClearButtonClick);
+clearButton.addEventListener('click', handleClearButtonClick);
+searchInput.addEventListener('input', handleInputChange);
+
 getTrend();
+
+clearButton.style.display = 'none';
 
 // Оновлення вмісту галереї фільмів
 async function getTrend() {
@@ -59,32 +64,7 @@ async function handleFormSubmit(event) {
   }
 }
 
-// Обробник події submit форми
-// function handleFormSubmit(event) {
-//   event.preventDefault();
-//   searchMovies();
-// }
-
-// Обробник події click кнопки очищення поля
-// function handleClearButtonClick() {
-//   clearInput();
-//   searchMovies();
-// }
-
-// Обробник події change селекта року
-function handleYearSelectChange() {
-  currentYear = searchSelect.value;
-  searchMovies();
-}
-
-// Очищення пошукового поля
-function handleClearButtonClick(event) {
-  event.preventDefault();
-  searchInput.value = '';
-}
-
-// searchSelect.addEventListener('change', handleYearSelectChange);
-
+// Оновлення вмісту галереї фільмів
 async function updateGallery(movies) {
   searchGallery.innerHTML = '';
 
@@ -96,49 +76,97 @@ async function updateGallery(movies) {
   }
 }
 
-// function createMarkupFilmsCards(movieList) {
-//   return movieList.map(film => createMarkupFilmCard(film)).join('');
-// }
+//.......КНОПКА-Х
 
-// Отримання списку років для селекта
+// Очищення пошукового поля
+function handleClearButtonClick(event) {
+  event.preventDefault();
+  searchInput.value = '';
 
-// async function getNewFilms(page) {
+  // Перевірка, чи пошукова строка пуста
+  if (searchInput.value === '') {
+    clearButton.style.display = 'none';
+  } else {
+    clearButton.style.display = 'block';
+  }
+}
 
-// }
-// apiMovie
-//   .getNewFilms(1)
-//   .then(async response => {
-//     const movies = response.data.results;
-//     const years = new Set();
+function handleInputChange() {
+  if (searchInput.value !== '') {
+    clearButton.style.display = 'block';
+  } else {
+    clearButton.style.display = 'none';
+  }
+}
 
-//     movies.forEach(movie => {
-//       const releaseYear = new Date(movie.release_date).getFullYear();
-//       years.add(releaseYear);
-//     });
-//     for (const year of years) {
-//       const option = document.createElement('option');
-//       option.value = year;
-//       option.textContent = year;
-//       searchSelect.appendChild(option);
-//     }
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
+//.......СЕЛЕКТ
+// Обробник події change селекта року
+function handleYearSelectChange() {
+  currentYear = searchSelect.value;
+  
+  if (currentYear) {
+    searchMovies();
+  }
+}
 
-// // Отримання трендових фільмів тижня
+// Пошук фільмів за вибраним роком
 
-// apiMovie
-//   .getTrend('week')
-//   .then(async response => {
-//     const movies = response.data.results;
-//     if (movies.length === 0) {
-//       searchGallery.innerHTML =
-//         '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
-//     } else {
-//       updateGallery(movies);
-//     }
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
+async function searchMovies() {
+  const query = searchInput.value.trim();
+  page = 1;
+
+  apiMovie.query = query;
+  apiMovie.year = currentYear;
+
+  try {
+    const response = await apiMovie.searchByQueryYear(page);
+    const movies = response.data.results;
+    updateGallery(movies);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Отримання років з фільмів
+async function getYears() {
+  try {
+    const response = await apiMovie.getTrend('week');
+    const movies = response.data.results;
+
+    const years = new Set();
+
+    movies.forEach(movie => {
+      const releaseYear = new Date(movie.release_date).getFullYear();
+      years.add(releaseYear);
+    });
+
+    // for (const movie of movies) {
+    //   const releaseYear = new Date(movie.release_date).getFullYear();
+    //   years.add(releaseYear);
+    // }
+    
+    // Очистити вміст селекта
+    searchSelect.innerHTML = '';
+
+    // Додати початковий варіант "Year"
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Year';
+    searchSelect.appendChild(defaultOption);
+
+    // Додавання років як варіантів до селекта
+    for (const year of years) {
+      const option = document.createElement('option');
+      option.value = year;
+      option.textContent = year;
+      searchSelect.appendChild(option);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Викликати функцію для отримання списку років при завантаженні сторінки
+getYears();
+
+searchSelect.addEventListener('change', handleYearSelectChange);
