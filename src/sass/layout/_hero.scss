@@ -506,3 +506,96 @@
     height: 400px;
   }
 }
+
+.trailer-fail {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 289px;
+  background-color: #111111;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 20px;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    width: 609px;
+    height: 400px;
+    padding: 132px 144px 176px 44px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: block;
+    width: 700px;
+    height: 400px;
+    padding: 150px 329px 150px 50px;
+  }
+}
+.bg-box {
+  width: 150px;
+  height: 150px;
+  background-image: url('/src/images/modal-mobile-min.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    background-image: url('/src/images/modal-tablet-min.png');
+    position: fixed;
+    right: 10px;
+    bottom: 16px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 296px;
+    height: 260px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url('/src/images/modal-desktop-min.png');
+    position: fixed;
+    right: 10px;
+    bottom: 16px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 296px;
+    height: 260px;
+  }
+}
+
+.btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  // background-image: url('../img/sprite.svg#icon-x-button');
+  background-color: blue;
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: $text-color;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  @include tablet {
+    top: 24px;
+    right: 24px;
+  }
+  @include desktop {
+    top: 28px;
+    right: 28px;
+  }
+}
+
+.trailer-fail-text {
+  font-style: normal;
+  color: $text-color;
+  width: 214px;
+  height: 65px;
+
+  @include tablet {
+    width: 321px;
+    height: 92px;
+    color: $text-color;
+  }
+}

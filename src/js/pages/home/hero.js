@@ -14,7 +14,7 @@ async function getTrendMovieOfDay() {
 
     const randomFilm = randomElement(response.data.results);
 
-    if ([].length === 0) {
+    if (response.data.results.length === 0) {
       createDefaultMarkup(contentPath);
 
       DefaultMarkupSettings();
@@ -91,30 +91,34 @@ function DefaultMarkupSettings() {
 }
 
 async function showTrailer(response) {
-  try {
-    const button = document.querySelector('.hero-button-trailer');
-    button.addEventListener('click', onButtonClick);
+  const button = document.querySelector('.hero-button-trailer');
+  button.addEventListener('click', onButtonClick);
 
-    const id = response.map(data => data.id).join('');
+  async function onButtonClick() {
+    try {
+      const id = await response.map(data => data.id).join('');
 
-    const youtubeTrailers = await apiMovie.getTrailer(id);
+      const youtubeTrailers = await apiMovie.getTrailer(id);
 
-    const trailer = youtubeTrailers.data.results.find(
-      el => el.type === 'Trailer' || el.name === 'Official Trailer'
-    );
+      const trailer = youtubeTrailers.data.results.find(
+        el => el.type === 'Trailer' || el.name === 'Official Trailer'
+      );
 
-    function onButtonClick() {
+      if (!trailer) {
+        throw new Error('Trailer not found');
+      }
+
+      const instance = basicLightbox.create(`
+     <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>`);
+
       instance.show();
+    } catch (error) {
+      markupForMistake().show();
+      console.log('Error:', error);
     }
-
-    const instance = basicLightbox.create(`
-     <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>
-          `);
-  } catch (error) {
-    console.log('Error:', error);
-    markupForMistake().show();
   }
 }
+
 function markupForMistake() {
   return basicLightbox.create(`
           <div class="trailer-fail">
