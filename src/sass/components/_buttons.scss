@@ -1,0 +1,126 @@
+.button {
+  display: block;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 24px;
+  padding-left: 24px;
+  border-radius: 74px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+
+  transition: color 250ms $cubic, background-color 250ms $cubic;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 1.14;
+  }
+
+  @include desktop {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+}
+
+.button-accent {
+  @extend .button;
+  color: $dark-color;
+  background: $button-background-color;
+
+  background-image: $button-background-color;
+  background-origin: border-box;
+  border: 1px solid transparent;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    border-radius: 74px;
+    background-image: $button-background-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid transparent;
+  }
+}
+
+.button-dark {
+  @extend .button;
+  color: $light-color;
+  border-radius: 74px;
+  background-image: $button-background-color;
+  background-origin: border-box;
+  box-shadow: inset 0 1000px $dark-color;
+  border: 1px solid transparent;
+
+  transition: color 250ms $cubic, background-color 250ms $cubic;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $light-color;
+    border: solid 1px transparent;
+
+    background-image: $light-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid $light-color;
+  }
+}
+
+.button-modal-dark-theme {
+  @extend .button;
+  color: $light-color;
+  background-image: $button-background-color;
+  background-origin: border-box;
+  box-shadow: inset 0 1000px $dark-color;
+  border: 1px solid transparent;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $light-color;
+    background-image: $light-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid $light-color;
+  }
+}
+
+.button-modal-light-theme {
+  @extend .button;
+  color: $dark-color;
+  background-image: $button-background-color;
+  background-origin: border-box;
+  box-shadow: inset 0 1000px $light-color;
+  border: 1px solid transparent;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $dark-color;
+    background-image: $dark-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $dark-color;
+    border: 1px solid $dark-color;
+  }
+}
+
+.button-search {
+  @extend .button;
+  color: $dark-color;
+  background: $button-background-color;
+
+  background-image: $button-background-color;
+  background-origin: border-box;
+  border: 1px solid transparent;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    border-radius: 74px;
+    background-image: $button-background-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid transparent;
+  }
+}
