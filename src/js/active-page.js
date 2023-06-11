@@ -1,17 +1,27 @@
-const activePage = window.location.pathname;
 const pagesEl = document.querySelectorAll('.header-nav-link');
+const windowPathName = window.location.pathname;
 
 pagesEl.forEach(pageEl => {
-  if (pageEl.href.includes(`${activePage}`)) {
+  const pageLinkPathname = new URL(pageEl.href).pathname;
+
+  if (
+    (windowPathName === '/' && pageLinkPathname === '/index.html') ||
+    pageLinkPathname === windowPathName
+  ) {
     pageEl.classList.add('active');
   }
 });
 
-const mobileActivePage = window.location.pathname;
-const mobilePagesEl = document.querySelectorAll('.mobile-menu-nav-link');
+const MobilePagesEl = document.querySelectorAll('.mobile-menu-nav-link');
+const MobileWindowPathName = window.location.pathname;
 
-mobilePagesEl.forEach(pageEl => {
-  if (pageEl.href.includes(`${mobileActivePage}`)) {
+MobilePagesEl.forEach(pageEl => {
+  const pageLinkPathname = new URL(pageEl.href).pathname;
+
+  if (
+    (MobileWindowPathName === '/' && pageLinkPathname === '/index.html') ||
+    pageLinkPathname === MobileWindowPathName
+  ) {
     pageEl.classList.add('active');
   }
 });

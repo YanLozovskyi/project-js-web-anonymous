@@ -5,17 +5,18 @@
   position: relative;
   overflow: hidden;
 
-  @include tablet {
+  @media screen and (min-width: 768px) {
     min-height: 440px;
-    padding-top: 62px;
+    padding-top: 36px;
   }
 
-  @include desktop {
-    padding-top: 118px;
+  @media screen and (min-width: 1280px) {
+    padding-top: 70px;
     min-height: 660px;
   }
 }
 .hero-film_background {
+  border-radius: 20px;
   z-index: 0;
   position: absolute;
   top: 0;
@@ -293,12 +294,12 @@
   position: inherit;
   z-index: 3;
 
-  @include tablet {
+  @media screen and (min-width: 768px) {
     max-width: 357px;
     margin-bottom: 28px;
   }
 
-  @include desktop {
+  @media screen and (min-width: 1280px) {
     font-size: 16px;
     line-height: 1.19;
     margin-bottom: 36px;
@@ -313,6 +314,55 @@
   background-size: cover;
 }
 
+@include max-mobile {
+  .hero-picture-default {
+    background-position-x: 95px;
+    background-image: linear-gradient(
+        86.77deg,
+        #111111 10.38%,
+        rgba(17, 17, 17, 0) 45.61%
+      ),
+      url('/src/images/hero-mob-1-1x-min.jpg');
+  }
+}
+@media screen and (max-width: 767px) and (min-device-pixel-ratio: 2),
+  screen and (max-width: 767px) and (min-resolution: 192dpi),
+  screen and (max-width: 767px) and (min-resolution: 2dppx) {
+  .hero-picture-default {
+    background-image: linear-gradient(
+        86.77deg,
+        #111111 10.38%,
+        rgba(17, 17, 17, 0) 45.61%
+      ),
+      url('/src/images/hero-mob-1-2x-min.jpg');
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero-picture-default {
+    background-position-x: 200px;
+    background-image: linear-gradient(
+        82.55deg,
+        #111111 10%,
+        rgba(17, 17, 17, 0) 45.95%
+      ),
+      url('/src/images/hero-tab-1-1x-min.jpg');
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .hero-picture-default {
+    background-position-x: 200px;
+    background-image: linear-gradient(
+        82.55deg,
+        #111111 10%,
+        rgba(17, 17, 17, 0) 45.95%
+      ),
+      url('/src/images/hero-tab-1-2x-min.jpg');
+  }
+}
+
 @media (min-width: 1280px) {
   .hero-picture-default {
     background-position-x: 280px;
@@ -325,42 +375,31 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1280px) and (min-resolution: 192dpi),
+  screen and (min-width: 1280px) and (min-resolution: 2dppx) {
   .hero-picture-default {
-    background-position-x: 200px;
+    background-position-x: 280px;
     background-image: linear-gradient(
-        82.55deg,
-        #111111 10%,
-        rgba(17, 17, 17, 0) 45.95%
+        83.16deg,
+        #111111 15%,
+        rgba(17, 17, 17, 0) 45%
       ),
-      url('/src/images/hero-tab-1-1x-min.jpg');
+      url('/src/images/hero-des-1-2x-min.jpg');
   }
 }
-
-@include max-mobile {
-  .hero-picture-default {
-    background-position-x: 95px;
-    background-image: linear-gradient(
-        86.77deg,
-        #111111 10.38%,
-        rgba(17, 17, 17, 0) 45.61%
-      ),
-      url('/src/images/hero-mob-1-1x-min.jpg');
-  }
-}
-
 .hero-content-default {
   padding-top: 40px;
   position: relative;
   overflow: hidden;
   height: 380px;
 
-  @include tablet {
+  @media screen and (min-width: 768px) {
     min-height: 420px;
     padding-top: 62px;
   }
 
-  @include desktop {
+  @media screen and (min-width: 1280px) {
     min-height: 660px;
     padding-top: 169px;
   }
@@ -377,12 +416,12 @@
 
   position: inherit;
   z-index: 3;
-  @include tablet {
+  @media screen and (min-width: 768px) {
     max-width: 357px;
     margin-bottom: 32px;
   }
 
-  @include desktop {
+  @media screen and (min-width: 1280px) {
     font-size: 16px;
     line-height: 1.19;
 
@@ -402,7 +441,7 @@
   position: inherit;
   z-index: 3;
 
-  @include tablet {
+  @media screen and (min-width: 768px) {
     max-width: 332px;
     font-weight: 700;
     font-size: 44px;
@@ -410,10 +449,153 @@
     margin-bottom: 12px;
   }
 
-  @include desktop {
+  @media screen and (min-width: 1280px) {
     font-size: 64px;
     line-height: 1.17;
     margin-bottom: 16px;
     max-width: 464px;
+  }
+}
+
+.hero-stars {
+  margin-bottom: 17px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 22px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 22px;
+  }
+}
+
+.basicLightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.basicLightbox--visible {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.basicLightbox iframe {
+  width: 280px;
+  height: 289px;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 20px;
+  @media screen and (min-width: 768px) {
+    width: 609px;
+    height: 400px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 700px;
+    height: 400px;
+  }
+}
+
+.trailer-fail {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 289px;
+  background-color: #111111;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 20px;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    width: 609px;
+    height: 400px;
+    padding: 132px 144px 176px 44px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: block;
+    width: 700px;
+    height: 400px;
+    padding: 150px 329px 150px 50px;
+  }
+}
+.bg-box {
+  width: 150px;
+  height: 150px;
+  background-image: url('/src/images/modal-mobile-min.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    background-image: url('/src/images/modal-tablet-min.png');
+    position: fixed;
+    right: 10px;
+    bottom: 16px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 296px;
+    height: 260px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url('/src/images/modal-desktop-min.png');
+    position: fixed;
+    right: 10px;
+    bottom: 16px;
+    margin-left: auto;
+    margin-right: 0;
+    width: 296px;
+    height: 260px;
+  }
+}
+
+.btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  // background-image: url('../img/sprite.svg#icon-x-button');
+  background-color: blue;
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: $text-color;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  @include tablet {
+    top: 24px;
+    right: 24px;
+  }
+  @include desktop {
+    top: 28px;
+    right: 28px;
+  }
+}
+
+.trailer-fail-text {
+  font-style: normal;
+  color: $text-color;
+  width: 214px;
+  height: 65px;
+
+  @include tablet {
+    width: 321px;
+    height: 92px;
+    color: $text-color;
   }
 }
