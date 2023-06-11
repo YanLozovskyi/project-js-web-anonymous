@@ -78,7 +78,7 @@ b {
 .info-item {
   font-size: 16px;
   line-height: 19px;
-  color: #ffffff;
+  color: $light-color;
   display: flex;
   // align-items: center;
   justify-content: space-between;
@@ -90,6 +90,20 @@ b {
 .info-item:not(:last-child) {
   margin-bottom: 12px;
 }
+ .gallery-item{
+     margin-bottom: 20px;
+ }
+.info-item-about-movie{
+display: flex;
+ flex-direction: column;
+ gap: 16px;
+font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #F8F8F8;
+    text-align: left;
+}
+    // text-transform: uppercase;
 .gallery-item {
   margin-bottom: 20px;
 }
