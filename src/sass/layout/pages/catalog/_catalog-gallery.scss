@@ -185,10 +185,14 @@
 }
 
 .catalog-gallery-icon {
-  stroke: $dark-color;
-  // stroke: $light-color;
+  // stroke: $dark-color;
+  stroke: $light-color;
   width: 12px;
   height: 12px;
+}
+
+.catalog-gallery-icon:hover {
+  stroke: $accent-color;
 }
 
 .catalog-gallery {
