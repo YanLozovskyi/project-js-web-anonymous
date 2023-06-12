@@ -95,6 +95,9 @@
   top: 0;
   left: 0;
   overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   transition: opacity 250ms linear, visibillity 250ms linear;
 }
@@ -105,15 +108,13 @@
 
 .footer-modal-content {
   background: $dark-color;
-  width: 320px;
-  height: 700px;
+  width: 300px;
+  height: 400px;
   position: relative;
   z-index: 999;
-  width: 320px;
   border-radius: 10px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-left: auto;
+  margin-right: auto;
   padding: 25px 15px 20px;
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
   overflow: auto;
@@ -121,11 +122,13 @@
   transition: transform 250ms linear;
 
   @include tablet {
-    width: 520px;
+    width: 420px;
+    height: 420px;
   }
 
   @include desktop {
-    width: 1200px;
+    width: 750px;
+    height: 500px;
   }
 }
 .footer-modal-close-btn {
@@ -178,7 +181,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 .team-item {
   box-shadow: 1px 1px 7px 4px #e1d8d26b;
@@ -191,8 +194,8 @@
 }
 .team-img {
   object-fit: cover;
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   margin-bottom: 8px;
   overflow: hidden;
 }
@@ -203,7 +206,7 @@
 
 .team__member {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
   color: $dark-color;
   margin-bottom: 5px;
 }
@@ -211,16 +214,16 @@
 .team__role {
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   color: $dark-color;
   margin-bottom: 5px;
 }
 
 .team__link-linkedin {
   border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 10%;
+  width: 15px;
+  height: 15px;
+  border-radius: 20%;
   margin-right: 10px;
   background-color: transparent;
   fill: $dark-color;
@@ -237,9 +240,9 @@
 
 .team__link-github {
   border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  border-radius: 20%;
   background-color: transparent;
   fill: $dark-color;
   display: inline-flex;
