@@ -40,16 +40,97 @@
   color: $color-subtitles-white-theme;
 }
 ////// ---------  Upcoming Soon-light theme--------///////
+
+.light .vote-text,
+.light .info-item-about-movie,
+.light .info-item {
+  color: $text-color-for-white-theme;
+}
+
+.light .vote-text {
+  background-color: $text-color;
+}
+
 .light .one-title,
 .light .info-item-title,
 .light .info-item b,
-.light .info-item-about-thirty {
+.light .info-item-about-thirty,
+.light .info-item-thirty {
+  color: $dark-color;
+}
+////// --------- Modal-card light theme--------///////
+.light .pop-up-modal {
+  background-color: $light-color;
+}
+
+.light .pop-up-modal__title,
+.light .pop-up-modal__link,
+.light .pop-up-modal__about-txt,
+.light .genres {
   color: $dark-color;
 }
 
-////// --------- Error light theme--------///////
+.light .vote,
+.light .votes,
+.light .popularity,
+.light .item-votes {
+  color: $text-color-for-white-theme;
+}
+
+.light .vote,
+.light .votes {
+  background-color: $text-color;
+}
+
+.light .add-remove-btn.button-accent {
+  background: $light-color;
+  border-radius: 74px;
+  border-color: $accent-color;
+}
+
+////// --------- Error on library light theme--------///////
 .light .my-library-content-text-message {
   color: $dark-color;
+}
+////// --------- Library-select light theme--------///////
+//// --- container
+.light .ss-main.my-library-genre-list {
+  background: $light-color;
+  border-color: $color-subtitles-white-theme;
+}
+//// --- select item
+.light .ss-main.my-library-genre-list .ss-values .ss-single {
+  color: $color-subtitles-white-theme;
+}
+//// --- arrow
+.light .ss-main.my-library-genre-list .ss-arrow path {
+  stroke: $color-subtitles-white-theme;
+}
+///// ----- input-option
+.light .ss-content.my-library-genre-list .ss-list .ss-option {
+  color: $text-color-for-white-theme;
+  background: $text-color;
+}
+
+.light .ss-content.my-library-genre-list .ss-list .ss-option:hover,
+.light .ss-content.my-library-genre-list .ss-list .ss-option:focus,
+.light .ss-content.my-library-genre-list .ss-list .ss-option.ss-highlighted,
+.light
+  .ss-content.my-library-genre-list
+  .ss-list
+  .ss-option:not(.ss-disabled).ss-selected,
+.light .ss-content.my-library-genre-list .ss-list .ss-option:hover {
+  background: #1c1c1c;
+  background: $text-color;
+}
+////// ----- input from search
+.light .ss-content.my-library-genre-list .ss-search {
+  background: $text-color;
+}
+.light .ss-content.my-library-genre-list .ss-search input {
+  background: $text-color;
+  border-color: $color-subtitles-white-theme;
+  color: $color-subtitles-white-theme;
 }
 
 ////// --------- Footer light theme--------///////
