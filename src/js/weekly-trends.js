@@ -1,17 +1,10 @@
 import ApiMovie from './api/themoviedbAPI/fetch-movie';
-import { halfStarSVG, fullStarSVG, emptyStarSVG } from './components/stars';
-import {
-  createMarkupFilmCard,
-  createMarkupFilmsCards,
-} from './components/createMarkupFilmCard';
+
+import { createMarkupFilmsCards } from './components/createMarkupFilmCard';
 
 const list = document.querySelector('.card-list');
 
 const apiMovie = new ApiMovie();
-
-// function createMarkupFilmsCards(movieList) {
-//   return movieList.map(film => createMarkupFilmCard(film)).join('');
-// }
 
 async function getTrendMovieOfWeek() {
   try {
