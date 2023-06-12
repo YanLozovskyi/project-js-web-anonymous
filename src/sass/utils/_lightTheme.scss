@@ -1,7 +1,7 @@
 .light {
   background-color: $light-color;
 }
-////// --------- Біла тема хедеру--------///////
+////// --------- Header light theme--------///////
 .light .header {
   background-color: $light-color;
 }
@@ -16,7 +16,7 @@
 .light .logo-title {
   color: $text-color-for-white-theme;
 }
-////// --------- Біла мобільної навігації--------///////
+////// --------- Mobile-nav light theme--------///////
 .light .mobile-menu-content {
   background-color: $light-color;
 }
@@ -24,7 +24,7 @@
 .light .mobile-menu-nav-link {
   color: $dark-color;
 }
-////// --------- Біла  каталогу карток та тижневих трендів--------///////
+////// --------- Catalog and weekly trends light theme--------///////
 .light .weekly-title {
   color: $dark-color;
 }
@@ -39,7 +39,7 @@
 .light .catalog-gallery-input::placeholder {
   color: $color-subtitles-white-theme;
 }
-////// --------- Біла Upcoming Soon--------///////
+////// ---------  Upcoming Soon-light theme--------///////
 .light .one-title,
 .light .info-item-title,
 .light .info-item b,
@@ -47,12 +47,12 @@
   color: $dark-color;
 }
 
-////// --------- Біла  тексту помилки в бібліотеці--------///////
+////// --------- Error light theme--------///////
 .light .my-library-content-text-message {
   color: $dark-color;
 }
 
-////// --------- Біла мобільної футеру--------///////
+////// --------- Footer light theme--------///////
 .light .footer-content {
   color: $color-subtitles-white-theme;
 }
