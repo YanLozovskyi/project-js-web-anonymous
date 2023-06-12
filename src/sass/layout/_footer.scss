@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 4px;
 
   @include max-mobile {
@@ -30,7 +31,12 @@
     line-height: 1.875;
   }
 }
-.footer-command-info {
+.footer-team-info {
+  margin-right: 10px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
   font-size: 14px;
   line-height: 1.6;
   color: $color-subtitles;
@@ -42,58 +48,85 @@
 }
 .icon-heart {
   fill: $accent-color;
+  animation: Scale 0.7s ease infinite alternate;
 }
 .footer-link {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-
+  position: relative;
+  background-color: transparent;
+  border: none;
   transition: all 250ms $cubic;
   transform: scale(1.25);
+  margin-left: 8px;
+  color: $color-subtitles;
+  font-size: 14px;
+  line-height: 1.6;
+  outline: none;
 
   &:hover,
   &:focus {
-    text-decoration-color: $accent-color;
     color: $accent-color;
     transform: scale(1.25);
   }
+}
+.footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: $color-subtitles;
+
+  transition: all 250ms linear;
+}
+.footer-link:hover::after {
+  background-color: $accent-color;
+  width: 100%;
 }
 
 .footer-modal-backdrop {
   width: 100%;
   height: 100%;
   z-index: 998;
-  visibility: visible;
-  opacity: 1;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 15px;
   position: fixed;
   top: 0;
   left: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
 
   transition: opacity 250ms linear, visibillity 250ms linear;
 }
 
+.footer-modal-backdrop.is-hidden .footer-modal-content {
+  transform: translateY(100%) scale(0.5);
+}
+
 .footer-modal-content {
-  background: $button-background-color;
+  background: $dark-color;
   width: 320px;
-  height: 650px;
+  height: 700px;
+  position: relative;
+  z-index: 999;
+  width: 320px;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px 15px 20px;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  overflow: auto;
+
+  transition: transform 250ms linear;
 
   @include tablet {
     width: 520px;
   }
-  position: relative;
-  z-index: 999;
-  width: 320px;
-  visibility: visible;
-  opacity: 1;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 25px 15px 20px;
-  box-shadow: 0 28px 42px rgba(0, 0, 0, 0.38), 0 20px 20px rgba(0, 0, 0, 0.33);
-  overflow: auto;
+
+  @include desktop {
+    width: 1200px;
+  }
 }
 .footer-modal-close-btn {
   position: absolute;
@@ -101,19 +134,35 @@
   right: 10px;
   width: 24px;
   height: 24px;
-  background: #e7e9fc;
+  background: #e1d8d26b;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 7px 4px #8c410c;
   border-radius: 50%;
   padding: 8px;
   cursor: pointer;
-  transition: background-color var(--main-transition),
-    fill var(--main-transition);
+  transition: all 250ms $cubic;
+
+  @include max-mobile {
+    top: 15px;
+    right: 10px;
+  }
+
+  @include tablet {
+    top: 15px;
+    right: 10px;
+  }
+
+  &:hover {
+    background: #8c410c;
+    box-shadow: 1px 1px 7px 4px #e1d8d26b;
+  }
 }
 .modal-close-icon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  stroke: $dark-color;
 }
 .footer-modal-title {
   font-weight: 600;
@@ -121,7 +170,7 @@
   line-height: 1.16;
 
   text-transform: uppercase;
-  color: $dark-color;
+  color: #8c410c;
   text-align: center;
   margin-bottom: 15px;
 }
@@ -132,39 +181,74 @@
   gap: 1.2rem;
 }
 .team-item {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 7px 4px #e1d8d26b;
   border-radius: 5px;
   position: relative;
   border-radius: 10px;
   padding-bottom: 5px;
   overflow: hidden;
+  background-color: #8c410c;
 }
 .team-img {
   object-fit: cover;
   width: 200px;
-  height: 210px;
+  height: 200px;
   margin-bottom: 8px;
   overflow: hidden;
 }
 
-.team-name {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.16;
-
-  text-transform: uppercase;
-  color: $dark-color;
+.team__box {
   text-align: center;
-  margin-bottom: 8px;
 }
 
-.team-position {
+.team__member {
   font-weight: 600;
-  font-size: 16px;
-  line-height: 1.16;
-
-  text-transform: uppercase;
+  font-size: 18px;
   color: $dark-color;
-  text-align: center;
+  margin-bottom: 5px;
+}
+
+.team__role {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  color: $dark-color;
+  margin-bottom: 5px;
+}
+
+.team__link-linkedin {
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 10%;
+  margin-right: 10px;
+  background-color: transparent;
+  fill: $dark-color;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  &--active:hover,
+  &--active:focus {
+    background-color: $accent-color;
+    fill: $light-color;
+  }
+}
+
+.team__link-github {
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
+  fill: $dark-color;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  &--active:hover,
+  &--active:focus {
+    background-color: $accent-color;
+    fill: $light-color;
+  }
 }

@@ -3,7 +3,11 @@
     <p class="footer-content">© 2023 | All Rights Reserved |</p>
     <p class="footer-team-info">
       Developed with
-      <svg class="icon-heart" width="14" height="14">
+      <svg
+        class="icon-heart animate__animated animate__pulse"
+        width="14"
+        height="14"
+      >
         <use
           href="./images/sprite/sprite.svg#icon-heart"
           width="14"
@@ -11,31 +15,55 @@
         ></use>
       </svg>
       by
-      <a href="#" class="footer-link team-modal-link-js">GoIT Students</a>
+      <button type="button" class="footer-link team-modal-link-js">
+        GoIT Students
+      </button>
     </p>
   </div>
 
   <div class="footer-modal-backdrop is-hidden">
     <div class="footer-modal-content">
-      <button type="button" class="footer-modal-close-btn button-search">
+      <button type="button" class="footer-modal-close-btn">
         <svg class="modal-close-icon" width="10" height="10">
           <use href="./images/sprite/sprite.svg#icon-close"></use>
         </svg>
       </button>
-      <h2 class="footer-modal-title">Our team</h2>
+      <h1 class="footer-modal-title">Our team</h1>
       <ul class="team-list">
         <li class="team-item">
           <img
             class="team-img"
-            src="./images/team-photo/photo_2023-06-11_14-59-13.jpg"
+            src="./images/team-photo/photo_2023-06-12_21-01-38.jpg"
             alt="Yan
           Lozovskiy"
             width="200px"
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Yan Lozovskiy</p>
-          <p class="team-position">Team Lead</p>
+          <div class="team__box">
+            <h2 class="team__member">Yan Lozovskiy</h2>
+            <p class="team__role">Team Lead</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
@@ -46,8 +74,30 @@
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Ivanna Mykhalova</p>
-          <p class="team-position">Scrum Master</p>
+          <div class="team__box">
+            <h2 class="team__member">Ivanna Mykhalova</h2>
+            <p class="team__role">Scrum Master</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
@@ -58,8 +108,30 @@
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Taras Vasylkiv</p>
-          <p class="team-position">Developer</p>
+          <div class="team__box">
+            <h2 class="team__member">Taras Vasylkiv</h2>
+            <p class="team__role">Tech Lead</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
@@ -70,8 +142,30 @@
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Sergiy</p>
-          <p class="team-position">Developer</p>
+          <div class="team__box">
+            <h2 class="team__member">Sergiy</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
@@ -82,20 +176,64 @@
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Olesia Kubska</p>
-          <p class="team-position">Developer</p>
+          <div class="team__box">
+            <h2 class="team__member">Olesia Kubska</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
             class="team-img"
-            src="./images/team-photo/328278001_1828641447534600_7698199478400282315_n-removebg-preview.png"
+            src="./images/team-photo/328278001_1828641447534600_7698199478400282315_n-removebg-preview.jpg"
             alt="Olexandr"
             width="200px"
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Olexander</p>
-          <p class="team-position">Developer</p>
+          <div class="team__box">
+            <h2 class="team__member">Olexander</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
@@ -106,8 +244,30 @@
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Anastasia</p>
-          <p class="team-position">Developer</p>
+          <div class="team__box">
+            <h2 class="team__member">Anastasia</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
@@ -118,8 +278,30 @@
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Ihor</p>
-          <p class="team-position">Developer</p>
+          <div class="team__box">
+            <h2 class="team__member">Ihor</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
@@ -130,8 +312,30 @@
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Victoria</p>
-          <p class="team-position">Developer</p>
+          <div class="team__box">
+            <h2 class="team__member">Victoria</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
         <li class="team-item">
           <img
@@ -142,8 +346,30 @@
             height="180px"
             loading="lazy"
           />
-          <p class="team-name">Iryna Hodovanets</p>
-          <p class="team-position">Developer</p>
+          <div class="team__box">
+            <h2 class="team__member">Iryna Hodovanets</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
         </li>
       </ul>
     </div>

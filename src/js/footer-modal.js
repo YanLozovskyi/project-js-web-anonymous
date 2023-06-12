@@ -10,14 +10,20 @@ function openModalCommand() {
   footerModalEl.addEventListener('click', closeModal);
 }
 
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    footerModalEl.classList.add('is-hidden');
+  }
+});
+
 function closeModal(e) {
   if (
-    e.target.closest('.footer-modal-backdrop') &&
-    !e.target.closest('.footer-modal-content')
+    (e.target.closest('.footer-modal-backdrop') &&
+      !e.target.closest('.footer-modal-content')) ||
+    e.target.closest('.footer-modal-close-btn')
   ) {
-    refs.mobileMenu.classList.add('is-hidden');
+    footerModalEl.classList.add('is-hidden');
     document.body.classList.remove('no-scroll');
-    removeAllEventListeners();
   }
   return;
 }
