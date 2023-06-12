@@ -1,4 +1,26 @@
-import { getscroll } from './scroll-up';
-const libraryList = document.querySelector('.my-library-movies-list');
+function getscroll() {
+  const guard = document.querySelector('.js-guard');
+  const scrollBtn = document.querySelector('.scroll-up--button');
 
-console.log(libraryList.children.length);
+  const options = {
+    root: null,
+    rootMargin: '-100px',
+    threshold: 0.0,
+  };
+
+  const observer = new IntersectionObserver(scrollButtonShow, options);
+
+  observer.observe(guard);
+
+  function scrollButtonShow(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        scrollBtn.classList.add('scroll-up--button---shown');
+      } else {
+        scrollBtn.classList.remove('scroll-up--button---shown');
+      }
+    });
+  }
+}
+
+export { getscroll };

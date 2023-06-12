@@ -4,6 +4,7 @@ import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 import { refs } from './refs';
 import { createMarkupFilmsCards } from '../../components/createMarkupFilmCard';
 import { markupContentTextMessage } from './markupContentTextMessage';
+import { getscroll } from '../../components/scrollForLibrary';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
@@ -29,6 +30,7 @@ function renderContentBasedOnConditions() {
     refs.libraryContent.innerHTML = markupContentTextMessage();
   } else if (dataStorage) {
     //? Отримую унікальні ID жанрів фільмів, які є у localStorage і за допомогою функції createSelectOptionMarkup отримую розмітку з жанром, і вставляю у select
+    getscroll();
     dataStorage
       .reduce((acc, el) => [...acc, ...el.genres], [])
       .filter(
