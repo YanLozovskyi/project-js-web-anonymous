@@ -10,8 +10,6 @@ export class ServiceAddRemoveBtn {
   setButtonName() {
     const dataLocalStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
     if (dataLocalStorage?.length === 0 || !dataLocalStorage) {
-      console.log('dataLocalStorage:', dataLocalStorage);
-      console.log('dataLocalStorage?.length:', dataLocalStorage?.length);
       Storage.save(STORAGE_KEY.myLibraryMoviesList, []);
       this.addRemoveBtn.textContent = 'Add to my library';
     } else {

@@ -15,13 +15,13 @@ let page = 0;
 let startIndex = 0;
 let endIndex = 0;
 let correctGenreMovieList = [];
-// Storage.save(STORAGE_KEY.myLibraryMoviesList, []);
+
 const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
 
 renderContentBasedOnConditions();
 
 function renderContentBasedOnConditions() {
-  if (dataStorage.length === 0) {
+  if (dataStorage?.length === 0) {
     refs.genreList.removeEventListener('change', onSelectGenreListChange);
     refs.myLibrarySection.classList.add(
       'my-library-content-text-message-section'
