@@ -29,7 +29,7 @@ function renderContentBasedOnConditions() {
     refs.libraryContent.innerHTML = markupContentTextMessage();
   } else if (dataStorage) {
     //? Отримую унікальні ID жанрів фільмів, які є у localStorage і за допомогою функції createSelectOptionMarkup отримую розмітку з жанром, і вставляю у select
-    const allGenres = dataStorage
+    dataStorage
       .reduce((acc, el) => [...acc, ...el.genres], [])
       .filter(
         (genre, index, self) =>

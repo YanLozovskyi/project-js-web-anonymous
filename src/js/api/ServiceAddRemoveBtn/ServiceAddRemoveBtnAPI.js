@@ -1,8 +1,6 @@
 import Storage from '../localStorageAPI/localStorageAPI';
 import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 
-const dataLocalStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
-
 export class ServiceAddRemoveBtn {
   constructor(addRemoveBtn, movie) {
     this.addRemoveBtn = addRemoveBtn;
@@ -10,7 +8,10 @@ export class ServiceAddRemoveBtn {
   }
 
   setButtonName() {
+    const dataLocalStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
     if (dataLocalStorage?.length === 0 || !dataLocalStorage) {
+      console.log('dataLocalStorage:', dataLocalStorage);
+      console.log('dataLocalStorage?.length:', dataLocalStorage?.length);
       Storage.save(STORAGE_KEY.myLibraryMoviesList, []);
       this.addRemoveBtn.textContent = 'Add to my library';
     } else {
@@ -31,6 +32,7 @@ export class ServiceAddRemoveBtn {
   }
 
   onRemoveBtnClick() {
+    this.addRemoveBtn.blur();
     const localStorageData = Storage.load(STORAGE_KEY.myLibraryMoviesList);
     const index = localStorageData.findIndex(
       ({ id }) => id === this.movie.data.id
@@ -45,6 +47,7 @@ export class ServiceAddRemoveBtn {
   }
 
   onAddMovieBtnClick() {
+    this.addRemoveBtn.blur();
     const localStorageData = Storage.load(STORAGE_KEY.myLibraryMoviesList);
     const updateData = [...localStorageData, this.movie.data];
     Storage.save(STORAGE_KEY.myLibraryMoviesList, updateData);
