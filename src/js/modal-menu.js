@@ -11,7 +11,9 @@ try {
 } catch (error) {}
 
 async function onMovieCardClick(e) {
-  if (e.target.offsetParent.nodeName === 'LI') {
+  // console.dir('click', e.target);
+
+  if (e.target.offsetParent?.nodeName === 'LI') {
     const movieId = Number(e.target.offsetParent.dataset['movie_id']);
 
     document.body.insertAdjacentHTML('beforeend', markupBackdropMovieCard());
