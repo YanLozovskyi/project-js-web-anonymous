@@ -1,9 +1,6 @@
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import { refs } from './catalog-refs';
-import {
-  createMarkupFilmCard,
-  createMarkupFilmsCards,
-} from '../../components/createMarkupFilmCard';
+import { createMarkupFilmsCards } from '../../components/createMarkupFilmCard';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
@@ -44,7 +41,6 @@ async function getTrend() {
 
     // Отримання років для селекта
     getYears();
-
   } catch (error) {
     console.log(error);
   }
@@ -59,13 +55,13 @@ async function handleFormSubmit(event) {
   apiMovie.query = query;
   apiMovie.year = currentYear;
 
-    try {
-      const response = await apiMovie.searchByQueryYear(page);
-      const movies = response.data.results;
-      updateGallery(movies);
-    } catch (error) {
-      console.log(error);
-    }
+  try {
+    const response = await apiMovie.searchByQueryYear(page);
+    const movies = response.data.results;
+    updateGallery(movies);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // Пошук фільмів за вибраним роком
@@ -124,7 +120,6 @@ function handleInputChange() {
 // Обробник події change селекта року
 function handleYearSelectChange() {
   const newYear = searchSelect.value;
-  console.log(newYear);
 
   if (newYear !== currentYear) {
     currentYear = newYear;
@@ -142,7 +137,7 @@ const slim = new SlimSelect({
   select: searchSelect,
   data: createYearList(),
   showSearch: false,
-  searchPlaceholder: ' '
+  searchPlaceholder: ' ',
 });
 
 // Створення списку останніх 50 років

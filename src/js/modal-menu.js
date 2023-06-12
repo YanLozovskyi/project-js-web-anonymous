@@ -6,11 +6,12 @@ const IMAGE_URL = 'https://image.tmdb.org/t/p/original/';
 
 const openModalMovie = document.querySelector('.js-open-modal-movie');
 
-openModalMovie.addEventListener('click', onMovieCardClick);
+try {
+  openModalMovie.addEventListener('click', onMovieCardClick);
+} catch (error) {}
 
 async function onMovieCardClick(e) {
   if (e.target.offsetParent.nodeName === 'LI') {
-    console.log('e.target:', e.target);
     const movieId = Number(e.target.offsetParent.dataset['movie_id']);
 
     document.body.insertAdjacentHTML('beforeend', markupBackdropMovieCard());
@@ -47,7 +48,6 @@ async function onMovieCardClick(e) {
     id,
     poster_path,
     original_title,
-    release_date,
     vote_average,
     vote_count,
     popularity,
@@ -86,13 +86,13 @@ async function onMovieCardClick(e) {
       <div class="pop-up-modal__about">
         <p class="pop-up-modal__about-txt">${overview}</p>
       </div>
-       <button
-      class="add-remove-btn button-accent"
-      type="button"
-      data-type="action"
-      data-action="add-to-my-library"
-    >
-    </button>
+        <button
+          class="add-remove-btn button-accent"
+          type="button"
+          data-type="action"
+          data-action="add-to-my-library"
+          >
+        </button>
     </div>
   </div>
 </div>
