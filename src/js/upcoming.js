@@ -1,6 +1,6 @@
 import ApiMovie from './api/themoviedbAPI/fetch-movie';
-import { randomElement } from './components/randomElement';
 import Storage from './api/localStorageAPI/localStorageAPI';
+import { randomElement } from './components/randomElement';
 import { STORAGE_KEY } from './localStorageKey/localStorageKey';
 
 const apiMovie = new ApiMovie();
@@ -8,73 +8,82 @@ const IMAGE_URL = 'https://image.tmdb.org/t/p/original/';
 
 const movieDescription = document.querySelector('.movieDescription');
 
+getNewFilms();
+
+let toggleAddRemoveButton;
+let movieId = null;
+let randomMovieInfo;
+const dataLocalStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+
 async function getNewFilms() {
   try {
     const response = await apiMovie.getNewFilms();
-
     const randomFilm = randomElement(response.data.results);
-
     const randomFilmId = randomFilm.map(film => film.id).join('');
-
-    const randomMovieInfo = await apiMovie.getMovieInfo(randomFilmId);
-
-    const movieId = randomMovieInfo.data.id;
-
-    const dataLocal = Storage.load(STORAGE_KEY.myLibraryMoviesList);
-
-    console.log(dataLocal);
+    randomMovieInfo = await apiMovie.getMovieInfo(randomFilmId);
+    movieId = randomMovieInfo.data.id;
 
     movieDescription.innerHTML = createUpcomingMovieMarkup(
       randomMovieInfo.data
     );
 
-    const buttonAddLibrary = document.querySelector('.test');
-    buttonAddLibrary.addEventListener('click', onBtnClick);
-
-    function onBtnClick() {
-      console.log('hi');
-    }
-
-    if (dataLocal?.length === 0 || !dataLocal) {
-      buttonAddLibrary.textContent = 'Add to my library';
-    } else {
-      if (dataLocal.some(({ id }) => id === movieId)) {
-        buttonAddLibrary.textContent = 'Remove from my library';
-      } else {
-        buttonAddLibrary.textContent = 'Add to my library';
-      }
-    }
-
-    // if (true) {
-    //   buttonAddLibrary.textContent = 'Add to my library';
-    // } else {
-    //   buttonAddLibrary.textContent = 'Remove from my library';
-    // }
+    toggleAddRemoveButton = document.querySelector('.test');
+    setButtonName();
   } catch (error) {
     console.log(error);
-    f;
   }
 }
 
-getNewFilms();
+function setButtonName(movieId) {
+  if (dataLocalStorage?.length === 0 || !dataLocalStorage) {
+    Storage.save(STORAGE_KEY.myLibraryMoviesList, []);
+    toggleAddRemoveButton.textContent = 'Add to my library';
+    toggleAddRemoveButton.removeEventListener('click', onAddMovieBtnClick);
+    toggleAddRemoveButton.addEventListener('click', onAddMovieBtnClick);
+  } else {
+    if (dataLocalStorage.some(({ id }) => id === movieId)) {
+      toggleAddRemoveButton.textContent = 'Remove from my library';
+      toggleAddRemoveButton.removeEventListener('click', onRemoveBtnClick);
+      toggleAddRemoveButton.addEventListener('click', onRemoveBtnClick);
+    } else {
+      toggleAddRemoveButton.textContent = 'Add to my library';
+      toggleAddRemoveButton.removeEventListener('click', onAddMovieBtnClick);
+      toggleAddRemoveButton.addEventListener('click', onAddMovieBtnClick);
+    }
+  }
+}
 
-function createUpcomingMovieMarkup(data) {
-  const {
-    id,
-    backdrop_path,
-    original_title,
-    release_date,
-    vote_average,
-    vote_count,
-    popularity,
-    genres,
-    overview,
-  } = data;
-  const allGenres = genres
-    .map(genre => {
-      return genre.name;
-    })
-    .join(', ');
+function onRemoveBtnClick() {
+  const index = dataLocalStorage.findIndex(({ id }) => id === movieId);
+  const updateData = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+  updateData.splice(index, 1);
+
+  Storage.save(STORAGE_KEY.myLibraryMoviesList, updateData);
+  toggleAddRemoveButton.textContent = 'Add to my library';
+  toggleAddRemoveButton.removeEventListener('click', onRemoveBtnClick);
+  toggleAddRemoveButton.addEventListener('click', onAddMovieBtnClick);
+}
+
+function onAddMovieBtnClick() {
+  const updateData = [...dataLocalStorage, randomMovieInfo.data];
+  Storage.save(STORAGE_KEY.myLibraryMoviesList, updateData);
+  toggleAddRemoveButton.textContent = 'Remove from my library';
+  toggleAddRemoveButton.removeEventListener('click', onAddMovieBtnClick);
+  toggleAddRemoveButton.addEventListener('click', onRemoveBtnClick);
+}
+
+function createUpcomingMovieMarkup({
+  id,
+  backdrop_path,
+  original_title,
+  release_date,
+  vote_average,
+  vote_count,
+  popularity,
+  genres,
+  overview,
+}) {
+  const allGenres = genres.map(({ name }) => name).join(', ');
   return `
     <div class="image-upcoming">
     <h2 class="one-title">Upcoming this months</h2>
