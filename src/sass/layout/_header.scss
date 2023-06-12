@@ -162,7 +162,7 @@
     display: none;
   }
 
-  transition: opacity 250ms ease-in-out, visibillity 250ms ease-in-out;
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
 }
 
 .mobile-menu-content {
@@ -173,9 +173,10 @@
   width: 204px;
   height: 100vh;
 
-  transition: transform 250ms ease-in-out 250ms;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out,
+    visibility 300ms ease-in-out;
 }
-.mobile-menu.is-hidden .mobile-menu-content {
+.mobile-menu-content.is-hidden {
   transform: translateX(-100%);
 }
 
