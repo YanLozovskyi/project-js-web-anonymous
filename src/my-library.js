@@ -10,5 +10,3 @@ import './js/mobile-menu';
 import './js/active-page';
 
 import './js/footer-modal';
-
-// import './js/components/getGenreName';
