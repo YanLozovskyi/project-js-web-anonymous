@@ -88,7 +88,6 @@ function createUpcomingMovieMarkup({
   const allGenres = genres.map(({ name }) => name).join(', ');
   return `
     <div class="image-upcoming">
-    <h2 class="one-title">Upcoming this months</h2>
     <img
       class="gallery-item__img"
       src="${IMAGE_URL}${backdrop_path}"

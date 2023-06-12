@@ -15,12 +15,19 @@ let page = 0;
 let startIndex = 0;
 let endIndex = 0;
 let correctGenreMovieList = [];
-
+// Storage.save(STORAGE_KEY.myLibraryMoviesList, []);
 const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+
 renderContentBasedOnConditions();
 
 function renderContentBasedOnConditions() {
-  if (dataStorage) {
+  if (dataStorage.length === 0) {
+    refs.genreList.removeEventListener('change', onSelectGenreListChange);
+    refs.myLibrarySection.classList.add(
+      'my-library-content-text-message-section'
+    );
+    refs.libraryContent.innerHTML = markupContentTextMessage();
+  } else if (dataStorage) {
     //? Отримую унікальні ID жанрів фільмів, які є у localStorage і за допомогою функції createSelectOptionMarkup отримую розмітку з жанром, і вставляю у select
     const allGenres = dataStorage
       .reduce((acc, el) => [...acc, ...el.genres], [])
