@@ -18,6 +18,8 @@ import { randomElement } from './components/randomElement';
 
 const movieDescription = document.querySelector('.movieDescription');
 const buttonAddLibrary = document.querySelector('.button-accent');
+// buttonAddLibrary.addEventListener("click", addRemoveMovie)
+
 
 async function getNewFilms() {
   try {
