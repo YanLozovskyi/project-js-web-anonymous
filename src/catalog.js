@@ -13,4 +13,4 @@ import './js/active-page';
 
 import './js/footer-modal';
 
-import './js/components/lightTheme';
+import './js/modal-menu';

@@ -11,6 +11,4 @@ import './js/active-page';
 
 import './js/footer-modal';
 
-// import './js/components/getGenreName';
-
-import './js/components/lightTheme';
+import './js/modal-menu';
