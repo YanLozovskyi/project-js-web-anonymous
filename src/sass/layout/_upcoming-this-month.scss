@@ -1,12 +1,12 @@
 .home-upcoming {
-  padding: 0px 20px 32px;
+  // padding: 0px 20px 32px;
   @include tablet {
     min-height: 420px;
-    padding: 0px 32px 77px;
+    // padding: 0px 32px 77px;
   }
   @include desktop {
     min-height: 660px;
-    padding: 0px 32px 100px;
+    // padding: 0px 32px 100px;
   }
 }
 
@@ -29,6 +29,7 @@
   }
 }
 .gallery-item{
+  
   @include tablet {
       
     }
@@ -88,19 +89,26 @@ b {
   @include desktop {
     margin-bottom: 0px;
     margin-right: 16px;
+    
   }
 }
 
 .info {
+  //  display: block;
+   display: flex;
+   justify-content: space-between;
+   
   margin-bottom: 20px;
   @include tablet{
     display: flex;
   justify-content: space-between;
-  
   }
     @include desktop{
       display: flex;
-      flex-direction: column;
+      
+      
+      
+      
 
     }
 }
@@ -111,6 +119,13 @@ b {
   display: flex;
   align-items: center;
 
+}
+.info-item-thirty{
+  font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    text-transform: uppercase;
+    color: $color-subtitles;
 }
 .info-item-fourth{
   background:$light-color;
@@ -141,7 +156,13 @@ b {
 .info-item:not(:last-child) {
   margin-bottom: 12px;
 }
- 
+ .gallery-item-about-movie{
+  display: flex;
+  flex-direction: column;
+  @include desktop{
+    
+  }
+ }
 .info-item-about-movie{
  display: flex;
  flex-direction: column;
@@ -151,6 +172,8 @@ b {
  line-height: 20px;
  color: $text-color;
  text-align: left;
+margin-bottom: 20px;
+ 
 }
     
 .movieDescription{
@@ -160,14 +183,28 @@ b {
  }
 
 .info-item-one-part{
+  margin-right: 57px;
   margin-bottom: 12px;
   @include tablet{
 margin-bottom: 0px;
+
+
   }
     @include desktop {
 margin-bottom: 12px;
+// margin-right: 57px;
+
     }
 }
+.info-item-two-part:not(:last-child){
+  @include tablet{
+margin-right: 118px;
+  }
+  
+}
 .info-item-about {
-  margin-bottom: 20px;
+  
+  @include desktop{
+    
+  }
 }

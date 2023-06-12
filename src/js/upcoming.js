@@ -50,6 +50,7 @@ function createUpcomingMovieMarkup({
 }) {
   const allGenres = genres.map(({ name }) => name).join(', ');
   return `
+  
     <div class="image-upcoming">
     <img
       class="gallery-item__img"
@@ -57,32 +58,52 @@ function createUpcomingMovieMarkup({
       alt="movie"
       loading="lazy"
     />
+    
   </div>
+  
+
+<div class="direction">
+<h3 class="info-item-title">${original_title}</h3>
   <div class="gallery-item" id="${id}">
-    <h3 class="info-item-title">${original_title}</h3>
     <div class="info">
-      <div class="info-item-one-part">
-        <p class="info-item">
-          <b>Release date</b
-          ><span class="info-item-second">${release_date}</span>
-        </p>
-        <p class="info-item">
-          <b>Vote / Votes</b
-          ><span class="info-item-fourth vote-text">${vote_average}</span> /
-          <span class="info-item-fourth vote-text">${vote_count}</span>
-        </p>
-      </div>
-      <div class="info-item-two-part">
-        <p class="info-item"><b>Popularity</b>${popularity}</p>
-        <p class="info-item"><b>Genre </b>${allGenres}</p>
+    
+      <ul class="info-item-one-part">
+        <li class="info-item">
+          <b>Release date</b>
+        </li>
+        <li class="info-item">
+          <b>Vote / Votes</b>
+          </li>
+          </ul>
+          <ul class="info-item-two-part">
+   <li class="info-item"><span class="info-item-second">${release_date}</span></li>
+<li class="info-item"><span class="info-item-fourth vote-text">${vote_average}</span> / <span class="info-item-fourth vote-text">${vote_count}</span></li>
+</ul>
+
+          <ul class="info-item-one-part">
+          <li class="info-item"><b>Popularity</b>
+          </li>
+          <li class="info-item"><b>Genre</b>
+          </li>
+          
+      </ul>
+
+      <ul class="info-item-two-part">
+        <li class="info-item">${popularity}</li>
+        <li class="info-item">${allGenres}</li>
+        </ul>
+        
       </div>
     </div>
     <div class="info-item-about">
       <p class="info-item-about-movie">
-        <b><span class="info-item-thirty">About</span></b
-        >${overview}
+        <b><span class="info-item-thirty">About</span></b>${overview}
       </p>
+      <button type="button" class="add-remove-btn button-accent"></button>
     </div>
-    <button type="button" class="add-remove-btn button-accent"></button>
-  </div>`;
+    
+  </div>
+  </div>
+  </div>
+  `
 }
