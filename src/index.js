@@ -19,3 +19,5 @@ import './js/footer-modal';
 import './js/modal-menu';
 
 import './js/components/lightTheme';
+
+import './js/components/scroll-up';

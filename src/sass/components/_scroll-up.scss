@@ -6,6 +6,12 @@
   position: fixed;
   right: 20px;
   bottom: 20px;
+
+  visibility: hidden;
+}
+
+.scroll-up--button---shown {
+  visibility: visible;
 }
 
 .scroll-up--svg {
