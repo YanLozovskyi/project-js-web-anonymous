@@ -54,7 +54,8 @@ function setButtonName(movieId) {
 }
 
 function onRemoveBtnClick() {
-  const index = dataLocalStorage.findIndex(({ id }) => id === movieId);
+  const localStorageData = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+  const index = localStorageData.findIndex(({ id }) => id === movieId);
   const updateData = Storage.load(STORAGE_KEY.myLibraryMoviesList);
   updateData.splice(index, 1);
 
@@ -65,7 +66,8 @@ function onRemoveBtnClick() {
 }
 
 function onAddMovieBtnClick() {
-  const updateData = [...dataLocalStorage, randomMovieInfo.data];
+  const localStorageData = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+  const updateData = [...localStorageData, randomMovieInfo.data];
   Storage.save(STORAGE_KEY.myLibraryMoviesList, updateData);
   toggleAddRemoveButton.textContent = 'Remove from my library';
   toggleAddRemoveButton.removeEventListener('click', onAddMovieBtnClick);
