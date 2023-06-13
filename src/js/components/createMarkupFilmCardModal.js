@@ -44,13 +44,18 @@ export function markupMovieCard({
       <div class="pop-up-modal__about">
         <p class="pop-up-modal__about-txt">${overview}</p>
       </div>
-        <button
-          class="add-remove-btn button-accent"
-          type="button"
-          data-type="action"
-          data-action="add-to-my-library"
-          >
-        </button>
+        <div class="pop-up-modal-wrap-btn">
+          <button
+            class="add-remove-btn button-accent"
+            type="button"
+            data-action="add-remove-to-my-library"
+          ></button>
+          <button
+            class="add-movie-trailer-btn button-accent"
+            type="button"
+            data-action="add-movie-trailer-btn"
+          >Watch trailer</button>
+        </div>
     </div>
   </div>
 </div>

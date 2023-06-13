@@ -20,7 +20,7 @@ const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
 renderContentBasedOnConditions();
 
 document.addEventListener('click', function (e) {
-  if (e.target.dataset.type === 'action') {
+  if (e.target.dataset.action === 'add-remove-to-my-library') {
     const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
     renderLibraryCards(dataStorage);
   }

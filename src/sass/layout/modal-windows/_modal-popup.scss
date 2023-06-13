@@ -244,3 +244,24 @@
 .body.open-modal > .overlay {
   display: block;
 }
+
+.pop-up-modal-wrap-btn .button-accent {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16; /* 14px/12 */
+  @include tablet {
+    line-height: 1.33;
+  }
+}
+
+.pop-up-modal-wrap-btn {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
