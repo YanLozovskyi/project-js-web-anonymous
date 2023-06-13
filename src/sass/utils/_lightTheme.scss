@@ -9,12 +9,22 @@
 .light .header-nav-link {
   color: $color-subtitles-white-theme;
 }
+
+///////--------------Hero-------------------/////////////
 .light .hero-content {
   background-color: $light-color;
 }
 
 .light .logo-title {
   color: $text-color-for-white-theme;
+}
+
+.light .trailer-fail {
+  background-color: $light-color;
+}
+
+.light .trailer-fail-text {
+  color: $dark-color;
 }
 ////// --------- Mobile-nav light theme--------///////
 .light .mobile-menu-content {
