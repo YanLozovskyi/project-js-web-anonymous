@@ -10,7 +10,7 @@ const option = {
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
     template: {
-        page: `<a href="#" class="tui-page-btn">{{page}}</a><a href="#"`,
+        page: '<a href="#" class="tui-page-btn">{{page}}</a>',
         currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
         moveButton:
             '<a href="#" class="tui-page-btn tui-{{type}}">' +
@@ -32,3 +32,4 @@ export const pagination = new Pagination(refs.pagination, option);
 function addLeadingZero(number) {
     return number.toString().padStart(2, '0');
   }
+export const pagination = new Pagination(refs.pagination, options);
