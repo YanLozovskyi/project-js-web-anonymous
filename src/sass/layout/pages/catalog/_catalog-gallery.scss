@@ -6,7 +6,7 @@
     padding-top: 60px;
     margin-bottom: 60px;
   }
-  
+
   @include desktop {
     padding-top: 80px;
     margin-bottom: 100px;
@@ -57,7 +57,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
   }
-  
+
   @include desktop {
     height: 48px;
   }
@@ -75,7 +75,7 @@
     max-width: 100%;
     width: 188px;
   }
-  
+
   @include desktop {
     width: 315px;
   }
@@ -96,7 +96,7 @@
   @include tablet {
     display: none;
   }
-  
+
   @include desktop {
     display: none;
   }
@@ -140,14 +140,14 @@
   text-align: center;
   margin: auto;
   padding-top: 48px;
-  
+
   @include tablet {
     font-size: 24px;
     line-height: 1.33;
     margin-bottom: 24px;
     padding-top: 80px;
   }
-  
+
   @include desktop {
     font-size: 32px;
     line-height: 1.12;
@@ -177,7 +177,7 @@
   @include tablet {
     padding: 13px 13px;
   }
-  
+
   @include desktop {
     padding: 15px 15px;
     right: 20px;
@@ -215,4 +215,65 @@
     margin-bottom: 24px;
     margin-bottom: 60px;
   }
+}
+
+/* Пагінація */
+
+.catalog-gallery-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  // width: 184px;
+
+  // @include tablet {
+  //   width: 316px;
+  // }
+}
+
+.tui-page-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 10px;
+  line-height: 1;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 100%;
+  border: 1px solid $color-subtitles;
+
+  background-color: transparent;
+
+  @include tablet {
+    font-size: 14px;
+
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.tui-is-selected {
+  background: $button-background-color;
+
+  border: none;
+
+  color: #fff;
+}
+
+.tui-next-is-ellip,
+.tui-prev-is-ellip,
+.tui-next,
+.tui-prev {
+  border: none;
+}
+
+.tui-first,
+.tui-last {
+  display: none;
 }
