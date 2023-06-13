@@ -21,7 +21,8 @@
     "axios": "^1.4.0",
     "basiclightbox": "^5.0.4",
     "modern-normalize": "^1.1.0",
-    "slim-select": "^2.5.0"
+    "slim-select": "^2.5.0",
+    "swiper": "^9.4.0"
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.6.0",
