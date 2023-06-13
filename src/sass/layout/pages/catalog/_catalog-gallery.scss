@@ -266,6 +266,15 @@
   color: #fff;
 }
 
+.tui-next::after {
+  content: '';
+  width: 50px;
+  height: 50px;
+  background-image: url(../images/right-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .tui-next-is-ellip,
 .tui-prev-is-ellip,
 .tui-next,
