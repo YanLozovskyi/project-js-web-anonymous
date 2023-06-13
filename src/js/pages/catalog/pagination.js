@@ -4,7 +4,7 @@ import { refs } from './catalog-refs';
 const option = {
   // totalItems: 10,
   itemsPerPage: 20,
-  visiblePages: 3,
+  visiblePages: 4,
   // page: 1,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',

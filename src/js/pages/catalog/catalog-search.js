@@ -6,8 +6,6 @@ import { createMarkupFilmsCards } from '../../components/createMarkupFilmCard';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
-const IMG_URL = 'https://image.tmdb.org/t/p/original/';
-
 // Ініціалізація API-класу для отримання фільмів
 const apiMovie = new ApiMovie();
 

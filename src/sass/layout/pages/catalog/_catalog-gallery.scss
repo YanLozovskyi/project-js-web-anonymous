@@ -221,16 +221,17 @@
 
 .catalog-gallery-pagination {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 16px;
 
   margin-left: auto;
   margin-right: auto;
 
-  width: 184px;
+  // width: 184px;
 
-  @include tablet {
-    width: 316px;
-  }
+  // @include tablet {
+  //   width: 316px;
+  // }
 }
 
 .tui-page-btn {
