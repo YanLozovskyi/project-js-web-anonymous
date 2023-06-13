@@ -1,6 +1,7 @@
 import ApiMovie from './api/themoviedbAPI/fetch-movie';
 import { ServiceAddRemoveBtn } from './api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
 import { markupMovieCard } from './components/createMarkupFilmCardModal';
+import { getWidthScrollbar } from './components/getWidthScrollbar';
 import * as basicLightbox from 'basiclightbox';
 
 const apiMovie = new ApiMovie();
@@ -21,7 +22,11 @@ async function onMovieCardClick(e) {
       const instance = basicLightbox.create(markupMovieCard(movie.data), {
         handlerEscape: null,
         handlerBtnClose: null,
+
         onShow: instance => {
+          document.body.style.overflow = 'hidden';
+          document.body.style.paddingRight = getWidthScrollbar() + 'px';
+
           const addRemoveBtn = instance
             .element()
             .querySelector('button[data-type="action"]');
@@ -44,6 +49,8 @@ async function onMovieCardClick(e) {
         },
 
         onClose() {
+          document.body.style.overflow = '';
+          document.body.style.paddingRight = '';
           document.removeEventListener('keydown', this.handlerEscape);
           document.removeEventListener('click', this.handlerEscape);
         },
