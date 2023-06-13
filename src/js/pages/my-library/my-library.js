@@ -1,4 +1,3 @@
-// import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import Storage from '../../api/localStorageAPI/localStorageAPI';
 import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 import { refs } from './refs';
@@ -20,6 +19,13 @@ let correctGenreMovieList = [];
 const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
 
 renderContentBasedOnConditions();
+
+document.addEventListener('click', function (e) {
+  if (e.target.dataset.action === 'add-remove-to-my-library') {
+    const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+    renderLibraryCards(dataStorage);
+  }
+});
 
 function renderContentBasedOnConditions() {
   if (dataStorage?.length === 0) {

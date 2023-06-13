@@ -43,34 +43,48 @@
 
   &__close {
     position: absolute;
-    top: 20px;
-    right: 16px;
-    margin: 0;
+    top: 10px;
+    right: 10px;
     width: 24px;
     height: 24px;
-    border: none;
-    outline: none;
+    background: #e1d8d26b;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 7px 4px #8c410c;
+    border-radius: 50%;
+    padding: 8px;
     cursor: pointer;
-    background-color: transparent;
+    transition: all 250ms $cubic;
+
+    @include max-mobile {
+      top: 15px;
+      right: 10px;
+    }
 
     @include tablet {
-      top: 24px;
-      right: 24px;
+      top: 15px;
+      right: 10px;
     }
 
-    @include desktop {
-      top: 40px;
-      right: 40px;
+    &:hover {
+      background: #8c410c;
+      box-shadow: 1px 1px 7px 4px #e1d8d26b;
     }
-  }
 
-  &__close-icon {
-    stroke: white;
-  }
+    & > svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-  &__close-icon:hover,
-  &__close-icon:focus {
-    stroke: $accent-color;
+    .svg-close-icon {
+      transition: all 250ms $cubic;
+      stroke: $dark-color;
+    }
+
+    &:hover .svg-close-icon {
+      stroke: $accent-color;
+    }
   }
 
   &__container {
@@ -229,4 +243,25 @@
 .body.open-modal > .modal-window,
 .body.open-modal > .overlay {
   display: block;
+}
+
+.pop-up-modal-wrap-btn .button-accent {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16; /* 14px/12 */
+  @include tablet {
+    line-height: 1.33;
+  }
+}
+
+.pop-up-modal-wrap-btn {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
