@@ -1,0 +1,246 @@
+#toggle {
+  padding: 2px 2px 0px;
+}
+
+// --PopUp modal--
+.pop-up-modal {
+  transition: 250ms;
+  transition-delay: 250ms;
+  visibility: hidden;
+  opacity: 0;
+
+  pointer-events: none;
+  box-sizing: border-box;
+  max-height: 90%;
+  text-align: left;
+  padding: 52px 16px;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 16px;
+  background: $dark-color;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  z-index: 999;
+
+  @include max-mobile {
+    overflow-y: auto;
+  }
+
+  @include tablet {
+    width: 704px;
+    min-height: 488px;
+    padding: 44px;
+  }
+
+  @include desktop {
+    width: 846px;
+    min-height: 598px;
+    padding: 60px;
+    border-radius: 20px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background: #e1d8d26b;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 7px 4px #8c410c;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 250ms $cubic;
+
+    @include max-mobile {
+      top: 15px;
+      right: 10px;
+    }
+
+    @include tablet {
+      top: 15px;
+      right: 10px;
+    }
+
+    &:hover {
+      background: #8c410c;
+      box-shadow: 1px 1px 7px 4px #e1d8d26b;
+    }
+
+    & > svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .svg-close-icon {
+      transition: all 250ms $cubic;
+      stroke: $dark-color;
+    }
+
+    &:hover .svg-close-icon {
+      stroke: $accent-color;
+    }
+  }
+
+  &__container {
+    padding: 0;
+    box-sizing: border-box;
+    width: 248px;
+
+    @include tablet {
+      width: 616px;
+      display: flex;
+    }
+
+    @include desktop {
+      width: 726px;
+      display: flex;
+    }
+  }
+
+  &__img {
+    width: 248px;
+    height: 315px;
+    margin-bottom: 20px;
+
+    @include tablet {
+      width: 294px;
+      height: 400px;
+      margin: 0 16px 0 0;
+    }
+
+    @include desktop {
+      width: 375px;
+      height: 478px;
+      margin: 0 20px 0 0;
+    }
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    margin-bottom: 29px;
+
+    @include tablet {
+      font-size: 24px;
+      margin-bottom: 26px;
+    }
+
+    @include desktop {
+      margin-bottom: 28px;
+    }
+  }
+
+  &__blok {
+    display: flex;
+    color: $text-color;
+    justify-content: space-between;
+  }
+
+  &__list {
+    width: 120px;
+  }
+
+  &__link,
+  &__link-item {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14;
+    margin-bottom: 12px;
+
+    @include desktop {
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
+  }
+
+  &__about {
+    display: block;
+    margin-bottom: 16px;
+
+    @include tablet {
+      margin-top: 4px;
+      margin-bottom: 24px;
+    }
+
+    @include desktop {
+      margin-top: 4px;
+      scroll-snap-type: auto;
+    }
+  }
+
+  &__about-txt {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.66;
+    color: $text-color;
+
+    @include tablet {
+      overflow: auto;
+      max-height: 150px;
+    }
+
+    @include desktop {
+      max-height: 200px;
+      font-size: 14px;
+    }
+  }
+}
+
+.item-votes {
+  display: flex;
+}
+
+.vote,
+.votes {
+  background-color: $light-color;
+  color: $dark-color;
+  border-radius: 15px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mylibrary {
+  margin: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: 300ms;
+  background-color: rgba(255, 255, 255, 0.2);
+
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 500;
+}
+
+.light-theme .overlay {
+  transition: 300ms;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.visual {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.body.open-modal > .modal-window,
+.body.open-modal > .overlay {
+  display: block;
+}

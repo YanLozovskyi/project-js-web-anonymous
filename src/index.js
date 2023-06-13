@@ -1,5 +1,6 @@
 // styles scss
 import './sass/main.scss';
+import 'animate.css';
 
 // js
 
@@ -16,3 +17,4 @@ import './js/weekly-trends';
 import './js/active-page';
 
 import './js/footer-modal';
+import './js/modal-menu';

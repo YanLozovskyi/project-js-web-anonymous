@@ -1,9 +1,13 @@
 <footer class="footer">
   <div class="container footer-wrapper">
     <p class="footer-content">© 2023 | All Rights Reserved |</p>
-    <p class="footer-command-info">
+    <p class="footer-team-info">
       Developed with
-      <svg class="icon-heart" width="14" height="14">
+      <svg
+        class="icon-heart animate__animated animate__pulse"
+        width="14"
+        height="14"
+      >
         <use
           href="./images/sprite/sprite.svg#icon-heart"
           width="14"
@@ -11,13 +15,363 @@
         ></use>
       </svg>
       by
-      <a href="#" class="footer-link command-modal-link-js">GoIT Students</a>
+      <button type="button" class="footer-link team-modal-link-js">
+        GoIT Students
+      </button>
     </p>
   </div>
 
-  <div class="footer-modal-backdrop">
+  <div class="footer-modal-backdrop is-hidden">
     <div class="footer-modal-content">
-      <h2 class="footer-modal-title"></h2>
+      <button type="button" class="footer-modal-close-btn">
+        <svg class="modal-close-icon" width="10" height="10">
+          <use href="./images/sprite/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+      <h1 class="footer-modal-title">Our team</h1>
+      <ul class="team-list">
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/photo_2023-06-12_21-01-38.jpg"
+            alt="Yan
+          Lozovskiy"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Yan Lozovskyi</h2>
+            <p class="team__role">Team Lead</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://www.linkedin.com/in/yan-lozovskyi-ba9170271/"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/YanLozovskyi"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/IMG_20220429_123018.jpg"
+            alt="Ivanna Mykhalova"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Ivanna Mykhalova</h2>
+            <p class="team__role">Scrum Master</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://www.linkedin.com/in/%D1%96%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0-%D0%BC%D0%B8%D1%85%D0%B0%D0%BB%D1%8C%D0%BE%D0%B2%D0%B0-222a36267/"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/Ivano4ka8"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/IMG_0393.jpg"
+            alt="Taras Vasylkiv"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Taras Vasylkiv</h2>
+            <p class="team__role">Tech Lead</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://www.linkedin.com/in/taras-vasylkiv/"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/vasylkivt"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/IMG_2282.png"
+            alt="Sergiy"
+            width="180px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Sergey Yasak</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://www.linkedin.com/in/sergeyyasak/"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/Sergey4857"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/IMG_3030.jpg"
+            alt="Olesia Kubska"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Olesia Kubska</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/OlesiaKubska"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/328278001_1828641447534600_7698199478400282315_n-removebg-preview.jpg"
+            alt="Olexandr"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Olexander Sirotov</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/SirotovAlexander"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/1671019061767.jpg"
+            alt="Anastasia"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Anastasia Tkachenko</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://www.linkedin.com/in/anastasiia-%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F-00633a246/"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/Anastasiia008"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/IMG_20230306_173802_347~2.jpg"
+            alt="Nosorog"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Ihor Nosenko</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/nsihor"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/T04S1TL52NR-U04S80B1R35-e393e89beafd-512.png"
+            alt="Victoria"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Victoria Nikitchenko</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/Vikki1312"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+        <li class="team-item">
+          <img
+            class="team-img"
+            src="./images/team-photo/photo_2023-06-11_20-03-56.jpg"
+            alt="Iryna Hodovanets"
+            width="200px"
+            height="180px"
+            loading="lazy"
+          />
+          <div class="team__box">
+            <h2 class="team__member">Iryna Hodovanets</h2>
+            <p class="team__role">Developer</p>
+            <a
+              class="team__link-linkedin team__link-linkedin--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="#"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-linkedin"></use>
+              </svg>
+            </a>
+            <a
+              class="team__link-github team__link-github--active"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              href="https://github.com/UserIryna28"
+            >
+              <svg class="team__icon" width="25" height="25">
+                <use href="./images/sprite/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </footer>
