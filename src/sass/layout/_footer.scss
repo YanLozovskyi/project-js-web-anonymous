@@ -115,7 +115,7 @@
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  padding: 25px 15px 20px;
+  padding: 20px 15px 20px;
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
   overflow: auto;
 
@@ -128,15 +128,11 @@
 
   @include desktop {
     width: 750px;
-    height: 500px;
+    height: 510px;
   }
 }
 .footer-modal-close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 24px;
-  height: 24px;
   background: #e1d8d26b;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 7px 4px #8c410c;
@@ -146,13 +142,24 @@
   transition: all 250ms $cubic;
 
   @include max-mobile {
-    top: 15px;
-    right: 10px;
+    top: 5px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
   }
 
   @include tablet {
-    top: 15px;
+    top: 10px;
     right: 10px;
+    width: 15px;
+    height: 15px;
+  }
+
+  @include desktop {
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
   }
 
   &:hover {
@@ -166,6 +173,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
   stroke: $dark-color;
+
+  @include max-mobile {
+    width: 8px;
+    height: 8px;
+  }
+  @include tablet {
+    width: 8px;
+    height: 8px;
+  }
 }
 .footer-modal-title {
   font-weight: 600;
@@ -173,9 +189,19 @@
   line-height: 1.16;
 
   text-transform: uppercase;
-  color: #8c410c;
+  color: #e1d8d26b;
   text-align: center;
-  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px #8c410c, 0 0 1em $accent-color, 0 0 0.2em #e1d8d26b;
+
+  transition: all 250ms $cubic;
+
+  @include max-mobile {
+    font-size: 14px;
+  }
+  &:hover {
+    color: #8c410c;
+    text-shadow: 1px 1px 2px #e1d8d26b, 0 0 1em $accent-color, 0 0 0.2em #8c410c;
+  }
 }
 .team-list {
   display: flex;
@@ -188,9 +214,16 @@
   border-radius: 5px;
   position: relative;
   border-radius: 10px;
-  padding-bottom: 5px;
   overflow: hidden;
   background-color: #8c410c;
+  width: 120px;
+
+  transition: transform 250ms $cubic;
+
+  &:hover,
+  &focus {
+    transform: scale(1.1);
+  }
 }
 .team-img {
   object-fit: cover;
@@ -253,5 +286,37 @@
   &--active:focus {
     background-color: $accent-color;
     fill: $light-color;
+  }
+}
+.footer-modal-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+
+  @include max-mobile {
+    gap: 8px;
+  }
+
+  @include tablet {
+    gap: 10px;
+  }
+}
+
+.footer-modal-logo {
+  fill: #e1d8d26b;
+  filter: drop-shadow(2px 2px 3px $accent-color);
+
+  transition: all 250ms linear;
+
+  @include desktop {
+    width: 40px;
+    height: 40px;
+  }
+
+  &:hover {
+    fill: #8c410c;
+    filter: drop-shadow(2px 2px 3px #e1d8d26b);
   }
 }
