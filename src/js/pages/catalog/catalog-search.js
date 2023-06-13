@@ -3,11 +3,14 @@ import { refs } from './catalog-refs';
 import { createMarkupFilmsCards } from '../../components/createMarkupFilmCard';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
+import { Loader } from '../../loader';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
 // Ініціалізація API-класу для отримання фільмів
 const apiMovie = new ApiMovie();
+
+const loader = new Loader();
 
 const {
   searchForm,
@@ -33,6 +36,7 @@ clearButton.style.display = 'none';
 
 // Оновлення вмісту галереї фільмів
 async function getTrend() {
+  loader.onShow();
   try {
     const response = await apiMovie.getTrend('week');
     const movies = response.data.results;
@@ -44,10 +48,12 @@ async function getTrend() {
   } catch (error) {
     console.log(error);
   }
+  loader.onClose();
 }
 
 // Пошук фільмів за ключовим словом та роком
 async function handleFormSubmit(event) {
+  loader.onShow();
   event.preventDefault();
   const query = searchInput.value.trim();
   page = 1;
@@ -62,6 +68,7 @@ async function handleFormSubmit(event) {
   } catch (error) {
     console.log(error);
   }
+  loader.onClose();
 }
 
 // Пошук фільмів за вибраним роком

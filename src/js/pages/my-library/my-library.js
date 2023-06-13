@@ -3,10 +3,13 @@ import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 import { refs } from './refs';
 import { createMarkupFilmsCards } from '../../components/createMarkupFilmCard';
 import { markupContentTextMessage } from './markupContentTextMessage';
+import { Loader } from '../../loader';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
 const PER_PAGE = 6;
+
+const loader = new Loader();
 
 let correctGenre = 'All';
 let totalPage;
@@ -27,6 +30,7 @@ document.addEventListener('click', function (e) {
 });
 
 function renderContentBasedOnConditions() {
+  // loader.onShow();
   if (dataStorage?.length === 0) {
     refs.genreList.removeEventListener('change', onSelectGenreListChange);
     refs.myLibrarySection.classList.add(
@@ -88,6 +92,7 @@ function onSelectGenreListChange(e) {
 }
 
 async function renderLibraryCards(movieList) {
+  loader.onShow();
   startIndex = 0;
   endIndex = PER_PAGE;
   refs.moviesList.innerHTML = '';
@@ -99,9 +104,11 @@ async function renderLibraryCards(movieList) {
   } else {
     refs.moviesList.innerHTML = await createMarkupFilmsCards(movieList);
   }
+  loader.onClose();
 }
 
 function onloadMoreButtonClick() {
+  loader.onShow();
   refs.loadMoreButton.blur();
 
   startIndex += PER_PAGE;
@@ -112,6 +119,7 @@ function onloadMoreButtonClick() {
   } else {
     localStoragePagination(startIndex, endIndex, correctGenreMovieList);
   }
+  loader.onClose();
 }
 
 async function localStoragePagination(start, end, data) {
