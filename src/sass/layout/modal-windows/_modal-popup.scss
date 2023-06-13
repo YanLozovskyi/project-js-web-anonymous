@@ -170,7 +170,13 @@
     line-height: 1.66;
     color: $text-color;
 
+    @include tablet {
+      overflow: auto;
+      max-height: 150px;
+    }
+
     @include desktop {
+      max-height: 200px;
       font-size: 14px;
     }
   }
