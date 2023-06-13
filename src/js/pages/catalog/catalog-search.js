@@ -64,7 +64,7 @@ async function handleFormSubmit(event) {
       const totalMovies = response.data.total_results;
 
       pagination.reset(totalMovies);
-      
+
       updateGallery(movies);
     } catch (error) {
       console.log(error);
@@ -73,11 +73,9 @@ async function handleFormSubmit(event) {
     searchGallery.innerHTML =
       '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
   }
-}
 
-  apiMovie.query = query;
-  apiMovie.year = currentYear;
-
+  // apiMovie.query = query;
+  // apiMovie.year = currentYear;
 
   try {
     const response = await apiMovie.searchByQueryYear(page);
@@ -197,11 +195,11 @@ async function handlerPagination(event) {
   const query = searchInput.value.trim();
 
   if (query || currentYear) {
-    paginationByQuery(currentPage)
+    paginationByQuery(currentPage);
   } else {
-    paginationByTrend(currentPage)
+    paginationByTrend(currentPage);
   }
-};
+}
 
 async function paginationByQuery(page) {
   try {
@@ -224,4 +222,3 @@ async function paginationByTrend(page) {
     console.log(error);
   }
 }
-
