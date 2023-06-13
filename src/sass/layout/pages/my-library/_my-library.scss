@@ -13,30 +13,6 @@
   }
 }
 
-.my-library-genre-list {
-  max-width: 260px;
-  max-height: 48px;
-  margin-bottom: 48px;
-
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14; /* 16px/14 */
-
-  color: #b7b7b7;
-
-  @include tablet {
-    max-width: 144px;
-    max-height: 44px;
-    margin-bottom: 36px;
-  }
-
-  @include desktop {
-    max-width: 173px;
-    max-height: 40px;
-    margin-bottom: 16px;
-  }
-}
-
 .my-library-movies-list {
   margin-bottom: 40px;
   display: flex;
