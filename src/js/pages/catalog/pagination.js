@@ -31,5 +31,4 @@ export const pagination = new Pagination(refs.pagination, option);
 
 function addLeadingZero(number) {
     return number.toString().padStart(2, '0');
-  }
-export const pagination = new Pagination(refs.pagination, options);
+};
