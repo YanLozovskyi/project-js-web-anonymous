@@ -4,6 +4,7 @@ import {
   createMarkupFilmCard,
   createMarkupFilmsCards,
 } from '../../components/createMarkupFilmCard';
+import { pagination } from './pagination';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 
@@ -16,7 +17,6 @@ const {
   searchSelect,
   searchGallery,
   clearButton,
-  pagination,
   mobileInput,
 } = refs;
 
@@ -36,6 +36,9 @@ async function getTrend() {
   try {
     const response = await apiMovie.getTrend('week');
     const movies = response.data.results;
+    const totalMovies = response.data.total_results;
+
+    pagination.reset(totalMovies);
 
     updateGallery(movies);
   } catch (error) {
@@ -54,6 +57,10 @@ async function handleFormSubmit(event) {
     try {
       const response = await apiMovie.searchByQueryYear(page);
       const movies = response.data.results;
+      const totalMovies = response.data.total_results;
+
+      pagination.reset(totalMovies);
+      
       updateGallery(movies);
     } catch (error) {
       console.log(error);
@@ -170,3 +177,40 @@ async function getYears() {
 getYears();
 
 searchSelect.addEventListener('change', handleYearSelectChange);
+
+// Пагінація
+
+pagination.on('afterMove', handlerPagination);
+
+async function handlerPagination(event) {
+  const currentPage = event.page;
+  const query = searchInput.value.trim();
+
+  if (query || currentYear) {
+    paginationByQuery(currentPage)
+  } else {
+    paginationByTrend(currentPage)
+  }
+};
+
+async function paginationByQuery(page) {
+  try {
+    const response = await apiMovie.searchByQueryYear(page);
+    const movies = response.data.results;
+
+    updateGallery(movies);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function paginationByTrend(page) {
+  try {
+    const response = await apiMovie.getTrendByPage('week', page);
+    const movies = response.data.results;
+
+    updateGallery(movies);
+  } catch (error) {
+    console.log(error);
+  }
+}
