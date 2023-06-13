@@ -26,10 +26,15 @@ function closeModal(e) {
   ) {
     footerModalEl.classList.add('is-hidden');
     document.body.classList.remove('no-scroll');
+    stopMusic();
   }
   return;
 }
 
 function playMusic() {
   audio.play();
+}
+
+function stopMusic() {
+  audio.pause();
 }
