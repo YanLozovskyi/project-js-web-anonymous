@@ -80,6 +80,6 @@ function createUpcomingMovieMarkup({
         <h4 class="info-item-thirty">About</h4>
         <p class="info-item-about-movie">${overview}</p>
       </div>
-      <button type="button" class="add-remove-btn button-accent"></button>
+      <button type="button" class="add-remove-btn button-accent" id="fix"></button>
     </div>`;
 }

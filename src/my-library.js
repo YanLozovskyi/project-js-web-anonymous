@@ -12,3 +12,7 @@ import './js/active-page';
 import './js/footer-modal';
 
 import './js/modal-menu';
+
+import './js/components/scroll-up';
+
+import './js/components/lightTheme';

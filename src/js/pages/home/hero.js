@@ -1,30 +1,33 @@
+import '~node_modules/swiper/swiper-element-bundle.min.js';
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
-import { ServiceAddRemoveBtn } from '../../api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
-
 import { getStar } from '../../components/getStar';
 import * as basicLightbox from 'basiclightbox';
+import { ServiceAddRemoveBtn } from '../../api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
+import { ScrollService } from '../../components/scrollService';
+
+const scrollService = new ScrollService();
+
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 const svgCloseIcon = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path class="svg-close-icon" d="M11.25 11.25L0.75 0.75M11.25 0.75L0.75 11.25" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
-
 const contentPath = document.querySelector('.hero-content');
 
+const contentPathDefault = document.querySelector('.hero-default');
 // --------------------------ТЕСТ - Трендові фільми дня та тижня
 
 async function getTrendMovieOfDay() {
   try {
     const response = await apiMovie.getTrend('day');
-
-    const randomFilm = randomElement(response.data.results);
+    const randomFilms = randomElement(response.data.results);
 
     if (response.data.results.length === 0) {
-      createDefaultMarkup(contentPath);
+      createDefaultMarkup(contentPathDefault);
 
       DefaultMarkupSettings();
     } else {
-      createMarkupFilm(randomFilm, contentPath);
+      createMarkupFilm(randomFilms.slice(0, 5), contentPath);
     }
   } catch (error) {
     console.log('Error:', error);
@@ -33,27 +36,30 @@ async function getTrendMovieOfDay() {
 
 getTrendMovieOfDay();
 
-function createMarkupFilm(response, path) {
+async function createMarkupFilm(response, path) {
   const markup = response
-    .map(({ original_title, overview, backdrop_path, vote_average }) => {
-      return `<div class="hero-film_background" style="background-image: url(${IMG_URL}${backdrop_path})""></div>
+    .map(({ original_title, overview, backdrop_path, vote_average, id }) => {
+      return `
+      <swiper-slide class="hero-film_background hero-wrap"
+        style="background-image: url(${IMG_URL}${backdrop_path})"
+        data-movie-id="${id}"
+      >
         <div class="hero-wrap">
-
-  <h1 class="hero-title">${original_title}</h1>
-    <div class="hero-stars">${getStar(vote_average)}</div>
-
-  <p class="hero-description-js">${overview}</p>
-  <div class="hero-buttons">
-
-    <button class="hero-button-trailer">
-      Watch trailer
-    </button>
-
-    <button class="hero-button-moredetails">
-      More details
-    </button>
-  </div>
-</div>`;
+          <h1 class="hero-title">${original_title}</h1>
+          <div class="hero-stars">${getStar(vote_average)}</div>
+          <p class="hero-description-js">${overview}</p>
+          <div class="hero-buttons">
+            <button class="hero-button-trailer ">
+              Watch trailer
+            </button>
+            <button class="hero-button-moredetails
+          ">
+              More details
+            </button>
+          </div>
+        </div>
+      </swiper-slide>
+    `;
     })
     .join('');
   path.innerHTML = markup;
@@ -63,20 +69,22 @@ function createMarkupFilm(response, path) {
 
 function createDefaultMarkup(path) {
   const markup = `
+  <div class="hero-content">
   <h1 class="hero-title-default">Let’s Make Your Own Cinema</h1>
     <p class="hero-description-default">Is a guide to creating a personalized movie theater experience. You'll need a projector, screen, and speakers.</p>
     <a class="hero-link" href="./catalog.html">Get Started</a>
     
     <div class="hero-picture-default">
-
+</div>
 </div>
 `;
   path.innerHTML = markup;
 }
 
 function randomElement(arr) {
-  const rand = Math.floor(Math.random() * arr.length);
-  return [arr[rand]];
+  arr = arr.sort(() => Math.random() - 0.5);
+
+  return arr;
 }
 
 function DefaultMarkupSettings() {
@@ -84,6 +92,8 @@ function DefaultMarkupSettings() {
   const heroContent = document.querySelector('.hero-content');
 
   heroContent.classList.add('hero-content-default');
+  heroContent.classList.add('container');
+
   heroContent.classList.remove('hero-content');
   const screenSize = window.innerWidth;
 
@@ -97,17 +107,17 @@ function DefaultMarkupSettings() {
 }
 
 async function showTrailer(response) {
-  const button = document.querySelector('.hero-button-trailer');
-  button.addEventListener('click', onButtonClick);
+  const buttons = document.querySelectorAll('.hero-button-trailer');
 
-  async function onButtonClick() {
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      onButtonClick(response[index].id);
+    });
+  });
+
+  async function onButtonClick(movieId) {
     try {
-      getIdTotalFilm(response);
-
-      const youtubeTrailers = await apiMovie.getTrailer(
-        getIdTotalFilm(response)
-      );
-
+      const youtubeTrailers = await apiMovie.getTrailer(movieId);
       const trailer = youtubeTrailers.data.results.find(
         el => el.type === 'Trailer' || el.name === 'Official Trailer'
       );
@@ -116,8 +126,23 @@ async function showTrailer(response) {
         throw new Error('Trailer not found');
       }
 
-      const instance = basicLightbox.create(`
-     <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>`);
+      const instance = basicLightbox.create(
+        `
+        <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>
+      `,
+        {
+          handlerEscape: null,
+          onShow() {
+            scrollService.blockScroll();
+            this.handlerEscape = handlerEsc.bind(instance);
+            document.addEventListener('keydown', this.handlerEscape);
+          },
+          onClose() {
+            scrollService.restoreScroll();
+            document.removeEventListener('keydown', this.handlerEscape);
+          },
+        }
+      );
 
       instance.show();
     } catch (error) {
@@ -125,6 +150,16 @@ async function showTrailer(response) {
       console.log('Error:', error);
     }
   }
+}
+
+function handlerEsc(evt) {
+  if (evt.code === 'Escape') {
+    this.close();
+  }
+}
+
+function handlerClose() {
+  this.close();
 }
 
 function markupForMistake() {
@@ -149,58 +184,89 @@ function markupForMistake() {
   return instance;
 }
 
-function getIdTotalFilm(response) {
-  return response.map(data => data.id).join('');
-}
+//! modal------------------
 
 function showModalMoreDetails(response) {
-  const buttonMoreDetails = document.querySelector('.hero-button-moredetails');
+  const buttonsMoreDetails = document.querySelectorAll(
+    '.hero-button-moredetails'
+  );
 
-  buttonMoreDetails.addEventListener('click', onButtonMoreClick);
+  buttonsMoreDetails.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      onButtonMoreClick(response[index].id);
+    });
+  });
 
-  async function onButtonMoreClick() {
-    document.body.insertAdjacentHTML('beforeend', markupBackdropMovieCard());
-
-    const backdropMovieCardEl = document.getElementById('backdrop-movie-card');
-
+  async function onButtonMoreClick(movieId) {
     try {
-      const movie = await apiMovie.getMovieInfo(getIdTotalFilm(response));
+      const movie = await apiMovie.getMovieInfo(movieId);
 
-      backdropMovieCardEl.innerHTML = markupMovieCard(movie.data);
-      const addRemoveBtn = document.querySelector('button[data-type="action"]');
-      const serviceAddRemoveBtn = new ServiceAddRemoveBtn(addRemoveBtn, movie);
+      const instance = basicLightbox.create(markupMovieCard(movie.data), {
+        handlerEscape: null,
+        handlerBtnClose: null,
 
-      serviceAddRemoveBtn.setButtonName();
-      backdropMovieCardEl.addEventListener('click', onBackdropClick);
+        onShow: instance => {
+          scrollService.blockScroll();
+
+          const addRemoveBtn = instance
+            .element()
+            .querySelector('button[data-action="add-remove-to-my-library"]');
+
+          const serviceAddRemoveBtn = new ServiceAddRemoveBtn(
+            addRemoveBtn,
+            movie
+          );
+          serviceAddRemoveBtn.setButtonName();
+
+          const escapeHandler = handlerEsc.bind(instance);
+          document.addEventListener('keydown', escapeHandler);
+
+          // this.handlerEscape = handlerEsc.bind(instance);
+          // document.addEventListener('keydown', this.handlerEscape);
+
+          const closeButton = instance
+            .element()
+            .querySelector('#closeModalPopUp');
+          const btnCloseHandler = handlerClose.bind(instance);
+          closeButton.addEventListener('click', btnCloseHandler);
+
+          // const btnCloseEl = instance
+          //   .element()
+          //   .querySelector('#closeModalPopUp');
+
+          // this.handlerBtnClose = handlerClose.bind(instance);
+          // btnCloseEl.addEventListener('click', this.handlerBtnClose);
+        },
+
+        onClose() {
+          scrollService.restoreScroll();
+
+          document.removeEventListener('keydown', this.handlerEscape);
+          document.removeEventListener('click', this.handlerBtnClose);
+        },
+      });
+
+      instance.show();
+
+      showTrailer(movie);
     } catch (error) {
       console.log(error);
     }
+  }
+}
 
-    function onBackdropClick(e) {
-      if (e.target === backdropMovieCardEl) {
-        backdropMovieCardEl.removeEventListener('click', onBackdropClick);
-        backdropMovieCardEl.remove();
-      }
-    }
-
-    function markupBackdropMovieCard() {
-      return `
-    <div id="backdrop-movie-card" class="backdrop-movie-card overlay visual">
-    </div>`;
-    }
-
-    function markupMovieCard({
-      id,
-      poster_path,
-      original_title,
-      vote_average,
-      vote_count,
-      popularity,
-      genres,
-      overview,
-    }) {
-      const allGenres = genres.map(({ name }) => name).join(', ');
-      return `
+function markupMovieCard({
+  id,
+  poster_path,
+  original_title,
+  vote_average,
+  vote_count,
+  popularity,
+  genres,
+  overview,
+}) {
+  const allGenres = genres.map(({ name }) => name).join(', ');
+  return `
 <div class="pop-up-modal visual" id="modalPopUp">
   <button class="pop-up-modal__close" id="closeModalPopUp">
     ${svgCloseIcon}
@@ -229,17 +295,15 @@ function showModalMoreDetails(response) {
       <div class="pop-up-modal__about">
         <p class="pop-up-modal__about-txt">${overview}</p>
       </div>
-        <button
-          class="add-remove-btn button-accent"
-          type="button"
-          data-type="action"
-          data-action="add-to-my-library"
-          >
-        </button>
+        <div class="pop-up-modal-wrap-btn">
+          <button
+            class="add-remove-btn button-accent"
+            type="button"
+            data-action="add-remove-to-my-library"
+          ></button>
+        </div>
     </div>
   </div>
 </div>
 `;
-    }
-  }
 }

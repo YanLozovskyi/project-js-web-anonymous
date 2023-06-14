@@ -3,7 +3,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 15px;
+  width: 5px;
 }
 
 body::-webkit-scrollbar-track {
@@ -11,8 +11,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-image: url('../images/scrollbar.svg');
-  background-position: center center;
+  background-image: $button-background-color;
 
   cursor: pointer;
 }

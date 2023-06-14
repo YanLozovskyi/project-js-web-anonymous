@@ -1,10 +1,11 @@
 import ApiMovie from './api/themoviedbAPI/fetch-movie';
 import { ServiceAddRemoveBtn } from './api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
 import { markupMovieCard } from './components/createMarkupFilmCardModal';
-import { getWidthScrollbar } from './components/getWidthScrollbar';
+import { ScrollService } from './components/scrollService';
 import * as basicLightbox from 'basiclightbox';
 
 const apiMovie = new ApiMovie();
+const scrollService = new ScrollService();
 
 try {
   const openModalMovie = document.querySelector('.js-open-modal-movie');
@@ -24,8 +25,7 @@ async function onMovieCardClick(e) {
         handlerBtnClose: null,
 
         onShow: instance => {
-          document.body.style.overflow = 'hidden';
-          document.body.style.paddingRight = getWidthScrollbar() + 'px';
+          scrollService.blockScroll();
 
           const addRemoveBtn = instance
             .element()
@@ -49,8 +49,8 @@ async function onMovieCardClick(e) {
         },
 
         onClose() {
-          document.body.style.overflow = '';
-          document.body.style.paddingRight = '';
+          scrollService.restoreScroll();
+
           document.removeEventListener('keydown', this.handlerEscape);
           document.removeEventListener('click', this.handlerBtnClose);
         },
@@ -75,7 +75,6 @@ async function showTrailer(response) {
   async function onButtonClick() {
     try {
       const youtubeTrailers = await apiMovie.getTrailer(response.data.id);
-      console.log('youtubeTrailers:', youtubeTrailers);
 
       const trailer = youtubeTrailers.data.results.find(
         el => el.type === 'Trailer' || el.name === 'Official Trailer'

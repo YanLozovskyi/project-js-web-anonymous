@@ -174,7 +174,6 @@
 
     @include desktop {
       margin-top: 4px;
-      scroll-snap-type: auto;
     }
   }
 
@@ -261,7 +260,12 @@
   gap: 15px;
 
   @include tablet {
+    margin-right: 28px;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  @include desktop {
+    margin-right: 80px;
   }
 }

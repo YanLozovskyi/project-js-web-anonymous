@@ -25,12 +25,19 @@ renderContentBasedOnConditions();
 document.addEventListener('click', function (e) {
   if (e.target.dataset.action === 'add-remove-to-my-library') {
     const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+    if (dataStorage.length === 0) {
+      refs.genreList.removeEventListener('change', onSelectGenreListChange);
+      refs.myLibrarySection.classList.add(
+        'my-library-content-text-message-section'
+      );
+      refs.libraryContent.innerHTML = markupContentTextMessage();
+    }
+
     renderLibraryCards(dataStorage);
   }
 });
 
 function renderContentBasedOnConditions() {
-  // loader.onShow();
   if (dataStorage?.length === 0) {
     refs.genreList.removeEventListener('change', onSelectGenreListChange);
     refs.myLibrarySection.classList.add(
@@ -39,6 +46,7 @@ function renderContentBasedOnConditions() {
     refs.libraryContent.innerHTML = markupContentTextMessage();
   } else if (dataStorage) {
     //? Отримую унікальні ID жанрів фільмів, які є у localStorage і за допомогою функції createSelectOptionMarkup отримую розмітку з жанром, і вставляю у select
+    2;
     dataStorage
       .reduce((acc, el) => [...acc, ...el.genres], [])
       .filter(
