@@ -527,17 +527,17 @@ body::-webkit-scrollbar-thumb {
   margin-left: auto;
   margin-right: auto;
   width: 320px;
-  height: 440px;
+  height: 470px;
 }
 @media screen and (min-width: 768px) {
   .hero-default {
-    height: 450px;
+    height: 500px;
     width: 768px;
   }
 }
 @media screen and (min-width: 1280px) {
   .hero-default {
-    height: 660px;
+    height: 700px;
     width: 1280px;
   }
 }
@@ -549,14 +549,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .hero-film_background {
-  padding-top: 40px;
   border-radius: 20px;
   z-index: 0;
   position: absolute;
   top: 0;
   left: 0;
   width: 320px;
-  height: 440px;
+  height: 470px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -564,12 +563,12 @@ body::-webkit-scrollbar-thumb {
 @media screen and (min-width: 768px) {
   .hero-film_background {
     width: 768px;
-    height: 450px;
+    height: 500px;
   }
 }
 @media screen and (min-width: 1280px) {
   .hero-film_background {
-    height: 660px;
+    height: 700px;
     width: 1280px;
   }
 }
@@ -615,8 +614,8 @@ body::-webkit-scrollbar-thumb {
 }
 @media screen and (min-width: 1280px) {
   .hero-title {
-    font-size: 64px;
-    line-height: 1.17;
+    font-size: 55px;
+    line-height: 1.08;
     margin-bottom: 16px;
     max-width: 464px;
   }
@@ -805,6 +804,7 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   z-index: 1;
   padding: 10px;
+  padding-top: 17px;
   background-color: hsla(0, 0%, 0%, 0.4);
   width: 280px;
   display: block;
@@ -814,8 +814,7 @@ body::-webkit-scrollbar-thumb {
 }
 @media screen and (min-width: 768px) {
   .hero-wrap {
-    margin-right: auto;
-    margin-top: auto;
+    padding: 25px;
     margin-bottom: auto;
     margin-left: 0;
     width: 430px;
@@ -825,6 +824,9 @@ body::-webkit-scrollbar-thumb {
 }
 @media screen and (min-width: 1280px) {
   .hero-wrap {
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-right: 30px;
     margin: 0;
     width: 430px;
     border: 2px solid #111111;
@@ -1163,6 +1165,23 @@ body::-webkit-scrollbar-thumb {
     font-size: 24px;
     line-height: 1.6;
   }
+}
+
+.swiper-pagination {
+  padding-top: 20px;
+  outline: 2px solid greenyellow;
+}
+
+.swiper-pagination-bullet {
+  width: 10px; /* Increase the size of the pagination circles */
+  height: 10px;
+  background-color: orange; /* Set the background color to orange */
+  border: 1px solid black; /* Add a thin black border */
+  margin: 0 5px; /* Adjust the spacing between the pagination circles */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: rgb(255, 255, 255); /* Set the background color of the active pagination circle to blue */
 }
 
 .home-upcoming {
