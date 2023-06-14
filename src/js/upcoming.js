@@ -43,16 +43,22 @@ function createUpcomingMovieMarkup({
   popularity,
   genres,
   overview,
+  poster_path,
 }) {
   const allGenres = genres.map(({ name }) => name).join(', ');
   return `
     <div class="image-upcoming">  
-      <img
-        class="gallery-item_img"
-        src="${IMAGE_URL}${backdrop_path}"
-        alt="movie"
-        loading="lazy"
-      />
+    <img loading="lazy" class="gallery-item_img"
+        
+        srcset="https://image.tmdb.org/t/p/w500/${backdrop_path} 1200w,
+                https://image.tmdb.org/t/p/w500/${poster_path} 500w,
+                https://image.tmdb.org/t/p/w300/${poster_path} 342w,
+                https://image.tmdb.org/t/p/w185/${poster_path} 185w"
+        src="https://image.tmdb.org/t/p/w1280/${poster_path}"
+
+        " sizes="(min-width: 1200px) 1200px, (min-width: 768px) 500px, (min-width: 480px) 342px, (min-width: 320px) 185px, 100vw"        
+  
+        alt="Movie Poster">
     </div>
     <div class="gallery-item" id="${id}">
       <h3 class="info-item-title">${original_title}</h3>
