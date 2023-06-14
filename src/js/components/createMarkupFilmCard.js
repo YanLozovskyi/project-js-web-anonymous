@@ -23,6 +23,7 @@ export async function createMarkupFilmsCards(movieList) {
         release_date,
         vote_average,
       }) => {
+        const movieSrc = getImg(poster_path, original_title);
         let genre = '';
         if (genre_ids?.length === 0) {
           genre = 'Unknown Genre';
@@ -36,8 +37,7 @@ export async function createMarkupFilmsCards(movieList) {
         }
         return `<li data-movie_id="${id}" class="card-list-item">
       <img
-        src="https://image.tmdb.org/t/p/original${poster_path}"
-        alt="${original_title}"
+        ${movieSrc}
         class="card-list-img"
         width="395"
         height="574"
@@ -66,4 +66,20 @@ function getGenreName(ids) {
   } catch (error) {
     return ['Unknown Genre'];
   }
+}
+
+function getImg(poster, title) {
+  // if (poster === null || !poster) {
+  //   return `src='${comingSoonImg}' alt='${title}'`;
+  // }
+
+  return `
+    srcset="
+                https://image.tmdb.org/t/p/w500/${poster} 500w,
+                https://image.tmdb.org/t/p/w300/${poster} 342w,
+                https://image.tmdb.org/t/p/w185/${poster} 185w"
+        src="https://image.tmdb.org/t/p/w500/${poster}"
+
+        " sizes=" (min-width: 768px) 500px, (min-width: 480px) 342px, (min-width: 320px) 185px, 100vw"   
+     alt='${title}'`;
 }
