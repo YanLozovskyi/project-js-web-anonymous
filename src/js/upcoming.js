@@ -46,39 +46,40 @@ function createUpcomingMovieMarkup({
 }) {
   const allGenres = genres.map(({ name }) => name).join(', ');
   return `
-    <div class="image-upcoming">
-    <img
-      class="gallery-item__img"
-      src="${IMAGE_URL}${backdrop_path}"
-      alt="movie"
-      loading="lazy"
-    />
-  </div>
-  <div class="gallery-item" id="${id}">
-    <h3 class="info-item-title">${original_title}</h3>
-    <div class="info">
-      <div class="info-item-one-part">
-        <p class="info-item">
-          <b>Release date</b
-          ><span class="info-item-second">${release_date}</span>
-        </p>
-        <p class="info-item">
-          <b>Vote / Votes</b
-          ><span class="info-item-fourth vote-text">${vote_average}</span> /
-          <span class="info-item-fourth vote-text">${vote_count}</span>
-        </p>
-      </div>
-      <div class="info-item-two-part">
-        <p class="info-item"><b>Popularity</b>${popularity}</p>
-        <p class="info-item"><b>Genre </b>${allGenres}</p>
-      </div>
+    <div class="image-upcoming">  
+      <img
+        class="gallery-item_img"
+        src="${IMAGE_URL}${backdrop_path}"
+        alt="movie"
+        loading="lazy"
+      />
     </div>
-    <div class="info-item-about">
-      <p class="info-item-about-movie">
-        <b><span class="info-item-thirty">About</span></b
-        >${overview}
-      </p>
-    </div>
-    <button type="button" class="add-remove-btn button-accent"></button>
-  </div>`;
+    <div class="gallery-item" id="${id}">
+      <h3 class="info-item-title">${original_title}</h3>
+      <div class="info">
+        <ul class="info-item-one-part">
+          <li class="info-item">Release date</li>
+          <li class="info-item">Vote / Votes</li>
+        </ul>
+        <ul class="info-item-two-part">
+          <li class="info-item-two info-item-second">${release_date}</li>
+          <li class="info-item-two">
+            <span class="info-item-fourth vote-text">${vote_average}</span> / <span class="info-item-fourth vote-text">${vote_count}</span>
+          </li>
+        </ul>
+        <ul class="info-item-one-part">
+          <li class="info-item">Popularity</li>
+          <li class="info-item">Genre</li>
+        </ul>
+        <ul class="info-item-two-part">
+          <li class="info-item-two">${popularity}</li>
+          <li class="info-item-two">${allGenres}</li>
+        </ul>
+      </div>
+      <div class="info-item-about">
+        <h4 class="info-item-thirty">About</h4>
+        <p class="info-item-about-movie">${overview}</p>
+      </div>
+      <button type="button" class="add-remove-btn button-accent"></button>
+    </div>`;
 }
