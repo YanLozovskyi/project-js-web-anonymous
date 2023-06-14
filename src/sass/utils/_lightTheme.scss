@@ -1,0 +1,185 @@
+.light {
+  background-color: $light-color;
+}
+////// --------- Header light theme--------///////
+.light .header {
+  background-color: $light-color;
+}
+
+.light .header-nav-link {
+  color: $color-subtitles-white-theme;
+}
+
+///////--------------Hero-------------------/////////////
+.light .hero-content {
+  background-color: $light-color;
+}
+
+.light .logo-title {
+  color: $text-color-for-white-theme;
+}
+
+.light .trailer-fail {
+  background-color: $light-color;
+}
+
+.light .trailer-fail-text {
+  color: $dark-color;
+}
+////// --------- Mobile-nav light theme--------///////
+.light .mobile-menu-content {
+  background-color: $light-color;
+}
+
+.light .mobile-menu-nav-link {
+  color: $dark-color;
+}
+////// --------- Catalog and weekly trends light theme--------///////
+.light .weekly-title {
+  color: $dark-color;
+}
+
+.light .catalog-gallery-input,
+.light .catalog-gallery-select,
+.light .catalog-gallery-input-search {
+  color: $color-subtitles-white-theme;
+  border: 1px solid $dark-color;
+}
+
+.light .catalog-gallery-input::placeholder {
+  color: $color-subtitles-white-theme;
+}
+////// ---------  Upcoming Soon-light theme--------///////
+
+.light .vote-text,
+.light .info-item-about-movie,
+.light .info-item {
+  color: $text-color-for-white-theme;
+}
+
+.light .vote-text {
+  background-color: $text-color;
+}
+
+.light .one-title,
+.light .info-item-title,
+.light .info-item b,
+.light .info-item-about-thirty,
+.light .info-item-thirty {
+  color: $dark-color;
+}
+////// --------- Modal-card light theme--------///////
+.light .pop-up-modal {
+  background-color: $light-color;
+}
+
+.light .pop-up-modal__title,
+.light .pop-up-modal__link,
+.light .pop-up-modal__about-txt,
+.light .genres {
+  color: $dark-color;
+}
+
+.light .vote,
+.light .votes,
+.light .popularity,
+.light .item-votes {
+  color: $text-color-for-white-theme;
+}
+
+.light .vote,
+.light .votes {
+  background-color: $text-color;
+}
+
+.light .add-remove-btn.button-accent,
+.light .add-movie-trailer-btn.button-accent {
+  background: $light-color;
+  border-radius: 74px;
+  border-color: $accent-color;
+}
+
+.light .pop-up-modal__close {
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.light .pop-up-modal__close:hover {
+  background: none;
+  box-shadow: none;
+}
+
+////// --------- Error on library light theme--------///////
+.light .my-library-content-text-message {
+  color: $dark-color;
+}
+////// --------- Library-select light theme--------///////
+//// --- container
+.light .ss-main.my-library-genre-list {
+  background: $light-color;
+  border-color: $color-subtitles-white-theme;
+}
+//// --- select item
+.light .ss-main.my-library-genre-list .ss-values .ss-single {
+  color: $color-subtitles-white-theme;
+}
+//// --- arrow
+.light .ss-main.my-library-genre-list .ss-arrow path {
+  stroke: $color-subtitles-white-theme;
+}
+///// ----- input-option
+.light .ss-content.my-library-genre-list .ss-list .ss-option {
+  color: $text-color-for-white-theme;
+  background: $text-color;
+}
+
+.light .ss-content.my-library-genre-list .ss-list .ss-option:hover,
+.light .ss-content.my-library-genre-list .ss-list .ss-option:focus,
+.light .ss-content.my-library-genre-list .ss-list .ss-option.ss-highlighted,
+.light
+  .ss-content.my-library-genre-list
+  .ss-list
+  .ss-option:not(.ss-disabled).ss-selected,
+.light .ss-content.my-library-genre-list .ss-list .ss-option:hover {
+  background: #1c1c1c;
+  background: $text-color;
+}
+////// ----- input from search
+.light .ss-content.my-library-genre-list .ss-search {
+  background: $text-color;
+}
+.light .ss-content.my-library-genre-list .ss-search input {
+  background: $text-color;
+  border-color: $color-subtitles-white-theme;
+  color: $color-subtitles-white-theme;
+}
+
+////// --------- Footer light theme--------///////
+.light .footer-content {
+  color: $color-subtitles-white-theme;
+}
+.light .footer-command-info {
+  color: $color-subtitles-white-theme;
+}
+
+/////// -------- Button if upcoming fix --------------- /////
+#fix {
+  @extend .button;
+  color: $dark-color;
+  background: $button-background-color;
+
+  background-image: $button-background-color;
+  background-origin: border-box;
+  border: 1px solid transparent;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    border-radius: 74px;
+    background-image: $button-background-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid transparent;
+  }
+}
