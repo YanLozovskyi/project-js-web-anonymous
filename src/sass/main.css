@@ -76,6 +76,189 @@ address {
           clip-path: inset(100%);
 }
 
+.light {
+  background-color: #ffffff;
+}
+
+.light .header {
+  background-color: #ffffff;
+}
+
+.light .header-nav-link {
+  color: #595959;
+}
+
+.light .hero-content {
+  background-color: #ffffff;
+}
+
+.light .logo-title {
+  color: #282828;
+}
+
+.light .trailer-fail {
+  background-color: #ffffff;
+}
+
+.light .trailer-fail-text {
+  color: #111111;
+}
+
+.light .mobile-menu-content {
+  background-color: #ffffff;
+}
+
+.light .mobile-menu-nav-link {
+  color: #111111;
+}
+
+.light .weekly-title {
+  color: #111111;
+}
+
+.light .catalog-gallery-input,
+.light .catalog-gallery-select,
+.light .catalog-gallery-input-search {
+  color: #595959;
+  border: 1px solid #111111;
+}
+
+.light .catalog-gallery-input::-moz-placeholder {
+  color: #595959;
+}
+
+.light .catalog-gallery-input::placeholder {
+  color: #595959;
+}
+
+.light .vote-text,
+.light .info-item-about-movie,
+.light .info-item {
+  color: #282828;
+}
+
+.light .vote-text {
+  background-color: #f8f8f8;
+}
+
+.light .one-title,
+.light .info-item-title,
+.light .info-item b,
+.light .info-item-about-thirty,
+.light .info-item-thirty {
+  color: #111111;
+}
+
+.light .pop-up-modal {
+  background-color: #ffffff;
+}
+
+.light .pop-up-modal__title,
+.light .pop-up-modal__link,
+.light .pop-up-modal__about-txt,
+.light .genres {
+  color: #111111;
+}
+
+.light .vote,
+.light .votes,
+.light .popularity,
+.light .item-votes {
+  color: #282828;
+}
+
+.light .vote,
+.light .votes {
+  background-color: #f8f8f8;
+}
+
+.light .add-remove-btn.button-accent,
+.light .add-movie-trailer-btn.button-accent {
+  background: #ffffff;
+  border-radius: 74px;
+  border-color: #f87719;
+}
+
+.light .pop-up-modal__close {
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.light .pop-up-modal__close:hover {
+  background: none;
+  box-shadow: none;
+}
+
+.light .my-library-content-text-message {
+  color: #111111;
+}
+
+.light .ss-main.my-library-genre-list {
+  background: #ffffff;
+  border-color: #595959;
+}
+
+.light .ss-main.my-library-genre-list .ss-values .ss-single {
+  color: #595959;
+}
+
+.light .ss-main.my-library-genre-list .ss-arrow path {
+  stroke: #595959;
+}
+
+.light .ss-content.my-library-genre-list .ss-list .ss-option {
+  color: #282828;
+  background: #f8f8f8;
+}
+
+.light .ss-content.my-library-genre-list .ss-list .ss-option:hover,
+.light .ss-content.my-library-genre-list .ss-list .ss-option:focus,
+.light .ss-content.my-library-genre-list .ss-list .ss-option.ss-highlighted,
+.light .ss-content.my-library-genre-list .ss-list .ss-option:not(.ss-disabled).ss-selected,
+.light .ss-content.my-library-genre-list .ss-list .ss-option:hover {
+  background: #1c1c1c;
+  background: #f8f8f8;
+}
+
+.light .ss-content.my-library-genre-list .ss-search {
+  background: #f8f8f8;
+}
+
+.light .ss-content.my-library-genre-list .ss-search input {
+  background: #f8f8f8;
+  border-color: #595959;
+  color: #595959;
+}
+
+.light .footer-content {
+  color: #595959;
+}
+
+.light .footer-command-info {
+  color: #595959;
+}
+
+#fix {
+  color: #111111;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  background-origin: border-box;
+  border: 1px solid transparent;
+}
+#fix:hover, #fix:focus {
+  color: #f87719;
+  border-radius: 74px;
+  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  background-origin: border-box;
+  box-shadow: inset 0 1000px #ffffff;
+  border: 1px solid transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   color: #b7b7b7;
@@ -142,7 +325,7 @@ svg:hover {
   cursor: url("../images/cursor/cursor-orange&white.svg"), pointer;
 }
 
-.button, .button-search, .button-modal-light-theme, .button-modal-dark-theme, .button-dark, .button-accent {
+.button, .button-search, .button-modal-light-theme, .button-modal-dark-theme, .button-dark, .button-accent, #fix {
   display: block;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -156,13 +339,13 @@ svg:hover {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
-  .button, .button-search, .button-modal-light-theme, .button-modal-dark-theme, .button-dark, .button-accent {
+  .button, .button-search, .button-modal-light-theme, .button-modal-dark-theme, .button-dark, .button-accent, #fix {
     font-size: 14px;
     line-height: 1.14;
   }
 }
 @media screen and (min-width: 1280px) {
-  .button, .button-search, .button-modal-light-theme, .button-modal-dark-theme, .button-dark, .button-accent {
+  .button, .button-search, .button-modal-light-theme, .button-modal-dark-theme, .button-dark, .button-accent, #fix {
     font-size: 18px;
     line-height: 1.55;
   }
@@ -256,7 +439,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 15px;
+  width: 5px;
 }
 
 body::-webkit-scrollbar-track {
@@ -264,8 +447,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-image: url("../images/scrollbar.svg");
-  background-position: center center;
+  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   cursor: pointer;
 }
 
@@ -312,6 +494,36 @@ body::-webkit-scrollbar-thumb {
     transform: rotate(360deg);
   }
 }
+.scroll-up--button {
+  border-radius: 50%;
+  background-color: #f87719;
+  border: none;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  visibility: hidden;
+}
+
+.scroll-up--button---shown {
+  visibility: visible;
+}
+
+.scroll-up--svg {
+  width: 30px;
+  height: 30px;
+  fill: #ffffff;
+}
+@media screen and (min-width: 768px) {
+  .scroll-up--svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.scroll-up--svg:hover {
+  fill: #111111;
+}
+
 .header {
   width: 100%;
   height: 48px;
@@ -455,6 +667,20 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (max-width: 767px) {
   .icon-moon-right {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .icon-moon-left {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .icon-sun {
     width: 13px;
     height: 13px;
   }
@@ -650,7 +876,7 @@ body::-webkit-scrollbar-thumb {
   .hero-title {
     max-width: 332px;
     font-weight: 700;
-    font-size: 44px;
+    font-size: 40px;
     line-height: 1.18;
     margin-bottom: 12px;
   }
