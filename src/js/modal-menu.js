@@ -49,7 +49,7 @@ async function onMovieCardClick(e) {
         },
 
         onClose() {
-          scrollService.getScroll();
+          scrollService.restoreScroll();
 
           document.removeEventListener('keydown', this.handlerEscape);
           document.removeEventListener('click', this.handlerBtnClose);
