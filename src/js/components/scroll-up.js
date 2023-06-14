@@ -1,5 +1,5 @@
 const guard = document.querySelector('.js-guard');
-const scrollBtn = document.querySelector('.scroll-up--button');
+const scrollBtn = document.querySelector('.js-scroll-up-button');
 
 const options = {
   root: null,
@@ -14,9 +14,9 @@ observer.observe(guard);
 function scrollButtonShow(entries, observer) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      scrollBtn.classList.add('scroll-up--button---shown');
+      scrollBtn.classList.add('button-hidden');
     } else {
-      scrollBtn.classList.remove('scroll-up--button---shown');
+      scrollBtn.classList.remove('button-hidden');
     }
   });
 }
