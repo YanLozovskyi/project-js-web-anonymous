@@ -22,13 +22,24 @@
   </div>
 
   <div class="footer-modal-backdrop is-hidden">
+    <audio class="visually-hidden" controls loop>
+      <source src="./images/nobody_believes_in_us.mp3" type="audio/mpeg" />
+    </audio>
     <div class="footer-modal-content">
       <button type="button" class="footer-modal-close-btn">
         <svg class="modal-close-icon" width="10" height="10">
           <use href="./images/sprite/sprite.svg#icon-close"></use>
         </svg>
       </button>
-      <h1 class="footer-modal-title">Our team</h1>
+      <div class="footer-modal-title-wrapper">
+        <svg class="footer-modal-logo" width="35" ; height="35">
+          <use href="./images/sprite/sprite.svg#icon-modal-footer"></use>
+        </svg>
+        <h1 class="footer-modal-title">Team of Web Anonymous</h1>
+        <svg class="footer-modal-logo" width="35" ; height="35">
+          <use href="./images/sprite/sprite.svg#icon-modal-footer"></use>
+        </svg>
+      </div>
       <ul class="team-list">
         <li class="team-item">
           <img
@@ -285,7 +296,7 @@
               class="team__link-linkedin team__link-linkedin--active"
               target="_blank"
               rel="noopener noreferrer nofollow"
-              href="#"
+              href="https://www.linkedin.com/in/ihor-nosenko/"
             >
               <svg class="team__icon" width="25" height="25">
                 <use href="./images/sprite/sprite.svg#icon-linkedin"></use>

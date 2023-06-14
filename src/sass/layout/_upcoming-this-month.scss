@@ -1,9 +1,11 @@
 .home-upcoming {
   padding: 0px 20px 32px;
+  
   @include tablet {
     min-height: 420px;
     padding: 0px 32px 77px;
   }
+  
   @include desktop {
     min-height: 660px;
     padding: 0px 32px 100px;
@@ -14,160 +16,169 @@
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 1.18;
   text-transform: uppercase;
   color: $light-color;
   margin-bottom: 24px;
+
   @include tablet {
     font-size: 24px;
-    line-height: 28px;
+    line-height: 1.16;
   }
 
   @include desktop {
     font-size: 28px;
-    line-height: 33px;
+    line-height: 1.17;
   }
 }
-.gallery-item{
-  @include tablet {
-      
-    }
-  
-    @include desktop {
-      max-width: 390px;
-      max-height: auto;
-    }
+
+.movieDescription {
+  @include desktop {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
 }
-.gallery-item_img { 
-      max-width: 280px;
-      max-height: 406px;
-      border-radius: 5px;
-  
-      @include tablet {
-        max-width: 400px;
-        max-height: 704px;
-      }
-  
-      @include desktop {
-        max-width: 805px;
-        max-height: 428px;
-      }
-    }
+
+.image-upcoming {
+  margin-bottom: 24px;
+
+  @include tablet {
+    margin-bottom: 32px;
+  }
+
+  @include desktop {
+    margin-bottom: 0px;
+  }
+}
+
+.gallery-item_img {
+  width: 100%;
+  height: auto;
+  // max-width: 280px;
+  // max-height: 406px;
+  border-radius: 5px;
+
+  @include tablet {
+    max-width: 704px;
+    max-height: 400px;
+  }
+
+  @include desktop {
+    max-width: 805px;
+    max-height: 458px;
+  }
+}
+
+.gallery-item {
+  @include desktop {
+    max-width: 390px;
+    max-height: auto;
+  }
+}
 
 .info-item-title {
   font-weight: 500;
   font-size: 20px;
-  line-height: 23px;
+  line-height: 1.15;
   color: $light-color;
   margin-bottom: 20px;
 
   @include tablet {
     font-size: 28px;
-    line-height: 33px;
+    line-height: 1.17;
   }
+
   @include desktop {
     font-size: 32px;
-    line-height: 38px;
-  }
-}
-
-b {
-  color: $color-subtitles;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  margin-right: auto;
-}
-
-.image-upcoming {
-  border-radius: 5px;
-  margin-bottom: 24px;
-  @include tablet {
-    margin-bottom: 32px;
-  }
-  @include desktop {
-    margin-bottom: 0px;
-    margin-right: 16px;
+    line-height: 1.18;
+    margin-bottom: 28px;
   }
 }
 
 .info {
-  margin-bottom: 20px;
-  @include tablet{
-    display: flex;
+  margin-bottom: 8px;
+  display: flex;
   justify-content: space-between;
-  
-  }
-    @include desktop{
-      display: flex;
-      flex-direction: column;
-
-    }
+  flex-wrap: wrap;
+  flex-direction: row;
 }
+
+ul {
+  flex-basis: calc((100% - 50px) / 2);
+
+  @include tablet {
+    flex-basis: calc((100% - 50px) / 4);
+  }
+
+  @include desktop {
+    flex-basis: calc((100% - 50px) / 2);
+  }
+}
+
+li {
+  margin-bottom: 12px;
+}
+
 .info-item {
+  color: $color-subtitles;
+  font-weight: 500;
   font-size: 16px;
-  line-height: 19px;
-  color: $light-color;
+  line-height: 1.18;
   display: flex;
   align-items: center;
-
 }
-.info-item-fourth{
+
+.info-item-two-part {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item-two {
+  color: $light-color;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.18;
+}
+
+.info-item-fourth {
   background:$light-color;
   border-radius: 5px;
   padding: 1px 8px;
-       
+  max-width: 36px;
+  max-height: 18px;
 }
+
 .vote-text{
   font-size: 14px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+  line-height: 1.14;
   text-transform: uppercase;
   color: $dark-color;
 }
+
 .info-item-second {
   color: $accent-color;
   text-transform: uppercase;
 }
-.info-item-about-thirty{
+
+.info-item-about {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-item-thirty {
+  font-weight: 500;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 1.18;
   text-transform: uppercase;
   color: $color-subtitles;
 }
-.info-item:not(:last-child) {
-  margin-bottom: 12px;
-}
- 
-.info-item-about-movie{
- display: flex;
- flex-direction: column;
- gap: 16px;
- font-weight: 400;
- font-size: 14px;
- line-height: 20px;
- color: $text-color;
- text-align: left;
-}
-    
-.movieDescription{
-   @include desktop{
-     display: flex;  
-  }
- }
 
-.info-item-one-part{
-  margin-bottom: 12px;
-  @include tablet{
-margin-bottom: 0px;
-  }
-    @include desktop {
-margin-bottom: 12px;
-    }
-}
-.info-item-about {
-  margin-bottom: 20px;
+.info-item-about-movie{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: $text-color;
 }

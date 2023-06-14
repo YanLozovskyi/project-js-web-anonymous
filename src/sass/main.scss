@@ -6,6 +6,7 @@
 @import './utils/variables';
 @import './utils/visually-hidden';
 @import './utils/mixins';
+@import './utils/lightTheme';
 
 // base
 
@@ -16,6 +17,8 @@
 // components
 @import './components/buttons.scss';
 @import './components/scrollbar';
+@import './components/loader';
+@import './components/scroll-up';
 
 // layout
 

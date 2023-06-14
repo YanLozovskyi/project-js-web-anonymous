@@ -20,10 +20,34 @@
 //? контейнер з селектом
 .ss-main.my-library-genre-list {
   background: #1c1c1c;
-  padding: 12px 20px;
+
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  padding-right: 12px;
   border-width: 0.5px;
   border-style: solid;
   border-color: rgba(248, 248, 248, 0.2);
+
+  @include tablet {
+    max-width: 185px;
+    max-height: 44px;
+    margin-bottom: 36px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 20px;
+    padding-right: 14px;
+  }
+
+  @include desktop {
+    max-width: 260px;
+    max-height: 48px;
+    margin-bottom: 48px;
+    padding-top: 14.5px;
+    padding-bottom: 14.5px;
+    padding-left: 20px;
+    padding-right: 14.5px;
+  }
 }
 
 .ss-main.my-library-genre-list:focus {
@@ -106,4 +130,28 @@
 .ss-content.my-library-genre-list .ss-list .ss-option:hover {
   background: #1c1c1c;
   color: $accent-color;
+}
+
+.my-library-genre-list {
+  max-width: 180px;
+  max-height: 40px;
+  margin-bottom: 16px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14; /* 16px/14 */
+
+  color: #b7b7b7;
+
+  @include tablet {
+    max-width: 185px;
+    max-height: 44px;
+    margin-bottom: 36px;
+  }
+
+  @include desktop {
+    max-width: 260px;
+    max-height: 48px;
+    margin-bottom: 48px;
+  }
 }

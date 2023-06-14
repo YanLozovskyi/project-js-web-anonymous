@@ -1,5 +1,6 @@
 const linkCommandModalEl = document.querySelector('.team-modal-link-js');
 const footerModalEl = document.querySelector('.footer-modal-backdrop');
+const audio = document.querySelector('.footer-modal-backdrop audio');
 
 linkCommandModalEl.addEventListener('click', openModalCommand);
 
@@ -8,6 +9,7 @@ function openModalCommand() {
   footerModalEl.classList.remove('is-hidden');
 
   footerModalEl.addEventListener('click', closeModal);
+  playMusic();
 }
 
 document.addEventListener('keydown', event => {
@@ -24,6 +26,15 @@ function closeModal(e) {
   ) {
     footerModalEl.classList.add('is-hidden');
     document.body.classList.remove('no-scroll');
+    stopMusic();
   }
   return;
+}
+
+function playMusic() {
+  audio.play();
+}
+
+function stopMusic() {
+  audio.pause();
 }

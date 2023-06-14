@@ -3,10 +3,13 @@ import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 import { refs } from './refs';
 import { createMarkupFilmsCards } from '../../components/createMarkupFilmCard';
 import { markupContentTextMessage } from './markupContentTextMessage';
+import { Loader } from '../../loader';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
 const PER_PAGE = 6;
+
+const loader = new Loader();
 
 let correctGenre = 'All';
 let totalPage;
@@ -20,8 +23,16 @@ const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
 renderContentBasedOnConditions();
 
 document.addEventListener('click', function (e) {
-  if (e.target.dataset.type === 'action') {
+  if (e.target.dataset.action === 'add-remove-to-my-library') {
     const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+    if (dataStorage.length === 0) {
+      refs.genreList.removeEventListener('change', onSelectGenreListChange);
+      refs.myLibrarySection.classList.add(
+        'my-library-content-text-message-section'
+      );
+      refs.libraryContent.innerHTML = markupContentTextMessage();
+    }
+
     renderLibraryCards(dataStorage);
   }
 });
@@ -35,6 +46,7 @@ function renderContentBasedOnConditions() {
     refs.libraryContent.innerHTML = markupContentTextMessage();
   } else if (dataStorage) {
     //? Отримую унікальні ID жанрів фільмів, які є у localStorage і за допомогою функції createSelectOptionMarkup отримую розмітку з жанром, і вставляю у select
+    2;
     dataStorage
       .reduce((acc, el) => [...acc, ...el.genres], [])
       .filter(
@@ -88,6 +100,7 @@ function onSelectGenreListChange(e) {
 }
 
 async function renderLibraryCards(movieList) {
+  loader.onShow();
   startIndex = 0;
   endIndex = PER_PAGE;
   refs.moviesList.innerHTML = '';
@@ -99,9 +112,11 @@ async function renderLibraryCards(movieList) {
   } else {
     refs.moviesList.innerHTML = await createMarkupFilmsCards(movieList);
   }
+  loader.onClose();
 }
 
 function onloadMoreButtonClick() {
+  loader.onShow();
   refs.loadMoreButton.blur();
 
   startIndex += PER_PAGE;
@@ -112,6 +127,7 @@ function onloadMoreButtonClick() {
   } else {
     localStoragePagination(startIndex, endIndex, correctGenreMovieList);
   }
+  loader.onClose();
 }
 
 async function localStoragePagination(start, end, data) {

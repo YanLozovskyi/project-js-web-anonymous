@@ -1,11 +1,14 @@
+import '~node_modules/swiper/swiper-element-bundle.min.js';
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
+import { getStar } from '../../components/getStar';
+import * as basicLightbox from 'basiclightbox';
+import { ScrollService } from '../../components/scrollService';
 import { ServiceAddRemoveBtn } from '../../api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
+
+const scrollService = new ScrollService();
 
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
-import { getStar } from '../../components/getStar';
-import * as basicLightbox from 'basiclightbox';
-
 const svgCloseIcon = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path class="svg-close-icon" d="M11.25 11.25L0.75 0.75M11.25 0.75L0.75 11.25" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
@@ -14,8 +17,16 @@ const catalogPath = document.querySelector('.hero-catalog');
 async function getTrendMovieOfDay() {
   try {
     const response = await apiMovie.getTrend('day');
-    const randomFilm = randomElement(response.data.results);
-    createMarkupFilm(randomFilm, catalogPath);
+
+    const randomFilms = randomElement(response.data.results);
+
+    if (response.data.results.length === 0) {
+      createDefaultMarkup(catalogPath);
+
+      DefaultMarkupSettings();
+    } else {
+      createMarkupFilm(randomFilms.slice(0, 5), catalogPath);
+    }
   } catch (error) {
     console.log('Error:', error);
   }
@@ -24,31 +35,34 @@ async function getTrendMovieOfDay() {
 getTrendMovieOfDay();
 
 function randomElement(arr) {
-  const rand = Math.floor(Math.random() * arr.length);
-  return [arr[rand]];
+  arr = arr.sort(() => Math.random() - 0.5);
+
+  return arr;
 }
 
-export function createMarkupFilm(response, path) {
+async function createMarkupFilm(response, path) {
   const markup = response
-    .map(({ original_title, overview, backdrop_path, vote_average }) => {
-      return `<div class="hero-film_background" style="background-image: url(${IMG_URL}${backdrop_path})""></div>
+    .map(({ original_title, overview, backdrop_path, vote_average, id }) => {
+      return `
+      <swiper-slide class="hero-film_background hero-wrap"
+        style="background-image: url(${IMG_URL}${backdrop_path})"
+        data-movie-id="${id}"
+      >
         <div class="hero-wrap">
-
-  <h1 class="hero-title">${original_title}</h1>
-    <div class="hero-stars">${getStar(vote_average)}</div>
-
-  <p class="hero-description-js">${overview}</p>
-  <div class="hero-buttons">
-
-    <button class="hero-button-trailer">
-      Watch trailer
-    </button>
-
-    <button class="hero-button-moredetails">
-      More details
-    </button>
-  </div>
-</div>`;
+          <h1 class="hero-title">${original_title}</h1>
+          <div class="hero-stars">${getStar(vote_average)}</div>
+          <p class="hero-description-js">${overview}</p>
+          <div class="hero-buttons">
+            <button class="hero-button-trailer">
+              Watch trailer
+            </button>
+            <button class="hero-button-moredetails">
+              More details
+            </button>
+          </div>
+        </div>
+      </swiper-slide>
+    `;
     })
     .join('');
   path.innerHTML = markup;
@@ -57,17 +71,17 @@ export function createMarkupFilm(response, path) {
 }
 
 async function showTrailer(response) {
-  const button = document.querySelector('.hero-button-trailer');
-  button.addEventListener('click', onButtonClick);
+  const buttons = document.querySelectorAll('.hero-button-trailer');
 
-  async function onButtonClick() {
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      onButtonClick(response[index].id);
+    });
+  });
+
+  async function onButtonClick(movieId) {
     try {
-      getIdTotalFilm(response);
-
-      const youtubeTrailers = await apiMovie.getTrailer(
-        getIdTotalFilm(response)
-      );
-
+      const youtubeTrailers = await apiMovie.getTrailer(movieId);
       const trailer = youtubeTrailers.data.results.find(
         el => el.type === 'Trailer' || el.name === 'Official Trailer'
       );
@@ -76,8 +90,23 @@ async function showTrailer(response) {
         throw new Error('Trailer not found');
       }
 
-      const instance = basicLightbox.create(`
-     <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>`);
+      const instance = basicLightbox.create(
+        `
+        <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>
+      `,
+        {
+          handlerEscape: null,
+          onShow() {
+            scrollService.blockScroll();
+            this.handlerEscape = handlerEsc.bind(instance);
+            document.addEventListener('keydown', this.handlerEscape);
+          },
+          onClose() {
+            scrollService.restoreScroll();
+            document.removeEventListener('keydown', this.handlerEscape);
+          },
+        }
+      );
 
       instance.show();
     } catch (error) {
@@ -88,72 +117,120 @@ async function showTrailer(response) {
 }
 
 function markupForMistake() {
-  return basicLightbox.create(`
-          <div class="trailer-fail">
-            <p class="trailer-fail-text">OOPS...<br/> We are very sorry!<br /> But we couldn’t find the trailer.</p>
-            <button type="button" class="btn-close"><svg class="btn-close--svg" width=24 height=24>
-            <use href='../../img/sprite.svg#icon-x-button'></use>
-        </svg>
-      </button>
-            <div class="bg-box"></div>
-          </div>
-        `);
+  const instance = basicLightbox.create(`
+  <div class="trailer-fail">
+  <p class="trailer-fail-text">OOPS...<br/> We are very sorry!<br /> But we couldn’t find the trailer.</p>
+  <button type="button" class="btn-close"><svg class="btn-close--svg">
+  <use href='/sprite.a5e5e87b.svg#icon-close'></use>
+  </svg>
+  </button>
+  <div class="bg-box"></div>
+  </div>
+  `);
+
+  const buttonClose = instance.element().querySelector('.btn-close');
+  buttonClose.addEventListener('click', onButtonCloseClick);
+  function onButtonCloseClick() {
+    instance.close();
+    buttonClose.removeEventListener('click', onButtonCloseClick);
+  }
+
+  return instance;
+}
+
+function handlerEsc(evt) {
+  if (evt.code === 'Escape') {
+    this.close();
+  }
+}
+
+function handlerClose() {
+  this.close();
 }
 
 // ! Логика для модалки
 
-function getIdTotalFilm(response) {
-  return response.map(data => data.id).join('');
-}
-
 function showModalMoreDetails(response) {
-  const buttonMoreDetails = document.querySelector('.hero-button-moredetails');
+  const buttonsMoreDetails = document.querySelectorAll(
+    '.hero-button-moredetails'
+  );
 
-  buttonMoreDetails.addEventListener('click', onButtonMoreClick);
+  buttonsMoreDetails.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      onButtonMoreClick(response[index].id);
+    });
+  });
 
-  async function onButtonMoreClick() {
-    document.body.insertAdjacentHTML('beforeend', markupBackdropMovieCard());
-
-    const backdropMovieCardEl = document.getElementById('backdrop-movie-card');
-
+  async function onButtonMoreClick(movieId) {
     try {
-      const movie = await apiMovie.getMovieInfo(getIdTotalFilm(response));
+      const movie = await apiMovie.getMovieInfo(movieId);
 
-      backdropMovieCardEl.innerHTML = markupMovieCard(movie.data);
-      const addRemoveBtn = document.querySelector('button[data-type="action"]');
-      const serviceAddRemoveBtn = new ServiceAddRemoveBtn(addRemoveBtn, movie);
+      const instance = basicLightbox.create(markupMovieCard(movie.data), {
+        handlerEscape: null,
+        handlerBtnClose: null,
 
-      serviceAddRemoveBtn.setButtonName();
-      backdropMovieCardEl.addEventListener('click', onBackdropClick);
+        onShow: instance => {
+          scrollService.blockScroll();
+
+          const addRemoveBtn = instance
+            .element()
+            .querySelector('button[data-action="add-remove-to-my-library"]');
+
+          const serviceAddRemoveBtn = new ServiceAddRemoveBtn(
+            addRemoveBtn,
+            movie
+          );
+          serviceAddRemoveBtn.setButtonName();
+
+          const escapeHandler = handlerEsc.bind(instance);
+          document.addEventListener('keydown', escapeHandler);
+
+          // this.handlerEscape = handlerEsc.bind(instance);
+          // document.addEventListener('keydown', this.handlerEscape);
+
+          const closeButton = instance
+            .element()
+            .querySelector('#closeModalPopUp');
+          const btnCloseHandler = handlerClose.bind(instance);
+          closeButton.addEventListener('click', btnCloseHandler);
+
+          // const btnCloseEl = instance
+          //   .element()
+          //   .querySelector('#closeModalPopUp');
+
+          // this.handlerBtnClose = handlerClose.bind(instance);
+          // btnCloseEl.addEventListener('click', this.handlerBtnClose);
+        },
+
+        onClose() {
+          scrollService.restoreScroll();
+
+          document.removeEventListener('keydown', this.handlerEscape);
+          document.removeEventListener('click', this.handlerBtnClose);
+        },
+      });
+
+      instance.show();
+
+      showTrailer(movie);
     } catch (error) {
       console.log(error);
     }
+  }
+}
 
-    function onBackdropClick(e) {
-      if (e.target === backdropMovieCardEl) {
-        backdropMovieCardEl.removeEventListener('click', onBackdropClick);
-        backdropMovieCardEl.remove();
-      }
-    }
-
-    function markupBackdropMovieCard() {
-      return `
-    <div id="backdrop-movie-card" class="backdrop-movie-card overlay visual">
-    </div>`;
-    }
-
-    function markupMovieCard({
-      id,
-      poster_path,
-      original_title,
-      vote_average,
-      vote_count,
-      popularity,
-      genres,
-      overview,
-    }) {
-      const allGenres = genres.map(({ name }) => name).join(', ');
-      return `
+function markupMovieCard({
+  id,
+  poster_path,
+  original_title,
+  vote_average,
+  vote_count,
+  popularity,
+  genres,
+  overview,
+}) {
+  const allGenres = genres.map(({ name }) => name).join(', ');
+  return `
 <div class="pop-up-modal visual" id="modalPopUp">
   <button class="pop-up-modal__close" id="closeModalPopUp">
     ${svgCloseIcon}
@@ -182,17 +259,15 @@ function showModalMoreDetails(response) {
       <div class="pop-up-modal__about">
         <p class="pop-up-modal__about-txt">${overview}</p>
       </div>
-        <button
-          class="add-remove-btn button-accent"
-          type="button"
-          data-type="action"
-          data-action="add-to-my-library"
-          >
-        </button>
+        <div class="pop-up-modal-wrap-btn">
+          <button
+            class="add-remove-btn button-accent"
+            type="button"
+            data-action="add-remove-to-my-library"
+          ></button>
+        </div>
     </div>
   </div>
 </div>
 `;
-    }
-  }
 }
