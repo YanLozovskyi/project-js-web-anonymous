@@ -75,7 +75,6 @@ async function showTrailer(response) {
   async function onButtonClick() {
     try {
       const youtubeTrailers = await apiMovie.getTrailer(response.data.id);
-      console.log('youtubeTrailers:', youtubeTrailers);
 
       const trailer = youtubeTrailers.data.results.find(
         el => el.type === 'Trailer' || el.name === 'Official Trailer'
