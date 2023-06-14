@@ -103,7 +103,7 @@
 }
 
 .hero-description-js {
-  overflow: scroll;
+  overflow-y: scroll;
   color: $text-color;
 
   font-weight: 400;
@@ -119,7 +119,7 @@
   @media screen and (min-width: 768px) {
     max-width: 360px;
     margin-bottom: 28px;
-    overflow: scroll;
+    overflow-y: scroll;
   }
   @media screen and (min-width: 1280px) {
     font-size: 16px;
