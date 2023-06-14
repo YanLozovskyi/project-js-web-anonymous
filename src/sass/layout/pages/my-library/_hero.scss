@@ -53,6 +53,7 @@
 }
 
 .hero-content-lib {
+  background-color: #111111;
   position: relative;
   min-width: 320px;
   min-height: 380px;
@@ -85,7 +86,6 @@
 @media screen and (min-width: 768px) {
   .hero-content-lib {
     padding-top: 62px;
-    min-height: 432px;
     background-size: cover;
     background-position-x: 200px;
     background-image: linear-gradient(
@@ -114,7 +114,8 @@
 @media screen and (min-width: 1280px) {
   .hero-content-lib {
     padding-top: 169px;
-    min-height: 720;
+
+    height: 660px;
     background-size: cover;
     background-position-x: 280px;
     background-image: linear-gradient(

@@ -14,16 +14,16 @@ const svgCloseIcon = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none
 </svg>`;
 const contentPath = document.querySelector('.hero-content');
 
+const contentPathDefault = document.querySelector('.hero-default');
 // --------------------------ТЕСТ - Трендові фільми дня та тижня
 
 async function getTrendMovieOfDay() {
   try {
     const response = await apiMovie.getTrend('day');
-
     const randomFilms = randomElement(response.data.results);
 
     if (response.data.results.length === 0) {
-      createDefaultMarkup(contentPath);
+      createDefaultMarkup(contentPathDefault);
 
       DefaultMarkupSettings();
     } else {
@@ -49,10 +49,11 @@ async function createMarkupFilm(response, path) {
           <div class="hero-stars">${getStar(vote_average)}</div>
           <p class="hero-description-js">${overview}</p>
           <div class="hero-buttons">
-            <button class="hero-button-trailer">
+            <button class="hero-button-trailer ">
               Watch trailer
             </button>
-            <button class="hero-button-moredetails">
+            <button class="hero-button-moredetails
+          ">
               More details
             </button>
           </div>
@@ -68,12 +69,13 @@ async function createMarkupFilm(response, path) {
 
 function createDefaultMarkup(path) {
   const markup = `
+  <div class="hero-content">
   <h1 class="hero-title-default">Let’s Make Your Own Cinema</h1>
     <p class="hero-description-default">Is a guide to creating a personalized movie theater experience. You'll need a projector, screen, and speakers.</p>
     <a class="hero-link" href="./catalog.html">Get Started</a>
     
     <div class="hero-picture-default">
-
+</div>
 </div>
 `;
   path.innerHTML = markup;
@@ -90,6 +92,8 @@ function DefaultMarkupSettings() {
   const heroContent = document.querySelector('.hero-content');
 
   heroContent.classList.add('hero-content-default');
+  heroContent.classList.add('container');
+
   heroContent.classList.remove('hero-content');
   const screenSize = window.innerWidth;
 
@@ -214,15 +218,24 @@ function showModalMoreDetails(response) {
           );
           serviceAddRemoveBtn.setButtonName();
 
-          this.handlerEscape = handlerEsc.bind(instance);
-          document.addEventListener('keydown', this.handlerEscape);
+          const escapeHandler = handlerEsc.bind(instance);
+          document.addEventListener('keydown', escapeHandler);
 
-          const btnCloseEl = instance
+          // this.handlerEscape = handlerEsc.bind(instance);
+          // document.addEventListener('keydown', this.handlerEscape);
+
+          const closeButton = instance
             .element()
             .querySelector('#closeModalPopUp');
+          const btnCloseHandler = handlerClose.bind(instance);
+          closeButton.addEventListener('click', btnCloseHandler);
 
-          this.handlerBtnClose = handlerClose.bind(instance);
-          btnCloseEl.addEventListener('click', this.handlerBtnClose);
+          // const btnCloseEl = instance
+          //   .element()
+          //   .querySelector('#closeModalPopUp');
+
+          // this.handlerBtnClose = handlerClose.bind(instance);
+          // btnCloseEl.addEventListener('click', this.handlerBtnClose);
         },
 
         onClose() {

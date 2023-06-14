@@ -182,15 +182,24 @@ function showModalMoreDetails(response) {
           );
           serviceAddRemoveBtn.setButtonName();
 
-          this.handlerEscape = handlerEsc.bind(instance);
-          document.addEventListener('keydown', this.handlerEscape);
+          const escapeHandler = handlerEsc.bind(instance);
+          document.addEventListener('keydown', escapeHandler);
 
-          const btnCloseEl = instance
+          // this.handlerEscape = handlerEsc.bind(instance);
+          // document.addEventListener('keydown', this.handlerEscape);
+
+          const closeButton = instance
             .element()
             .querySelector('#closeModalPopUp');
+          const btnCloseHandler = handlerClose.bind(instance);
+          closeButton.addEventListener('click', btnCloseHandler);
 
-          this.handlerBtnClose = handlerClose.bind(instance);
-          btnCloseEl.addEventListener('click', this.handlerBtnClose);
+          // const btnCloseEl = instance
+          //   .element()
+          //   .querySelector('#closeModalPopUp');
+
+          // this.handlerBtnClose = handlerClose.bind(instance);
+          // btnCloseEl.addEventListener('click', this.handlerBtnClose);
         },
 
         onClose() {
