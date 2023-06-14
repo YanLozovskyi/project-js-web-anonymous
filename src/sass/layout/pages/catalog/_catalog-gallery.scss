@@ -14,11 +14,19 @@
 }
 
 .catalog-gallery-form {
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // gap: 12px;
+  // margin-bottom: 16px;
+
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  justify-content: space-around;
+  row-gap: 12px;
+
+  width: 200px;
+  margin: 0 auto 16px auto;
 
   @include tablet {
     flex-wrap: nowrap;
@@ -36,7 +44,6 @@
 }
 
 .catalog-gallery-input,
-.catalog-gallery-select,
 .catalog-gallery-input-search {
   background-color: transparent;
   color: $color-subtitles;
@@ -69,7 +76,7 @@
 }
 
 .catalog-gallery-input {
-  max-width: 173px;
+  width: 200px;
 
   @include tablet {
     max-width: 100%;
@@ -85,10 +92,10 @@
   color: $color-subtitles;
 }
 
-.catalog-gallery-select {
-  padding-left: 16px;
-  width: 95px;
-}
+// .catalog-gallery-select {
+//   padding-left: 16px;
+//   width: 95px;
+// }
 
 .catalog-gallery-input-search {
   width: 224px;
@@ -106,11 +113,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   background: $button-background-color;
+
   width: 40px;
   height: 40px;
-  border: 0;
-  border-radius: 50%;
+
+  border-radius: 100%;
+  border: 1px solid transparent;
+
+  // transition: background 250ms $cubic;
+  // transition: border 250ms $cubic;
+
+  &:hover,
+  &:focus {
+    background: $light-color;
+    border: 1px solid $accent-color;
+  }
 
   @include tablet {
     height: 44px;
@@ -120,13 +139,6 @@
   @include desktop {
     height: 48px;
     width: 48px;
-  }
-}
-
-.catalog-gallery-svg {
-  @include desktop {
-    height: 20px;
-    width: 20px;
   }
 }
 
@@ -185,15 +197,14 @@
 }
 
 .catalog-gallery-icon {
-  // stroke: $dark-color;
-  stroke: $light-color;
   width: 12px;
   height: 12px;
 }
 
-.catalog-gallery-icon:hover {
-  stroke: $accent-color;
+.catalog-gallery-btn:hover .catalog-gallery-icon, .catalog-gallery-btn:focus .catalog-gallery-icon {
+  --color1: #f87719;
 }
+
 
 .catalog-gallery {
   display: flex;
@@ -266,6 +277,32 @@
   color: #fff;
 }
 
+.tui-prev::after, .tui-next::after {
+  content: '';
+
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(180deg);
+
+  width: 6px;
+  height: 11px;
+
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include tablet {
+    width: 8px;
+    height: 16px;
+  }
+}
+
+.tui-prev::after {
+  background-image: url(../images/left-arrow.svg);
+}
+
+.tui-next::after {
+  background-image: url(../images/right-arrow.svg);
+}
+
 .tui-next-is-ellip,
 .tui-prev-is-ellip,
 .tui-next,
@@ -273,7 +310,27 @@
   border: none;
 }
 
-.tui-first,
-.tui-last {
+.tui-first.tui-is-disabled,
+.tui-last.tui-is-disabled {
   display: none;
+}
+
+.tui-prev {
+  order: 1;
+}
+
+.tui-first {
+  order: 2;
+}
+
+.tui-num-page, .tui-order-next-ellip, .tui-order-prev-ellip  {
+  order: 3;
+}
+
+.tui-next {
+  order: 5;
+}
+
+.tui-last {
+  order: 4;
 }
