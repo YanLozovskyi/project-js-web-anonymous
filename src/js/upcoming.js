@@ -79,6 +79,6 @@ function createUpcomingMovieMarkup({
         >${overview}
       </p>
     </div>
-    <button type="button" class="add-remove-btn button-accent"></button>
+    <button type="button" class="add-remove-btn button-accent" id="fix"></button>
   </div>`;
 }

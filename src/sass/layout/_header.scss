@@ -149,6 +149,23 @@
   }
 }
 
+/////// ------------ ДОДАВ СТИЛІ ДЛЯ КНОПКИ --------------- /////////////
+.icon-moon-left {
+  @include max-mobile {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+.icon-sun {
+  @include max-mobile {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+/////// ------------ ДОДАВ СТИЛІ ДЛЯ КНОПКИ --------------- /////////////
+
 .mobile-menu {
   position: absolute;
   top: 0;
