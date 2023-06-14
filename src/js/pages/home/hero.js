@@ -1,14 +1,13 @@
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import { getStar } from '../../components/getStar';
 import * as basicLightbox from 'basiclightbox';
-
 import { ServiceAddRemoveBtn } from '../../api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
+
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
 const svgCloseIcon = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path class="svg-close-icon" d="M11.25 11.25L0.75 0.75M11.25 0.75L0.75 11.25" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
-
 const contentPath = document.querySelector('.hero-content');
 
 // --------------------------ТЕСТ - Трендові фільми дня та тижня
