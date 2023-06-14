@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 4px;
 
   @include max-mobile {
@@ -30,7 +31,12 @@
     line-height: 1.875;
   }
 }
-.footer-command-info {
+.footer-team-info {
+  margin-right: 10px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
   font-size: 14px;
   line-height: 1.6;
   color: $color-subtitles;
@@ -42,18 +48,275 @@
 }
 .icon-heart {
   fill: $accent-color;
+  animation: Scale 0.7s ease infinite alternate;
 }
 .footer-link {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-
+  position: relative;
+  background-color: transparent;
+  border: none;
   transition: all 250ms $cubic;
   transform: scale(1.25);
+  margin-left: 8px;
+  color: $color-subtitles;
+  font-size: 14px;
+  line-height: 1.6;
+  outline: none;
 
   &:hover,
   &:focus {
-    text-decoration-color: $accent-color;
     color: $accent-color;
     transform: scale(1.25);
+  }
+}
+.footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: $color-subtitles;
+
+  transition: all 250ms linear;
+}
+.footer-link:hover::after {
+  background-color: $accent-color;
+  width: 100%;
+}
+
+.footer-modal-backdrop {
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: opacity 250ms linear, visibillity 250ms linear;
+}
+
+.footer-modal-backdrop.is-hidden .footer-modal-content {
+  transform: translateY(100%) scale(0.5);
+}
+
+.footer-modal-content {
+  background: $dark-color;
+  width: 300px;
+  height: 400px;
+  position: relative;
+  z-index: 999;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 15px 20px;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  overflow: auto;
+
+  transition: transform 250ms linear;
+
+  @include tablet {
+    width: 420px;
+    height: 420px;
+  }
+
+  @include desktop {
+    width: 750px;
+    height: 510px;
+  }
+}
+.footer-modal-close-btn {
+  position: absolute;
+  background: #e1d8d26b;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 7px 4px #8c410c;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 250ms $cubic;
+
+  @include max-mobile {
+    top: 5px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
+  }
+
+  @include tablet {
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+  }
+
+  @include desktop {
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    background: #8c410c;
+    box-shadow: 1px 1px 7px 4px #e1d8d26b;
+  }
+}
+.modal-close-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  stroke: $dark-color;
+
+  @include max-mobile {
+    width: 8px;
+    height: 8px;
+  }
+  @include tablet {
+    width: 8px;
+    height: 8px;
+  }
+}
+.footer-modal-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.16;
+
+  text-transform: uppercase;
+  color: #e1d8d26b;
+  text-align: center;
+  text-shadow: 1px 1px 2px #8c410c, 0 0 1em $accent-color, 0 0 0.2em #e1d8d26b;
+
+  transition: all 250ms $cubic;
+
+  @include max-mobile {
+    font-size: 14px;
+  }
+  &:hover {
+    color: #8c410c;
+    text-shadow: 1px 1px 2px #e1d8d26b, 0 0 1em $accent-color, 0 0 0.2em #8c410c;
+  }
+}
+.team-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.team-item {
+  box-shadow: 1px 1px 7px 4px #e1d8d26b;
+  border-radius: 5px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #8c410c;
+  width: 120px;
+
+  transition: transform 250ms $cubic;
+
+  &:hover,
+  &focus {
+    transform: scale(1.1);
+  }
+}
+.team-img {
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.team__box {
+  text-align: center;
+}
+
+.team__member {
+  font-weight: 600;
+  font-size: 14px;
+  color: $dark-color;
+  margin-bottom: 5px;
+}
+
+.team__role {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  color: $dark-color;
+  margin-bottom: 5px;
+}
+
+.team__link-linkedin {
+  border: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 20%;
+  margin-right: 10px;
+  background-color: transparent;
+  fill: $dark-color;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  &--active:hover,
+  &--active:focus {
+    background-color: $accent-color;
+    fill: $light-color;
+  }
+}
+
+.team__link-github {
+  border: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 20%;
+  background-color: transparent;
+  fill: $dark-color;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  &--active:hover,
+  &--active:focus {
+    background-color: $accent-color;
+    fill: $light-color;
+  }
+}
+.footer-modal-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+
+  @include max-mobile {
+    gap: 8px;
+  }
+
+  @include tablet {
+    gap: 10px;
+  }
+}
+
+.footer-modal-logo {
+  fill: #e1d8d26b;
+  filter: drop-shadow(2px 2px 3px $accent-color);
+
+  transition: all 250ms linear;
+
+  @include desktop {
+    width: 40px;
+    height: 40px;
+  }
+
+  &:hover {
+    fill: #8c410c;
+    filter: drop-shadow(2px 2px 3px #e1d8d26b);
   }
 }

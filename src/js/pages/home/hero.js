@@ -5,6 +5,9 @@ import * as basicLightbox from 'basiclightbox';
 import { ServiceAddRemoveBtn } from '../../api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
+const svgCloseIcon = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="svg-close-icon" d="M11.25 11.25L0.75 0.75M11.25 0.75L0.75 11.25" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
 
 const contentPath = document.querySelector('.hero-content');
 
@@ -208,9 +211,7 @@ function showModalMoreDetails(response) {
       return `
 <div class="pop-up-modal visual" id="modalPopUp">
   <button class="pop-up-modal__close" id="closeModalPopUp">
-    <svg width="18" height="18" class="pop-up-modal__close-icon">
-      <use href="./images/sprite/sprite.svg#icon-close"></use>
-    </svg>
+    ${svgCloseIcon}
   </button>
   <div class="pop-up-modal__container">
     <img src="${IMG_URL}${poster_path}" alt="image.png" class="pop-up-modal__img" />

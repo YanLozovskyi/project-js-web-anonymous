@@ -12,6 +12,13 @@ export default class ApiMovie {
     );
   }
 
+  // Трендові фільми дня та тижня за сторінкою
+  getTrendByPage(param, page) {
+    return axios.get(
+      `${this.#BASE_URL}trending/movie/${param}?api_key=${this.#API_KEY}&page=${page}`
+    );
+  }
+
   // Нові фільми
   getNewFilms(page) {
     return axios.get(

@@ -1,13 +1,15 @@
-// import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import Storage from '../../api/localStorageAPI/localStorageAPI';
 import { STORAGE_KEY } from '../../localStorageKey/localStorageKey';
 import { refs } from './refs';
 import { createMarkupFilmsCards } from '../../components/createMarkupFilmCard';
 import { markupContentTextMessage } from './markupContentTextMessage';
+import { Loader } from '../../loader';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
 
 const PER_PAGE = 6;
+
+const loader = new Loader();
 
 let correctGenre = 'All';
 let totalPage;
@@ -20,7 +22,15 @@ const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
 
 renderContentBasedOnConditions();
 
+document.addEventListener('click', function (e) {
+  if (e.target.dataset.action === 'add-remove-to-my-library') {
+    const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+    renderLibraryCards(dataStorage);
+  }
+});
+
 function renderContentBasedOnConditions() {
+  // loader.onShow();
   if (dataStorage?.length === 0) {
     refs.genreList.removeEventListener('change', onSelectGenreListChange);
     refs.myLibrarySection.classList.add(
@@ -82,6 +92,7 @@ function onSelectGenreListChange(e) {
 }
 
 async function renderLibraryCards(movieList) {
+  loader.onShow();
   startIndex = 0;
   endIndex = PER_PAGE;
   refs.moviesList.innerHTML = '';
@@ -93,9 +104,11 @@ async function renderLibraryCards(movieList) {
   } else {
     refs.moviesList.innerHTML = await createMarkupFilmsCards(movieList);
   }
+  loader.onClose();
 }
 
 function onloadMoreButtonClick() {
+  loader.onShow();
   refs.loadMoreButton.blur();
 
   startIndex += PER_PAGE;
@@ -106,6 +119,7 @@ function onloadMoreButtonClick() {
   } else {
     localStoragePagination(startIndex, endIndex, correctGenreMovieList);
   }
+  loader.onClose();
 }
 
 async function localStoragePagination(start, end, data) {
