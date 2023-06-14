@@ -24,10 +24,12 @@ function switchThem(event) {
   iconSun.classList.toggle('visually-hidden');
 
   if (!iconSun.classList.contains('visually-hidden')) {
+    bodyStyle.classList.remove('dark');
     bodyStyle.classList.add('light');
     localStorage.setItem('selectedMode', 'light');
   } else {
     bodyStyle.classList.remove('light');
+    bodyStyle.classList.add('dark');
     localStorage.setItem('selectedMode', 'dark');
   }
 }
