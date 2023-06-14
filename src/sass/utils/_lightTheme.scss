@@ -49,6 +49,10 @@
   transition: color 500ms linear, ease-in-out 500ms;
 }
 
+.light .ss-main.catalog-gallery-select {
+  border: none;
+}
+
 .light .catalog-gallery-input,
 .light .catalog-gallery-select,
 .light .catalog-gallery-input-search {
@@ -58,10 +62,56 @@
   transition: color 500ms linear, ease-in-out 500ms;
 }
 
+.light .ss-main.catalog-gallery-select {
+  border: 1px solid $dark-color;
+}
+
+.light .ss-main.catalog-gallery-select .ss-values .ss-single {
+  color: $color-subtitles-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+
+.light .ss-main.catalog-gallery-select .ss-arrow path {
+  stroke: $color-subtitles-white-theme;
+  transition: stroke 500ms linear, ease-in-out 500ms;
+}
+
 .light .catalog-gallery-input::placeholder {
   color: $color-subtitles-white-theme;
   transition: color 500ms linear, ease-in-out 500ms;
 }
+
+.light .ss-content.catalog-gallery-select .ss-search {
+  background: $text-color;
+}
+
+.light .ss-content.catalog-gallery-select .ss-search input {
+  background: $text-color;
+  color: $color-subtitles-white-theme;
+  border: 1px solid $dark-color;
+}
+
+.light .ss-content.catalog-gallery-select .ss-list .ss-option {
+  background: $text-color;
+  color: $dark-color;
+}
+
+.light .ss-content.catalog-gallery-select .ss-list .ss-option:hover,
+.light .ss-content.catalog-gallery-select .ss-list .ss-option:focus,
+.light .ss-content.catalog-gallery-select .ss-list .ss-option.ss-highlighted,
+.light
+  .ss-content.catalog-gallery-select
+  .ss-list
+  .ss-option:not(.ss-disabled).ss-selected,
+.light .ss-content.catalog-gallery-select .ss-list .ss-option:hover {
+  color: #f87719;
+  background: $text-color;
+}
+
+.light .catalog-gallery-icon {
+  --color1: #111111;
+}
+
 ////// ---------  Upcoming Soon-light theme--------///////
 
 .light .vote-text,
@@ -233,6 +283,30 @@
 .light .team__member {
   color: $light-color;
   transition: color 500ms linear, ease-in-out 500ms;
+}
+
+/////// -------- Light pagination --------------- /////
+.light .tui-prev:after,
+.light .tui-next:after {
+  filter: none;
+}
+
+.light .tui-is-selected {
+  color: $text-color-for-white-theme;
+}
+
+.light .tui-page-btn.tui-num-page {
+  color: $text-color-for-white-theme;
+  border-color: $text-color-for-white-theme;
+}
+
+.light .tui-ico-ellip {
+  color: $text-color-for-white-theme;
+}
+
+.light .tui-page-btn.tui-last {
+  color: $text-color-for-white-theme;
+  border-color: $text-color-for-white-theme;
 }
 
 /////// -------- Button if upcoming fix --------------- /////
