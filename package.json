@@ -22,6 +22,7 @@
     "axios": "^1.4.0",
     "basiclightbox": "^5.0.4",
     "modern-normalize": "^1.1.0",
+    "simplelightbox": "^2.14.1",
     "slim-select": "^2.5.0",
     "swiper": "^9.4.1",
     "tui-pagination": "^3.4.1"
