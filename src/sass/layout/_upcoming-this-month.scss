@@ -54,18 +54,15 @@
 
 .gallery-item_img {
   width: 100%;
-  height: auto;
-  // max-width: 280px;
-  // max-height: 406px;
   border-radius: 5px;
 
   @include tablet {
-    max-width: 704px;
+    width: 704px;
     max-height: 400px;
   }
 
   @include desktop {
-    max-width: 805px;
+    width: 805px;
     max-height: 458px;
   }
 }
