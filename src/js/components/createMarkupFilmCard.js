@@ -1,5 +1,6 @@
 import ApiMovie from '../api/themoviedbAPI/fetch-movie';
 import { getStar } from './getStar';
+import comingSoonImg from '../../images/team-photo/photo_yan.avif';
 const apiMovie = new ApiMovie();
 
 let genresList = [];
@@ -69,9 +70,9 @@ function getGenreName(ids) {
 }
 
 function getImg(poster, title) {
-  // if (poster === null || !poster) {
-  //   return `src='${comingSoonImg}' alt='${title}'`;
-  // }
+  if (poster === null || !poster) {
+    return `src='${comingSoonImg}' alt='${title}'`;
+  }
 
   return `
     srcset="
