@@ -1,6 +1,8 @@
 // styles scss
 import './sass/main.scss';
 import 'animate.css';
+import simpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 // js
 
