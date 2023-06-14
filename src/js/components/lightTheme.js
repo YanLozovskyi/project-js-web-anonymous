@@ -33,3 +33,17 @@ function switchThem(event) {
     localStorage.setItem('selectedMode', 'dark');
   }
 }
+
+// Отображение актуального состояния кнопки для пользователей программой чтения с экрана.
+
+themSwitcherButton.addEventListener('click', toggleTheme);
+
+function toggleTheme() {
+  const isPressed = themSwitcherButton.getAttribute('aria-pressed') === 'true';
+
+  if (isPressed) {
+    themSwitcherButton.setAttribute('aria-pressed', 'false');
+  } else {
+    themSwitcherButton.setAttribute('aria-pressed', 'true');
+  }
+}
