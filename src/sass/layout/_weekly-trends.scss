@@ -98,6 +98,7 @@
   max-width: 280px;
   max-height: 406px;
   border-radius: 5px;
+  object-fit: cover;
 
   @include tablet {
     max-width: 224px;

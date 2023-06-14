@@ -55,6 +55,7 @@
 .gallery-item_img {
   width: 100%;
   border-radius: 5px;
+  object-fit: cover;
 
   @include tablet {
     width: 704px;

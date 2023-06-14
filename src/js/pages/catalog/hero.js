@@ -43,11 +43,12 @@ function randomElement(arr) {
 async function createMarkupFilm(response, path) {
   const markup = response
     .map(({ original_title, overview, backdrop_path, vote_average, id }) => {
+      const movieSrc = getImg(backdrop_path, original_title);
       return `
       <swiper-slide class="hero-film_background hero-wrap"
-        style="background-image: url(${IMG_URL}${backdrop_path})"
+    
         data-movie-id="${id}"
-      >
+      ><img class="hero-film_background" width="1280" height="720" ${movieSrc}/><div class="swiper-test">
         <div class="hero-wrap">
           <h1 class="hero-title">${original_title}</h1>
           <div class="hero-stars">${getStar(vote_average)}</div>
@@ -60,7 +61,7 @@ async function createMarkupFilm(response, path) {
               More details
             </button>
           </div>
-        </div>
+        </div></div>
       </swiper-slide>
     `;
     })
@@ -270,4 +271,17 @@ function markupMovieCard({
   </div>
 </div>
 `;
+}
+
+function getImg(backdrop_path, title) {
+  // if (poster === null || !poster) {
+  //   return `src='${comingSoonImg}' alt='${title}'`;
+  // }
+
+  return `
+    srcset="https://image.tmdb.org/t/p/w1280${backdrop_path} 1280w,
+  https://image.tmdb.org/t/p/w780${backdrop_path} 768w,
+  https://image.tmdb.org/t/p/w300${backdrop_path} 320w"
+  src="https://image.tmdb.org/t/p/w300${backdrop_path}" "sizes="(min-width: 1280px) 1280px, (min-width: 768px) 768px, (min-width: 320px) 320px, 100vw "   
+     alt='${title}'`;
 }
