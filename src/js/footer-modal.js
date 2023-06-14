@@ -33,6 +33,7 @@ function closeModal(e) {
 
 function playMusic() {
   audio.play();
+  audio.volume = 0.4;
 }
 
 function stopMusic() {
