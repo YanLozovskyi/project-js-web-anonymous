@@ -1,11 +1,11 @@
 .home-upcoming {
   padding: 0px 20px 32px;
-  
+
   @include tablet {
     min-height: 420px;
     padding: 0px 32px 77px;
   }
-  
+
   @include desktop {
     min-height: 660px;
     padding: 0px 32px 100px;
@@ -104,7 +104,8 @@
   flex-direction: row;
 }
 
-ul {
+div .info-item-one-part,
+div .info-item-two-part {
   flex-basis: calc((100% - 50px) / 2);
 
   @include tablet {
@@ -116,7 +117,8 @@ ul {
   }
 }
 
-li {
+div .info-item,
+div .info-item-two {
   margin-bottom: 12px;
 }
 
@@ -142,14 +144,14 @@ li {
 }
 
 .info-item-fourth {
-  background:$light-color;
+  background: $light-color;
   border-radius: 5px;
   padding: 1px 8px;
   max-width: 36px;
   max-height: 18px;
 }
 
-.vote-text{
+.vote-text {
   font-size: 14px;
   line-height: 1.14;
   text-transform: uppercase;
@@ -176,7 +178,7 @@ li {
   color: $color-subtitles;
 }
 
-.info-item-about-movie{
+.info-item-about-movie {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.4;
