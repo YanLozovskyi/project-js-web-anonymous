@@ -1,3 +1,4 @@
+import '~node_modules/swiper/swiper-element-bundle.min.js';
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import { getStar } from '../../components/getStar';
 import * as basicLightbox from 'basiclightbox';
