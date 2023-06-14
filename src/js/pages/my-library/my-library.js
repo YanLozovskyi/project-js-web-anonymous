@@ -26,6 +26,14 @@ renderContentBasedOnConditions();
 document.addEventListener('click', function (e) {
   if (e.target.dataset.action === 'add-remove-to-my-library') {
     const dataStorage = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+    if (dataStorage.length === 0) {
+      refs.genreList.removeEventListener('change', onSelectGenreListChange);
+      refs.myLibrarySection.classList.add(
+        'my-library-content-text-message-section'
+      );
+      refs.libraryContent.innerHTML = markupContentTextMessage();
+    }
+
     renderLibraryCards(dataStorage);
   }
 });
