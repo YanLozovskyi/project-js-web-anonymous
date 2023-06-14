@@ -2,6 +2,9 @@ import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import { getStar } from '../../components/getStar';
 import * as basicLightbox from 'basiclightbox';
 import { ServiceAddRemoveBtn } from '../../api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
+import { ScrollService } from '../../components/scrollService';
+
+const scrollService = new ScrollService();
 
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
@@ -118,9 +121,23 @@ async function showTrailer(response) {
         throw new Error('Trailer not found');
       }
 
-      const instance = basicLightbox.create(`
+      const instance = basicLightbox.create(
+        `
         <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>
-      `);
+      `,
+        {
+          handlerEscape: null,
+          onShow() {
+            scrollService.blockScroll();
+            this.handlerEscape = handlerEsc.bind(instance);
+            document.addEventListener('keydown', this.handlerEscape);
+          },
+          onClose() {
+            scrollService.restoreScroll();
+            document.removeEventListener('keydown', this.handlerEscape);
+          },
+        }
+      );
 
       instance.show();
     } catch (error) {
@@ -128,6 +145,16 @@ async function showTrailer(response) {
       console.log('Error:', error);
     }
   }
+}
+
+function handlerEsc(evt) {
+  if (evt.code === 'Escape') {
+    this.close();
+  }
+}
+
+function handlerClose() {
+  this.close();
 }
 
 function markupForMistake() {
@@ -166,48 +193,66 @@ function showModalMoreDetails(response) {
   });
 
   async function onButtonMoreClick(movieId) {
-    document.body.insertAdjacentHTML('beforeend', markupBackdropMovieCard());
-
-    const backdropMovieCardEl = document.getElementById('backdrop-movie-card');
-
     try {
       const movie = await apiMovie.getMovieInfo(movieId);
 
-      backdropMovieCardEl.innerHTML = markupMovieCard(movie.data);
-      const addRemoveBtn = document.querySelector('button[data-type="action"]');
-      const serviceAddRemoveBtn = new ServiceAddRemoveBtn(addRemoveBtn, movie);
+      const instance = basicLightbox.create(markupMovieCard(movie.data), {
+        handlerEscape: null,
+        handlerBtnClose: null,
 
-      serviceAddRemoveBtn.setButtonName();
-      backdropMovieCardEl.addEventListener('click', onBackdropClick);
+        onShow: instance => {
+          scrollService.blockScroll();
+
+          const addRemoveBtn = instance
+            .element()
+            .querySelector('button[data-action="add-remove-to-my-library"]');
+
+          const serviceAddRemoveBtn = new ServiceAddRemoveBtn(
+            addRemoveBtn,
+            movie
+          );
+          serviceAddRemoveBtn.setButtonName();
+
+          this.handlerEscape = handlerEsc.bind(instance);
+          document.addEventListener('keydown', this.handlerEscape);
+
+          const btnCloseEl = instance
+            .element()
+            .querySelector('#closeModalPopUp');
+
+          this.handlerBtnClose = handlerClose.bind(instance);
+          btnCloseEl.addEventListener('click', this.handlerBtnClose);
+        },
+
+        onClose() {
+          scrollService.restoreScroll();
+
+          document.removeEventListener('keydown', this.handlerEscape);
+          document.removeEventListener('click', this.handlerBtnClose);
+        },
+      });
+
+      instance.show();
+
+      showTrailer(movie);
     } catch (error) {
       console.log(error);
     }
+  }
+}
 
-    function onBackdropClick(e) {
-      if (e.target === backdropMovieCardEl) {
-        backdropMovieCardEl.removeEventListener('click', onBackdropClick);
-        backdropMovieCardEl.remove();
-      }
-    }
-
-    function markupBackdropMovieCard() {
-      return `
-    <div id="backdrop-movie-card" class="backdrop-movie-card overlay visual">
-    </div>`;
-    }
-
-    function markupMovieCard({
-      id,
-      poster_path,
-      original_title,
-      vote_average,
-      vote_count,
-      popularity,
-      genres,
-      overview,
-    }) {
-      const allGenres = genres.map(({ name }) => name).join(', ');
-      return `
+function markupMovieCard({
+  id,
+  poster_path,
+  original_title,
+  vote_average,
+  vote_count,
+  popularity,
+  genres,
+  overview,
+}) {
+  const allGenres = genres.map(({ name }) => name).join(', ');
+  return `
 <div class="pop-up-modal visual" id="modalPopUp">
   <button class="pop-up-modal__close" id="closeModalPopUp">
     ${svgCloseIcon}
@@ -236,17 +281,15 @@ function showModalMoreDetails(response) {
       <div class="pop-up-modal__about">
         <p class="pop-up-modal__about-txt">${overview}</p>
       </div>
-        <button
-          class="add-remove-btn button-accent"
-          type="button"
-          data-type="action"
-          data-action="add-to-my-library"
-          >
-        </button>
+        <div class="pop-up-modal-wrap-btn">
+          <button
+            class="add-remove-btn button-accent"
+            type="button"
+            data-action="add-remove-to-my-library"
+          ></button>
+        </div>
     </div>
   </div>
 </div>
 `;
-    }
-  }
 }
