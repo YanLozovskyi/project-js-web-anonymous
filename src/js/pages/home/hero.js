@@ -1,7 +1,11 @@
+import '~node_modules/swiper/swiper-element-bundle.min.js';
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import { getStar } from '../../components/getStar';
 import * as basicLightbox from 'basiclightbox';
 import { ServiceAddRemoveBtn } from '../../api/ServiceAddRemoveBtn/ServiceAddRemoveBtnAPI';
+import { ScrollService } from '../../components/scrollService';
+
+const scrollService = new ScrollService();
 
 const apiMovie = new ApiMovie();
 const IMG_URL = 'https://image.tmdb.org/t/p/original/';
@@ -10,16 +14,16 @@ const svgCloseIcon = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none
 </svg>`;
 const contentPath = document.querySelector('.hero-content');
 
+const contentPathDefault = document.querySelector('.hero-default');
 // --------------------------ТЕСТ - Трендові фільми дня та тижня
 
 async function getTrendMovieOfDay() {
   try {
     const response = await apiMovie.getTrend('day');
-
     const randomFilms = randomElement(response.data.results);
 
     if (response.data.results.length === 0) {
-      createDefaultMarkup(contentPath);
+      createDefaultMarkup(contentPathDefault);
 
       DefaultMarkupSettings();
     } else {
@@ -45,10 +49,11 @@ async function createMarkupFilm(response, path) {
           <div class="hero-stars">${getStar(vote_average)}</div>
           <p class="hero-description-js">${overview}</p>
           <div class="hero-buttons">
-            <button class="hero-button-trailer">
+            <button class="hero-button-trailer ">
               Watch trailer
             </button>
-            <button class="hero-button-moredetails">
+            <button class="hero-button-moredetails
+          ">
               More details
             </button>
           </div>
@@ -64,12 +69,13 @@ async function createMarkupFilm(response, path) {
 
 function createDefaultMarkup(path) {
   const markup = `
+  <div class="hero-content">
   <h1 class="hero-title-default">Let’s Make Your Own Cinema</h1>
     <p class="hero-description-default">Is a guide to creating a personalized movie theater experience. You'll need a projector, screen, and speakers.</p>
     <a class="hero-link" href="./catalog.html">Get Started</a>
     
     <div class="hero-picture-default">
-
+</div>
 </div>
 `;
   path.innerHTML = markup;
@@ -86,6 +92,8 @@ function DefaultMarkupSettings() {
   const heroContent = document.querySelector('.hero-content');
 
   heroContent.classList.add('hero-content-default');
+  heroContent.classList.add('container');
+
   heroContent.classList.remove('hero-content');
   const screenSize = window.innerWidth;
 
@@ -118,9 +126,23 @@ async function showTrailer(response) {
         throw new Error('Trailer not found');
       }
 
-      const instance = basicLightbox.create(`
+      const instance = basicLightbox.create(
+        `
         <iframe class="iframe" src="https://www.youtube.com/embed/${trailer.key}" width="560" height="315" frameborder="0"></iframe>
-      `);
+      `,
+        {
+          handlerEscape: null,
+          onShow() {
+            scrollService.blockScroll();
+            this.handlerEscape = handlerEsc.bind(instance);
+            document.addEventListener('keydown', this.handlerEscape);
+          },
+          onClose() {
+            scrollService.restoreScroll();
+            document.removeEventListener('keydown', this.handlerEscape);
+          },
+        }
+      );
 
       instance.show();
     } catch (error) {
@@ -128,6 +150,16 @@ async function showTrailer(response) {
       console.log('Error:', error);
     }
   }
+}
+
+function handlerEsc(evt) {
+  if (evt.code === 'Escape') {
+    this.close();
+  }
+}
+
+function handlerClose() {
+  this.close();
 }
 
 function markupForMistake() {
@@ -166,48 +198,75 @@ function showModalMoreDetails(response) {
   });
 
   async function onButtonMoreClick(movieId) {
-    document.body.insertAdjacentHTML('beforeend', markupBackdropMovieCard());
-
-    const backdropMovieCardEl = document.getElementById('backdrop-movie-card');
-
     try {
       const movie = await apiMovie.getMovieInfo(movieId);
 
-      backdropMovieCardEl.innerHTML = markupMovieCard(movie.data);
-      const addRemoveBtn = document.querySelector('button[data-type="action"]');
-      const serviceAddRemoveBtn = new ServiceAddRemoveBtn(addRemoveBtn, movie);
+      const instance = basicLightbox.create(markupMovieCard(movie.data), {
+        handlerEscape: null,
+        handlerBtnClose: null,
 
-      serviceAddRemoveBtn.setButtonName();
-      backdropMovieCardEl.addEventListener('click', onBackdropClick);
+        onShow: instance => {
+          scrollService.blockScroll();
+
+          const addRemoveBtn = instance
+            .element()
+            .querySelector('button[data-action="add-remove-to-my-library"]');
+
+          const serviceAddRemoveBtn = new ServiceAddRemoveBtn(
+            addRemoveBtn,
+            movie
+          );
+          serviceAddRemoveBtn.setButtonName();
+
+          const escapeHandler = handlerEsc.bind(instance);
+          document.addEventListener('keydown', escapeHandler);
+
+          // this.handlerEscape = handlerEsc.bind(instance);
+          // document.addEventListener('keydown', this.handlerEscape);
+
+          const closeButton = instance
+            .element()
+            .querySelector('#closeModalPopUp');
+          const btnCloseHandler = handlerClose.bind(instance);
+          closeButton.addEventListener('click', btnCloseHandler);
+
+          // const btnCloseEl = instance
+          //   .element()
+          //   .querySelector('#closeModalPopUp');
+
+          // this.handlerBtnClose = handlerClose.bind(instance);
+          // btnCloseEl.addEventListener('click', this.handlerBtnClose);
+        },
+
+        onClose() {
+          scrollService.restoreScroll();
+
+          document.removeEventListener('keydown', this.handlerEscape);
+          document.removeEventListener('click', this.handlerBtnClose);
+        },
+      });
+
+      instance.show();
+
+      showTrailer(movie);
     } catch (error) {
       console.log(error);
     }
+  }
+}
 
-    function onBackdropClick(e) {
-      if (e.target === backdropMovieCardEl) {
-        backdropMovieCardEl.removeEventListener('click', onBackdropClick);
-        backdropMovieCardEl.remove();
-      }
-    }
-
-    function markupBackdropMovieCard() {
-      return `
-    <div id="backdrop-movie-card" class="backdrop-movie-card overlay visual">
-    </div>`;
-    }
-
-    function markupMovieCard({
-      id,
-      poster_path,
-      original_title,
-      vote_average,
-      vote_count,
-      popularity,
-      genres,
-      overview,
-    }) {
-      const allGenres = genres.map(({ name }) => name).join(', ');
-      return `
+function markupMovieCard({
+  id,
+  poster_path,
+  original_title,
+  vote_average,
+  vote_count,
+  popularity,
+  genres,
+  overview,
+}) {
+  const allGenres = genres.map(({ name }) => name).join(', ');
+  return `
 <div class="pop-up-modal visual" id="modalPopUp">
   <button class="pop-up-modal__close" id="closeModalPopUp">
     ${svgCloseIcon}
@@ -236,17 +295,15 @@ function showModalMoreDetails(response) {
       <div class="pop-up-modal__about">
         <p class="pop-up-modal__about-txt">${overview}</p>
       </div>
-        <button
-          class="add-remove-btn button-accent"
-          type="button"
-          data-type="action"
-          data-action="add-to-my-library"
-          >
-        </button>
+        <div class="pop-up-modal-wrap-btn">
+          <button
+            class="add-remove-btn button-accent"
+            type="button"
+            data-action="add-remove-to-my-library"
+          ></button>
+        </div>
     </div>
   </div>
 </div>
 `;
-    }
-  }
 }

@@ -1,7 +1,7 @@
 import ApiMovie from '../../api/themoviedbAPI/fetch-movie';
 import { refs } from './catalog-refs';
 
-import { pagination } from './pagination';
+import { pagination, updateBtnNames } from './pagination';
 import { createMarkupFilmsCards } from '../../components/createMarkupFilmCard';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
@@ -40,8 +40,11 @@ async function getTrend() {
     const response = await apiMovie.getTrend('week');
     const movies = response.data.results;
     const totalMovies = response.data.total_results;
+    const pageCount = response.data.total_pages;
 
     pagination.reset(totalMovies);
+
+    updateBtnNames(pageCount);
 
     updateGallery(movies);
 
@@ -63,11 +66,14 @@ async function handleFormSubmit(event) {
   if (query || currentYear) {
     apiMovie.query = query;
     try {
-      const response = await apiMovie.searchByQueryYear(page);
-      const movies = response.data.results;
-      const totalMovies = response.data.total_results;
+    const response = await apiMovie.searchByQueryYear(page);
+    const movies = response.data.results;
+    const totalMovies = response.data.total_results;
+    const pageCount = response.data.total_pages;
 
-      pagination.reset(totalMovies);
+    pagination.reset(totalMovies);
+
+    updateBtnNames(pageCount);
 
       updateGallery(movies);
     } catch (error) {
@@ -210,6 +216,23 @@ async function paginationByQuery(page) {
   try {
     const response = await apiMovie.searchByQueryYear(page);
     const movies = response.data.results;
+    const pageCount = response.data.total_pages;
+
+    updateBtnNames(pageCount);
+
+    const firstButton = document.querySelector('.tui-first');
+    if (page < 3) {
+      firstButton.classList.add('tui-is-disabled')
+    } else {
+      firstButton.classList.remove('tui-is-disabled')
+    }
+
+    const lastButton = document.querySelector('.tui-last');
+    if (page > pageCount - 2) {
+      lastButton.classList.add('tui-is-disabled')
+    } else {
+      lastButton.classList.remove('tui-is-disabled')
+    }
 
     updateGallery(movies);
   } catch (error) {
@@ -221,7 +244,24 @@ async function paginationByTrend(page) {
   try {
     const response = await apiMovie.getTrendByPage('week', page);
     const movies = response.data.results;
+    const pageCount = response.data.total_pages;
 
+    updateBtnNames(pageCount);
+
+    const firstButton = document.querySelector('.tui-first');
+    if (page < 3) {
+      firstButton.classList.add('tui-is-disabled')
+    } else {
+      firstButton.classList.remove('tui-is-disabled')
+    }
+
+    const lastButton = document.querySelector('.tui-last');
+    if (page > 998) {
+      lastButton.classList.add('tui-is-disabled')
+    } else {
+      lastButton.classList.remove('tui-is-disabled')
+    }
+    
     updateGallery(movies);
   } catch (error) {
     console.log(error);
