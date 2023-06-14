@@ -23,9 +23,8 @@
     "basiclightbox": "^5.0.4",
     "modern-normalize": "^1.1.0",
     "slim-select": "^2.5.0",
-    "swiper": "^9.4.0",
+    "swiper": "^9.4.1",
     "tui-pagination": "^3.4.1"
-
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.6.0",
