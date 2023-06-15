@@ -1,7 +1,7 @@
 {
   "name": "project-js-web-anonymous",
   "version": "2.0.0",
-  "description": "",
+  "description": "Cinemania",
   "homepage": "https://YanLozovskyi.github.io/project-js-web-anonymous",
   "scripts": {
     "start": "parcel src/*.html",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/YanLozovskyi/project-js-web-anonymous.git"
   },
   "keywords": [],
-  "author": "Taras Vasylkiv <vasylkiv.t@gmail.com>",
+  "author": "Yan Lozovskyi <yanlozovskiy@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/YanLozovskyi/project-js-web-anonymous/issues"
