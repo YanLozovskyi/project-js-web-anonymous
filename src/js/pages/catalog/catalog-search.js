@@ -22,7 +22,7 @@ const {
   mobileInput,
 } = refs;
 
-let currentYear = '';
+let currentYear = 'Year';
 let page;
 
 searchForm.addEventListener('submit', handleFormSubmit);
@@ -80,8 +80,9 @@ async function handleFormSubmit(event) {
   const query = searchInput.value.trim();
 
   page = 1;
+  currentYear = null;
 
-  if (query === '') {
+  if (query === '' && !currentYear) {
     // getTrend();
     searchGallery.innerHTML =
       '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
@@ -95,13 +96,17 @@ async function handleFormSubmit(event) {
   if (query || currentYear) {
     apiMovie.query = query;
     try {
-      const response = await apiMovie.searchByQueryYear(page);
-      const movies = response.data.results;
-      const totalMovies = response.data.total_results;
+      handleYearSelectChange();
+      console.log('currentYear:', currentYear);
 
-      const pageCount = response.data.total_pages;
+      const response = await searchByQueryYear(page, currentYear);
+      const totalMovies = response.length;
+      console.log('totalMovies:', totalMovies);
 
-      if (pageCount === 1) {
+      const pageCount = totalMovies / 20;
+      console.log('pageCount:', pageCount);
+
+      if (pageCount < 1) {
         jsPagination.style.display = 'none';
       } else {
         jsPagination.style.display = 'flex';
@@ -109,7 +114,7 @@ async function handleFormSubmit(event) {
         updateBtnNames(pageCount);
       }
 
-      updateGallery(movies);
+      updateGallery(response);
     } catch (error) {
       console.log(error);
       searchGallery.innerHTML =
@@ -133,21 +138,21 @@ async function handleFormSubmit(event) {
 }
 
 // Пошук фільмів за вибраним роком
-async function searchMovies() {
-  const query = searchInput.value.trim();
-  page = 1;
+// async function searchMovies() {
+//   const query = searchInput.value.trim();
+//   page = 1;
 
-  apiMovie.query = query;
-  apiMovie.year = currentYear;
+//   apiMovie.query = query;
+//   apiMovie.year = currentYear;
 
-  try {
-    const response = await apiMovie.searchByQueryYear(page);
-    const movies = response.data.results;
-    updateGallery(movies);
-  } catch (error) {
-    console.log(error);
-  }
-}
+//   try {
+//     const response = await apiMovie.searchByQueryYear(page);
+//     const movies = response.data.results;
+//     updateGallery(movies);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 // Оновлення вмісту галереї фільмів
 async function updateGallery(movies) {
@@ -176,34 +181,35 @@ function handleClearButtonClick(event) {
     clearButton.style.display = 'block';
   }
 }
+
 // searchByQueryYear(2, 2001);
 
-// async function searchByQueryYear(page, year) {
-//   console.log(arguments.length);
+async function searchByQueryYear(page, year) {
+  if (arguments.length < 2) {
+    try {
+      console.log(111);
 
-//   if (arguments.length < 2) {
-//     try {
-//       console.log(222);
+      const response = await apiMovie.searchByQueryYear(page);
 
-//       const response = await apiMovie.searchByQueryYear(page);
-
-//       return response;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   } else {
-//     console.log(111);
-//     try {
-//       const response = await apiMovie.searchByQueryYear(page);
-//       const filteredResults = response.data.results.filter(
-//         movie => movie.release_date && movie.release_date.includes(year)
-//       );
-//       return filteredResults;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-// }
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    console.log(222);
+    try {
+      const response = await apiMovie.searchByQueryYear(page);
+      console.log('response:', response);
+      const filteredResults = response.data.results.filter(
+        movie => movie.release_date && movie.release_date.includes(year)
+      );
+      console.log('filteredResults:', filteredResults);
+      return filteredResults;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
 
 // async function searchByQueryYear(year, query) {
 //   try {
@@ -221,18 +227,21 @@ function handleClearButtonClick(event) {
 //.......СЕЛЕКТ
 // Обробник події change селекта року
 function handleYearSelectChange() {
-  const newYear = searchSelect.value;
-  console.log('newYear:', newYear);
+  currentYear = Number(searchSelect.value);
+  console.log('currentYear:', currentYear);
 
-  if (newYear !== currentYear) {
-    currentYear = newYear;
+  // const newYear = searchSelect.value;
+  // console.log('newYear:', newYear);
 
-    if (currentYear) {
-      searchMovies();
-    } else {
-      getTrend();
-    }
-  }
+  // if (newYear !== currentYear) {
+  //   currentYear = newYear;
+
+  //   if (currentYear) {
+  //     searchMovies();
+  //   } else {
+  //     getTrend();
+  //   }
+  // }
 }
 
 // Ініціалізація SlimSelect зі списком років
@@ -265,7 +274,7 @@ function getYears() {
 // Викликати функцію для отримання списку років при завантаженні сторінки
 getYears();
 
-searchSelect.addEventListener('change', handleYearSelectChange);
+// searchSelect.addEventListener('change', handleYearSelectChange);
 
 // Пагінація
 
