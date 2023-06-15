@@ -83,7 +83,8 @@ export class ServiceAddRemoveBtn {
    */
   onAddMovieBtnClick() {
     this.addRemoveBtn.blur();
-    const updateData = [...this.localStorageData, this.movieData];
+    const localStorageData = Storage.load(STORAGE_KEY.myLibraryMoviesList);
+    const updateData = [...localStorageData, this.movieData];
     Storage.save(STORAGE_KEY.myLibraryMoviesList, updateData);
     this.addRemoveBtn.textContent = 'Remove from my library';
     this.removeBtn = this.onRemoveBtnClick.bind(this);
