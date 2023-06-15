@@ -97,16 +97,12 @@ async function handleFormSubmit(event) {
     apiMovie.query = query;
     try {
       handleYearSelectChange();
-      console.log('currentYear:', currentYear);
 
       const response = await apiMovie.searchByQueryYear(page);
-      console.log('response:', response);
       let movie = response.data.results;
       const totalMovies = response.data.total_results;
-      console.log('totalMovies:', totalMovies);
 
       const pageCount = response.data.total_pages;
-      console.log('pageCount:', pageCount);
       if (currentYear) {
         movie = response.data.results.filter(
           movie =>
@@ -164,12 +160,9 @@ async function handleFormSubmit(event) {
 
 // Оновлення вмісту галереї фільмів
 async function updateGallery(movies) {
-  console.log('movies:', movies);
   searchGallery.innerHTML = '';
 
   if (movies.length === 0) {
-    console.log('if0');
-
     searchGallery.innerHTML =
       '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p >';
 
@@ -201,25 +194,19 @@ function handleClearButtonClick(event) {
 async function searchByQueryYear(page, year) {
   if (arguments.length < 2) {
     try {
-      console.log(111);
-
       const response = await apiMovie.searchByQueryYear(page);
-      console.log('response:', response);
 
       return response;
     } catch (error) {
       console.log(error);
     }
   } else {
-    console.log(222);
     try {
       const response = await apiMovie.searchByQueryYear(page);
-      console.log('response:', response);
 
       const filteredResults = response.data.results.filter(
         movie => movie.release_date && movie.release_date.includes(year)
       );
-      console.log('filteredResults:', filteredResults);
       return filteredResults;
     } catch (error) {
       console.log(error);
@@ -244,7 +231,6 @@ async function searchByQueryYear(page, year) {
 // Обробник події change селекта року
 function handleYearSelectChange() {
   currentYear = Number(searchSelect.value);
-  console.log('currentYear:', currentYear);
 
   // const newYear = searchSelect.value;
   // console.log('newYear:', newYear);
