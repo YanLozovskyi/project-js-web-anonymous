@@ -59,7 +59,7 @@ export const ourTeam = [
     original: `${olesia}`,
     description: 'Olesia Kubska',
     role: 'Developer',
-    linkedin: './',
+    linkedin: 'http://linkedin.com/in/olesia-kubska-099b14263',
     github: 'https://github.com/OlesiaKubska',
     linkedinSvg: `${Svg}.svg#icon-linkedin`,
     gitSvg: `${Svg}.svg#icon-github`,
