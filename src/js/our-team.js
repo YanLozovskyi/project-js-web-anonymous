@@ -1,13 +1,13 @@
-import yan from '../images/team-photo/photo_yan.avif';
-import taras from '../images/team-photo/photo_taras.avif';
-import ivannochka from '../images/team-photo/photo_ivana.avif';
-import sergey from '../images/team-photo/photo_sergiy.avif';
-import olesia from '../images/team-photo/photo_olesia.avif';
-import olexander from '../images/team-photo/photo_alexandr.avif';
-import anastasia from '../images/team-photo/photo_anastasia.avif';
-import ihor from '../images/team-photo/photo_ihor.avif';
-import victoria from '../images/team-photo/photo_victoria.avif';
-import irina from '../images/team-photo/photo_irina.avif';
+import yan from '../images/team-photo/photo_yan.webp';
+import taras from '../images/team-photo/photo_taras.webp';
+import ivannochka from '../images/team-photo/photo_ivana.webp';
+import sergey from '../images/team-photo/photo_sergiy.webp';
+import olesia from '../images/team-photo/photo_olesia.webp';
+import olexander from '../images/team-photo/photo_alexandr.webp';
+import anastasia from '../images/team-photo/photo_anastasia.webp';
+import ihor from '../images/team-photo/photo_ihor.webp';
+import victoria from '../images/team-photo/photo_victoria.webp';
+import irina from '../images/team-photo/photo_irina.webp';
 
 import Svg from '../images/sprite/sprite.svg';
 

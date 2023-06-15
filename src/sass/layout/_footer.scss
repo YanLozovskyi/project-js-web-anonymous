@@ -216,7 +216,8 @@
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #8c410c;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%)
+    border-box;
   width: 120px;
 
   transition: transform 250ms $cubic;
