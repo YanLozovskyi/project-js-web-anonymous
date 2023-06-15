@@ -99,12 +99,20 @@ async function handleFormSubmit(event) {
       handleYearSelectChange();
       console.log('currentYear:', currentYear);
 
-      const response = await searchByQueryYear(page, currentYear);
-      const totalMovies = response.length;
+      const response = await apiMovie.searchByQueryYear(page);
+      console.log('response:', response);
+      let movie = response.data.results;
+      const totalMovies = response.data.total_results;
       console.log('totalMovies:', totalMovies);
 
-      const pageCount = totalMovies / 20;
+      const pageCount = response.data.total_pages;
       console.log('pageCount:', pageCount);
+      if (currentYear) {
+        movie = response.data.results.filter(
+          movie =>
+            movie.release_date && movie.release_date.includes(currentYear)
+        );
+      }
 
       if (pageCount < 1) {
         jsPagination.style.display = 'none';
@@ -114,7 +122,7 @@ async function handleFormSubmit(event) {
         updateBtnNames(pageCount);
       }
 
-      updateGallery(response);
+      updateGallery(movie);
     } catch (error) {
       console.log(error);
       searchGallery.innerHTML =
@@ -156,13 +164,19 @@ async function handleFormSubmit(event) {
 
 // Оновлення вмісту галереї фільмів
 async function updateGallery(movies) {
+  console.log('movies:', movies);
   searchGallery.innerHTML = '';
 
   if (movies.length === 0) {
+    console.log('if0');
+
     searchGallery.innerHTML =
       '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p >';
 
     jsPagination.style.display = 'none';
+  } else if (movies.length < 20) {
+    jsPagination.style.display = 'none';
+    searchGallery.innerHTML = await createMarkupFilmsCards(movies);
   } else {
     searchGallery.innerHTML = await createMarkupFilmsCards(movies);
   }
@@ -190,6 +204,7 @@ async function searchByQueryYear(page, year) {
       console.log(111);
 
       const response = await apiMovie.searchByQueryYear(page);
+      console.log('response:', response);
 
       return response;
     } catch (error) {
@@ -200,6 +215,7 @@ async function searchByQueryYear(page, year) {
     try {
       const response = await apiMovie.searchByQueryYear(page);
       console.log('response:', response);
+
       const filteredResults = response.data.results.filter(
         movie => movie.release_date && movie.release_date.includes(year)
       );
