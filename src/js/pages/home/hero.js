@@ -42,8 +42,7 @@ async function createMarkupFilm(response, path) {
       const movieSrc = getImg(backdrop_path, original_title);
       return `
       <swiper-slide class="hero-film_background hero-wrap"
-        
-        data-movie-id="${id}"
+      data-movie-id="${id}"
       ><img class="hero-film_background" width="1280" height="720" ${movieSrc}/><div class="swiper-test">
         <div class="hero-wrap">
           <h1 class="hero-title">${original_title}</h1>

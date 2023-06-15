@@ -216,7 +216,8 @@
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #8c410c;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%)
+    border-box;
   width: 120px;
 
   transition: transform 250ms $cubic;
@@ -264,8 +265,8 @@
 
 .team__link-linkedin {
   border: none;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 20%;
   margin-right: 10px;
   background-color: transparent;
@@ -284,7 +285,7 @@
 .team__link-github {
   border: none;
   width: 15px;
-  height: 15px;
+  height: 18px;
   border-radius: 20%;
   background-color: transparent;
   fill: $dark-color;
