@@ -32,15 +32,15 @@
 
 .my-library-content-text-message-section {
   padding-top: 44px;
-  padding-bottom: 14px;
+  padding-bottom: 22px;
 
   @include tablet {
     padding-top: 80px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
   }
 
   @include desktop {
     padding-top: 160px;
-    padding-bottom: 28px;
+    padding-bottom: 80px;
   }
 }

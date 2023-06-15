@@ -5,7 +5,7 @@ pagesEl.forEach(pageEl => {
   const pageLinkPathname = new URL(pageEl.href).pathname;
 
   if (
-    (windowPathName === '/' && pageLinkPathname === '/index.html') ||
+    (windowPathName === '/' && pageLinkPathname === '/') ||
     pageLinkPathname === windowPathName
   ) {
     pageEl.classList.add('active');
@@ -19,7 +19,7 @@ MobilePagesEl.forEach(pageEl => {
   const pageLinkPathname = new URL(pageEl.href).pathname;
 
   if (
-    (MobileWindowPathName === '/' && pageLinkPathname === '/index.html') ||
+    (MobileWindowPathName === '/' && pageLinkPathname === '/') ||
     pageLinkPathname === MobileWindowPathName
   ) {
     pageEl.classList.add('active');

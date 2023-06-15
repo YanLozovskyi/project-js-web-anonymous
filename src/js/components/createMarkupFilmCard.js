@@ -1,6 +1,6 @@
 import ApiMovie from '../api/themoviedbAPI/fetch-movie';
 import { getStar } from './getStar';
-import comingSoonImg from '../../images/team-photo/photo_yan.avif';
+import comingSoonImg from '../../images/team-photo/photo_yan.webp';
 const apiMovie = new ApiMovie();
 
 let genresList = [];
