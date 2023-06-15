@@ -18,3 +18,5 @@ import './js/modal-menu';
 import './js/components/lightTheme';
 
 import './js/components/scroll-up';
+
+import './js/our-team';
