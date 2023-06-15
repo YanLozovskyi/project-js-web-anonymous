@@ -209,6 +209,7 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
+
 .team-item {
   box-shadow: 1px 1px 7px 4px #e1d8d26b;
   border-radius: 5px;
@@ -225,12 +226,21 @@
     transform: scale(1.1);
   }
 }
+
 .team-img {
   object-fit: cover;
   width: 120px;
   height: 120px;
   margin-bottom: 8px;
   overflow: hidden;
+  background-size: 30%;
+
+  @include tablet {
+    background-size: 60%;
+  }
+  @include desktop {
+    background-size: 100%;
+  }
 }
 
 .team__box {

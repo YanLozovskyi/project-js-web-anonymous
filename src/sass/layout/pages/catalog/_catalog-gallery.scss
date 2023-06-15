@@ -196,6 +196,10 @@
   }
 }
 
+.catalog-gallery-clear-icon {
+  stroke: $color-subtitles;
+}
+
 .catalog-gallery-icon {
   width: 12px;
   height: 12px;
@@ -233,16 +237,14 @@
 .catalog-gallery-pagination {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 8px;
 
   margin-left: auto;
   margin-right: auto;
 
-  // width: 184px;
-
-  // @include tablet {
-  //   width: 316px;
-  // }
+  @include tablet {
+    gap: 16px;
+  }
 }
 
 .tui-page-btn {
