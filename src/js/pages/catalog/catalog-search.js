@@ -18,6 +18,7 @@ const {
   searchSelect,
   searchGallery,
   clearButton,
+  jsPagination,
   mobileInput,
 } = refs;
 
@@ -27,11 +28,27 @@ let page;
 searchForm.addEventListener('submit', handleFormSubmit);
 clearButton.addEventListener('click', handleClearButtonClick);
 searchInput.addEventListener('input', handleInputChange);
+searchInput.addEventListener('keydown', handleInputChange);
 searchSelect.addEventListener('change', handleYearSelectChange);
+
+
 
 getTrend();
 
 clearButton.style.display = 'none';
+
+function handleInputChange(event) {
+  // Перевірка, чи пошукова строка пуста
+  if (searchInput.value !== '') {
+    clearButton.style.display = 'block';
+  } else {
+    clearButton.style.display = 'none';
+  }
+
+  if (event.key === 'Enter') {
+    handleFormSubmit(event);
+  }
+}
 
 // Оновлення вмісту галереї фільмів
 async function getTrend() {
@@ -42,7 +59,9 @@ async function getTrend() {
     const totalMovies = response.data.total_results;
     const pageCount = response.data.total_pages;
 
-    pagination.reset(totalMovies);
+    jsPagination.style.display = 'flex';
+
+    pagination.reset(totalMovies / 2);
 
     updateBtnNames(pageCount);
 
@@ -58,10 +77,17 @@ async function getTrend() {
 
 // Пошук фільмів за ключовим словом та роком
 async function handleFormSubmit(event) {
-  loader.onShow();
   event.preventDefault();
+
   const query = searchInput.value.trim();
   page = 1;
+
+  if (query === '') {
+    getTrend();
+    return;
+  }
+  
+  loader.onShow();
 
   if (query || currentYear) {
     apiMovie.query = query;
@@ -71,29 +97,30 @@ async function handleFormSubmit(event) {
     const totalMovies = response.data.total_results;
     const pageCount = response.data.total_pages;
 
-    pagination.reset(totalMovies);
-
+    jsPagination.style.display = 'flex';
+    pagination.reset(totalMovies / 2);
     updateBtnNames(pageCount);
 
       updateGallery(movies);
     } catch (error) {
       console.log(error);
-    }
-  } else {
-    searchGallery.innerHTML =
+      searchGallery.innerHTML =
       '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
+    
+      jsPagination.style.display = 'none';
+    }
   }
 
   // apiMovie.query = query;
   // apiMovie.year = currentYear;
 
-  try {
-    const response = await apiMovie.searchByQueryYear(page);
-    const movies = response.data.results;
-    updateGallery(movies);
-  } catch (error) {
-    console.log(error);
-  }
+  // try {
+  //   const response = await apiMovie.searchByQueryYear(page);
+  //   const movies = response.data.results;
+  //   updateGallery(movies);
+  // } catch (error) {
+  //   console.log(error);
+  // }
   loader.onClose();
 }
 
@@ -121,7 +148,9 @@ async function updateGallery(movies) {
   if (movies.length === 0) {
     searchGallery.innerHTML =
       '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p >';
-  } else {
+
+    jsPagination.style.display = 'none';
+    } else {
     searchGallery.innerHTML = await createMarkupFilmsCards(movies);
   }
 }
@@ -137,15 +166,6 @@ function handleClearButtonClick(event) {
     clearButton.style.display = 'none';
   } else {
     clearButton.style.display = 'block';
-  }
-}
-
-function handleInputChange() {
-  // Перевірка, чи пошукова строка пуста
-  if (searchInput.value !== '') {
-    clearButton.style.display = 'block';
-  } else {
-    clearButton.style.display = 'none';
   }
 }
 
@@ -256,7 +276,7 @@ async function paginationByTrend(page) {
     }
 
     const lastButton = document.querySelector('.tui-last');
-    if (page > 998) {
+    if (page > 500 - 2) {
       lastButton.classList.add('tui-is-disabled')
     } else {
       lastButton.classList.remove('tui-is-disabled')
