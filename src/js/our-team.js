@@ -19,7 +19,7 @@ export const ourTeam = [
     role: 'Team Lead',
     linkedin: 'https://www.linkedin.com/in/yan-lozovskyi-ba9170271/',
     github: 'https://github.com/YanLozovskyi',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
@@ -30,8 +30,8 @@ export const ourTeam = [
     linkedin:
       'https://www.linkedin.com/in/%D1%96%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0-%D0%BC%D0%B8%D1%85%D0%B0%D0%BB%D1%8C%D0%BE%D0%B2%D0%B0-222a36267/',
     github: 'https://github.com/Ivano4ka8',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
   {
     preview: `${taras}`,
@@ -40,8 +40,8 @@ export const ourTeam = [
     role: 'Tech Lead',
     linkedin: 'https://www.linkedin.com/in/taras-vasylkiv//',
     github: 'https://github.com/vasylkivt',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
 
   {
@@ -51,8 +51,8 @@ export const ourTeam = [
     role: 'Developer',
     linkedin: 'https://www.linkedin.com/in/sergeyyasak/',
     github: 'https://github.com/Sergey4857',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
   {
     preview: `${olesia}`,
@@ -61,8 +61,8 @@ export const ourTeam = [
     role: 'Developer',
     linkedin: 'http://linkedin.com/in/olesia-kubska-099b14263',
     github: 'https://github.com/OlesiaKubska',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
   {
     preview: `${olexander}`,
@@ -71,8 +71,8 @@ export const ourTeam = [
     role: 'Developer',
     linkedin: 'https://www.linkedin.com/in/alexander-sirotov/',
     github: 'https://github.com/SirotovAlexander',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
   {
     preview: `${anastasia}`,
@@ -82,8 +82,8 @@ export const ourTeam = [
     linkedin:
       'https://www.linkedin.com/in/anastasiia-%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F-00633a246/',
     github: 'https://github.com/Anastasiia008',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
   {
     preview: `${ihor}`,
@@ -92,8 +92,8 @@ export const ourTeam = [
     role: 'Developer',
     linkedin: 'https://www.linkedin.com/in/ihor-nosenko/',
     github: 'https://github.com/nsihor',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
   {
     preview: `${victoria}`,
@@ -102,8 +102,8 @@ export const ourTeam = [
     role: 'Developer',
     linkedin: './',
     github: 'https://github.com/Vikki1312',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
   {
     preview: `${irina}`,
@@ -112,7 +112,7 @@ export const ourTeam = [
     role: 'Developer',
     linkedin: './',
     github: 'https://github.com/UserIryna28',
-    linkedinSvg: `${Svg}.svg#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    linkedinSvg: `${Svg}#icon-linkedin`,
+    gitSvg: `${Svg}#icon-github`,
   },
 ];
