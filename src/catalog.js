@@ -20,3 +20,5 @@ import './js/components/lightTheme';
 import './js/components/scroll-up';
 
 import './js/our-team';
+
+// import './js/footer-modal';
