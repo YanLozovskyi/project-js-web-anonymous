@@ -13,8 +13,8 @@ import Svg from '../images/sprite/sprite.svg';
 
 export const ourTeam = [
   {
-    preview: `${yan}.jpg`,
-    original: `${yan}.jpg`,
+    preview: `${yan}`,
+    original: `${yan}`,
     description: 'Yan Lozovsiy',
     role: 'Team Lead',
     linkedin: 'https://www.linkedin.com/in/yan-lozovskyi-ba9170271/',
@@ -23,8 +23,8 @@ export const ourTeam = [
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
-    preview: `${ivannochka}.jpg`,
-    original: `${ivannochka}.jpg`,
+    preview: `${ivannochka}`,
+    original: `${ivannochka}`,
     description: 'Ivanna Mykhalova',
     role: 'Scrum Master',
     linkedin:
@@ -34,8 +34,8 @@ export const ourTeam = [
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
-    preview: `${taras}.jpg`,
-    original: `${taras}.jpg`,
+    preview: `${taras}`,
+    original: `${taras}`,
     description: 'Taras Vasylkiv',
     role: 'Tech Lead',
     linkedin: 'https://www.linkedin.com/in/taras-vasylkiv//',
@@ -45,8 +45,8 @@ export const ourTeam = [
   },
 
   {
-    preview: `${sergey}.jpg`,
-    original: `${sergey}.jpg`,
+    preview: `${sergey}`,
+    original: `${sergey}`,
     description: 'Sergey Yasak',
     role: 'Developer',
     linkedin: 'https://www.linkedin.com/in/sergeyyasak/',
@@ -55,8 +55,8 @@ export const ourTeam = [
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
-    preview: `${olesia}.jpg`,
-    original: `${olesia}.jpg`,
+    preview: `${olesia}`,
+    original: `${olesia}`,
     description: 'Olesia Kubska',
     role: 'Developer',
     linkedin: './',
@@ -65,8 +65,8 @@ export const ourTeam = [
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
-    preview: `${olexander}.jpg`,
-    original: `${olexander}.jpg`,
+    preview: `${olexander}`,
+    original: `${olexander}`,
     description: 'Olexander Sirotov',
     role: 'Developer',
     linkedin: 'https://www.linkedin.com/in/alexander-sirotov/',
@@ -75,8 +75,8 @@ export const ourTeam = [
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
-    preview: `${anastasia}.jpg`,
-    original: `${anastasia}.jpg`,
+    preview: `${anastasia}`,
+    original: `${anastasia}`,
     description: 'Anastasia Tkachenko',
     role: 'Developer',
     linkedin:
@@ -86,8 +86,8 @@ export const ourTeam = [
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
-    preview: `${ihor}.jpg`,
-    original: `${ihor}.jpg`,
+    preview: `${ihor}`,
+    original: `${ihor}`,
     description: 'Ihor Nosenko',
     role: 'Developer',
     linkedin: 'https://www.linkedin.com/in/ihor-nosenko/',
@@ -96,8 +96,8 @@ export const ourTeam = [
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
-    preview: `${victoria}.jpg`,
-    original: `${victoria}.jpg`,
+    preview: `${victoria}`,
+    original: `${victoria}`,
     description: 'Victoria Nikitchenko',
     role: 'Developer',
     linkedin: './',
@@ -106,8 +106,8 @@ export const ourTeam = [
     gitSvg: `${Svg}.svg#icon-github`,
   },
   {
-    preview: `${irina}.jpg`,
-    original: `${irina}.jpg`,
+    preview: `${irina}`,
+    original: `${irina}`,
     description: 'Iryna Hodovanets',
     role: 'Developer',
     linkedin: './',
