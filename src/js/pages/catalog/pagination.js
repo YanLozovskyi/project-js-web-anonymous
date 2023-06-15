@@ -41,7 +41,12 @@ export function updateBtnNames(lastPage) {
   const pageButton = pagination.querySelectorAll('.tui-num-page')
 
   firstButton.textContent = '01';
+
+  if (lastPage === 1000) {
+    lastButton.textContent = addLeadingZero('500');
+  } else {
   lastButton.textContent = addLeadingZero(lastPage);
+  }
 
   pageButton.forEach(page => page.textContent = addLeadingZero(page.textContent))
 }

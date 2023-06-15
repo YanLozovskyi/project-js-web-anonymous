@@ -7,4 +7,5 @@ export const refs = {
     clearButton: document.getElementById('clear-search-btn'),
     pagination: document.querySelector('.catalog-gallery-pagination'),
     mobileInput: document.getElementById('catalog-gallery-input-mobile'),
+    jsPagination: document.querySelector('.js-pagination'),
 };
