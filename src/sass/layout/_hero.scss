@@ -3,19 +3,23 @@
   margin-right: auto;
 
   width: 320px;
-  height: 470px;
+  max-height: 470px;
   @media screen and (min-width: 768px) {
-    height: 520px;
+    // padding-top: 36px;
+    max-height: 520px;
     width: 768px;
   }
 
   @media screen and (min-width: 1280px) {
-    height: 660px;
+    // padding-top: 70px;
+    max-height: 660px;
     width: 1280px;
   }
 }
 
 .hero-content {
+  // padding-top: 40px;
+
   background-color: $dark-color;
   position: relative;
   overflow: hidden;
@@ -31,6 +35,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  object-fit: cover;
   @media screen and (min-width: 768px) {
     // padding-top: 36px;
 
@@ -65,23 +70,26 @@
 
   font-family: 'Roboto';
   font-weight: 700;
-  font-size: 32px;
-  line-height: 1.19;
+  font-size: 30px;
+  line-height: 1.06;
 
   margin-bottom: 8px;
   min-width: 199px;
+  max-height: 135px;
   position: inherit;
   z-index: 3;
 
   @media screen and (min-width: 768px) {
-    max-width: 332px;
+    max-height: 180px;
+    max-width: 370px;
     font-weight: 700;
-    font-size: 44px;
+    font-size: 40px;
     line-height: 1.18;
     margin-bottom: 12px;
   }
   @media screen and (min-width: 1280px) {
-    font-size: 55px;
+    max-height: 230px;
+    font-size: 50px;
     line-height: 1.08;
     margin-bottom: 16px;
     max-width: 464px;
@@ -96,6 +104,7 @@
 }
 
 .hero-description-js {
+  overflow-y: scroll;
   color: $text-color;
 
   font-weight: 400;
@@ -104,17 +113,20 @@
 
   margin-bottom: 20px;
   min-width: 166px;
+  max-height: 150px;
 
   position: inherit;
   z-index: 3;
   @media screen and (min-width: 768px) {
-    max-width: 357px;
+    max-width: 360px;
     margin-bottom: 28px;
+    overflow-y: scroll;
   }
   @media screen and (min-width: 1280px) {
     font-size: 16px;
     line-height: 1.19;
     margin-bottom: 36px;
+    overflow: hidden;
   }
 }
 
@@ -188,21 +200,23 @@
 .hero-button-trailer {
   display: flex;
   min-width: 110px;
-  border: 1px solid $accent-color;
-  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
-  border-radius: 74px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-right: 24px;
-  padding-left: 24px;
-
+  @extend .button;
   color: $dark-color;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.16;
+  background: $button-background-color;
 
-  position: inherit;
-  z-index: 3;
+  background-image: $button-background-color;
+  background-origin: border-box;
+  border: 1px solid transparent;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    border-radius: 74px;
+    background-image: $button-background-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid transparent;
+  }
   @media screen and (min-width: 768px) {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -217,18 +231,28 @@
     line-height: 1.5;
   }
 }
-.hero-button-trailer:hover,
-.hero-button-trailer:focus {
-  background: transparent;
-  color: $light-color;
-  border: 1px solid $light-color;
-}
 
 .hero-button-moredetails {
-  border: 1px solid $light-color;
+  color: $light-color;
   border-radius: 74px;
   background-color: transparent;
-  color: $light-color;
+  background-origin: border-box;
+
+  border: 1px solid $light-color;
+
+  transition: color 250ms $cubic, background-color 250ms $cubic;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    background-color: $light-color;
+    border: solid 1px $light-color;
+
+    background-image: $light-color;
+    background-origin: border-box;
+    box-shadow: inset 0 1000px $light-color;
+    border: 1px solid $light-color;
+  }
 
   padding-top: 12px;
   padding-bottom: 12px;
@@ -306,6 +330,7 @@
   position: absolute;
   top: 0px;
   left: 0px;
+  background-color: #111111;
 }
 
 .hero-description {
@@ -322,7 +347,7 @@
   z-index: 3;
 
   @media screen and (min-width: 768px) {
-    max-width: 357px;
+    max-width: 370px;
     margin-bottom: 28px;
   }
 
@@ -704,3 +729,7 @@
 // --swiper-pagination-bullet-opacity: 1;
 // --swiper-pagination-bullet-horizontal-gap: 4px;
 // --swiper-pagination-bullet-vertical-gap: 6px;
+
+.swiper-test {
+  position: absolute;
+}

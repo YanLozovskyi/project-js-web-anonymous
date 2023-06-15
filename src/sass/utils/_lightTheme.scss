@@ -1,76 +1,143 @@
 .light {
   background-color: $light-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
 }
 ////// --------- Header light theme--------///////
 .light .header {
   background-color: $light-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
 }
 
 .light .header-nav-link {
   color: $color-subtitles-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 
 ///////--------------Hero-------------------/////////////
 .light .hero-content {
   background-color: $light-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
 }
 
 .light .logo-title {
   color: $text-color-for-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 
 .light .trailer-fail {
   background-color: $light-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
 }
 
 .light .trailer-fail-text {
   color: $dark-color;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 ////// --------- Mobile-nav light theme--------///////
 .light .mobile-menu-content {
   background-color: $light-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
 }
 
 .light .mobile-menu-nav-link {
   color: $dark-color;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 ////// --------- Catalog and weekly trends light theme--------///////
 .light .weekly-title {
   color: $dark-color;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+
+.light .ss-main.catalog-gallery-select {
+  border: none;
 }
 
 .light .catalog-gallery-input,
 .light .catalog-gallery-select,
 .light .catalog-gallery-input-search {
   color: $color-subtitles-white-theme;
+
   border: 1px solid $dark-color;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+
+.light .ss-main.catalog-gallery-select {
+  border: 1px solid $dark-color;
+}
+
+.light .ss-main.catalog-gallery-select .ss-values .ss-single {
+  color: $color-subtitles-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+
+.light .ss-main.catalog-gallery-select .ss-arrow path {
+  stroke: $color-subtitles-white-theme;
+  transition: stroke 500ms linear, ease-in-out 500ms;
 }
 
 .light .catalog-gallery-input::placeholder {
   color: $color-subtitles-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
+
+.light .ss-content.catalog-gallery-select .ss-search {
+  background: $text-color;
+}
+
+.light .ss-content.catalog-gallery-select .ss-search input {
+  background: $text-color;
+  color: $color-subtitles-white-theme;
+  border: 1px solid $dark-color;
+}
+
+.light .ss-content.catalog-gallery-select .ss-list .ss-option {
+  background: $text-color;
+  color: $dark-color;
+}
+
+.light .ss-content.catalog-gallery-select .ss-list .ss-option:hover,
+.light .ss-content.catalog-gallery-select .ss-list .ss-option:focus,
+.light .ss-content.catalog-gallery-select .ss-list .ss-option.ss-highlighted,
+.light
+  .ss-content.catalog-gallery-select
+  .ss-list
+  .ss-option:not(.ss-disabled).ss-selected,
+.light .ss-content.catalog-gallery-select .ss-list .ss-option:hover {
+  color: #f87719;
+  background: $text-color;
+}
+
+.light .catalog-gallery-icon {
+  --color1: #111111;
+}
+
 ////// ---------  Upcoming Soon-light theme--------///////
 
 .light .vote-text,
 .light .info-item-about-movie,
 .light .info-item {
   color: $text-color-for-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 
 .light .vote-text {
   background-color: $text-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
 }
 
 .light .one-title,
 .light .info-item-title,
-.light .info-item b,
+.light .info-item-two,
 .light .info-item-about-thirty,
 .light .info-item-thirty {
   color: $dark-color;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 ////// --------- Modal-card light theme--------///////
 .light .pop-up-modal {
   background-color: $light-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
 }
 
 .light .pop-up-modal__title,
@@ -78,6 +145,7 @@
 .light .pop-up-modal__about-txt,
 .light .genres {
   color: $dark-color;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 
 .light .vote,
@@ -85,11 +153,13 @@
 .light .popularity,
 .light .item-votes {
   color: $text-color-for-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 
 .light .vote,
 .light .votes {
   background-color: $text-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
 }
 
 .light .add-remove-btn.button-accent,
@@ -97,6 +167,8 @@
   background: $light-color;
   border-radius: 74px;
   border-color: $accent-color;
+  transition: background 500ms linear, ease-in-out 500ms;
+  transition: border-color 500ms linear, ease-in-out 500ms;
 }
 
 .light .pop-up-modal__close {
@@ -113,25 +185,32 @@
 ////// --------- Error on library light theme--------///////
 .light .my-library-content-text-message {
   color: $dark-color;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 ////// --------- Library-select light theme--------///////
 //// --- container
 .light .ss-main.my-library-genre-list {
   background: $light-color;
   border-color: $color-subtitles-white-theme;
+  transition: background 500ms linear, ease-in-out 500ms;
+  transition: border-color 500ms linear, ease-in-out 500ms;
 }
 //// --- select item
 .light .ss-main.my-library-genre-list .ss-values .ss-single {
   color: $color-subtitles-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 //// --- arrow
 .light .ss-main.my-library-genre-list .ss-arrow path {
   stroke: $color-subtitles-white-theme;
+  transition: stroke 500ms linear, ease-in-out 500ms;
 }
 ///// ----- input-option
 .light .ss-content.my-library-genre-list .ss-list .ss-option {
   color: $text-color-for-white-theme;
   background: $text-color;
+  transition: color 500ms linear, ease-in-out 500ms;
+  transition: background 500ms linear, ease-in-out 500ms;
 }
 
 .light .ss-content.my-library-genre-list .ss-list .ss-option:hover,
@@ -158,9 +237,76 @@
 ////// --------- Footer light theme--------///////
 .light .footer-content {
   color: $color-subtitles-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
 }
 .light .footer-command-info {
   color: $color-subtitles-white-theme;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+.light .footer-team-info,
+.light .footer-link {
+  color: $color-subtitles-white-theme;
+}
+/////// -------- 	Teammates-modal light --------------- /////
+.light .footer-modal-content {
+  background: $light-color;
+  transition: background 500ms linear, ease-in-out 500ms;
+}
+
+.light .footer-modal-close-btn {
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+.light .footer-modal-close-btn:hover {
+  background: none;
+  box-shadow: none;
+}
+.light .modal-close-icon:hover {
+  stroke: $accent-color;
+  transition: stroke 500ms linear, ease-in-out 500ms;
+}
+
+.light .footer-modal-title {
+  color: $dark-color;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+.light .footer-modal-logo {
+  fill: $dark-color;
+  transition: fill 500ms linear, ease-in-out 500ms;
+}
+
+.light .team-item {
+  box-shadow: 1px 1px 7px 4px #0c0b0b6b;
+}
+.light .team__role,
+.light .team__member {
+  color: $light-color;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+
+/////// -------- Light pagination --------------- /////
+.light .tui-prev:after,
+.light .tui-next:after {
+  filter: none;
+}
+
+.light .tui-is-selected {
+  color: $text-color-for-white-theme;
+}
+
+.light .tui-page-btn.tui-num-page {
+  color: $text-color-for-white-theme;
+  border-color: $text-color-for-white-theme;
+}
+
+.light .tui-ico-ellip {
+  color: $text-color-for-white-theme;
+}
+
+.light .tui-page-btn.tui-last {
+  color: $text-color-for-white-theme;
+  border-color: $text-color-for-white-theme;
 }
 
 /////// -------- Button if upcoming fix --------------- /////
@@ -182,4 +328,31 @@
     box-shadow: inset 0 1000px $light-color;
     border: 1px solid transparent;
   }
+}
+
+///////---------Fix for dark transition -------- //////////
+.dark {
+  background-color: $dark-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
+}
+.dark .header {
+  background-color: $dark-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
+}
+.dark .header-nav-link {
+  color: $color-subtitles;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+.dark .hero-content {
+  background-color: $dark-color;
+  transition: background-color 500ms linear, ease-in-out 500ms;
+}
+.dark .logo-title {
+  color: $light-color;
+  transition: color 500ms linear, ease-in-out 500ms;
+}
+
+.dark .my-library-content-text-message {
+  color: $light-color;
+  transition: color 500ms linear, ease-in-out 500ms;
 }

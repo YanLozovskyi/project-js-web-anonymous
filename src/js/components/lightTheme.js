@@ -24,10 +24,26 @@ function switchThem(event) {
   iconSun.classList.toggle('visually-hidden');
 
   if (!iconSun.classList.contains('visually-hidden')) {
+    bodyStyle.classList.remove('dark');
     bodyStyle.classList.add('light');
     localStorage.setItem('selectedMode', 'light');
   } else {
     bodyStyle.classList.remove('light');
+    bodyStyle.classList.add('dark');
     localStorage.setItem('selectedMode', 'dark');
+  }
+}
+
+// Отображение актуального состояния кнопки для пользователей программой чтения с экрана.
+
+themSwitcherButton.addEventListener('click', toggleTheme);
+
+function toggleTheme() {
+  const isPressed = themSwitcherButton.getAttribute('aria-pressed') === 'true';
+
+  if (isPressed) {
+    themSwitcherButton.setAttribute('aria-pressed', 'false');
+  } else {
+    themSwitcherButton.setAttribute('aria-pressed', 'true');
   }
 }

@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catalog</title>
+    <!-- meta tag with description -->
+    <meta
+      name="description"
+      content="Explore our extensive catalog of movies and TV shows on Cinemania. Discover a wide range of genres, from classics to contemporary hits. Our detailed descriptions, ratings, and reviews will help you choose your next film to watch. Enjoy an immersive world of cinema with Cinemania!"
+    />
     <!-- favicon -->
     <link
       rel="apple-touch-icon"
@@ -36,12 +41,12 @@
   </head>
 
   <body>
+    <include src="./partials/elements/observer-guard.html"></include>
     <include src="./partials/header.html"></include>
     <main>
       <include src="./partials/pages/catalog/hero.html"></include>
       <include src="./partials/pages/catalog/catalog-gallery.html"></include>
       <include src="./partials/scroll-up/scroll-up.html"></include>
-      <include src="./partials/elements/observer-guard.html"></include>
     </main>
     <include src="./partials/footer.html"></include>
   </body>

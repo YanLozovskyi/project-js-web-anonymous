@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cinemania</title>
-    <!-- favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="favicon/site.webmanifest" />
-    <link
-      rel="mask-icon"
-      href="favicon/safari-pinned-tab.svg"
-      color="#5bbad5"
-    />
-    <meta name="msapplication-TileColor" content="#ffc40d" />
-    <meta name="theme-color" content="#ffffff" />
-    <!-- js -->
-    <script type="module" src="./index.js"></script>
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinemania</title>
+  <!-- meta tag with description -->
+  <meta
+    name="description"
+    content="Welcome to Cinemania! We provide the latest news, reviews, trailers, and information about movies and TV shows. Stay up to date with hot releases and fresh content from the world of cinema. Subscribe now and be in the know about everything related to the world of movies!"
+  />
+  <!-- favicon -->
+  <link
+    rel="apple-touch-icon"
+    sizes="76x76"
+    href="favicon/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="favicon/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="favicon/favicon-16x16.png"
+  />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5" />
+  <meta name="msapplication-TileColor" content="#ffc40d" />
+  <meta name="theme-color" content="#ffffff" />
+  <!-- js -->
+  <script type="module" src="./index.js"></script>
 
   <body>
+    <include src="./partials/elements/observer-guard.html"></include>
     <include src="./partials/header.html"></include>
     <main>
       <include src="./partials/hero.html"></include>
       <include src="./partials/weekly-trends.html"></include>
       <include src="./partials/upcoming-this-month.html"></include>
       <include src="./partials/scroll-up/scroll-up.html"></include>
-      <include src="./partials/elements/observer-guard.html"></include>
     </main>
     <include src="./partials/footer.html"></include>
   </body>
