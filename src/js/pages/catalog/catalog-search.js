@@ -31,8 +31,6 @@ searchInput.addEventListener('input', handleInputChange);
 searchInput.addEventListener('keydown', handleInputChange);
 searchSelect.addEventListener('change', handleYearSelectChange);
 
-
-
 getTrend();
 
 clearButton.style.display = 'none';
@@ -80,33 +78,43 @@ async function handleFormSubmit(event) {
   event.preventDefault();
 
   const query = searchInput.value.trim();
+
   page = 1;
 
   if (query === '') {
-    getTrend();
+    // getTrend();
+    searchGallery.innerHTML =
+      '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
+
+    jsPagination.style.display = 'none';
     return;
   }
-  
+
   loader.onShow();
 
   if (query || currentYear) {
     apiMovie.query = query;
     try {
-    const response = await apiMovie.searchByQueryYear(page);
-    const movies = response.data.results;
-    const totalMovies = response.data.total_results;
-    const pageCount = response.data.total_pages;
+      const response = await apiMovie.searchByQueryYear(page);
+      const movies = response.data.results;
+      const totalMovies = response.data.total_results;
 
-    jsPagination.style.display = 'flex';
-    pagination.reset(totalMovies / 2);
-    updateBtnNames(pageCount);
+      const pageCount = response.data.total_pages;
+
+      if (pageCount === 1) {
+        jsPagination.style.display = 'none';
+      } else {
+        jsPagination.style.display = 'flex';
+        pagination.reset(totalMovies);
+        updateBtnNames(pageCount);
+      }
 
       updateGallery(movies);
     } catch (error) {
       console.log(error);
       searchGallery.innerHTML =
-      '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
-    
+        '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p>';
+
       jsPagination.style.display = 'none';
     }
   }
@@ -150,7 +158,7 @@ async function updateGallery(movies) {
       '<p class="catalog-message"><span>OOPS...</span><span>We are very sorry!</span><span>We don’t have any results matching your search.</span></p >';
 
     jsPagination.style.display = 'none';
-    } else {
+  } else {
     searchGallery.innerHTML = await createMarkupFilmsCards(movies);
   }
 }
@@ -168,11 +176,53 @@ function handleClearButtonClick(event) {
     clearButton.style.display = 'block';
   }
 }
+// searchByQueryYear(2, 2001);
+
+// async function searchByQueryYear(page, year) {
+//   console.log(arguments.length);
+
+//   if (arguments.length < 2) {
+//     try {
+//       console.log(222);
+
+//       const response = await apiMovie.searchByQueryYear(page);
+
+//       return response;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   } else {
+//     console.log(111);
+//     try {
+//       const response = await apiMovie.searchByQueryYear(page);
+//       const filteredResults = response.data.results.filter(
+//         movie => movie.release_date && movie.release_date.includes(year)
+//       );
+//       return filteredResults;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// }
+
+// async function searchByQueryYear(year, query) {
+//   try {
+//     const response = await apiMovie.searchByQueryYear(query);
+//     console.log(`Пошук результата:`, response);
+//     const filteredResults = response.data.results.filter(
+//       movie => movie.release_date && movie.release_date.includes(year)
+//     );
+//     return filteredResults;
+//   } catch (error) {
+//     console.log('Error:', error);
+//   }
+// }
 
 //.......СЕЛЕКТ
 // Обробник події change селекта року
 function handleYearSelectChange() {
   const newYear = searchSelect.value;
+  console.log('newYear:', newYear);
 
   if (newYear !== currentYear) {
     currentYear = newYear;
@@ -242,16 +292,16 @@ async function paginationByQuery(page) {
 
     const firstButton = document.querySelector('.tui-first');
     if (page < 3) {
-      firstButton.classList.add('tui-is-disabled')
+      firstButton.classList.add('tui-is-disabled');
     } else {
-      firstButton.classList.remove('tui-is-disabled')
+      firstButton.classList.remove('tui-is-disabled');
     }
 
     const lastButton = document.querySelector('.tui-last');
     if (page > pageCount - 2) {
-      lastButton.classList.add('tui-is-disabled')
+      lastButton.classList.add('tui-is-disabled');
     } else {
-      lastButton.classList.remove('tui-is-disabled')
+      lastButton.classList.remove('tui-is-disabled');
     }
 
     updateGallery(movies);
@@ -270,18 +320,18 @@ async function paginationByTrend(page) {
 
     const firstButton = document.querySelector('.tui-first');
     if (page < 3) {
-      firstButton.classList.add('tui-is-disabled')
+      firstButton.classList.add('tui-is-disabled');
     } else {
-      firstButton.classList.remove('tui-is-disabled')
+      firstButton.classList.remove('tui-is-disabled');
     }
 
     const lastButton = document.querySelector('.tui-last');
     if (page > 500 - 2) {
-      lastButton.classList.add('tui-is-disabled')
+      lastButton.classList.add('tui-is-disabled');
     } else {
-      lastButton.classList.remove('tui-is-disabled')
+      lastButton.classList.remove('tui-is-disabled');
     }
-    
+
     updateGallery(movies);
   } catch (error) {
     console.log(error);
