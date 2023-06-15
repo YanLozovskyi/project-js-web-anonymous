@@ -20,7 +20,7 @@ export const ourTeam = [
     linkedin: 'https://www.linkedin.com/in/yan-lozovskyi-ba9170271/',
     github: 'https://github.com/YanLozovskyi',
     linkedinSvg: `${Svg}#icon-linkedin`,
-    gitSvg: `${Svg}.svg#icon-github`,
+    gitSvg: `${Svg}#icon-github`,
   },
   {
     preview: `${ivannochka}`,
