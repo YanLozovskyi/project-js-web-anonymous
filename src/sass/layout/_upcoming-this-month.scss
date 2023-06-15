@@ -1,14 +1,12 @@
 .home-upcoming {
-  padding: 0px 20px 32px;
-
   @include tablet {
-    min-height: 420px;
-    padding: 0px 32px 77px;
+    // min-height: 420px;
+    padding-bottom: 17px;
   }
 
   @include desktop {
-    min-height: 660px;
-    padding: 0px 32px 100px;
+    // min-height: 660px;
+    padding-bottom: 40px;
   }
 }
 
