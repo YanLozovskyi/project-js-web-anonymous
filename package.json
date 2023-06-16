@@ -1,7 +1,7 @@
 {
   "name": "project-js-web-anonymous",
   "version": "2.0.0",
-  "description": "Cinemania",
+  "description": "Cinemania1",
   "homepage": "https://YanLozovskyi.github.io/project-js-web-anonymous",
   "scripts": {
     "start": "parcel src/*.html",
