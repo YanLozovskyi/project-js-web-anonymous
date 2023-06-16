@@ -1,15 +1,14 @@
 // utils
 
 @import './utils/modern-normalize';
-@import './utils/fonts';
-@import './utils/reset';
 @import './utils/variables';
 @import './utils/visually-hidden';
 @import './utils/mixins';
 @import './utils/lightTheme';
 
 // base
-
+@import './base/reset';
+@import './base/fonts';
 @import './base/common';
 @import './base/container';
 @import './base/cursor';
@@ -19,8 +18,13 @@
 @import './components/scrollbar';
 @import './components/loader';
 @import './components/scroll-up';
+@import './components/select';
 
 // layout
+
+// pages
+
+// home
 
 @import './layout/header';
 @import './layout/hero';
@@ -28,13 +32,11 @@
 @import './layout/weekly-trends';
 @import './layout/footer';
 
-// pages
-
 // catalog
 
 @import './layout/pages/catalog/hero';
 @import './layout/pages/catalog/catalog-gallery';
-@import './layout/pages/my-library/catalog-gallery-select';
+@import './layout/pages/catalog/catalog-gallery-select';
 
 // my-library
 

@@ -14,12 +14,6 @@
 }
 
 .catalog-gallery-form {
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: center;
-  // gap: 12px;
-  // margin-bottom: 16px;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -122,9 +116,6 @@
   border-radius: 100%;
   border: 1px solid transparent;
 
-  // transition: background 250ms $cubic;
-  // transition: border 250ms $cubic;
-
   &:hover,
   &:focus {
     background: $light-color;
@@ -205,10 +196,10 @@
   height: 12px;
 }
 
-.catalog-gallery-btn:hover .catalog-gallery-icon, .catalog-gallery-btn:focus .catalog-gallery-icon {
+.catalog-gallery-btn:hover .catalog-gallery-icon,
+.catalog-gallery-btn:focus .catalog-gallery-icon {
   --color1: #f87719;
 }
-
 
 .catalog-gallery {
   display: flex;
@@ -279,15 +270,17 @@
   color: #fff;
 }
 
-.tui-prev::after, .tui-next::after {
+.tui-prev::after,
+.tui-next::after {
   content: '';
 
-  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(180deg);
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+    hue-rotate(180deg);
 
   width: 6px;
   height: 11px;
 
-  background-size:contain;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -298,11 +291,11 @@
 }
 
 .tui-prev::after {
-  background-image: url(../images/left-arrow.svg);
+  background-image: url(../images/icon/left-arrow.svg);
 }
 
 .tui-next::after {
-  background-image: url(../images/right-arrow.svg);
+  background-image: url(../images/icon/right-arrow.svg);
 }
 
 .tui-next-is-ellip,
@@ -325,7 +318,9 @@
   order: 2;
 }
 
-.tui-num-page, .tui-order-next-ellip, .tui-order-prev-ellip  {
+.tui-num-page,
+.tui-order-next-ellip,
+.tui-order-prev-ellip {
   order: 3;
 }
 
